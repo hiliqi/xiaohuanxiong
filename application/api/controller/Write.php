@@ -145,7 +145,7 @@ class Write extends Controller
             case 'pure':
                 $arr = $pinyin->convert($str);
                 $str = implode($arr,'');
-                halt($str);
+                #halt($str);
                 break;
             case 'abbr':
                 $str = $pinyin->abbr($str);break;
