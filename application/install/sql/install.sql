@@ -130,6 +130,8 @@ CREATE TABLE `xwx_book` (
   `unique_id` varchar(100) NOT NULL COMMENT '漫画标识', 
   `book_name` varchar(50) NOT NULL COMMENT '漫画名',
   `nick_name` varchar(100) DEFAULT '' COMMENT '别名',
+   `last_chapter_id` int(10) unsigned DEFAULT '0',
+  `last_chapter` varchar(255) DEFAULT '无章节',
   `create_time` int(11) DEFAULT '0',
   `update_time` int(11) DEFAULT '0',
   `last_time` int(11) DEFAULT '0' COMMENT '最后更新时间',

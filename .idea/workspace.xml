@@ -98,7 +98,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../raccoon5" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../novel" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -702,6 +702,7 @@
       <workItem from="1588308540523" duration="1535000" />
       <workItem from="1588318037917" duration="1272000" />
       <workItem from="1589950915190" duration="1351000" />
+      <workItem from="1592797992654" duration="230000" />
     </task>
     <servers />
   </component>
@@ -731,29 +732,17 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="640" y="246" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1584263118447" />
-    <state x="354" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1582781995477">
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1592798223499">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="354" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1582781995477" />
-    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1583121698293">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1583121698293" />
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1589952274556">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1589952274556" />
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1592798223499" />
     <state x="774" y="333" key="NewPhpClassDialog" timestamp="1589951551094">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="774" y="333" key="NewPhpClassDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1589951551094" />
-    <state x="776" y="443" key="NewPhpFileDialog" timestamp="1581853725586">
+    <state x="567" y="225" width="786" height="600" key="find.popup" timestamp="1592798023065">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="776" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1581853725586" />
-    <state x="567" y="225" width="786" height="600" key="find.popup" timestamp="1585809933685">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="567" y="225" width="786" height="600" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1585809933685" />
+    <state x="567" y="225" width="786" height="600" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1592798023065" />
   </component>
 </project>
