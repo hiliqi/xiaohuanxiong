@@ -13,7 +13,7 @@
  */
 namespace Workerman\Protocols;
 
-use Workerman\Connection\TcpConnection;
+use Workerman\Connection\ConnectionInterface;
 
 /**
  * Text Protocol.
@@ -24,18 +24,18 @@ class Text
      * Check the integrity of the package.
      *
      * @param string        $buffer
-     * @param TcpConnection $connection
+     * @param ConnectionInterface $connection
      * @return int
      */
-    public static function input($buffer, TcpConnection $connection)
+    public static function input($buffer, ConnectionInterface $connection)
     {
         // Judge whether the package length exceeds the limit.
-        if (strlen($buffer) >= $connection->maxPackageSize) {
+        if (isset($connection->maxPackageSize) && \strlen($buffer) >= $connection->maxPackageSize) {
             $connection->close();
             return 0;
         }
         //  Find the position of  "\n".
-        $pos = strpos($buffer, "\n");
+        $pos = \strpos($buffer, "\n");
         // No "\n", packet length is unknown, continue to wait for the data so return 0.
         if ($pos === false) {
             return 0;
@@ -65,6 +65,6 @@ class Text
     public static function decode($buffer)
     {
         // Remove "\n"
-        return rtrim($buffer, "\r\n");
+        return \rtrim($buffer, "\r\n");
     }
 }

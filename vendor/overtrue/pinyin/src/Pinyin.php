@@ -303,7 +303,7 @@ class Pinyin
         $regex = array('\p{Han}', '\p{Z}', '\p{M}', "\t");
 
         if ($this->hasOption($option, \PINYIN_KEEP_NUMBER)) {
-            \array_push($regex, '\p{N}');
+            \array_push($regex, '0-9');
         }
 
         if ($this->hasOption($option, \PINYIN_KEEP_ENGLISH)) {

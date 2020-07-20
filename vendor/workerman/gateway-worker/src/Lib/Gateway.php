@@ -799,7 +799,7 @@ class Gateway
     /**
      * 踢掉某个客户端，并以$message通知被踢掉客户端
      *
-     * @param int $client_id
+     * @param string $client_id
      * @param string $message
      * @return void
      */
@@ -1315,8 +1315,8 @@ class Gateway
         if(empty($addresses_cache) || $time_now - $last_update > $expiration_time) {
             foreach ($register_addresses as $register_address) {
                 $client = stream_socket_client('tcp://' . $register_address, $errno, $errmsg, static::$connectTimeout);
-                if (!$client) {
-                    continue;
+                if ($client) {
+                    break;
                 }
             }
             if (!$client) {

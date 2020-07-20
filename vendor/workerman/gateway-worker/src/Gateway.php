@@ -38,7 +38,7 @@ class Gateway extends Worker
      *
      * @var string
      */
-    const VERSION = '3.0.13';
+    const VERSION = '3.0.18';
 
     /**
      * 本机 IP
@@ -319,7 +319,11 @@ class Gateway extends Worker
         // 如果用户有自定义 onConnect 回调，则执行
         if ($this->_onConnect) {
             call_user_func($this->_onConnect, $connection);
-        } elseif ($connection->protocol === '\Workerman\Protocols\Websocket') {
+            if (isset($connection->onWebSocketConnect)) {
+                $connection->_onWebSocketConnect = $connection->onWebSocketConnect;
+            }
+        }
+        if ($connection->protocol === '\Workerman\Protocols\Websocket' || $connection->protocol === 'Workerman\Protocols\Websocket') {
             $connection->onWebSocketConnect = array($this, 'onWebsocketConnect');
         }
 
@@ -334,6 +338,10 @@ class Gateway extends Worker
      */
     public function onWebsocketConnect($connection, $http_buffer)
     {
+        if (isset($connection->_onWebSocketConnect)) {
+            call_user_func($connection->_onWebSocketConnect, $connection, $http_buffer);
+            unset($connection->_onWebSocketConnect);
+        }
         $this->sendToWorker(GatewayProtocol::CMD_ON_WEBSOCKET_CONNECT, $connection, array('get' => $_GET, 'server' => $_SERVER, 'cookie' => $_COOKIE));
     }
     
@@ -484,6 +492,7 @@ class Gateway extends Worker
 
         // 初始化 gateway 内部的监听，用于监听 worker 的连接已经连接上发来的数据
         $this->_innerTcpWorker = new Worker("GatewayProtocol://{$this->lanIp}:{$this->lanPort}");
+	$this->_innerTcpWorker->reusePort = false;
         $this->_innerTcpWorker->listen();
 	$this->_innerTcpWorker->name = 'GatewayInnerWorker';
 
