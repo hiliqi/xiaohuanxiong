@@ -20,7 +20,6 @@ class Authors extends BaseAdmin
 
     public function index()
     {
-        $authorService = new \app\service\AuthorService();
         $data = $this->authorService->getAuthors();
         $this->assign([
             'authors' => $data['authors'],

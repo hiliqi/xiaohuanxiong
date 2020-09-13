@@ -32,7 +32,8 @@ class AuthorService
     public function getAuthors($where = '1=1')
     {
         $page = config('page.back_end_page');
-        $authors = Author::where($where)->with('books')->paginate($page, false, [
+        $authors = Author::where($where)->with('books')->order('id','desc')
+            ->paginate($page, false, [
             'query' => request()->param(),
             'type' => 'util\AdminPage',
             'var_page' => 'page',

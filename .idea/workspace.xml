@@ -20,11 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7e28971b-6d16-47ff-83e3-4ccc7a041382" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/hanman.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/hanman.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/install/sql/install.sql" beforeDir="false" afterPath="$PROJECT_DIR$/application/install/sql/install.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/service/BookService.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/service/BookService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/admin/controller/Authors.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/controller/Authors.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/service/AuthorService.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/service/AuthorService.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,7 +106,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../raccoon5" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -718,6 +715,7 @@
       <workItem from="1592797992654" duration="230000" />
       <workItem from="1594722958357" duration="147000" />
       <workItem from="1599967816102" duration="257000" />
+      <workItem from="1599969283386" duration="338000" />
     </task>
     <servers />
   </component>
@@ -743,14 +741,11 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1594723104862">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="592" y="218" key="FileChooserDialogImpl" timestamp="1599969623763">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state x="592" y="218" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1599969623763" />
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1594723104862" />
-    <state x="774" y="333" key="NewPhpClassDialog" timestamp="1589951551094">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="774" y="333" key="NewPhpClassDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1589951551094" />
     <state x="567" y="225" width="786" height="600" key="find.popup" timestamp="1592798023065">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
