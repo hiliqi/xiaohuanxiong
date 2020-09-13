@@ -177,14 +177,14 @@ FROM ' . $this->prefix . 'book AS ad1 JOIN (SELECT ROUND(RAND() * ((SELECT MAX(i
 
     public function search($keyword, $num)
     {
-        return Db::query(
-            "select * from " . $this->prefix . "book where delete_time=0 and match(book_name,summary,author_name,nick_name) 
-            against ('" . $keyword . "' IN NATURAL LANGUAGE MODE) LIMIT " . $num
-        );
+//        return Db::query(
+//            "select * from " . $this->prefix . "book where delete_time=0 and match(book_name,summary,author_name,nick_name)
+//            against ('" . $keyword . "' IN NATURAL LANGUAGE MODE) LIMIT " . $num
+//        );
 
-//        $map[] = ['delete_time','=',0];
-//        $map[] = ['book_name','like','%'.$keyword.'%'];
-//        return Book::where($map)->select();
+        $map[] = ['delete_time','=',0];
+        $map[] = ['book_name','like','%'.$keyword.'%'];
+        return Book::where($map)->limit($num)->select();
     }
 
     public function getHotBooks($date = '1900-01-01', $num = 10)
