@@ -13,7 +13,7 @@
 - 文章模块
 - 作者中心,包括作者注册、发布作品、分润、提现等
 - 对接公众号系统
-- 5.0开源地址：https://github.com/hiliqi/raccoon5
+- 5.0不再开源，请加入QQ群了解
 
 # 小浣熊英文漫画CMS
 适合做英文漫画，功能齐全，针对谷歌SEO做了优化，另自带英文漫画资源的采集。不开源，具体加下面的QQ群咨询。
@@ -23,6 +23,7 @@
 - 文档地址：https://www.kancloud.cn/hiliqi/xwx_comic_cms
 - 交流论坛：https://support.qq.com/products/176371
 - 官方QQ群：780362399
+- 电报群：https://t.me/comiccms
 - 小浣熊系列软件官网：http://soft.xiaohuanxiong.net/
 
 # 开源协议
