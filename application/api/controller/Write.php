@@ -107,12 +107,7 @@ class Write extends Controller
             $chapter = new Chapter();
             $chapter->chapter_name = trim($data['chapter_name']);
             $chapter->book_id = $book_id;
-            $lastChapterOrder = 0;
-            $lastChapter = $this->chapterService->getLastChapter($book_id);
-            if ($lastChapter) {
-                $lastChapterOrder = $lastChapter->chapter_order;
-            }
-            $chapter->chapter_order = $lastChapterOrder + 1;
+            $chapter->chapter_order = $data['chapter_order'];
             $chapter->save();
 
             Db::connect($this->conn)->name('chapterlogs')->insert([

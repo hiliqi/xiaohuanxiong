@@ -14,14 +14,12 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/guzzlehttp/ringphp" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/guzzlehttp/streams" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/overtrue/pinyin" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/paragonie/random_compat" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/psr/http-message" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/psr/log" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/ralouphie/getallheaders" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/react/promise" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/polyfill-intl-idn" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/polyfill-intl-normalizer" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/polyfill-php70" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/polyfill-php72" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/topthink/think-captcha" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/topthink/think-image" />
