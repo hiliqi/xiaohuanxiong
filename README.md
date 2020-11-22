@@ -18,13 +18,15 @@
 # 小浣熊英文漫画CMS
 适合做英文漫画，功能齐全，针对谷歌SEO做了优化，另自带英文漫画资源的采集。不开源，具体加下面的QQ群咨询。
 
+# 活码系统
+活码系统源码出售，支持二维码，网址等的二级跳转，可以设置多个子码或子网址，支持随机和按顺序跳转，有完善的数据统计，有意者联系QQ2354687725
+
 # 关于
 - 官方博客：https://www.xiaohuanxiong.net
 - 文档地址：https://www.kancloud.cn/hiliqi/xwx_comic_cms
 - 交流论坛：https://support.qq.com/products/176371
 - 官方QQ群：780362399
 - 电报群：https://t.me/comiccms
-- 小浣熊系列软件官网：http://soft.xiaohuanxiong.net/
 
 # 开源协议
 本程序采用MIT协议开源
