@@ -12,7 +12,7 @@
 - 三端并存：PC端，移动端，MIP端，MIP端可以跳转到移动端的阅读页，解决MIP不能放广告的问题（MIP做引流，移动端做真正变现）
 - 文章模块
 - 作者中心,包括作者注册、发布作品、分润、提现等
-- 对接公众号系统
+- 分销系统
 - 5.0不再开源，请加入QQ群了解
 
 # 小浣熊英文漫画CMS
@@ -24,7 +24,7 @@
 # 关于
 - 官方博客：https://www.xiaohuanxiong.net
 - 文档地址：https://www.kancloud.cn/hiliqi/xwx_comic_cms
-- 交流论坛：https://support.qq.com/products/176371
+- 交流论坛：http://s.i-t.cc/f-230-1.html
 - 官方QQ群：780362399
 - 电报群：https://t.me/comiccms
 
