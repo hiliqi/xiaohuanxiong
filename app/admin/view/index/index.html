@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="/static/admin/images/favicon.ico" rel="icon">
+    <title>小浣熊漫画CMS</title>
+    <link rel="stylesheet" href="/static/admin/libs/layui/css/layui.css"/>
+    <link rel="stylesheet" href="/static/admin/module/admin.css"/>
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <!-- 头部 -->
+    <div class="layui-header">
+        <div class="layui-logo">
+            <img src="/static/admin/images/logo.png"/>
+            <cite>小浣熊漫画CMS</cite>
+        </div>
+        <ul class="layui-nav layui-layout-left">
+            <li class="layui-nav-item" lay-unselect>
+                <a ew-event="flexible" title="侧边伸缩"><i class="layui-icon layui-icon-shrink-right"></i></a>
+            </li>
+            <li class="layui-nav-item" lay-unselect>
+                <a ew-event="refresh" title="刷新"><i class="layui-icon layui-icon-refresh-3"></i></a>
+            </li>
+        </ul>
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item" lay-unselect>
+                <a ew-event="clearcache" title="清除缓存"><i class="layui-icon layui-icon-note"></i></a>
+            </li>
+            <li class="layui-nav-item" lay-unselect>
+                <a>
+                    <img src="/static/admin/images/head.jpg" class="layui-nav-img">
+                    <cite>管理员</cite>
+                </a>
+                <dl class="layui-nav-child">
+                    <dd lay-unselect><a ew-href="page/template/user-info.html">个人中心</a></dd>
+                    <dd lay-unselect><a ew-event="psw">修改密码</a></dd>
+                    <hr>
+                    <dd lay-unselect><a ew-event="logout" data-url="{:url('login/logout')}">退出</a></dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item" lay-unselect>
+                <a ew-event="theme" title="主题"><i class="layui-icon layui-icon-more-vertical"></i></a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- 侧边栏 -->
+    <div class="layui-side">
+        <div class="layui-side-scroll">
+            <ul class="layui-nav layui-nav-tree arrow2" lay-filter="admin-side-nav" lay-shrink="_all">
+                <li class="layui-nav-item">
+                    <a><i class="layui-icon layui-icon-component"></i>&emsp;<cite>内容管理</cite></a>
+                    <dl class="layui-nav-child">
+                        <dd><a lay-href="{:url('books/index')}">漫画列表</a></dd>
+                        <dd><a lay-href="{:url('books/disabled')}">下架漫画列表</a></dd>
+                        <dd><a lay-href="{:url('comment/index')}">评论管理</a></dd>
+                        <dd><a lay-href="{:url('banners/index')}">轮播列表</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a><i class="layui-icon layui-icon-component"></i>&emsp;<cite>题材和地区</cite></a>
+                    <dl class="layui-nav-child">
+                        <dd><a lay-href="{:url('tag/index')}">题材列表</a></dd>
+                        <dd><a lay-href="{:url('areas/index')}">地区列表</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                     <a><i class="layui-icon layui-icon-component"></i>&emsp;<cite>用户和作者</cite></a>
+                    <dl class="layui-nav-child">
+                        <dd><a lay-href="{:url('admins/index')}">管理员列表</a></dd>
+                        <dd><a lay-href="{:url('users/index')}">用户列表</a></dd>
+                        <dd><a lay-href="{:url('users/disabled')}">锁定用户列表</a></dd>
+                        <dd><a lay-href="{:url('authors/index')}">作者列表</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a><i class="layui-icon layui-icon-component"></i>&emsp;<cite>支付管理</cite></a>
+                    <dl class="layui-nav-child">
+                        <dd><a lay-href="{:url('payment/index')}">支付设置</a></dd>
+                        <dd><a lay-href="{:url('payment/rewards')}">奖励设置</a></dd>
+                        <dd><a lay-href="{:url('payment/orders')}">订单管理</a></dd>
+                        <dd><a lay-href="{:url('payment/finance')}">财务管理</a></dd>
+                        <dd><a lay-href="{:url('payment/charge')}">代充值</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a><i class="layui-icon layui-icon-component"></i>&emsp;<cite>卡密管理</cite></a>
+                    <dl class="layui-nav-child">
+                        <dd><a lay-href="{:url('vipcodes/index')}">VIP码管理</a></dd>
+                        <dd><a lay-href="{:url('chargecodes/index')}">充值码管理</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a><i class="layui-icon layui-icon-component"></i>&emsp;<cite>其他管理</cite></a>
+                    <dl class="layui-nav-child">
+                        <dd><a lay-href="{:url('index/sys')}">系统设置</a></dd>
+                        <dd><a lay-href="{:url('sms/smsbao')}">短信设置</a></dd>
+                        <dd><a lay-href="{:url('index/seo')}">SEO设置</a></dd>
+                        <dd><a lay-href="{:url('index/routeconfig')}">路由设置</a></dd>
+                        <dd><a lay-href="{:url('sitemap/index')}">网站地图</a></dd>
+                        <dd><a lay-href="{:url('index/upgrade')}">检查更新</a></dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 主体部分 -->
+    <div class="layui-body"></div>
+    <!-- 底部 -->
+    <div class="layui-footer layui-text">
+        copyright © 2020 <a href="http://easyweb.vip" target="_blank">easyweb.vip</a> all rights reserved.
+        <span class="pull-right">Version 3.1.8</span>
+    </div>
+</div>
+
+<!-- 加载动画 -->
+<div class="page-loading">
+    <div class="ball-loader">
+        <span></span><span></span><span></span><span></span>
+    </div>
+</div>
+
+<!-- js部分 -->
+<script type="text/javascript" src="/static/admin/libs/layui/layui.js"></script>
+<script type="text/javascript" src="/static/admin/js/common.js"></script>
+<script>
+    layui.use(['index', 'admin'], function () {
+        var $ = layui.jquery;
+        var index = layui.index;
+        var admin = layui.admin
+
+        // 默认加载主页
+        index.loadHome({
+            menuPath: '{:url("index/info")}',
+            menuName: '<i class="layui-icon layui-icon-home"></i>'
+        });
+
+        admin.events.clearcache = function(){
+            admin.req('clearCache', function(res){
+                layer.msg(res.msg);
+            }, 'get');
+        }
+    });
+</script>
+</body>
+</html>

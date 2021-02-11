@@ -2,7 +2,6 @@
 
 define('BOOKCTRL', 'book');    //book路由
 define('CHAPTERCTRL','chapter');    //chapter路由
-define('TAGCTRL','tag');    //tag路由
 define('BOOKLISTACT','booklist');    //booklist路由
 define('SEARCHCTRL','search');    //search路由
 define('RANKCTRL', 'rank');    //rank路由

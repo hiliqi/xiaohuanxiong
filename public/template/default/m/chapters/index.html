@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="format-detection" content="telephone=no">
+    <meta charset="UTF-8">
+    <title>{$chapter.book.book_name}-{$chapter.chapter_name}在线阅读-{$site_name}</title>
+    <meta name="Description" content="当前阅读的是{$chapter.book.book_name}的{$chapter.chapter_name}"/>
+    <link rel="stylesheet" type="text/css" href="/static/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/mstyle.css">
+    {if $next != "null"}
+    <link rel="prefetch" href="/m/{$chapter_ctrl}/{$next.id}" />
+    {/if}
+    <link href="https://lib.baomitu.com/layer/3.1.1/theme/default/layer.css" rel="stylesheet">
+    <script src="https://lib.baomitu.com/jquery/1.12.4/jquery.min.js"></script>
+</head>
+
+<body class="viewbody" onclick="showToolBar();">
+<div style="position:relative;height:0;z-index:2147483647;">
+    <div class="view-fix-top-bar" mode="0" style="z-index:2147483647;">
+        <a href="javascript:window.history.back();">
+            <img class="view-fix-top-bar-back" src="/static/images/view-back-logo.png">
+        </a>
+        <p class="view-fix-top-bar-title">{$chapter.chapter_name}</p>
+        <div class="view-fix-top-bar-right">
+            <a href="javascript:void(0)" class="collection">
+                <img class="view-fix-top-bar-right-logo" src="/static/images/view-top-logo-1.png">
+            </a>
+            <a href="/">
+                <img class="view-fix-top-bar-right-logo" src="/static/images/view-top-logo-2.png">
+            </a>
+        </div>
+    </div>
+</div>
+<div style="background-color: black;color: white;padding: 15px;">
+    <p style="text-align: center;line-height: 40px;">前往微信或app阅读无删减版漫画</p>
+    <div style="text-align: center;">
+        <button style="background-color: #4CAF50;font-size: 16px;color: white;border: none;border-radius: 12px;width: 60%;" onclick="javascript:location.href='/static/assets/wx.html';">点击打开微信</button>
+        <button style="background-color: orangered;font-size: 16px;color: white;border: none;border-radius: 12px;width: 60%;margin-top: 5px;" onclick="javascript:location.href='http://normal.jjxs518.cn/?uid=0&cid=0050&sign=5081f00db2de0e3d&pid=jjmanhua2&noShare=true';">点击下载app</button>
+    </div>
+</div>
+<div class="view-main-1 readForm" id="cp_img">
+    {volist name="photos" id="vo"}
+    <img class="lazy" data-original="{$vo.img_url}" src="https://p.pstatp.com/origin/ffa400036691f82c85e5">
+    {/volist}
+</div>
+
+<ul class="view-bottom-bar">
+    {if $prev == "null"}
+    <li style="width:25%;opacity: 0.6;"><a class="view-bottom-bar-item">上一章</a></li>
+    {else /}
+    <li style="width:25%;"><a class="view-bottom-bar-item" href="/m/{$chapter_ctrl}/{$prev.id}">上一章</a></li>
+    {/if}
+
+    {if $page.last_page > 1}
+    {if $page.current_page == 1}
+    <li style="width:25%;opacity: 0.6;">
+        <a class="view-bottom-bar-item">上一页</a>
+    </li>
+    {else/}
+    <li style="width:25%;">
+        <a class="view-bottom-bar-item" href="/m/{$chapter_ctrl}/{$chapter.id}?page={$page.current_page-1}">上一页</a>
+    </li>
+    {/if}
+
+    {if $page.current_page == $page.last_page}
+    <li style="width:25%;opacity: 0.6;">
+        <a class="view-bottom-bar-item">下一页</a>
+    </li>
+    {else/}
+    <li style="width:25%;">
+        <a class="view-bottom-bar-item" href="/m/{$chapter_ctrl}/{$chapter.id}?page={$page.current_page+1}">下一页</a>
+    </li>
+    {/if}
+    {else/}
+    <li style="width: 25%; visibility: hidden;"><a class="view-bottom-bar-item">占位用</a></li>
+    <li style="width: 25%; visibility: hidden;"><a class="view-bottom-bar-item">占位用</a></li>
+    {/if}
+
+    {if $next == "null"}
+    <li style="width:25%;opacity: 0.6;"><a class="view-bottom-bar-item" href="javascript:void(0)">下一章</a></li>
+    {else /}
+    <li style="width:25%;"><a class="view-bottom-bar-item" href="/m/{$chapter_ctrl}/{$next.id}">下一章</a></li>
+    {/if}
+</ul>
+<div class="view-fix-bottom-bar" mode="0">
+    <a class="view-fix-bottom-bar-item" href="/m/{$book_ctrl}/{$chapter.book.param}">
+        <img class="view-fix-bottom-bar-logo" src="/static/images/view-bottom-logo-1.png">
+        <p class="view-fix-bottom-bar-title">目录</p>
+    </a>
+    <a class="view-fix-bottom-bar-item" style="visibility:hidden">占位</a>
+    {if $prev == "null"}
+    <a class="view-fix-bottom-bar-item" style="opacity: 0.6;">
+        <img class="view-fix-bottom-bar-logo" src="/static/images/view-bottom-logo-5.png">
+        <p class="view-fix-bottom-bar-title">上一章</p>
+    </a>
+    {else /}
+    <a class="view-fix-bottom-bar-item" href="/m/{$chapter_ctrl}/{$prev.id}">
+        <img class="view-fix-bottom-bar-logo" src="/static/images/view-bottom-logo-5.png">
+        <p class="view-fix-bottom-bar-title">上一章</p>
+    </a>
+    {/if}
+
+    {if $next == "null"}
+    <a class="view-fix-bottom-bar-item" style="opacity: 0.6;">
+        <img class="view-fix-bottom-bar-logo" src="/static/images/view-bottom-logo-6.png">
+        <p class="view-fix-bottom-bar-title">下一章</p>
+    </a>
+    {else /}
+    <a class="view-fix-bottom-bar-item" href="/m/{$chapter_ctrl}/{$next.id}">
+        <img class="view-fix-bottom-bar-logo" src="/static/images/view-bottom-logo-6.png">
+        <p class="view-fix-bottom-bar-title">下一章</p>
+    </a>
+    {/if}
+</div>
+<script src="https://cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
+<script src="https://lib.baomitu.com/layer/3.1.1/layer.js"></script>
+<script src="https://lib.baomitu.com/cookie.js/1.2.3/cookie.min.js"></script>
+
+<script>
+    $("img.lazy")
+        .lazyload({
+            threshold: 180,
+            event: "lazyload",
+            effect: "fadeIn",
+            effectspeed: 2000
+        })
+        .trigger("lazyload");
+
+    //--本地缓存代码开始--
+    let bookInfo = {
+        chapter_id: '{$chapter.id}',
+        end: "{$chapter.book.end == 1 ? '完结' : '连载'}",
+        chapter_name: '{$chapter.chapter_name}',
+        cover_url:'{$chapter.book.cover_url}',
+        book_id: '{$chapter.book_id}',
+        last_time: "{$chapter.book.last_time|date='Y-m-d'}",
+        book_name:'{$chapter.book.book_name}',
+        param: '{$chapter.book.param}'
+    };
+    localStorage.setItem('manhua_{$chapter.book_id}', JSON.stringify(bookInfo));//id为键，设置缓存
+    let history = [];
+    let value = localStorage.getItem('xwx_historys'); //读取参照数组
+    if (value != undefined && value != null) {
+        history = JSON.parse(value);
+    }
+    if (history.indexOf('manhua_{$chapter.book_id}') === -1) {
+        history.push('manhua_{$chapter.book_id}'); //把id为值存入参照数组
+    }
+
+    localStorage.setItem('xwx_historys', JSON.stringify(history));
+    //--本地缓存代码结束--
+
+
+    document.body.oncopy = function () {
+        return false;
+    }; //阻止复制
+    document.body.onselectstart = function () {
+        return false;
+    }; //阻止选中
+    document.oncontextmenu = function () {
+        return false;
+    }; //阻止菜单弹出
+    if (document.images) {
+        for (i = 0; i < document.images.length; i++) {
+            document.images[i].onmousedown = function () {
+                return false;
+            };
+        }
+    }
+
+    function showToolBar() {
+        $top = $('.view-fix-top-bar');
+        $bottom = $('.view-fix-bottom-bar');
+
+        if ($top.attr('mode') == 0) {
+            $top.css('top', '0px');
+            $top.attr('mode', 1);
+        } else {
+            $top.css('top', '-60px');
+            $top.attr('mode', 0);
+        }
+
+        if ($bottom.attr('mode') == 0) {
+            $bottom.css('bottom', '0px');
+            $bottom.attr('mode', 1);
+        } else {
+            $bottom.css('bottom', '-60px');
+            $bottom.attr('mode', 0);
+        }
+    }
+</script>
+
+{include file="./template/default/m/pub/others.html"}
+</body>
+</html>

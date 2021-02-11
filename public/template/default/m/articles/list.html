@@ -1,0 +1,106 @@
+{extend name="./template/default/m/pub/base.html" /}
+{block name="seo"}
+<title>最新文章-{$site_name}</title>
+{/block}
+{block name="css"}
+<style>
+    .mod {
+        position: relative;
+        width: 100%;
+        background: #fff;
+    }
+    .mod-news {
+        margin-top: 3rem;
+    }
+    .news-list ul li {
+        position: relative;
+    }
+    .news-list ul li a {
+        position: relative;
+        z-index: 2;
+        display: block;
+        padding: 0.75rem 3rem 0.75rem 1rem;
+        line-height: 1.25rem;
+        font-size: 0.9375rem;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+    .news-list ul li span {
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: 1;
+        padding: 0.625rem 1rem;
+        line-height: 1.25rem;
+        font-size: 0.6875rem;
+        color: #999;
+    }
+    .pages>a {
+        border: 1px solid #f0f1f2;
+    }
+    a {
+        color: inherit;
+        text-decoration: none;
+        outline: 0;
+    }
+    .pages {
+        padding: 1.25rem 1rem;
+        text-align: center;
+        color: #484848;
+        font-size: 0;
+        letter-spacing: 0;
+        border-top: 1px solid #f0f1f2;
+    }
+    .pages .pageindex {
+        border: none;
+        background: transparent;
+        color: #fe7031;
+        display: none;
+    }
+    .pages>a, .pages>span {
+        display: inline-block;
+        box-sizing: border-box;
+        vertical-align: top;
+        width: 40%;
+        height: 2.5rem;
+        line-height: 2.5rem;
+        font-size: 0.90625rem;
+        background: #f6f7f8;
+        border: 1px solid transparent;
+        border-radius: 0.25rem;
+        margin: 0 5%;
+    }
+</style>
+{/block}
+{block name="content"}
+{include file="./template/default/m/pub/top2.html" /}
+<div class="mod mod-news">
+    <div class="news-list">
+        <ul class="clearfix">
+            {volist name="articles" id="vo"}
+            <li>
+                <a href="/m/article/{$vo.param}">{$vo.title}</a>
+                <span>{$vo.create_time|date='m-d'}</span>
+            </li>
+            {/volist}
+        </ul>
+        <div class="pages">
+            {if $page.last_page > 1}
+            {if $page.current_page == 1}
+
+            {else/}
+            <a href="/m/articlelist?page={$page.current_page-1}{$param}" class="p-prev">上一页</a>
+            {/if}
+
+            {if $page.current_page == $page.last_page}
+
+            {else/}
+            <a href="/m/articlelist?page={$page.current_page+1}{$param}" class="p-next">下一页</a>
+            {/if}
+            {/if}
+        </div>
+    </div>
+    <!-- /new-news -->
+</div>
+{/block}

@@ -1,0 +1,172 @@
+{extend name="pub/base" /}
+{block name="head"}
+<title>题材管理</title>
+<style>
+    /** 数据表格中的select尺寸调整 */
+    .layui-table-view .layui-table-cell .layui-select-title .layui-input {
+        height: 28px;
+        line-height: 28px;
+    }
+
+    .layui-table-view [lay-size="lg"] .layui-table-cell .layui-select-title .layui-input {
+        height: 40px;
+        line-height: 40px;
+    }
+
+    .layui-table-view [lay-size="lg"] .layui-table-cell .layui-select-title .layui-input {
+        height: 40px;
+        line-height: 40px;
+    }
+
+    .layui-table-view [lay-size="sm"] .layui-table-cell .layui-select-title .layui-input {
+        height: 20px;
+        line-height: 20px;
+    }
+
+    .layui-table-view [lay-size="sm"] .layui-table-cell .layui-btn-xs {
+        height: 18px;
+        line-height: 18px;
+    }
+</style>
+{/block}
+{block name="main"}
+<div class="layui-fluid">
+    <div class="layui-card">
+        <div class="layui-card-body">
+            <!-- 表格工具栏 -->
+            <form class="layui-form toolbar table-tool-mini">
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <div class="layui-input-inline">
+                            <input id="tag_name" class="layui-input" type="text" placeholder="标题"/>
+                        </div>
+                    </div>
+
+                    <div class="layui-inline" style="padding-right: 110px;">
+                        <button class="layui-btn icon-btn" lay-filter="tbBasicTbSearch" lay-submit>
+                            <i class="layui-icon">&#xe615;</i>搜索
+                        </button>
+                        <button class="layui-btn icon-btn" type="button" id="create">
+                            <i class="layui-icon"></i>新增
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <!-- 数据表格 -->
+            <table id="tbBasicTable" lay-filter="tbBasicTable"></table>
+        </div>
+    </div>
+
+    <div class="layui-card">
+        <div class="layui-card-body">
+            交流和反馈建议请加QQ群：780362399
+        </div>
+    </div>
+
+    <!-- 表格操作列 -->
+    <script type="text/html" id="tbBasicTbBar">
+        <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="edit">修改</a>
+        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+    </script>
+</div>
+
+{/block}
+{block name="js"}
+<script>
+    layui.use(['table', 'util', 'index', 'dropdown', 'form'], function () {
+        var $ = layui.jquery;
+        var table = layui.table;
+        var util = layui.util;
+        var index = layui.index;
+        var dropdown = layui.dropdown;
+        var form = layui.form
+
+        $('#create').click(function () {
+            index.openTab({
+                title: '新建题材',
+                url: "{:url('tag/create')}",
+                end: function () {
+                    insTb.reload();
+                }
+            })
+        })
+
+        /* 表格工具条点击事件 */
+        table.on('tool(tbBasicTable)', function (obj) {
+            var data = obj.data; // 获得当前行数据
+            if (obj.event === 'edit') { // 修改
+                parent.layui.index.openTab({
+                    title: '编辑题材',
+                    url: "{:url('tag/edit')}?id=" + data.id,
+                    end: function () {
+                        insTb.reload();
+                    }
+                });
+            } else if (obj.event === 'del') { // 删除
+                layer.confirm('确认要删除吗？', function (index) {
+                    $.ajax({
+                        type: 'POST',
+                        url: "{:url('delete')}",
+                        data: {id: data.id},
+                        dataType: 'json',
+                        success: function (res) {
+                            if (res.err == 0) { //删除成功
+                                layer.msg(res.msg, {icon: 1, time: 1000}, function () {
+                                    location.reload();
+                                });
+                            } else {
+                                layer.msg(res.msg, {icon: 2}, function () {
+                                    location.reload();
+                                });
+                            }
+                        },
+                        error: function (res) {
+                            layer.msg(res);
+                        },
+                    });
+                });
+            }
+            dropdown.hideAll();
+        });
+
+        /* 渲染表格 */
+        var insTb = table.render({
+            elem: '#tbBasicTable',
+            url: "{:url('tag/list')}",
+            page: true,
+            cellMinWidth: 100,
+            cols: [[
+                {type: 'checkbox'},
+                {field: 'id', title: 'ID', align: 'center', sort: true},
+                {field: 'tag_name', title: '标题', align: 'center', sort: true},
+                {field: 'create_time', title: '更新时间', align: 'center', sort: true},
+                {field: 'update_time', title: '更新时间', align: 'center', sort: true},
+                {title: '操作', toolbar: '#tbBasicTbBar', align: 'center', minWidth: 200}
+            ]]
+        });
+
+        form.on('submit(tbBasicTbSearch)', function (data) {
+            var tag_name = $('#tag_name').val()
+            table.render({
+                elem: '#tbBasicTable',
+                url: '{:url("search")}?tag_name=' + tag_name,
+                page: true,
+                cellMinWidth: 100,
+                cols: [[
+                    {type: 'checkbox'},
+                    {field: 'id', title: 'ID', align: 'center', sort: true},
+                    {field: 'tag_name', title: '标题', align: 'center', sort: true},
+                    {
+                        field: 'create_time', title: '创建时间', templet: function (d) {
+                            return util.timeAgo(d.lastlogin * 1000);
+                        }, align: 'center', sort: true
+                    },
+                    {field: 'update_time', title: '更新时间', align: 'center', sort: true},
+                    {title: '操作', toolbar: '#tbBasicTbBar', align: 'center', minWidth: 200}
+                ]]
+            });
+            return false;
+        });
+    });
+</script>
+{/block}

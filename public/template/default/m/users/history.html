@@ -1,0 +1,83 @@
+{extend name="./template/default/m/pub/base.html" /}
+{block name="seo"}
+<title>个人书架-{$site_name}</title>
+{/block}
+{block name="content"}
+{include file="./template/default/m/pub/top3.html" /}
+
+<div class="selector-top" style="position: fixed;top: 46px;left: 0;width: 100%;z-index: 9;">
+    <a class="selector-top-item" href="/m/bookshelf">收藏</a>
+    <a class="selector-top-item active" href="/m/history">历史</a>
+    <a href="javascript:editReadhistory();" id="btnedit">
+        <img class="selector-top-right-logo" src="/static/images/selector-top-right.png">
+    </a>
+    <a class="selector-top-right-font" href="javascript:editReadhistoryClose();" style="display:none;" id="btneditclose">完成编辑</a>
+</div>
+
+<div style="margin-top: 105px;" id="app">
+    <div class="buy-manga" v-for="(item, index) in books" :key="index">
+        <div class="buy-manga-cover">
+            <a v-bind:href="'/m/{$book_ctrl}/' + item.param">
+                <img v-bind:src="item.cover_url">
+            </a>
+            <a class="buy-manga-cover-hover" href="javascript:void(0);" v-bind:mid="item.book_id" style="display:none;"></a>
+        </div>
+        <div class="buy-manga-info">
+            <a v-bind:href="'/m/{$book_ctrl}/' + item.param" class="readlink" v-bind:mid="item.book_id">
+                <p class="buy-manga-title">{{item.book_name}}</p>
+            </a>
+            <p class="buy-manga-author">{{item.last_time}}更新</p>
+            <a v-bind:href="'/m/{$chapter_ctrl}/' + item.chapter_id" class="readlink">
+                <p class="buy-manga-new">{{item.chapter_name}}</p>
+            </a>
+
+            <a class="buy-manga-right-a readlink" v-bind:mid="item.book_id" v-bind:href="'/m/{$chapter_ctrl}/' + item.chapter_id">
+                <img class="buy-manga-right-img" src="/static/images/buy-manga-right.png">
+                <p class="buy-manga-right-title">续看</p>
+            </a>
+        </div>
+    </div>
+</div>
+
+
+<a href="javascript:$('.win-pay2').show();$('.mask').show();" class="center-main-bottom-btn l50" style="display:none;">清空</a>
+<a href="javascript:deleteReadhistory();" class="center-main-bottom-btn r50" style="display:none;">删除</a>
+<div class="mask" style="display: none;"></div>
+<div class="win-pay2" style="display: none;">
+    <a href="javascript:$('.mask,.win-pay2').hide();">
+        <img class="win-pay-cross" src="/static/images/win-cross.png">
+    </a>
+    <p class="win-pay-content pb10">是否清空清空阅读历史?</p>
+    <div class="win-pay-btn-group2 pb20">
+        <a class="win-pay-btn gary" href="javascript:$('.mask,.win-pay2').hide();">再想想</a>
+        <a class="win-pay-btn red" href="javascript:clearReadhistory();">确认清空</a> </div>
+</div>
+<div class="toast" style="display:none;"></div>
+
+<script type="text/javascript" src="/static/js/loadNewHistory.js"></script>
+<script src="https://lib.baomitu.com/vue/2.6.10/vue.min.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data() {
+            return {
+                books: [],
+            }
+        },
+        created: function () {
+            let value = localStorage.getItem('xwx_historys');
+            if (value != undefined && value != null) {
+                let history = JSON.parse(value);
+                for (let i = 0; i < history.length; i++) {
+                    let item = localStorage.getItem(history[i]);
+                    if (item != undefined && item != null) {
+                        let bookInfo = JSON.parse(item); //拿到缓存对象
+                        this.books.push(bookInfo);
+                    }
+                }
+            }
+            console.log(this.books);
+        }
+    })
+</script>
+{/block}

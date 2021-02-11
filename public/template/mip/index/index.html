@@ -1,0 +1,193 @@
+{extend name="./template/mip/pub/base.html" /}
+{block name="seo"}
+<title>漫画大全-{$site_name}</title>
+<meta name="description" content="{$site_name}为大家带来最新漫画大全，这里有超多漫画资源，无论是韩国漫画，少女漫画，还是恐怖漫画，总有一个让你酣畅淋漓">
+{/block}
+{block name="css"}
+<style mip-custom>
+    mip-gototop {
+        display: none !important;
+        border-radius: 5px;
+        width: 36px;
+        height: 36px;
+        background-size: 50% 50%;
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+        border: 1px solid #999;
+        background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADsAAAA8CAYAAADYIMILAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA4ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMDY3IDc5LjE1Nzc0NywgMjAxNS8wMy8zMC0yMzo0MDo0MiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo4N2M5ODc5Zi0xMDMxLTRjZWYtOWViMy1lMmIxNzNkMDU1MTAiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OUEwOTQ3MUIxMDdEMTFFNkIwNDFFMDRENzk5MUQ2RDIiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OUEwOTQ3MUExMDdEMTFFNkIwNDFFMDRENzk5MUQ2RDIiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUgKE1hY2ludG9zaCkiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDoxM2I0YTVjYS1mNzQ0LTRhMGEtYjI0Yy02NmM1N2I3NTE2NGIiIHN0UmVmOmRvY3VtZW50SUQ9ImFkb2JlOmRvY2lkOnBob3Rvc2hvcDozYThhODFlZS01OGQ4LTExNzktYmYwNi1lNTU4YzcyN2M2NTkiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz6FlgSqAAACS0lEQVR42uzbO0hbYRQH8JtLqYKU4ANBO7RQijjooHVx6uRktw6FFju1UIRIBwdFLfZBHcSWFjo5FLfi5pap7eAUB6dCO5RSh0BRQ8CISqn+v3IOhENyE+/DfPfm/OHv43gdft7XdyNJDSOO42TQDie52UffuU0AdciXcZ3mScpg36OFhEP3zGF8CR+20Ilm2LXNdBgrVrEhZQRdQz+iw0nGdqNTaDvaic6hQ0nEGuhrNF02M3eCWXQgSViGdlf4WQu6gPYlAesF5bSii+iNOGPrgXLaCHwtjtjzQDnmfH6B9sYJWw36tcK26+J7c6V+dc4/UsOwXtCVCtube+6GmHWhL+mztdha0H9Vfm8VzYpZD4HTNmL9Qk1O0Q/oZzG/SuArNmGDQDlmm7fopphfp6t0mw3YMKDl4GU0J+Y30We0AGkYNkwo5y+6hG6LeT+ttC43AhsFlHNC5+o3MR9EZ2hNfWHYKKGcY/Q5+kPMb6HTfneSayGUU6Jz9ZeYj6JP/YBdS6GcA3ru3RHz2+gkmooCWw36JUIop4jOo3kxH0MfhY31gr6JGMrZoz28K+Z30IdhYW2Acv7QKxv7Yn4XvRcU22URlJOnQ7oo5vfR8SDYJ5ZBOb9pgVES8wdBsGkLoZyfdFs6FKsv39hP6BF9nbUIyvlODwnm0C7Qk5NnvJZeObrStVa4KNgSs6R8XO/GtdaZh+JQiXX0fz2KVaxiFatYxSpWsYpVrGIVq1jFKlaxilWsYhVrHbb8xfZC0rH8HqL/77O5aOyZAAMARRuDCbImm0EAAAAASUVORK5CYII=);
+        background-color: #fff
+    }
+
+    .mip-gototop-show {
+        display: block !important
+    }
+
+</style>
+{/block}
+{block name="content"}
+<!--标题栏-->
+<mip-fixed type="top">
+    <div class="topBar">
+        <a href="/" data-type="mip" data-title="首页">
+            <mip-img layout="container" src="/template/mip/images/main_logo.png"
+                     class="mainlogo mip-element mip-layout-container mip-img-loaded" alt="土豪漫画" mip-firstscreen-element="">
+            </mip-img>
+        </a>
+        <span class="d-fr" on="tap:right-sidebar.open">
+            <mip-img id="imgMenu" class="mip-fill-content mip-replaced-content" src="/template/mip/images/menu_logo.png"></mip-img>
+        </span>
+        <a data-type="mip" class="d-fl" href="/{$search_ctrl}">
+            <mip-img layout="container" src="/template/mip/images/search_logo.png"
+                     class="searchlogo mip-element mip-layout-container mip-img-loaded">
+            </mip-img>
+        </a>
+    </div>
+</mip-fixed>
+<div class="landing-row row--split">
+    <div class="row-item">
+        <a data-type="mip" title="排行" href="/{$update_act}">
+            <i class="sprite-index-rank icon">&nbsp;</i>
+            <div class="plain-text">排行</div>
+        </a>
+    </div>
+    <div class="row-item">
+        <a data-type="mip" title="分类" href="/{$update_act}">
+            <i class="sprite-index-category icon"></i>
+            <div class="plain-text">分类</div>
+        </a>
+    </div>
+    <div class="row-item">
+        <a data-type="mip" title="更新" href="/{$update_act}">
+            <i class="sprite-index-update icon"></i>
+            <div class="plain-text">更新</div>
+        </a>
+    </div>
+    <div class="row-item">
+        <a data-type="mip" title="会员" href="{$mobile_url}/ucenter">
+            <i class="sprite-index-jp icon"></i>
+            <div class="plain-text">会员</div>
+        </a>
+    </div>
+</div>
+
+<div class="manList">
+    <div class="titleBar">
+        <mip-img layout="container" class="dc mip-element mip-layout-container mip-img-loaded"
+                 src="/template/mip/images/index_title_2.png">
+        </mip-img>
+        <h2 class="title">万众追更</h2>
+        <a data-type="mip" href="/{$update_act}" class="other d-fr" title="万众追更">
+            <span>更多</span>
+            <mip-img layout="container" class="dc mip-element mip-layout-container mip-img-loaded"
+                     src="/template/mip/images/arrow_right.png">
+            </mip-img>
+        </a>
+    </div>
+    <ul class="am-avg-sm-3 am-thumbnails list">
+        {volist name="newest" id="vo"}
+        <li class="am-thumbnail">
+            <a data-type="mip" href="/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}">
+                <div class="s_img">
+                    <mip-img layout="fill" src="{$vo.cover_url}" alt="{$vo.book_name}"
+                             class="mip-element mip-layout-fill mip-layout-size-defined mip-img-loaded">
+                        <img class="mip-fill-content mip-replaced-content" src="{$vo.cover_url}" alt="{$vo.book_name}">
+                    </mip-img>
+                </div>
+            </a>
+            <p class="d-nowrap"><a data-type="mip" href="/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}">{$vo.book_name}</a></p>
+        </li>
+        {/volist}
+    </ul>
+</div>
+
+<div class="manList">
+    <div class="titleBar">
+        <mip-img layout="container" class="dc mip-element mip-layout-container mip-img-loaded"
+                 src="/template/mip/images/index_title_1.png">
+        </mip-img>
+        <h2 class="title">精选漫画</h2>
+        <a data-type="mip" href="/{$update_act}" class="other d-fr" title="万众追更">
+            <span>更多</span>
+            <mip-img layout="container" class="dc mip-element mip-layout-container mip-img-loaded"
+                     src="/template/mip/images/arrow_right.png">
+            </mip-img>
+        </a>
+    </div>
+    <ul class="am-avg-sm-3 am-thumbnails list">
+        {volist name="ends" id="vo"}
+        <li class="am-thumbnail">
+            <a data-type="mip" href="/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}">
+                <div class="s_img">
+                    <mip-img layout="fill" src="{$vo.cover_url}" alt="{$vo.book_name}"
+                             class="mip-element mip-layout-fill mip-layout-size-defined mip-img-loaded">
+                        <img class="mip-fill-content mip-replaced-content" src="{$vo.cover_url}" alt="{$vo.book_name}">
+                    </mip-img>
+                </div>
+            </a>
+            <p class="d-nowrap"><a data-type="mip" href="/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}">{$vo.book_name}</a></p>
+        </li>
+        {/volist}
+    </ul>
+</div>
+
+<div class="manList">
+    <div class="titleBar">
+        <mip-img layout="container" class="dc mip-element mip-layout-container mip-img-loaded"
+                 src="/template/mip/images/index_title_5.png">
+        </mip-img>
+        <h2 class="title">热门漫画</h2>
+        <a data-type="mip" href="/rank" class="other d-fr" title="万众追更">
+            <span>更多</span>
+            <mip-img layout="container" class="dc mip-element mip-layout-container mip-img-loaded"
+                     src="/template/mip/images/arrow_right.png">
+            </mip-img>
+        </a>
+    </div>
+    <ul class="am-avg-sm-3 am-thumbnails list">
+        {volist name="hot" id="vo"}
+        <li class="am-thumbnail">
+            <a data-type="mip" href="/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}">
+                <div class="s_img">
+                    <mip-img layout="fill" src="{$vo.cover_url}" alt="{$vo.book_name}"
+                             class="mip-element mip-layout-fill mip-layout-size-defined mip-img-loaded" >
+                        <img class="mip-fill-content mip-replaced-content" src="{$vo.cover_url}" alt="{$vo.book_name}">
+                    </mip-img>
+                </div>
+            </a>
+            <p class="d-nowrap"><a data-type="mip" href="/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}">{$vo.book_name}</a></p>
+        </li>
+        {/volist}
+    </ul>
+</div>
+
+{volist name="catelist" id="cateItem"}
+{in name="$cateItem.tag.id" value="1,2,3"} <!-- value里的数字是后台分类ID，填哪几个数字就展示哪几个分类 -->
+<div class="manList">
+    <div class="titleBar">
+        <h2 class="title">{$cateItem.tag.tag_name}</h2>
+        <a data-type="mip" href="/{$update_act}?tag={$cateItem.tag.tag_name}" class="other d-fr" title="{$cateItem.tag.tag_name}">
+            <span>更多</span>
+            <mip-img layout="container" class="dc mip-element mip-layout-container mip-img-loaded"
+                     src="/template/mip/images/arrow_right.png">
+            </mip-img>
+        </a>
+    </div>
+    <ul class="am-avg-sm-3 am-thumbnails list">
+        {volist name="cateItem.books" id="vo" offset="0" length="9"}
+        <li class="am-thumbnail">
+            <a data-type="mip" href="/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}">
+                <div class="s_img">
+                    <mip-img layout="fill" src="{$vo.cover_url}" alt="{$vo.book_name}"
+                             class="mip-element mip-layout-fill mip-layout-size-defined mip-img-loaded">
+                        <img class="mip-fill-content mip-replaced-content" src="{$vo.cover_url}" alt="{$vo.book_name}">
+                    </mip-img>
+                </div>
+            </a>
+            <p class="d-nowrap"><a data-type="mip" href="/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}">{$vo.book_name}</a></p>
+        </li>
+        {/volist}
+    </ul>
+</div>
+{/in}
+{/volist}
+{/block}

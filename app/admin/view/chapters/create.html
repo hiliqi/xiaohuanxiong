@@ -1,0 +1,71 @@
+{extend name="pub/base" /}
+{block name="head"}
+<title>新建章节</title>
+<style>
+    #formBasForm {
+        max-width: 700px;
+        margin: 30px auto;
+    }
+
+    #formBasForm .layui-form-item {
+        margin-bottom: 25px;
+    }
+</style>
+{/block}
+{block name="main"}
+<div class="layui-fluid">
+    <div class="layui-card">
+        <div class="layui-card-body">
+            <!-- 表单开始 -->
+            <form class="layui-form" id="formBasForm" lay-filter="formBasForm">
+                <input type="hidden" name="book_id" value="{$book_id}">
+                <div class="layui-form-item">
+                    <label class="layui-form-label layui-form-required">章节标题:</label>
+                    <div class="layui-input-block">
+                        <input name="chapter_name" placeholder="章节标题" class="layui-input"
+                               lay-verType="tips" lay-verify="required" required/>
+                    </div>
+                </div>
+
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label layui-form-required">章节序:</label>
+                    <div class="layui-input-block">
+                        <input name="chapter_order" placeholder="章节序" class="layui-input"
+                               lay-verType="tips" lay-verify="required|number" required/>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <button class="layui-btn" lay-filter="formBasSubmit" lay-submit>&emsp;提交&emsp;</button>
+                        <button type="reset" class="layui-btn layui-btn-primary">&emsp;重置&emsp;</button>
+                    </div>
+                </div>
+            </form>
+            <!-- //表单结束 -->
+        </div>
+    </div>
+</div>
+{/block}
+{block name="js"}
+<script>
+    layui.use(['layer', 'form', 'laydate', 'upload'], function () {
+        var $ = layui.jquery;
+        var form = layui.form;
+
+        /* 监听表单提交 */
+        form.on('submit(formBasSubmit)', function (data) {
+            $.ajax({
+                url:"{:url('create')}",
+                type:'post',
+                data:$('form').serialize(),
+                success(res) {
+                    subResHandle(res)
+                }
+            })
+            return false;
+        });
+    });
+</script>
+{/block}

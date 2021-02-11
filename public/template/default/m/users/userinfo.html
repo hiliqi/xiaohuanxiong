@@ -1,0 +1,14 @@
+{extend name="./template/default/m/pub/base.html" /}
+{block name="seo"}
+<title>个人中心-{$site_name}</title>
+{/block}
+{block name="content"}
+{include file="./template/default/m/pub/top3.html" /}
+<div class="line-container">
+    <input id="nick_name" type="text" placeholder="请输入昵称（昵称为2-8个字符 ，不允许为空）"
+           value="{session('nick_name')}" autocomplete="off">
+</div>
+<a href="javascript:void(0);" class="line-container-btn" id="btnsave">保存</a>
+<div class="toast" style="display: none;"></div>
+<script src="/static/js/userinfo.js"></script>
+{/block}

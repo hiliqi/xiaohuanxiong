@@ -1,0 +1,51 @@
+{extend name="./template/default/pc/pub/base.html" /}
+{block name="seo"}
+<title>个人中心-{$site_name}</title>
+{/block}
+{block name="css"}
+<link rel="stylesheet" href="/static/css/account.css">
+{/block}
+{block name="content"}
+<main class="container mt30 mb20 overflow-Show clearfix" style="min-height:750px;">
+    {include file="./template/default/pc/pub/uc_menu.html"}
+    <article class="article-main pull-right">
+        <section class="box-userinfo box ">
+            <div class="table-head">
+                <ul class="table-tabs">
+                    <li>
+                        <a class="active">验证手机</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="box-body">
+                <section class="user-repasswd">
+                    <p class="tip color-main" style="color:red"></p>
+                    <p class="p-r"><span class="p-phone">绑定新手机</span></p>
+                    <p class="p-r"><span class="p-title">国家/地区</span>
+                        <select class="account-select select_areacode txt_areacode" name="txt_areacode">
+                            <option value="86">中国</option>
+                        </select>
+                    </p>
+                    <p class="p-r">
+                        <span class="p-title">+86（中国）</span>
+                        <input type="text" id="txt_phone" class="txt_phone" name="txt_phone" value=""
+                               placeholder="输入手机号码">
+                        <span class="form-tip mt" style="display:none;"></span>
+                    </p>
+                    <p class="p-r">
+                        <span class="p-title">短信验证码</span>
+                        <input type="text" id="txt_phonecode" class="txt_phonecode" name="txt_phonecode" value=""
+                               placeholder="输入短信验证码">
+                        <a href="javascript:void(0);" isok="1" class="a-code-get btnphonecodeget">获取验证码</a>
+                    </p>
+                    <p class="p-r"><span class="p-phone">绑定新手机号码，原手机号将不能用于登录</span></p>
+                    <p>
+                        <button id="sub" class="btn full" type="submit">绑定</button>
+                    </p>
+                </section>
+            </div>
+        </section>
+    </article>
+</main>
+<script src="/static/js/phone.js"></script>
+{/block}

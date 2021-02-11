@@ -6,15 +6,18 @@ $('#btnsave').click(function () {
         return;
     }
     $.post({
-        url:'/updateUserinfo',
+        url:'/userinfo',
         data:{nickname: nickname},
         success:function (res) {
             ShowDialog(res.msg);
+            setTimeout(function () {
+                location.reload();
+            },1000);
+        },
+        error:function (data) {
+            ShowDialog(data);
         }
     })
-    setTimeout(function () {
-        location.reload();
-    },1000);
 })
 
 function filterStr(str)

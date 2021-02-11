@@ -1,0 +1,69 @@
+{extend name="./template/default/pc/pub/base.html" /}
+{block name="seo"}
+<title>个人中心-{$site_name}</title>
+{/block}
+{block name="content"}
+<main class="container mt30 mb20 overflow-Show clearfix" style="min-height:750px;">
+    {include file="./template/default/pc/pub/uc_menu.html"}
+    <article class="article-main pull-right">
+        <section class="box-userinfo box ">
+            <div class="table-head">
+                <ul class="table-tabs">
+                    <li>
+                        <a class="active">个人中心</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="box-body">
+                <form method="post" class="user-info-form mt20" novalidate="novalidate">
+                    <div>
+                        <label>昵称：</label>
+                        <span>
+                           {$user.nick_name}
+                        </span>
+                    </div>
+                    <div>
+                        <label>绑定手机：</label>
+                        <span>
+                           {$user.mobile}
+                        </span>
+                    </div>
+                    <div>
+                        <label>我的余额：</label>
+                        <span>
+                           {$balance} 元
+                            <a class="btn wallet-btn" href="/pc/charge">充值</a>
+                        </span>
+                    </div>
+                    <div>
+                        <label>我的VIP：</label>
+                        <span>
+                           剩余 {$day} 天
+                            <a class="btn wallet-btn" href="/pc/vip">加入vip</a>
+                        </span>
+                    </div>
+                    <div>
+                        <label>推广链接：</label>
+                        <span>
+                            <samp id="fo1">{$url}?pid={$xwx_user_id}</samp>
+                            <a class="btn wallet-btn copy-btns" id="copy-btns">复制链接</a>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </article>
+</main>
+<script src="https://lib.baomitu.com/clipboard-polyfill/2.8.6/clipboard-polyfill.js"></script>
+<script type="text/javascript">
+    $('#copy-btns').click(function () {
+        var text=$('#fo1').text();
+        clipboard.writeText(text).then(function(){
+            ShowDialog('复制成功');
+        }, function(err){
+            ShowDialog('复制失败');
+        });
+    })
+
+</script>
+{/block}

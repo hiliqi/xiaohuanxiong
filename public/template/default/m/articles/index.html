@@ -1,0 +1,152 @@
+{extend name="./template/default/m/pub/base.html" /}
+{block name="seo"}
+<title>最新文章-{$site_name}</title>
+{/block}
+{block name="css"}
+<style>
+    a {
+        color: inherit;
+        text-decoration: none;
+        outline: 0;
+    }
+    .mod {
+        margin-top: 3rem;
+    }
+    .news-info .title h1, .news-info .title h2 {
+        line-height: 2rem;
+        font-size: 1.375rem;
+        font-weight: bold;
+    }
+    .news-info .title {
+        margin: 0 1rem;
+        padding: 1rem 0;
+        border-bottom: 1px solid #f0f1f2;
+    }
+    .news-info .title p {
+        margin-top: 0.5rem;
+        line-height: 1.25rem;
+        font-size: 0.875rem;
+    }
+    .news-info .title p span {
+        margin-right: 1rem;
+        color: #999;
+    }
+    aria {
+        font-size: 0;
+        position: absolute;
+        clip: rect(0 0 0 0);
+    }
+    .news-info .description {
+        margin: 1rem 1rem 0 1rem;
+        line-height: 1.8rem;
+        font-size: 1.0625rem;
+        text-align: justify;
+        background: #f9f9f9;
+        padding: 1rem;
+        border: 1px solid #f1f1f1;
+        border-radius: 0.4rem;
+    }
+    .news-info .content {
+        position: relative;
+        margin: 1.25rem 1rem 0 1rem;
+        font-size: 1.0625rem;
+        text-align: justify;
+        overflow: hidden;
+        /* height: 23rem; */
+    }
+    .news-info .book {
+        margin: 1rem 1rem 10rem 1rem;
+        padding: 1rem 0;
+        border-top: 1px solid #f0f1f2;
+        border-bottom: 1px solid #f0f1f2;
+    }
+    .news-info .book dt {
+        float: left;
+        width: 6.5625rem;
+        height: 8.75rem;
+    }
+    .news-info .book dt img {
+        width: 100%;
+        height: 100%;
+        vertical-align: top;
+        box-shadow: 0.0625rem 0.0625rem 0.0625rem rgba(0,0,0,0.2);
+    }
+    .news-info .book dd {
+        float: left;
+        position: relative;
+        padding-left: 0.75rem;
+        width: calc(100% - 7.3125rem);
+        height: 8.75rem;
+        overflow: hidden;
+    }
+    .news-info .book dd h4 {
+        margin-bottom: 0.625rem;
+        line-height: 1.5rem;
+        font-size: 1.125rem;
+        font-weight: bold;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+    .news-info .book dd .intro {
+        margin-bottom: 0.5rem;
+        height: 2.25rem;
+        line-height: 1.125rem;
+        font-size: 1rem;
+        color: #999;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+    }
+    .news-info .book dd .info {
+        margin-bottom: 1rem;
+        line-height: 1rem;
+        font-size: 0.875rem;
+        color: #999;
+    }
+    .news-info .book dd .view {
+        display: block;
+        width: 7.5rem;
+        height: 1.875rem;
+        line-height: 1.875rem;
+        font-size: 0.875rem;
+        text-align: center;
+        color: #fff;
+        background: #fe7031;
+        border-radius: 2px;
+    }
+</style>
+{/block}
+{block name="content"}
+{include file="./template/default/m/pub/top2.html" /}
+<div class="mod mod-news-info">
+    <div class="news-info">
+        <div class="title">
+            <h2>{$article.title}</h2>
+            <p><span><aria>时间：</aria>{$article.create_time|date='Y-m-d H:i:s'}</span></p>
+        </div>
+        <div class="description">
+            {$article.desc}
+        </div>
+        <div class="content content-more">
+            {$content|raw}
+        </div>
+        <div class="book">
+            <dl class="clearfix">
+                <dt>
+                    <a href="/m/{$book_ctrl}/{$article.book.param}">
+                        <img src="{$article.book.cover_url}" alt="{$article.book.book_name}">
+                    </a>
+                </dt>
+                <dd>
+                    <h4><a href="/m/{$book_ctrl}/{$article.book.param}">{$article.book.book_name}</a></h4>
+                    <p class="intro">{$article.book.summary}</p>
+                    <p class="info"><span><aria>作者：</aria>{$article.book.author_name}</span></p>
+                    <a class="view" href="/m/{$book_ctrl}/{$article.book.param}">漫画详情</a>
+                </dd>
+            </dl>
+        </div>
+    </div>
+</div>
+{/block}

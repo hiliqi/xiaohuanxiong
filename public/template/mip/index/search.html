@@ -1,0 +1,139 @@
+{extend name="./template/mip/pub/base.html" /}
+{block name="seo"}
+<title>漫画搜索-{$site_name}</title>
+{/block}
+{block name="css"}
+<style mip-custom>
+    .menuList li a {
+        color: #ccc;
+    }
+
+    .menuList {
+        background: #333;
+    }
+
+    .rightMenu {
+        width: 100%;
+    }
+
+    .rightMenu .menuList li a {
+        display: initial;
+        width: auto;
+        height: auto;
+    }
+
+    #right-sidebar {
+        background: #333;
+    }
+
+    ol,
+    ul {
+        padding-left: 0;
+        margin: 0;
+    }
+
+    .topBar .fanhui {
+        display: inline;
+        font-size: 1.4rem;
+        color: #fff;
+        float: left;
+        line-height: 41px;
+        padding-left: 5px;
+    }
+
+    .tiao {
+        text-align: center;
+        padding: 20px;
+        font-size: 18px;
+        font-weight: 700;
+    }
+
+    .topBar .menulogo {
+        height: 16px;
+        position: relative;
+        top: 2px;
+    }
+
+    mip-form div {
+        padding: 0;
+        display: block;
+        color: #000;
+    }
+
+    .topBar .left {
+        width: 10%;
+        background: none;
+        border: 0;
+        color: white;
+        font-size: 1.3rem;
+        line-height: 2.3rem;
+    }
+
+    .topBar .right {
+        width: 10%;
+        background: none;
+        border: 0;
+        color: white;
+        font-size: 1.3rem;
+        line-height: 1.3rem;
+    }
+
+    .topBar #searchtxt{
+        float: left;
+        height: 27px;
+        font-size: 13px;
+        width: 80%;
+        outline: none;
+        border-radius: 3px;
+        border: 1px solid #ed4646;
+        padding: 1rem;
+    }
+
+    .list .mip-layout-container img {
+        width: inherit;
+    }
+
+    .searchtip {
+        font-size: 12px;
+        margin-top: 10px;
+        padding-left: 10px;
+    }
+</style>
+{/block}
+{block name="content"}
+<mip-fixed type="top">
+    <div class="topBar">
+        <mip-form method="get" url="/{$search_ctrl}" target=_top>
+            <a class=" d-fl left" href="/">首页</a>
+            <input type="text" id="searchtxt" name="keyword" placeholder="搜索关键词">
+            <input type="submit" value="搜索" class="d-fl right">
+        </mip-form>
+    </div>
+
+</mip-fixed>
+<div class="searchtip">当前结果共有<span class="red">{$count}</span>条结果</div>
+<!--分类列表-->
+<div class="classList" id="classList_1">
+    <ul class="am-avg-sm-3 am-thumbnails list">
+        {volist name="books" id="vo"}
+        <li class="am-thumbnail">
+            <a data-type="mip" href="/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}">
+                <div class="container">
+                    <mip-img layout="fill" src="{$vo.cover_url}"
+                             alt="{$vo.book_name}"
+                             class="mip-element mip-layout-fill mip-layout-size-defined mip-img-loaded"
+                             mip-firstscreen-element="">
+                        <img class="mip-fill-content mip-replaced-content" src="{$vo.cover_url}" alt="{$vo.book_name}">
+                    </mip-img>
+                    <span class="tip">作者：{$vo.author_name}</span>
+                </div>
+            </a>
+            <p class="d-nowrap l">
+                <a data-type="mip" href="/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}">{$vo.book_name}</a>
+            </p>
+        </li>
+        {/volist}
+    </ul>
+</div>
+
+{/block}

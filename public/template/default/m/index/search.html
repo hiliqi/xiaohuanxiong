@@ -1,0 +1,61 @@
+{extend name="./template/default/m/pub/base.html" /}
+{block name="seo"}
+<title>漫画搜索-{$site_name}</title>
+{/block}
+{block name="content"}
+<div class="search-top">
+    <a href="javascript:history.back();">
+        <img class="search-top-back" src="/static/images/search-top-back.png">
+    </a>
+    <div class="search-top-input">
+        <input type="text" id="searchtxt" placeholder="请输入漫画名或作者名">
+    </div>
+    <a href="javascript:void(0);" onclick="doSearch();" class="search-top-right">搜索</a>
+</div>
+
+<p class="search-title">热门搜索</p>
+
+<div class="search-label">
+    {volist name="hot_search" id="vo"}
+    {empty name="vo"}
+    <a class="search-label-item" href="/m/{$search_ctrl}?keyword=斗破苍穹">斗破苍穹</a>
+    {else /}
+    <a class="search-label-item" href="/m/{$search_ctrl}?keyword={$vo}">{$vo}</a>
+    {/empty}
+    {/volist}
+</div>
+
+<ul class="book-list">
+    {volist name="$books" id="vo"}
+    <li>
+        <div class="book-list-cover">
+            <a href="/m/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}">
+                <img class="book-list-cover-img lazy" data-original="{$vo.cover_url}" src="https://p.pstatp.com/origin/ffa400036691f82c85e5" alt="{$vo.book_name}">
+            </a>
+        </div>
+        <div class="book-list-info">
+            <a href="/m/{$book_ctrl}/{$vo.param}">
+                <p class="book-list-info-title">{$vo.book_name}</p>
+                <p class="book-list-info-desc">{$vo.summary|subtext=15}...</p>
+            </a>
+            <p class="book-list-info-bottom">
+                <a href="#" style="color:#666;">
+                    <span class="book-list-info-bottom-item">作者：{$vo.author.author_name|subtext=10}...</span>
+                </a>
+                {if $vo.end == 2}
+                <span class='book-list-info-bottom-right-font'>连载中</span>
+                {else /}
+                <span class='book-list-info-bottom-right-font active'>已完结</span>
+                {/if}
+            </p>
+        </div>
+    </li>
+    {/volist}
+</ul>
+<script>
+    function doSearch() {
+        var keyword = $('#searchtxt').val();
+        location.href = '/m/{$search_ctrl}?keyword=' + keyword;
+    }
+</script>
+{/block}

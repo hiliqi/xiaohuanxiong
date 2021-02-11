@@ -1,0 +1,180 @@
+{extend name="pub/base" /}
+{block name="head"}
+<title>作品管理-{$site_name}</title>
+<style>
+    /** 数据表格中的select尺寸调整 */
+    .layui-table-view .layui-table-cell .layui-select-title .layui-input {
+        height: 28px;
+        line-height: 28px;
+    }
+
+    .layui-table-view [lay-size="lg"] .layui-table-cell .layui-select-title .layui-input {
+        height: 40px;
+        line-height: 40px;
+    }
+
+    .layui-table-view [lay-size="lg"] .layui-table-cell .layui-select-title .layui-input {
+        height: 40px;
+        line-height: 40px;
+    }
+
+    .layui-table-view [lay-size="sm"] .layui-table-cell .layui-select-title .layui-input {
+        height: 20px;
+        line-height: 20px;
+    }
+
+    .layui-table-view [lay-size="sm"] .layui-table-cell .layui-btn-xs {
+        height: 18px;
+        line-height: 18px;
+    }
+
+</style>
+{/block}
+{block name="main"}
+<div class="layui-fluid">
+    <div class="layui-card">
+        <div class="layui-card-body">
+            <!-- 表格工具栏 -->
+            <form class="layui-form toolbar table-tool-mini">
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label w-auto">搜索:</label>
+                        <div class="layui-input-inline">
+                            <input id="keyword" class="layui-input" type="text" placeholder="输入关键字"/>
+                        </div>
+                    </div>
+                    <div class="layui-inline" style="padding-right: 110px;">
+                        <button class="layui-btn icon-btn" lay-filter="tbBasicTbSearch" lay-submit>
+                            <i class="layui-icon">&#xe615;</i>搜索
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <!-- 数据表格 -->
+            <table id="tbBasicTable" lay-filter="tbBasicTable"></table>
+        </div>
+    </div>
+    <div class="layui-card">
+        <div class="layui-card-body">
+            表格中的select下拉框、dropdown下拉按钮等都不需要自己对表格做任何处理就可以完美的显示，
+            因为easyweb提供了fixed定位方式的select和dropdown。
+        </div>
+    </div>
+</div>
+<!-- 表格操作列 -->
+<script type="text/html" id="tbBasicTbBar">
+    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="edit">编辑</a>
+    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="chapter">章节管理</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
+
+{/block}
+{block name="js"}
+<script>
+    layui.use(['layer', 'form', 'table', 'util', 'dropdown','index', 'admin'], function () {
+        var $ = layui.jquery;
+        var layer = layui.layer;
+        var form = layui.form;
+        var table = layui.table;
+        var util = layui.util;
+        var index = layui.index;
+        var dropdown = layui.dropdown;
+
+        /* 渲染表格 */
+        var insTb = table.render({
+            elem: '#tbBasicTable',
+            url: '{:url("books/getlist")}',
+            page: true,
+            toolbar: ['<p>',
+                '<button lay-event="add" class="layui-btn layui-btn-sm icon-btn"><i class="layui-icon">&#xe654;</i>添加</button>&nbsp;',
+                '</p>'].join(''),
+            cellMinWidth: 100,
+            cols: [[
+                {type: 'checkbox'},
+                {field: 'id', title: 'ID', align: 'center', sort: true},
+                {field: 'book_name', title: '书名', align: 'center', sort: true},
+                {field: 'nick_name', title: '别名', align: 'center', sort: true},
+                {field: 'tags', title: '题材', align: 'center', sort: true},
+                {
+                    field: 'end',
+                    title: '进度',
+                    align: 'center',
+                    sort: true,
+                    templet: '<p>{{d.end==1?"完结":"连载"}}</p>'
+                },
+                {
+                    field: 'cover_url',
+                    title: '封面',
+                    align: 'center',
+                    sort: true,
+                    templet: '<div><img src="{{d.cover_url}}"/></div>' +
+                        ''
+                },
+                {field: 'start_pay', title: '起始付费章节', align: 'center', sort: true},
+                {field: 'money', title: '单章价格', align: 'center', sort: true},
+                {field: 'area_id', title: '地区', align: 'center', sort: true},
+                {
+                    field: 'is_top',
+                    title: '推荐',
+                    align: 'center',
+                    sort: true,
+                    templet: '<p>{{d.state==1?"是":"否"}}</p>'
+                },
+                {field: 'create_time', title: '创建时间', align: 'center', sort: true},
+                {
+                    field: 'last_time', title: '更新时间', templet: function (d) {
+                        return util.toDateString(d.createTime);
+                    }, align: 'center', sort: true
+                },
+                {title: '操作', toolbar: '#tbBasicTbBar', align: 'center', minWidth: 200}
+            ]]
+        });
+
+        /* 表格工具条点击事件 */
+        table.on('tool(tbBasicTable)', function (obj) {
+            var data = obj.data; // 获得当前行数据
+            if (obj.event === 'edit') { // 修改
+                index.openTab({
+                    title: '作品编辑',
+                    url: "/books/edit?id=" + data.id,
+                    end: function() {
+                        insTb.reload()
+                    }
+                });
+            } else if (obj.event === 'del') { // 删除
+                del(obj, data.id)
+            } else if (obj.event === 'ban') {
+                $.ajax({
+                    url:"ban?id=" + data.id,
+                    type:'post',
+                    success(res) {
+                        subResHandle(res)
+                    }
+                })
+            } else if (obj.event === 'chapter') {
+                index.openTab({
+                    title: '章节管理',
+                    url: "/chapters/list?book_id=" + data.id,
+                    end: function() {
+                        insTb.reload()
+                    }
+                })
+            }
+            dropdown.hideAll();
+        });
+
+        /* 表格头工具栏点击事件 */
+        table.on('toolbar(tbBasicTable)', function (obj) {
+            if (obj.event === 'add') { // 添加
+                index.openTab({
+                    title: '添加漫画',
+                    url:'/books/create',
+                    end: function() {
+                        insTb.reload()
+                    }
+                })
+            }
+        });
+    });
+</script>
+{/block}

@@ -1,0 +1,108 @@
+{extend name="./template/default/pc/pub/base.html" /}
+{block name="seo"}
+<title>个人书架-{$site_name}</title>
+{/block}
+{block name="content"}
+<main class="container mt30 mb20 overflow-Show clearfix" style="min-height:750px;">
+    {include file="./template/default/pc/pub/uc_menu.html"}
+    <article class="article-main pull-right">
+        <section class="box">
+            <header class="box-header">
+                <span class="title">我的书架</span>
+                <ul class="box-simple-tabs">
+                    <li><a class="active" href="/pc/bookshelf">我的收藏</a></li>
+                    <li><a href="/pc/history">阅读记录</a></li>
+                </ul>
+                <div class="pull-right">
+                    <a href="#" class="more js_edit_booklist_btn">
+                        <i class="icon icon-box mr5"></i>整理我的收藏</a>
+                    <div href="#" class="box-booklist-edit-head" style="display: none">
+                        <form>
+                            <span>
+                                <button id="book_del" type="button" class="del-btn">删除</button>
+                            </span>
+                            <input id="url_param" type="hidden" value="delfavors"></input>
+                            <span>
+                                <button type="button" class="finish-btn js_esc_booklist_btn">完成</button>
+                            </span>
+                            <input name="uid" type="hidden" value="274756461">
+                        </form>
+                    </div>
+                </div>
+            </header>
+            <div class="box-body">
+                <div class="bg-gray box-sub-head clearfix">
+                    <dl class="box-head-sort pull-left"> <dt>排序:</dt>
+                        <dd style="cursor: pointer;color: #fd113a;" data-sort="1">未读更新<i class="icon icon-d-caret"></i></dd>
+                        <dd style="cursor: pointer;" data-sort="3">更新时间<i class="icon icon-d-caret"></i></dd>
+                        <dd style="cursor: pointer;" data-sort="6">阅读时间<i class="icon icon-d-caret"></i></dd>
+                    </dl>
+                    <div class="pull-right">
+                        <span class="search-input">
+                            <input name="title" type="text" class="" value="" placeholder="请输入作品名称">
+                            <button type="button" name="btnsearch">
+                                <i class="icon icon-search"></i>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+                <div class="mt20">
+                    <ul class="mh-list col7">
+                        {volist name="favors" id="vo"}
+                        <li>
+                            <div class="mh-item">
+                                <a href="/pc/{$book_ctrl}/{$vo.param}" class="mh-cover" style="background-image: url({$vo.cover_url})">
+                                    <span class="tag  mh-tag">{$vo.end?"完结":"连载"}</span>
+                                    <span class="read-section">{$vo.last_time|date='Y-m-d'}更新</span>
+                                    <span mid="{$vo.id}" class="edit-state">
+                                        <i class="icon icon-ok"></i>
+                                    </span>
+                                </a>
+                                <div class="mh-item-detali">
+                                    <h2 class="title" style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
+                                        <a href="/pc/{$book_ctrl}/{$vo.param}">{$vo.book_name}</a>
+                                    </h2>
+                                    <p class="chapter" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">
+                                        <a href="/pc/{$book_ctrl}/{$vo.param}" target="_blank">{$vo.summary|subtext=12}</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        {/volist}
+                    </ul>
+                </div>
+            </div>
+            <footer>
+                <div class="page-pagination mt20">
+                    <ul>
+                        <div class="pagination">
+                            {if $page.last_page > 1}
+                            {if $page.current_page == 1}
+                            <li><a>&lt;</a></li>
+                            {else/}
+                            <li><a id="prevPage" href="/pc/bookshelf?page={$page.current_page-1}{$param}" title="上一页">&lt;</a></li>
+                            {/if}
+
+                            {for start="1" end="$page.last_page + 1"}
+                            {if $i == $page.current_page }
+                            <li><a href="/pc/bookshelf?page={$i}{$param}" class="active">{$i}</a></li>
+                            {else/}
+                            <li><a href="/pc/bookshelf?page={$i}{$param}" title="第{$i}页">{$i}</a></li>
+                            {/if}
+                            {/for}
+
+                            {if $page.current_page == $page.last_page}
+                            <li><a>&gt;</a></li>
+                            {else/}
+                            <li><a id="nextPage" href="/pc/bookshelf?page={$page.current_page+1}{$param}" title="下一页">&gt;</a></li>
+                            {/if}
+                            {/if}
+                        </div>
+                    </ul>
+                </div>
+            </footer>
+        </section>
+    </article>
+    <input id="hidCount" type="hidden" value="0">
+</main>
+{/block}

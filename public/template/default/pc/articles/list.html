@@ -1,0 +1,221 @@
+{extend name="./template/default/pc/pub/base.html" /}
+{block name="seo"}
+<title>最新文章-{$site_name}</title>
+{/block}
+{block name="css"}
+<style>
+    a {
+        color: #666;
+        text-decoration: none;
+        transition: color .1s, background-color .1s, border .1s;
+    }
+
+    .article {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        background: #f6f6f6;
+    }
+
+    .bread {
+        margin: 0 auto;
+        padding: 10px 0;
+        width: 1200px;
+        height: 30px;
+        line-height: 30px;
+        color: #999;
+        text-indent: 22px;
+    }
+
+    .wrap {
+        padding-top: 20px;
+        margin: 0 auto;
+        width: 1200px;
+    }
+
+    .news-list {
+        float: left;
+        padding: 20px 25px;
+        width: 830px;
+        background: #fff;
+    }
+
+    .news-list h2 {
+        margin-bottom: 15px;
+        font-size: 20px;
+    }
+
+    .news-list ul li {
+        position: relative;
+        height: 128px;
+        padding-top: 20px;
+        border-top: 1px solid #ebebeb;
+    }
+
+    .news-list ul li .tit {
+        margin-bottom: 12px;
+        line-height: 24px;
+        font-size: 18px;
+        font-weight: 700;
+    }
+
+    .news-list ul li .info {
+        margin-bottom: 8px;
+        line-height: 24px;
+        color: #999;
+    }
+
+    .news-list ul li .info span {
+        margin-right: 15px;
+    }
+
+    .news-list ul li .info span em {
+        color: #666;
+    }
+
+    .news-list ul li .text {
+        height: 48px;
+        line-height: 24px;
+        font-size: 14.5px;
+        color: #999;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+    }
+
+    .side-bar {
+        float: left;
+        width: 300px;
+        margin-left: 20px;
+    }
+
+    .side-bar .new-book {
+        padding: 20px;
+        background: #fff;
+    }
+
+    .side-bar .new-book h3 {
+        margin-bottom: 15px;
+        font-size: 20px;
+    }
+
+    .side-bar .new-book ul li {
+        position: relative;
+        padding: 12px 0;
+        height: 80px;
+        border-top: 1px dashed #e4e4e4;
+    }
+
+    .side-bar .new-book ul li .pic {
+        position: absolute;
+        left: 0;
+        top: 12px;
+        width: 60px;
+        height: 80px;
+    }
+
+    .side-bar .new-book ul li .pic img {
+        width: 100%;
+        height: 100%;
+        vertical-align: top;
+    }
+
+    .side-bar .new-book ul li h5, .side-bar .new-book ul li h5.tit {
+        margin-bottom: 8px;
+        margin-left: 70px;
+        line-height: 20px;
+        font-size: 16px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    .side-bar .new-book ul li p, .side-bar .new-book ul li p.author, .side-bar .new-book ul li p.type {
+        margin-left: 70px;
+        line-height: 22px;
+        color: #999;
+    }
+</style>
+{/block}
+{block name="content"}
+<div class="article clearfix">
+    <div class="bread">
+        <span>您的位置 : </span>
+        <a href="/pc" title="{$site_name}">首页</a>
+        &gt; <a href="/pc/articlelist">最新文章</a> &gt;
+    </div>
+    <div class="wrap clearfix">
+        <div class="news-list">
+            <h2>最新文章</h2>
+            <ul>
+                {volist name="articles" id="vo"}
+                <li>
+                    <h5 class="tit">
+                        <a href="/pc/article/{$vo.param}" title="{$vo.title}" target="_blank">{$vo.title}</a>
+                    </h5>
+                    <p class="info"><span>发布时间：<em>{$vo.create_time|date='Y-m-d'}</em></span></p>
+                    <p class="text">
+                        {$vo.desc}
+                    </p>
+                </li>
+                {/volist}
+            </ul>
+            <footer>
+                <div class="page-pagination mt20">
+                    <ul>
+                        <div class="pagination">
+                            {if $page.last_page > 1}
+                            {if $page.current_page == 1}
+                            <li><a>&lt;</a></li>
+                            {else/}
+                            <li><a id="prevPage" href="/pc/articlelist?page={$page.current_page-1}{$param}" title="上一页">&lt;</a></li>
+                            {/if}
+
+                            {for start="1" end="$page.last_page + 1"}
+                            {if ($i != 1 && $i != $page.last_page)
+                            and ($i < $page.current_page - 2 || $i > $page.current_page + 2)}
+                            <li>
+                                .
+                            </li>
+                            {else/}
+                            {if $i == $page.current_page }
+                            <li><a href="/pc/articlelist?page={$i}{$param}" class="active">{$i}</a></li>
+                            {else/}
+                            <li><a href="/pc/articlelist?page={$i}{$param}" title="第{$i}页">{$i}</a></li>
+                            {/if}
+                            {/if}
+                            {/for}
+
+                            {if $page.current_page == $page.last_page}
+                            <li><a>&gt;</a></li>
+                            {else/}
+                            <li><a id="nextPage" href="/pc/articlelist?page={$page.current_page+1}{$param}" title="下一页">&gt;</a></li>
+                            {/if}
+                            {/if}
+                        </div>
+                    </ul>
+                </div>
+            </footer>
+        </div>
+        <!--side-->
+        <div class="side-bar">
+            <!--new-book-->
+            <div class="new-book">
+                <h3>推荐漫画</h3>
+                <ul>
+                    {volist name="books" id="vo"}
+                    <li>
+                        <a class="pic" href="/pc/{$book_ctrl}/{$vo.param}" target="_blank">
+                            <img src="{$vo.cover_url}" alt="{$vo.book_name}">
+                        </a>
+                        <h5><a href="/pc/{$book_ctrl}/{$vo.param}" target="_blank">{$vo.book_name}</a></h5>
+                        <p>作者：{$vo.author_name}</p>
+                    </li>
+                    {/volist}
+                </ul>
+            </div>
+        </div>
+        <!--/side-->
+    </div>
+</div>
+{/block}

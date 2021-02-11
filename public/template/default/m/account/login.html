@@ -1,0 +1,36 @@
+{extend name="./template/default/m/pub/base.html" /}
+{block name="seo"}
+<title>用户登录-{$site_name}</title>
+{/block}
+{block name="css"}
+<link rel="stylesheet" href="/static/css/account.css">
+{/block}
+{block name="content"}
+{include file="./template/default/m/pub/top2.html" /}
+<p style="margin-top: 55px;" class="account-tip">为了账号安全，注册后请尽快绑定手机</p>
+<form id="form-login">
+    <div class="line-container">
+        <div class="input-con">
+            <span class="input-con-title">用户名</span>
+            <input id="txt_username" name="username" class="txt_phone" type="text" placeholder="输入用户名" value="">
+        </div>
+        <div class="input-con">
+            <span class="input-con-title">密码</span>
+            <input id="txt_password" name="password" class="txt_password" type="password" placeholder="密码" value="">
+        </div>
+        <div class="input-con">
+            <span class="input-con-title">验证码</span>
+            <input name="captcha" class="txt_phone" type="text" placeholder="验证码" value="">
+            <p style="margin-top: 5px;">
+                <img id="captcha" src="/m/account/captcha" onclick = "this.src='/m/account/captcha?rnd=' + Math.random();">
+            </p>
+        </div>
+    </div>
+</form>
+<a onclick="login();" class="line-container-btn">登录</a>
+<div class="line-tip">
+    <a class="line-tip-left" href="/m/recovery">忘记密码?</a>
+    <a class="line-tip-right" href="/m/register">去注册</a></div>
+<div class="toast" style="display:none;"></div>
+<script src="/static/js/login.js"></script>
+{/block}

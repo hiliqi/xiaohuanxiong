@@ -1,0 +1,46 @@
+.topBar a{display: inline-block;}
+.rightMenu{width: 100px;height: 100%; background:#333}
+.rightMenu .menuList li:first-child span{color:#ccc;line-height: 60px;}
+img{width:auto}
+.sprite-index-jp{margin-top:4px;}
+.dc{ display: inline;}
+
+
+.mip-fill-content{
+    min-width:initial;
+}
+.titleBar img,.titleBar span{display:inline;}
+
+.mip-gototop-show{background-image:url('https://manhua.wzlzs.com/muban/m/images/return_top_logo.png'); display: none;width: 65px;z-index: 999;
+    background-size: 100%;height: 65px; border:0; background-color:unset; bottom:-20px;
+}
+.footer img{display:inline; line-height:25px;}
+#shownextchapter{width:70%}
+
+
+.detailContent .mip-showmore-btn{padding:5px; border:0; background:none;}
+.ccontent{text-align:left;padding-top:5px;}
+
+.chapters{text-align:center;}
+.chapters .mip-showmore-btn{ border:0; background:none; color: #767676;border: 1px solid #E0E0E0;text-align: center;border-radius: 15px;padding: 5px 8px;z-index:9999;zoom:1
+}
+
+mip-form div{ font-size:16px;padding:0; padding-top:10px;}
+#shownextchapter img{height:auto;}
+#right-sidebar{background: #333;}
+#imgMenu {
+    width: 2rem;
+    height: 2rem;
+}
+#right-sidebar {
+    position: fixed !important;
+    top: 0;
+    max-height: 100% !important;
+    height: 100%;
+    max-width: 80% !important;
+    min-width: 45px !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    z-index: 10001 !important;
+    will-change: transform;
+}

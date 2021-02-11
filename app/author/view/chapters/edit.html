@@ -1,0 +1,67 @@
+<div class="layui-fluid" id="closeTag">
+    <div class="layui-card">
+        <div class="layui-card-body">
+            <!-- 表单开始 -->
+            <form class="layui-form" id="formBasForm" lay-filter="formBasForm">
+                <input type="hidden" value="{$chapter.id}" name="id">
+                <div class="layui-form-item">
+                    <label class="layui-form-label layui-form-required">章节名称:</label>
+                    <div class="layui-input-block">
+                        <input name="chapter_name" value="{$chapter.chapter_name}" class="layui-input"
+                               lay-verType="tips" lay-verify="required" required/>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label layui-form-required">章节序:</label>
+                    <div class="layui-input-block">
+                        <input name="chapter_order" value="{$chapter.chapter_order}" class="layui-input"
+                               lay-verType="tips" lay-verify="required" required/>
+                    </div>
+                </div>
+
+                <div class="layui-form-item text-right">
+                    <button class="layui-btn" lay-filter="formBasSubmit" lay-submit="">保存</button>
+                    <button class="layui-btn layui-btn-primary" type="button" ew-event="closeDialog">取消</button>
+                </div>
+            </form>
+            <!-- //表单结束 -->
+        </div>
+    </div>
+</div>
+
+<script>
+    layui.use(['layer', 'form', 'laydate', 'admin'], function () {
+        var $ = layui.jquery;
+        var layer = layui.layer;
+        var form = layui.form;
+        var laydate = layui.laydate;
+        var admin = layui.admin;
+
+        /* 渲染laydate */
+        laydate.render({
+            elem: '#formBasDateSel',
+            trigger: 'click',
+            range: true
+        });
+
+        /* 监听表单提交 */
+        form.on('submit(formBasSubmit)', function (data) {
+            $.ajax({
+                url: "{:url('chapters/edit')}",
+                type: 'post',
+                data: $('form').serialize(),
+                success(res) {
+                    if (res.err == 0) {
+                        layer.msg(res.msg, {icon: 1, time: 1000});
+                        admin.closeDialog('#closeTag');  // 关闭页面层弹窗
+                    } else {
+                        layer.msg(res.msg, {icon: 2, time: 1000});
+                    }
+                }
+            })
+            return false;
+        });
+
+    });
+</script>

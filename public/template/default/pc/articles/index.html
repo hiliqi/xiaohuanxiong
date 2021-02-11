@@ -1,0 +1,319 @@
+{extend name="./template/default/pc/pub/base.html" /}
+{block name="seo"}
+<title>{$article.title}-{$site_name}</title>
+{/block}
+{block name="css"}
+<style>
+    a {
+        color: #666;
+        text-decoration: none;
+        transition: color .1s, background-color .1s, border .1s;
+    }
+
+    .article {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        background: #f6f6f6;
+    }
+
+    .bread {
+        margin: 0 auto;
+        padding: 10px 0;
+        width: 1200px;
+        height: 30px;
+        line-height: 30px;
+        color: #999;
+        text-indent: 22px;
+    }
+
+    .wrap {
+        padding-top: 20px;
+        margin: 0 auto;
+        width: 1200px;
+    }
+
+    .news-info {
+        float: left;
+        padding: 25px 30px 30px 30px;
+        width: 820px;
+        background: #fff;
+    }
+
+    .news-info .title h1 {
+        margin-bottom: 15px;
+        line-height: 34px;
+        font-size: 26px;
+        font-weight: 700;
+        text-align: center;
+    }
+
+    .news-info .title p {
+        margin-bottom: 15px;
+        line-height: 20px;
+        text-align: center;
+        color: #999;
+    }
+
+    .news-info .description {
+        margin-top: 20px;
+        padding: 15px 20px;
+        line-height: 1.85;
+        font-size: 16px;
+        background: #f9f9f9;
+        border: 1px solid #f0f1f2;
+    }
+
+    .news-info .content {
+        margin-top: 30px;
+        line-height: 1.8;
+        font-size: 16px;
+    }
+
+    .news-info .book {
+        margin-top: 30px;
+        border: 1px solid #ebebeb;
+    }
+
+    .news-info .book dl {
+        position: relative;
+    }
+
+    .news-info .book dt {
+        float: left;
+        padding: 20px;
+        width: 102px;
+        height: 136px;
+    }
+
+    .news-info .book dt img {
+        width: 100%;
+        height: 100%;
+        vertical-align: top;
+        -webkit-transition: -webkit-transform .3s ease-out;
+        -moz-transition: -moz-transform .3s ease-out;
+        -ms-transition: -ms-transform .3s ease-out;
+        transition: transform .3s ease-out;
+    }
+
+    .news-info .book dd {
+        float: left;
+        margin: 20px 0;
+        width: 455px;
+        height: 136px;
+        border-right: 1px solid #ebebeb;
+        overflow: hidden;
+    }
+
+    .news-info .book dd h4 {
+        margin-bottom: 10px;
+        line-height: 30px;
+        font-size: 22px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    .news-info .book dd .info {
+        line-height: 24px;
+        color: #999;
+    }
+
+    .news-info .book dd .info span {
+        margin-right: 20px;
+    }
+
+    .news-info .book dd .intro {
+        margin-bottom: 28px;
+        margin-right: 20px;
+        height: 24px;
+        line-height: 24px;
+        font-size: 15px;
+        color: #999;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    .news-info .book dd .star {
+        position: absolute;
+        right: 64px;
+        top: 35px;
+        display: block;
+        width: 90px;
+        height: 16px;
+        background: url(/static/images/stars.png) no-repeat 0 -40px;
+        vertical-align: middle;
+    }
+
+    .news-info .book dd .star i {
+        display: block;
+        width: auto;
+        height: 16px;
+        background: url(/static/images/stars.png) no-repeat 0 -60px;
+        text-indent: -999px;
+        overflow: hidden;
+    }
+
+    .news-info .book dd .view {
+        position: absolute;
+        right: 30px;
+        top: 80px;
+        display: block;
+        width: 160px;
+        height: 40px;
+        line-height: 40px;
+        font-size: 18px;
+        text-align: center;
+        color: #fff;
+        background: #fe7031;
+        border-radius: 2px;
+    }
+
+    .side-bar {
+        float: left;
+        width: 300px;
+        margin-left: 20px;
+    }
+
+    .side-bar .hot-news {
+        padding: 20px;
+        background: #fff;
+    }
+
+    .side-bar .hot-news h3 {
+        margin-bottom: 15px;
+        font-size: 20px;
+    }
+
+    .side-bar .hot-news ul li {
+        line-height: 36px;
+        border-top: 1px dashed #e4e4e4;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    .side-bar .hot-news ul li a {
+        font-size: 14.5px;
+    }
+
+    .side-bar .new-book {
+        margin-top: 20px;
+        padding: 20px;
+        background: #fff;
+    }
+
+    .side-bar .new-book h3 {
+        margin-bottom: 15px;
+        font-size: 20px;
+    }
+
+    .side-bar .new-book ul li {
+        position: relative;
+        padding: 12px 0;
+        height: 80px;
+        border-top: 1px dashed #e4e4e4;
+    }
+
+    .side-bar .new-book ul li .pic {
+        position: absolute;
+        left: 0;
+        top: 12px;
+        width: 60px;
+        height: 80px;
+    }
+
+    .side-bar .new-book ul li .pic img {
+        width: 100%;
+        height: 100%;
+        vertical-align: top;
+    }
+
+    .side-bar .new-book ul li h5, .side-bar .new-book ul li h5.tit {
+        margin-bottom: 8px;
+        margin-left: 70px;
+        line-height: 20px;
+        font-size: 16px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    .side-bar .new-book ul li p, .side-bar .new-book ul li p.author, .side-bar .new-book ul li p.type {
+        margin-left: 70px;
+        line-height: 22px;
+        color: #999;
+    }
+</style>
+{/block}
+{block name="content"}
+<div class="article clearfix">
+    <div class="bread">
+        <span>您的位置 : </span>
+        <a href="/pc" title="{$site_name}">首页</a>
+        &gt; <a href="/pc/articlelist">最新文章</a> &gt;
+    </div>
+    <div class="wrap clearfix">
+        <!--primary-->
+        <div class="news-info">
+            <div class="title">
+                <h1>{$article.title}</h1>
+                <p><span>时间：<em>{$article.create_time|date='Y-m-d'}</em></span></p>
+            </div>
+            <div class="description">{$article.desc}</div>
+            <div class="content">
+                {$content|raw}
+            </div>
+            <div class="book">
+                <dl class="clearfix">
+                    <dt>
+                        <a href="/pc/{$book_ctrl}/{$article.book.param}" target="_blank">
+                            <img src="/pc/{$article.book.cover_url}" alt="{$article.book.book_name}">
+                        </a>
+                    </dt>
+                    <dd>
+                        <h4><a href="/pc/{$book_ctrl}/{$article.book.param}">{$article.book.book_name}</a></h4>
+                        <p class="info">
+                            <span>作者：{$article.book.author_name}</span>
+                        </p>
+                        <p class="intro">{$article.book.summary}</p>
+                        <p class="star"><i style="width:100%;"></i></p>
+                        <a class="view" href="/pc/{$book_ctrl}/{$article.book.param}" target="_blank">漫画详情</a>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+        <!--/primary-->
+        <!--side-->
+        <div class="side-bar">
+            <!--hot-news-->
+            <div class="hot-news">
+                <h3>热门资讯</h3>
+                <ul>
+                    {volist name="articles" id="vo"}
+                    <li class="s1">
+                        <a href="/pc/articles/{$vo.param}" target="_blank">{$vo.title}</a>
+                    </li>
+                   {/volist}
+                </ul>
+            </div>
+            <!--new-book-->
+            <div class="new-book">
+                <h3>推荐漫画</h3>
+                <ul>
+                    {volist name="books" id="vo"}
+                    <li>
+                        <a class="pic" href="/pc/{$book_ctrl}/{$vo.param}" target="_blank">
+                            <img src="/pc/{$vo.cover_url}" alt="{$vo.book_name}">
+                        </a>
+                        <h5><a href="/pc/{$book_ctrl}/{$vo.param}" target="_blank">{$vo.book_name}</a></h5>
+                        <p>作者：{$vo.author_name}</p>
+                    </li>
+                    {/volist}
+                </ul>
+            </div>
+        </div>
+        <!--/side-->
+    </div>
+</div>
+{/block}

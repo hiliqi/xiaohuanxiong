@@ -1,0 +1,246 @@
+{extend name="pub/base" /}
+{block name="head"}
+<title>充值码管理</title>
+<style>
+    /** 数据表格中的select尺寸调整 */
+    .layui-table-view .layui-table-cell .layui-select-title .layui-input {
+        height: 28px;
+        line-height: 28px;
+    }
+
+    .layui-table-view [lay-size="lg"] .layui-table-cell .layui-select-title .layui-input {
+        height: 40px;
+        line-height: 40px;
+    }
+
+    .layui-table-view [lay-size="lg"] .layui-table-cell .layui-select-title .layui-input {
+        height: 40px;
+        line-height: 40px;
+    }
+
+    .layui-table-view [lay-size="sm"] .layui-table-cell .layui-select-title .layui-input {
+        height: 20px;
+        line-height: 20px;
+    }
+
+    .layui-table-view [lay-size="sm"] .layui-table-cell .layui-btn-xs {
+        height: 18px;
+        line-height: 18px;
+    }
+</style>
+{/block}
+{block name="main"}
+<div class="layui-fluid">
+    <div class="layui-card">
+        <div class="layui-card-body">
+            <!-- 表格工具栏 -->
+            <form class="layui-form toolbar table-tool-mini">
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <div class="layui-input-inline">
+                            <input id="money" class="layui-input" type="text" placeholder="充值面额"/>
+                        </div>
+                    </div>
+
+                    <div class="layui-inline" expand-show="">
+                        <div class="layui-input-inline">
+                            <select id="used">
+                                <option value="">全部</option>
+                                <option value="1">未使用</option>
+                                <option value="2">已分发</option>
+                                <option value="3">已使用</option>
+                            </select>
+                        </div>
+                    </div>
+
+
+                    <div class="layui-inline" style="padding-right: 110px;">
+                        <button class="layui-btn icon-btn" lay-filter="tbBasicTbSearch" lay-submit>
+                            <i class="layui-icon">&#xe615;</i>搜索
+                        </button>
+                        <button class="layui-btn icon-btn" type="button" id="export">
+                            <i class="layui-icon"></i>导出
+                        </button>
+                        <button class="layui-btn icon-btn" type="button" id="create">
+                            <i class="layui-icon"></i>生成充值码
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <!-- 数据表格 -->
+            <table id="tbBasicTable" lay-filter="tbBasicTable"></table>
+        </div>
+    </div>
+
+    <div class="layui-card">
+        <div class="layui-card-body">
+            交流和反馈建议请加QQ群：780362399
+        </div>
+    </div>
+
+    <!-- 表格操作列 -->
+    <script type="text/html" id="tbBasicTbBar">
+        <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="edit">修改</a>
+        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+    </script>
+</div>
+
+{/block}
+{block name="js"}
+<script>
+    layui.use(['table', 'util', 'index', 'dropdown', 'form'], function () {
+        var $ = layui.jquery;
+        var table = layui.table;
+        var util = layui.util;
+        var index = layui.index;
+        var dropdown = layui.dropdown;
+        var form = layui.form
+
+        $('#create').click(function () {
+            index.openTab({
+                title: '生成VIP码',
+                url: "{:url('chargecodes/gencodes')}",
+                end: function () {
+                    insTb.reload();
+                }
+            })
+        })
+
+        $('#export').click(function () {
+            $.ajax({
+                type: 'POST',
+                url: "{:url('export')}",
+                dataType: 'json',
+                success: function (res) {
+                    if (res.err == 0) { //删除成功
+                        layer.msg(res.msg, {icon: 1, time: 1000}, function () {
+                            location.reload();
+                        });
+                    } else {
+                        layer.msg(res.msg, {icon: 2}, function () {
+                            location.reload();
+                        });
+                    }
+                },
+                error: function (res) {
+                    layer.msg(res);
+                },
+            });
+        })
+
+        /* 表格工具条点击事件 */
+        table.on('tool(tbBasicTable)', function (obj) {
+            var data = obj.data; // 获得当前行数据
+            if (obj.event === 'del') { // 删除
+                layer.confirm('确认要删除吗？', function (index) {
+                    $.ajax({
+                        type: 'POST',
+                        url: "{:url('delete')}",
+                        data: {id: data.id},
+                        dataType: 'json',
+                        success: function (res) {
+                            if (res.err == 0) { //删除成功
+                                layer.msg(res.msg, {icon: 1, time: 1000}, function () {
+                                    location.reload();
+                                });
+                            } else {
+                                layer.msg(res.msg, {icon: 2}, function () {
+                                    location.reload();
+                                });
+                            }
+                        },
+                        error: function (res) {
+                            layer.msg(res);
+                        },
+                    });
+                });
+            }
+            dropdown.hideAll();
+        });
+
+        /* 渲染表格 */
+        var insTb = table.render({
+            elem: '#tbBasicTable',
+            url: "{:url('chargecodes/list')}",
+            page: true,
+            cellMinWidth: 100,
+            cols: [[
+                {type: 'checkbox'},
+                {field: 'id', title: 'ID', align: 'center', sort: true},
+                {field: 'code', title: '充值码', align: 'center', sort: true},
+                {field: 'money', title: '充值面额', align: 'center', sort: true},
+                {
+                    field: 'used', title: '状态', templet: function (d) {
+                        let a
+                        switch (d.used) {
+                            case 1:
+                                a = "未使用";
+                                break;
+                            case 2:
+                                a = "已发出";
+                                break;
+                            case 3:
+                                a = "已使用";
+                                break;
+                            default:
+                                a = "未使用";
+                                break;
+                        }
+                        return a
+                    }, align: 'center', sort: true
+                },
+                {
+                    field: 'create_time', title: '生成时间', templet: function (d) {
+                        return util.toDateString(d.create_time * 1000, "yyyy-MM-dd");
+                    }, align: 'center', sort: true
+                },
+                {title: '操作', toolbar: '#tbBasicTbBar', align: 'center', minWidth: 200}
+            ]]
+        });
+
+        form.on('submit(tbBasicTbSearch)', function (data) {
+            var money = $('#money').val()
+            var used = $('#used').val()
+            table.render({
+                elem: '#tbBasicTable',
+                url: '{:url("list")}?money=' + money + '&used=' + used,
+                page: true,
+                cellMinWidth: 100,
+                cols: [[
+                    {type: 'checkbox'},
+                    {field: 'id', title: 'ID', align: 'center', sort: true},
+                    {field: 'code', title: '充值码', align: 'center', sort: true},
+                    {field: 'money', title: '充值面额', align: 'center', sort: true},
+                    {
+                        field: 'used', title: '状态', templet: function (d) {
+                            let a
+                            switch (d.used) {
+                                case 1:
+                                    a = "未使用";
+                                    break;
+                                case 2:
+                                    a = "已发出";
+                                    break;
+                                case 3:
+                                    a = "已使用";
+                                    break;
+                                default:
+                                    a = "未使用";
+                                    break;
+                            }
+                            return a
+                        }, align: 'center', sort: true
+                    },
+                    {
+                        field: 'create_time', title: '生成时间', templet: function (d) {
+                            return util.toDateString(d.create_time * 1000, "yyyy-MM-dd");
+                        }, align: 'center', sort: true
+                    },
+                    {title: '操作', toolbar: '#tbBasicTbBar', align: 'center', minWidth: 200}
+                ]]
+            });
+            return false;
+        });
+    });
+</script>
+{/block}

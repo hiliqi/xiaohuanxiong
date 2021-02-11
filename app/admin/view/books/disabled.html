@@ -1,0 +1,216 @@
+{extend name="pub/base" /}
+{block name="head"}
+<title>下架漫画管理</title>
+<style>
+    /** 数据表格中的select尺寸调整 */
+    .layui-table-view .layui-table-cell .layui-select-title .layui-input {
+        height: 28px;
+        line-height: 28px;
+    }
+
+    .layui-table-view [lay-size="lg"] .layui-table-cell .layui-select-title .layui-input {
+        height: 40px;
+        line-height: 40px;
+    }
+
+    .layui-table-view [lay-size="lg"] .layui-table-cell .layui-select-title .layui-input {
+        height: 40px;
+        line-height: 40px;
+    }
+
+    .layui-table-view [lay-size="sm"] .layui-table-cell .layui-select-title .layui-input {
+        height: 20px;
+        line-height: 20px;
+    }
+
+    .layui-table-view [lay-size="sm"] .layui-table-cell .layui-btn-xs {
+        height: 18px;
+        line-height: 18px;
+    }
+
+    .tb-img-circle {
+        width: 40px;
+        height: 40px;
+        cursor: zoom-in;
+        border-radius: 50%;
+        border: 2px solid #dddddd;
+    }
+</style>
+{/block}
+{block name="main"}
+<div class="layui-fluid">
+    <div class="layui-card">
+        <div class="layui-card-body">
+            <!-- 表格工具栏 -->
+            <form class="layui-form toolbar table-tool-mini">
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <div class="layui-input-inline">
+                            <input id="book_name" class="layui-input" type="text" placeholder="书名"/>
+                        </div>
+                    </div>
+
+                    <div class="layui-inline" style="padding-right: 110px;">
+                        <button class="layui-btn icon-btn" lay-filter="tbBasicTbSearch" lay-submit>
+                            <i class="layui-icon">&#xe615;</i>搜索
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <!-- 数据表格 -->
+            <table id="tbBasicTable" lay-filter="tbBasicTable"></table>
+        </div>
+    </div>
+
+    <div class="layui-card">
+        <div class="layui-card-body">
+            交流和反馈建议请加QQ群：780362399
+        </div>
+    </div>
+
+    <!-- 表格操作列 -->
+    <script type="text/html" id="tbBasicTbBar">
+        <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="edit">修改</a>
+        <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="enable">上架</a>
+        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+    </script>
+</div>
+
+{/block}
+{block name="js"}
+<script>
+    layui.use(['table', 'form', 'dropdown'], function () {
+        var $ = layui.jquery
+        var table = layui.table
+        var form = layui.form
+        var dropdown = layui.dropdown
+
+        /* 表格工具条点击事件 */
+        table.on('tool(tbBasicTable)', function (obj) {
+            var data = obj.data; // 获得当前行数据
+            if (obj.event === 'enable') {
+                $.ajax({
+                    type: 'POST',
+                    url: "{:url('enable')}",
+                    data: {id: data.id},
+                    dataType: 'json',
+                    success: function (res) {
+                        if (res.err == 0) { //删除成功
+                            layer.msg(res.msg, {icon: 1, time: 1000}, function () {
+                                location.reload();
+                            });
+                        } else {
+                            layer.msg(res.msg, {icon: 2}, function () {
+                                location.reload();
+                            });
+                        }
+                    },
+                    error: function (res) {
+                        layer.msg(res);
+                    },
+                });
+            } else if (obj.event === 'del') { // 删除
+                layer.confirm('确认要删除吗？', function (index) {
+                    $.ajax({
+                        type: 'POST',
+                        url: "{:url('delete')}",
+                        data: {id: data.id},
+                        dataType: 'json',
+                        success: function (res) {
+                            if (res.err == 0) { //删除成功
+                                layer.msg(res.msg, {icon: 1, time: 1000}, function () {
+                                    location.reload();
+                                });
+                            } else {
+                                layer.msg(res.msg, {icon: 2}, function () {
+                                    location.reload();
+                                });
+                            }
+                        },
+                        error: function (res) {
+                            layer.msg(res);
+                        },
+                    });
+                });
+            } else if (obj.event === 'edit') {
+                parent.layui.index.openTab({
+                    title: '编辑漫画',
+                    url: "{:url('books/edit')}?id=" + data.id,
+                    end: function () {
+                        insTb.reload();
+                    }
+                });
+            }
+            dropdown.hideAll();
+        });
+
+        /* 渲染表格 */
+        var insTb = table.render({
+            elem: '#tbBasicTable',
+            url: "{:url('books/list')}?status=0",
+            page: true,
+            cellMinWidth: 100,
+            cols: [[
+                {type: 'checkbox'},
+                {field: 'id', title: 'ID', align: 'center', sort: true},
+                {field: 'book_name', title: '用户名', align: 'center', sort: true},
+                {field: 'area', title: '地区', align: 'center', sort: true},
+                {field: 'tags', title: '分类', align: 'center', sort: true},
+                {field: 'author_name', title: '作者', align: 'center', sort: true},
+                {
+                    field: 'cover', title: '封面', templet: function (d) {
+                        return '<img data-index="' + (d.LAY_INDEX - 1) + '" src="' + d.cover_url + '" class="tb-img-circle" tb-img >'
+                    }, align: 'center', sort: true
+                },
+                {
+                    field: 'is_top', title: '是否推荐', templet: function (d) {
+                        return d.is_top == 1? '是' : '否'
+                    }, align: 'center', sort: true
+                },
+                {title: '操作', toolbar: '#tbBasicTbBar', align: 'center', minWidth: 200}
+            ]]
+        });
+
+        form.on('submit(tbBasicTbSearch)', function (data) {
+            var book_name = $('#book_name').val()
+            table.render({
+                elem: '#tbBasicTable',
+                url: '{:url("search")}?book_name=' + book_name,
+                page: true,
+                cellMinWidth: 100,
+                cols: [[
+                    {type: 'checkbox'},
+                    {field: 'id', title: 'ID', align: 'center', sort: true},
+                    {field: 'book_name', title: '用户名', align: 'center', sort: true},
+                    {field: 'area_name', title: '地区', align: 'center', sort: true},
+                    {field: 'tags', title: '分类', align: 'center', sort: true},
+                    {field: 'author_name', title: '作者', align: 'center', sort: true},
+                    {
+                        field: 'cover', title: '封面', templet: function (d) {
+                            return '<img data-index="' + (d.LAY_INDEX - 1) + '" src="' + d.cover_url + '" class="tb-img-circle" tb-img >'
+                        }, align: 'center', sort: true
+                    },
+                    {
+                        field: 'is_top', title: '是否推荐', templet: function (d) {
+                            return d.is_top == 1? '是' : '否'
+                        }, align: 'center', sort: true
+                    },
+                    {title: '操作', toolbar: '#tbBasicTbBar', align: 'center', minWidth: 200}
+                ]]
+            });
+            return false;
+        });
+
+
+        /* 点击图片放大 */
+        $(document).off('click.tbImg').on('click.tbImg', '[tb-img]', function () {
+            var imgList = table.cache['tbBasicTable'].map(function (d) {
+                return {
+                    src: d.cover
+                }
+            });
+            layer.photos({photos: {data: imgList, start: $(this).data('index')}, shade: .1, closeBtn: true});
+        });
+    });
+</script>
+{/block}

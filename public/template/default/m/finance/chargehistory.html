@@ -1,0 +1,57 @@
+{extend name="./template/default/m/pub/base.html" /}
+{block name="seo"}
+<title>充值记录-{$site_name}</title>
+{/block}
+{block name="css"}
+<style type="text/css">
+    #wrapper {
+        position: absolute;
+        z-index: 1;
+        top: 90px;
+        bottom: 0px;
+        left: 0;
+        width: 100%;
+        overflow: hidden;
+    }
+
+    #scroller {
+        position: absolute;
+        z-index: 1;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        width: 100%;
+        -webkit-transform: translateZ(0);
+        -moz-transform: translateZ(0);
+        -ms-transform: translateZ(0);
+        -o-transform: translateZ(0);
+        transform: translateZ(0);
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        -webkit-text-size-adjust: none;
+        -moz-text-size-adjust: none;
+        -ms-text-size-adjust: none;
+        -o-text-size-adjust: none;
+        text-size-adjust: none;
+    }
+</style>
+{/block}
+{block name="content"}
+{include file="./template/default/m/pub/top3.html" /}
+<div class="selector-top" style="top: 46px;">
+    <a class="selector-top-item active" href="/m/chargehistory">充值记录</a>
+    <a class="selector-top-item " href="/m/spendinghistory">消费记录</a>
+</div>
+<div id="wrapper" style="touch-action: none;">
+    <ul class="vip-record" style="transform: translate(0px, 0px) translateZ(0px);">
+        {volist name="charges" id="vo"}
+        <li>
+            <p class="vip-record-rechange">{$vo.create_time|date='Y-m-d'}</p>
+            <span class="vip-record-right">{$vo.money}元</span>
+        </li>
+        {/volist}
+    </ul>
+</div>
+
+{/block}

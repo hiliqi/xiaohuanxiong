@@ -1,0 +1,104 @@
+{extend name="./template/mip/pub/base.html" /}
+{block name="seo"}
+<title>漫画搜索-{$site_name}</title>
+{/block}
+{block name="css"}
+<style mip-custom>
+    .scroll a {
+        display: block;
+        border: 1px solid #ccc;
+        height: 30px;
+        width: 75px;
+        background-color: white;
+        color: #0a0a0a;
+        line-height: 30px;
+        padding: 0 10px;
+        white-space: nowrap;
+    }
+
+    .scroll [data-item]:last-child a {
+        margin-right: 0;
+    }
+</style>
+{/block}
+{block name="content"}
+<mip-fixed type="top">
+    <div class="topBar">
+        <a href="/" data-type="mip" data-title="首页">
+            <mip-img layout="container" src="/template/mip/images/main_logo.png"
+                     class="mainlogo mip-element mip-layout-container mip-img-loaded" alt="土豪漫画" mip-firstscreen-element="">
+            </mip-img>
+        </a>
+        <span class="d-fr" on="tap:right-sidebar.open">
+            <mip-img id="imgMenu" class="mip-fill-content mip-replaced-content" src="/template/mip/images/menu_logo.png"></mip-img>
+        </span>
+        <a data-type="mip" class="d-fl" href="/{$search_ctrl}">
+            <mip-img layout="container" src="/template/mip/images/search_logo.png"
+                     class="searchlogo mip-element mip-layout-container mip-img-loaded">
+            </mip-img>
+        </a>
+    </div>
+</mip-fixed>
+<mip-scrollbox class="scroll" height="32" layout="fixed-height">
+    <div data-wrapper>
+        <div data-inner>
+            <div data-scroller>
+                <div data-item>
+                    <a href="/{$update_act}">全部</a>
+                </div>
+                {volist name="tags" id="vo"}
+                <div data-item>
+                    <a href="/{$update_act}?tag={$vo.tag_name}">{$vo.tag_name}</a>
+                </div>
+                {/volist}
+            </div>
+        </div>
+    </div>
+</mip-scrollbox>
+<div class="classList mip-vd-tabs-content" style="display: block; transform-origin: 0px 0px; opacity: 1; transform: scale(1, 1);">
+    <ul class="am-avg-sm-3 am-thumbnails list">
+        {volist name="books" id="vo"}
+        <li class="am-thumbnail">
+            <a data-type="mip" href="/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}">
+                <div class="container">
+                    <mip-img layout="fill" src="{$vo.cover_url}"
+                             alt="{$vo.book_name}" class="mip-element mip-layout-fill mip-layout-size-defined mip-img-loaded">
+                    </mip-img>
+                    <span class="tip">作者：{$vo.author_name}</span>
+                </div>
+            </a>
+            <p class="d-nowrap l">
+                <a data-type="mip" href="/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}">{$vo.book_name}</a>
+            </p>
+        </li>
+        {/volist}
+    </ul>
+</div>
+<footer class="clearfix mb10">
+    <div class="page-pagination mt20">
+        <ul>
+            {if $page.last_page > 1}
+            {if $page.current_page == 1}
+            {else/}
+            <li><a data-type="mip" href="/{$update_act}?page={$page.current_page-1}{$param}"> &gt; </a></li>
+            {/if}
+
+            {for start="1" end="$page.last_page + 1"}
+            {if $i == $page.current_page }
+            <li><a data-type="mip" href="/{$update_act}?page={$i}{$param}" class="active">{$i}</a></li>
+            {else/}
+            <li><a data-type="mip" href="/{$update_act}?page={$i}{$param}">{$i}</a></li>
+            {/if}
+            {/for}
+
+            {if $page.current_page == $page.last_page}
+            {else/}
+            <li><a data-type="mip"  href="/{$update_act}?page={$page.current_page+1}{$param}" title="下一页">&gt;</a></li>
+            {/if}
+            {/if}
+
+        </ul>
+    </div>
+</footer>
+<script src="https://c.mipcdn.com/static/v2/mip-scrollbox/mip-scrollbox.js"></script>
+{/block}
