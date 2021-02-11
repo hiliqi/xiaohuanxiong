@@ -1,61 +1,3 @@
-<<<<<<< HEAD
-ThinkPHP 6.0
-===============
-
-> 运行环境要求PHP7.1+，兼容PHP8.0。
-
-[官方应用服务市场](https://market.topthink.com) | [`ThinkAPI`——官方统一API服务](https://docs.topthink.com/think-api)
-
-ThinkPHPV6.0版本由[亿速云](https://www.yisu.com/)独家赞助发布。
-
-## 主要新特性
-
-* 采用`PHP7`强类型（严格模式）
-* 支持更多的`PSR`规范
-* 原生多应用支持
-* 更强大和易用的查询
-* 全新的事件系统
-* 模型事件和数据库事件统一纳入事件系统
-* 模板引擎分离出核心
-* 内部功能中间件化
-* SESSION/Cookie机制改进
-* 对Swoole以及协程支持改进
-* 对IDE更加友好
-* 统一和精简大量用法
-
-## 安装
-
-~~~
-composer create-project topthink/think tp 6.0.*
-~~~
-
-如果需要更新框架使用
-~~~
-composer update topthink/framework
-~~~
-
-## 文档
-
-[完全开发手册](https://www.kancloud.cn/manual/thinkphp6_0/content)
-
-## 参与开发
-
-请参阅 [ThinkPHP 核心框架包](https://github.com/top-think/framework)。
-
-## 版权信息
-
-ThinkPHP遵循Apache2开源协议发布，并提供免费使用。
-
-本项目包含的第三方源码和二进制文件之版权信息另行标注。
-
-版权所有Copyright © 2006-2020 by ThinkPHP (http://thinkphp.cn)
-
-All rights reserved。
-
-ThinkPHP® 商标和著作权所有者为上海顶想信息科技有限公司。
-
-更多细节参阅 [LICENSE.txt](LICENSE.txt)
-=======
 # xiaohuanxiong
 开源有态度的漫画CMS
 
@@ -65,18 +7,15 @@ ThinkPHP® 商标和著作权所有者为上海顶想信息科技有限公司。
 - 完善的火车头API
 - 阅读页可以选择一页几图，为网站增加PV
 - 章节预加载，在阅读下一章时不需要再等待载入
-
-# 最新5.0版本介绍
 - 三端并存：PC端，移动端，MIP端，MIP端可以跳转到移动端的阅读页，解决MIP不能放广告的问题（MIP做引流，移动端做真正变现）
 - vue端，对接app接口
 - 文章模块
 - 作者中心,包括作者注册、发布作品、分润、提现等
 - 分销系统
-- 5.0不再开源，请加入QQ群了解
 
 # 关于
 - 官方博客：https://www.xiaohuanxiong.net
-- 文档地址：https://www.kancloud.cn/hiliqi/xwx_comic_cms
+- 文档地址：https://www.kancloud.cn/hiliqi/raccoon5/1921259
 - 官方QQ群：780362399
 - 电报群：https://t.me/comiccms
 
@@ -96,4 +35,3 @@ ThinkPHP® 商标和著作权所有者为上海顶想信息科技有限公司。
 本系统不含有任何旨在破坏用户计算机数据和获取用户隐私信息的恶意代码；不含有任何跟踪、监视用户计算机功能的代码；不含有监控用户网上、网下行为的功能；不含有收集用户的其它软件、文档中包含的个人信息的功能；不会泄漏用户隐私。
 本系统唯一官方下载途径就是GitHub，对于用户从官方途径下载的系统以及从非作者发行的介质上获得的系统，作者无法保证其是否感染计算机病毒、是否隐藏有伪装的特洛伊木马程序或者黑客软件。用户使用此类软件，将可能导致不可预测的风险，建议用户不要轻易下载、安装、使用。作者不承担由此产生的一切法律责任。
 用户不得利用本系统误导、欺骗他人;不得故意避开或者破坏作者为保护本系统著作权而采取的技术措施。
->>>>>>> 1dac9f5bea4463df4845083bc7f8774d957f0541
