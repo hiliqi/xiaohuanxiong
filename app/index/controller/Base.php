@@ -11,6 +11,7 @@ use think\facade\View;
 
 class Base extends BaseController
 {
+    //protected $middleware = [\app\middleware\Before::class];
     protected $prefix;
     protected $redis_prefix;
     protected $uid;

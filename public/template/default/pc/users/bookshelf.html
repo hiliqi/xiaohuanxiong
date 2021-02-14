@@ -105,4 +105,60 @@
     </article>
     <input id="hidCount" type="hidden" value="0">
 </main>
+<script>
+    $(document).ready(function () {
+        // 选择
+        $('span.edit-state').click(function (ev) {
+            ev.stopPropagation();
+            ev.preventDefault();
+            var $item = $(this)
+            $item.hasClass('active') ? $item.removeClass('active') : $item.addClass('active')
+        });
+
+
+        // 显
+        $('.js_edit_booklist_btn').click(function (ev) {
+            ev.stopPropagation();
+            ev.preventDefault();
+            $(this).hide();
+            $('.box-booklist-edit-head').show();
+            $('span.edit-state').show();
+        })
+        // 隐
+        $('.js_esc_booklist_btn').click(function (ev) {
+            ev.stopPropagation();
+            ev.preventDefault();
+            $('.box-booklist-edit-head').hide();
+            $('.js_edit_booklist_btn').show();
+            $('span.edit-state').removeClass('active').hide();
+            $('.js_allsel_checkbox').prop('checked', false);
+        })
+
+        $("#book_del").click(function () {
+            var arr = $('span.edit-state.active');
+            if (arr.length > 0) {
+                $.ajax({
+                    url: '/pc/delfavors',
+                    data: {ids: str},
+                    type: 'POST',
+                    dataType:'json',
+                    success:function(res){
+                        if (res.err === "0") {
+                            ShowDialog(res.msg);
+                        } else {
+                            ShowDialog(res.msg);
+                        }
+                    }
+                });
+
+            } else {
+                ShowDialog("请选择要删除的收藏或历史记录");
+            }
+            setTimeout(function () {
+                location.reload();
+            },2);
+        });
+    })
+
+</script>
 {/block}

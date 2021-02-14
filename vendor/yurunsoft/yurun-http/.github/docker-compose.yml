@@ -1,0 +1,31 @@
+version: "3.4"
+services:
+    swoole:
+        container_name: "swoole"
+        build:
+            context: .
+            dockerfile: ./swoole.dockerfile
+            args:
+                SWOOLE_DOCKER_VERSION: ${SWOOLE_DOCKER_VERSION}
+        volumes:
+            - "${GITHUB_WORKSPACE}:/imi:rw"
+        working_dir: /imi
+        ulimits:
+            core: -1
+        privileged: true
+        command: tail -f /etc/group
+
+    php:
+        container_name: "php"
+        build:
+            context: .
+            dockerfile: ./php.dockerfile
+            args:
+                PHP_DOCKER_VERSION: ${PHP_DOCKER_VERSION}
+        volumes:
+            - "${GITHUB_WORKSPACE}:/imi:rw"
+        working_dir: /imi
+        ulimits:
+            core: -1
+        privileged: true
+        command: tail -f /etc/group

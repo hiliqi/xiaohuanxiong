@@ -56,13 +56,13 @@ function sortBtnClick() {
         orderIdArray.push(id);  //orderid的值
     });
     //index的值是从大到小的，所以此处的大于号和小于号是相反的
-    if (mode == 1) {
+    if (mode === 1) {
         a.attr("mode", 0);
         a.html("倒序");
         orderIdArray = orderIdArray.sort(function (a, b) { return (a > b) ? 1 : -1 }); //从大到小排序
         a.addClass("inverted");
     }
-    else if (mode == 0) {
+    else if (mode === 0) {
         a.attr("mode", 1);
         a.html("正序");
         orderIdArray = orderIdArray.sort(function (a, b) { return (a < b) ? 1 : -1 }); //从小到大排序

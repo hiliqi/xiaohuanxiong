@@ -1,0 +1,63 @@
+name: ci
+
+on: [push, pull_request]
+
+jobs:
+  ci-only-curl:
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        php:
+          [
+            5.5,
+            5.6,
+            7.0
+          ]
+
+    env:
+      PHP_DOCKER_VERSION: ${{ matrix.php }}
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: prepare
+        run: |
+          ./.github/prepare-test.sh php
+
+      - name: test
+        run: docker exec php composer test
+
+
+  ci-curl-swoole:
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        swoole:
+          [
+            4.5.9-php7.1,
+            4.5.9-php7.2,
+            4.5.9-php7.3,
+            4.5.9-php7.4,
+            4.5.9-php8.0,
+            4.4.22-php7.1,
+            4.4.22-php7.2,
+            4.4.22-php7.3,
+            4.4.22-php7.4,
+          ]
+
+    env:
+      SWOOLE_DOCKER_VERSION: ${{ matrix.swoole }}
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: prepare
+        run: |
+          ./.github/prepare-test.sh swoole
+
+      - name: test
+        run: docker exec swoole composer test
