@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="744eb552-3b2d-452b-9c85-a7e014af20fe" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/admin/view/comment/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/admin/controller/Sitemap.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/admin/controller/Sitemap.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/admin/view/sitemap/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/admin/view/sitemap/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/index/controller/Base.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/index/controller/Base.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/admin/controller/Comment.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/admin/controller/Comment.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,18 +81,18 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/admin/view/comment" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\www\xiaohuanxiong\app\admin\view\comment" />
       <recent name="D:\www\raccoon\app\admin\view\sms" />
       <recent name="D:\www\raccoon\app\admin\view\chargecodes" />
       <recent name="D:\www\raccoon\app\admin\view\vipcodes" />
       <recent name="D:\www\raccoon\app\admin\view\payment" />
-      <recent name="D:\www\raccoon\app\admin\view\tag" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\www\raccoon\app\admin\view\reward" />
@@ -190,7 +189,7 @@
       <workItem from="1613029276901" duration="17000" />
       <workItem from="1613034010552" duration="12685000" />
       <workItem from="1613276057256" duration="6051000" />
-      <workItem from="1613360345502" duration="1413000" />
+      <workItem from="1613360345502" duration="2610000" />
     </task>
     <servers />
   </component>
