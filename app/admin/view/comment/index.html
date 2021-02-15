@@ -42,6 +42,12 @@
                         </div>
                     </div>
 
+                    <div class="layui-inline">
+                        <div class="layui-input-inline">
+                            <input id="book_name" class="layui-input" type="text" placeholder="漫画名"/>
+                        </div>
+                    </div>
+
                     <div class="layui-inline" style="padding-right: 110px;">
                         <button class="layui-btn icon-btn" lay-filter="tbBasicTbSearch" lay-submit>
                             <i class="layui-icon">&#xe615;</i>搜索
@@ -129,23 +135,20 @@
         });
 
         form.on('submit(tbBasicTbSearch)', function (data) {
-            var uname = $('#uname').val()
+            var username = $('#username').val()
+            var book_name = $('#book_name').val()
             table.render({
                 elem: '#tbBasicTable',
-                url: '{:url("search")}?username=' + username,
+                url: '{:url("list")}?username=' + username + '&book_name=' + book_name,
                 page: true,
                 cellMinWidth: 100,
                 cols: [[
                     {type: 'checkbox'},
                     {field: 'id', title: 'ID', align: 'center', sort: true},
-                    {field: 'username', title: '名称', align: 'center', sort: true},
-                    {field: 'password', title: '密码', align: 'center', sort: true},
-                    {
-                        field: 'last_login_time', title: '最近登录', templet: function (d) {
-                            return util.timeAgo(d.lastlogin * 1000);
-                        }, align: 'center', sort: true
-                    },
-                    {field: 'last_login_ip', title: '登录IP', align: 'center', sort: true},
+                    {field: 'user', title: '评论用户', align: 'center', sort: true},
+                    {field: 'book', title: '评论漫画', align: 'center', sort: true},
+                    {field: 'content', title: '评论内容', align: 'center', sort: true},
+                    {field: 'create_time', title: '评论时间', align: 'center', sort: true},
                     {title: '操作', toolbar: '#tbBasicTbBar', align: 'center', minWidth: 200}
                 ]]
             });

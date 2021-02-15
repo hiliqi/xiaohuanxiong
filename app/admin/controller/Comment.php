@@ -22,14 +22,14 @@ class Comment extends BaseAdmin
         $page = intval(input('page'));
         $limit = intval(input('limit'));
         $map = array();
-        $uid = input('uid');
-        if ($uid) {
-            $map[] = ['user_id', '=', $uid];
+        $username = input('username');
+        if ($username) {
+            $map[] = ['username', '=', $username];
         }
 
-        $book_id = input('book_id');
-        if ($book_id) {
-            $map[] = ['book_id', '=', $book_id];
+        $book_name = input('book_name');
+        if ($book_name) {
+            $map[] = ['book_name', '=', $book_name];
         }
         $data = Comments::where($map);
         $count = $data->count();
