@@ -34,7 +34,6 @@ class Base extends BaseController
         $this->redis_prefix = Env::get('cache.prefix');
         $this->end_point = config('seo.book_end_point');
         $tpl_root = './template/' . config('site.tpl') . '/pc/';
-
         $this->tpl = $tpl_root . $controller . '/' . $action . '.html';
         $this->links = cache('friendshipLink');
         $this->url = config('site.domain');

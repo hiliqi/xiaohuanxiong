@@ -17,7 +17,7 @@
     <div class="layui-card">
         <div class="layui-card-body">
             <!-- 表单开始 -->
-            <form class="layui-form" id="formBasForm" lay-filter="formBasForm">
+            <form class="layui-form" id="formBasForm" lay-filter="formBasForm" action="index" method="post">
                 <div class="layui-form-item">
                     <label class="layui-form-label layui-form-required">端选择:</label>
                     <div class="layui-input-block">
@@ -65,19 +65,6 @@
     layui.use(['layer', 'form', 'laydate', 'upload'], function () {
         var $ = layui.jquery;
         var form = layui.form;
-
-        /* 监听表单提交 */
-        form.on('submit(formBasSubmit)', function (data) {
-            $.ajax({
-                url:"{:url('create')}",
-                type:'post',
-                data:$('form').serialize(),
-                success(res) {
-                    subResHandle(res)
-                }
-            })
-            return false;
-        });
     });
 </script>
 {/block}

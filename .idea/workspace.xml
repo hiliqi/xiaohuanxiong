@@ -3,31 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="744eb552-3b2d-452b-9c85-a7e014af20fe" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/admin/controller/Sitemap.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/admin/controller/Sitemap.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/admin/view/sitemap/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/admin/view/sitemap/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/index/controller/Base.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/index/controller/Base.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/nginx.htaccess" beforeDir="false" afterPath="$PROJECT_DIR$/public/nginx.htaccess" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/static/js/comment.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/static/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/static/js/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/static/js/loadNewHistory.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/static/js/login.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/static/js/phone.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/static/js/uaredirect.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/static/js/user-booklist.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/static/js/userinfo.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/default/m/account/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/template/default/m/account/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/default/m/account/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/template/default/m/account/register.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/default/m/books/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/template/default/m/books/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/default/m/users/bindphone.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/template/default/m/users/bindphone.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/default/m/users/history.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/template/default/m/users/history.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/default/m/users/userinfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/template/default/m/users/userinfo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/default/pc/account/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/template/default/pc/account/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/default/pc/account/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/template/default/pc/account/register.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/default/pc/books/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/template/default/pc/books/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/default/pc/users/bindphone.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/template/default/pc/users/bindphone.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/default/pc/users/bookshelf.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/template/default/pc/users/bookshelf.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/default/pc/users/history.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/template/default/pc/users/history.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/default/pc/users/userinfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/template/default/pc/users/userinfo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/.gitignore" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -211,7 +189,8 @@
       <workItem from="1612962431420" duration="163000" />
       <workItem from="1613029276901" duration="17000" />
       <workItem from="1613034010552" duration="12685000" />
-      <workItem from="1613276057256" duration="5083000" />
+      <workItem from="1613276057256" duration="6051000" />
+      <workItem from="1613360345502" duration="1413000" />
     </task>
     <servers />
   </component>

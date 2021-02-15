@@ -55,7 +55,7 @@ class Sitemap extends BaseAdmin
                     $book['param'] = $book['unique_id'];
                 }
                 $temp = array(
-                    'loc' => $site_name . '/' . BOOKCTRL . '/' . $book['param'],
+                    'loc' => $site_name . '/' . $name . '/' . BOOKCTRL . '/' . $book['param'],
                     'priority' => '0.9',
                 );
                 array_push($arr, $temp);
@@ -85,7 +85,7 @@ class Sitemap extends BaseAdmin
             $chapters = $data->limit($pagesize * ($i - 1), $pagesize)->select();
             foreach ($chapters as $chapter) {
                 $temp = array(
-                    'loc' => $site_name . '/' . CHAPTERCTRL . '/' . $chapter['id'],
+                    'loc' => $site_name . '/' . $name . '/' . CHAPTERCTRL . '/' . $chapter['id'],
                     'priority' => '0.9',
                 );
                 array_push($arr, $temp);
@@ -120,7 +120,7 @@ class Sitemap extends BaseAdmin
                     $article['param'] = $article['unique_id'];
                 }
                 $temp = array(
-                    'loc' => $site_name . '/' . CHAPTERCTRL . '/' . $article['param'],
+                    'loc' => $site_name . '/' . $name . '/' . CHAPTERCTRL . '/' . $article['param'],
                     'priority' => '0.9',
                 );
                 array_push($arr, $temp);
