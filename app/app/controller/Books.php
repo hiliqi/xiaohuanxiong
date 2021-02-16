@@ -28,9 +28,10 @@ class Books extends Base
 
     public function getNewest()
     {
+        $num = input('num');
         $newest = cache('newestHomepageApp');
         if (!$newest) {
-            $newest = Book::limit(10)->order('last_time', 'desc')->select();
+            $newest = Book::limit($num)->order('last_time', 'desc')->select();
             foreach ($newest as &$book) {
                 $book['clicks'] = Clicks::where('book_id','=',$book['id'])->sum('id');
                 if (substr($book->cover_url, 0, 4) === "http") {
@@ -55,21 +56,29 @@ class Books extends Base
 
     public function getHot()
     {
+        $num = input('num');
         $hot_books = cache('hotBooksApp');
         if (!$hot_books) {
-            $hot_books = $this->bookService->getHotBooks($this->prefix, $this->end_point);
-            foreach ($hot_books as &$book) {
-                if (substr($book->cover_url, 0, 4) === "http") {
+            $data = Db::query("SELECT book_id,SUM(clicks) as clicks FROM " . $this->prefix . "clicks 
+ GROUP BY book_id ORDER BY clicks DESC LIMIT :num", ['num' => $num]);
+            $hot_books = array();
+            foreach ($data as $val) {
+                $book = Book::with('chapters')->find($val['book_id']);
+                if ($book) {
+                    $book['taglist'] = explode('|', $book->tags);
+                    $book['clicks'] = $val['clicks'];
+                    if (substr($book->cover_url, 0, 4) === "http") {
 
-                } else {
-                    $book->cover_url = $this->img_domain . $book->cover_url;
-                }
-                if (substr($book->banner_url, 0, 4) === "http") {
+                    } else {
+                        $book->cover_url = $this->img_domain . $book->cover_url;
+                    }
+                    if (substr($book->banner_url, 0, 4) === "http") {
 
-                } else {
-                    $book->banner_url = $this->img_domain . $book->banner_url;
+                    } else {
+                        $book->banner_url = $this->img_domain . $book->banner_url;
+                    }
+                    array_push($hot_books, $book);
                 }
-                $book['clicks'] = $book['clicks'];
             }
             cache('hotBooksApp', $hot_books, null, 'redis');
         }
@@ -82,9 +91,10 @@ class Books extends Base
 
     public function getTops()
     {
+        $num = input('num');
         $tops = cache('topsHomepageApp');
         if (!$tops) {
-            $tops = Book::where('is_top', '=', '1')->limit(10)->order('last_time', 'desc')->select();
+            $tops = Book::where('is_top', '=', '1')->limit($num)->order('last_time', 'desc')->select();
             foreach ($tops as &$book) {
                 $book['clicks'] = Clicks::where('book_id','=',$book['id'])->sum('id');
                 if (substr($book->cover_url, 0, 4) === "http") {
@@ -109,9 +119,10 @@ class Books extends Base
 
     public function getEnds()
     {
+        $num = input('num');
         $ends = cache('endsHomepageApp');
         if (!$ends) {
-            $ends = Book::where('end', '=', '1')->limit(10)->order('last_time', 'desc')->select();
+            $ends = Book::where('end', '=', '1')->limit($num)->order('last_time', 'desc')->select();
             foreach ($ends as &$book) {
                 $book['clicks'] = Clicks::where('book_id','=',$book['id'])->sum('id');
                 if (substr($book->cover_url, 0, 4) === "http") {

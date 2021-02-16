@@ -178,7 +178,6 @@ FROM ' . $this->prefix . 'book AS ad1 JOIN (SELECT ROUND(RAND() * ((SELECT MAX(i
                 }
                 array_push($books, $book);
             }
-
         }
         return $books;
     }
