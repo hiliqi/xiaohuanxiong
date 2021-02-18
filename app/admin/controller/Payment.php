@@ -110,26 +110,6 @@ class Payment extends BaseAdmin
         ]);
     }
 
-    public function rewards()
-    {
-        if (request()->isPost()) {
-            $content = input('json');
-            try {
-                file_put_contents(App::getRootPath() . 'config/rewards.php', $content);
-                return json(['err' => 0, 'msg' => '保存成功']);
-            } catch (ErrorException $exception) {
-                return json(['err' => 1, 'msg' => '保存失败，' . $exception]);
-            }
-        }
-        try {
-            $content = file_get_contents(App::getRootPath() . 'config/rewards.php');
-            View::assign('json', $content);
-            return view();
-        } catch (ErrorException $e) {
-            abort(404, $e->getMessage());
-        }
-    }
-
     public function charge()
     {
         if (request()->isPost()) {
