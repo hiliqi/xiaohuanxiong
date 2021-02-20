@@ -60,7 +60,7 @@
         <ul class="detail-list-1 detail-list-select" id="detail-list-select">
             {volist name="book.chapters" id="vo"}
             <li>
-                <a href="/{$chapter_ctrl}/{$vo.id}" title="{$vo.chapter_name}" class="chapteritem">{$vo.chapter_name}</a>
+                <a href="/m/{$chapter_ctrl}/{$vo.id}" title="{$vo.chapter_name}" class="chapteritem">{$vo.chapter_name}</a>
                 {if $vo.chapter_order >= $start_pay }
                 <img class="detail-list-3-info-right" src="/static/images/center-main-list-logo-4.png">
                 {/if}
