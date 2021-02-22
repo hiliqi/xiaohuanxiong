@@ -3,6 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="744eb552-3b2d-452b-9c85-a7e014af20fe" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/app/controller/Finance.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/app/controller/Finance.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/index/controller/Chapters.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/index/controller/Chapters.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/mobile/controller/Chapters.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/mobile/controller/Chapters.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/service/FinanceService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/service/FinanceService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/template/default/m/account/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/template/default/m/account/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/template/default/m/finance/buychapter.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/template/default/m/finance/buychapter.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/template/default/pc/finance/buychapter.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/template/default/pc/finance/buychapter.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +86,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../new-novel" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
     <property name="vue.rearranger.settings.migration" value="true" />
@@ -196,6 +203,8 @@
       <workItem from="1613630923308" duration="98000" />
       <workItem from="1613640872837" duration="1644000" />
       <workItem from="1613733612501" duration="647000" />
+      <workItem from="1613813478887" duration="424000" />
+      <workItem from="1613970648693" duration="1411000" />
     </task>
     <servers />
   </component>

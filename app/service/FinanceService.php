@@ -189,6 +189,6 @@ class FinanceService
             $userBuy->save();
         }
         Cache::clear('pay'); //删除缓存
-        return ['success' => 1, 'msg' => '购买成功，等待跳转'];
+        return json(['success' => 1, 'msg' => '购买成功，等待跳转']);
     }
 }

@@ -111,7 +111,7 @@
         }
         $.ajax({
             type: 'POST',
-            url: "/login",
+            url: "/m/login",
             data: $('#form-login').serialize(),
             dataType: 'json',
             success: function (data) {
@@ -119,7 +119,7 @@
                 if (result.err == 0){ //登录成功
                     ShowDialog(result.msg);
                     setTimeout(function () {
-                        location.href = '/ucenter';
+                        location.href = '/m/ucenter';
                     }, 1000);
                 } else {
                     $('#captcha').attr('src','account/captcha?rnd=' + r)

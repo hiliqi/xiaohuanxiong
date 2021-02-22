@@ -119,7 +119,7 @@ class Chapters extends Base
                 ]);
                 return view($this->tpl);
             } else {
-                return redirect('/buychapter?chapter_id='.$id);
+                return redirect('/m/buychapter?chapter_id='.$id);
             }
         } catch (DataNotFoundException $e) {
             abort(404, $e->getMessage());

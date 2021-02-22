@@ -131,7 +131,7 @@ class Chapters extends Base
             ]);
             return view($this->tpl);
         } else {
-            return redirect('/buychapter?chapter_id='.$id);
+            return redirect('/pc/buychapter?chapter_id='.$id);
         }
     }
 }

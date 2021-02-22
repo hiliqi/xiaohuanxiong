@@ -132,7 +132,7 @@ class Finance extends BaseAuth
         $id = input('chapter_id');
         $chapter = Chapter::with('book')->cache('buychapter:' . $id, 600, 'redis')->find($id);
         $result = $this->financeService->buyChapter($chapter, $this->uid);
-        return json($result);
+        return $result;
     }
 
     public function getPayments()
