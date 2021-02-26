@@ -186,7 +186,7 @@
         });
 
         form.on('submit(tbBasicTbSearch)', function (data) {
-            var uname = $('#uname').val()
+            var username = $('#username').val()
             table.render({
                 elem: '#tbBasicTable',
                 url: '{:url("search")}?username=' + username,

@@ -196,13 +196,13 @@ class Books extends Base
     public function search()
     {
         $keyword = input('keyword');
-        $redis = RedisHelper::GetInstance();
-        $redis->zIncrBy($this->redis_prefix . 'hot_search:', 1, $keyword);
-        $hot_search_json = $redis->zRevRange($this->redis_prefix . 'hot_search', 1, 4, true);
-        $hot_search = array();
-        foreach ($hot_search_json as $k => $v) {
-            $hot_search[] = $k;
-        }
+//        $redis = RedisHelper::GetInstance();
+//        $redis->zIncrBy($this->redis_prefix . 'hot_search:', 1, $keyword);
+//        $hot_search_json = $redis->zRevRange($this->redis_prefix . 'hot_search', 1, 4, true);
+//        $hot_search = array();
+//        foreach ($hot_search_json as $k => $v) {
+//            $hot_search[] = $k;
+//        }
         $books = cache('appsearchresult:' . $keyword);
         if (!$books) {
             $books = $this->bookService->search($keyword, 20);
@@ -233,7 +233,7 @@ class Books extends Base
             'success' => 1,
             'books' => $books,
             'count' => count($books),
-            'hot_search' => $hot_search
+            //'hot_search' => $hot_search
         ];
         return json($result);
     }
