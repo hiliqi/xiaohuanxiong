@@ -2,30 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="744eb552-3b2d-452b-9c85-a7e014af20fe" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/template/zymk/pc/account/login.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/zymk/pc/account/recovery.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/zymk/pc/account/register.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/zymk/pc/users/bindphone.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/zymk/pc/users/bookshelf.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/zymk/pc/users/help.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/zymk/pc/users/history.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/zymk/pc/users/leavemsg.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/zymk/pc/users/message.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/zymk/pc/users/pc_ucenter.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/zymk/pc/users/promotion.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/zymk/pc/users/resetpwd.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/zymk/pc/users/ucenter.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/zymk/pc/users/userinfo.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/zymk/pc/users/userphone.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/admin/view/books/edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/admin/view/books/edit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/api/controller/Paynotify1.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/controller/Paynotify1.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/api/controller/Paynotify2.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/controller/Paynotify2.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/api/controller/Paynotify3.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/service/PayService1.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/service/PayService1.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/service/PayService2.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/service/PayService2.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/service/PayService3.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/install.sql" beforeDir="false" afterPath="$PROJECT_DIR$/install.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/public/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -231,6 +208,7 @@
       <workItem from="1614352779184" duration="1255000" />
       <workItem from="1614394741485" duration="351000" />
       <workItem from="1614395150372" duration="2075000" />
+      <workItem from="1614399977287" duration="402000" />
     </task>
     <servers />
   </component>
