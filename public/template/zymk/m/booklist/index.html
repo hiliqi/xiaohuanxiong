@@ -1,0 +1,149 @@
+{extend name="./template/zymk/m/pub/base.html" /}
+{block name="seo"}
+<title>漫画分类-{$site_name}</title>
+{/block}
+{block name="content"}
+<style>
+    .nextb {
+        position: fixed;
+        right: 10px;
+        bottom: 45%;
+        width: 1.5rem;
+        z-index: 99;
+    }
+
+    .prevb {
+        position: fixed;
+        left: 10px;
+        bottom: 45%;
+        width: 1.5rem;
+        z-index: 99;
+    }
+</style>
+<section class="mk-container">
+    <div class="mk-crumb">
+        <em>当前位置</em> : <a href="/" title="{$site_name}">{$site_name}</a> > <strong>分类</strong>
+    </div>
+    <div id="app" class="mk-container mk-sort">
+        <header class="mk-header fixed">
+            <div class="left">
+                <a href="/{$booklist_act}" title="分类"><i class="back ift-goback"></i><a></a></a></div>
+            <a></a>
+            <h1 class="title">分类</h1>
+            <div class="right">
+                <div class="mk-sort-select">
+                    <div class="hd" @click="tagMenu()">
+                        <span class="text">分类</span><i class="ift-down"></i>
+                    </div>
+                    <div class="bd" :style="{'display' : show}">
+                        <div class="mask"></div>
+                        <ul class="order-list" style="overflow-y: scroll;position: fixed;top: 1.2rem;bottom: 0;right: 0.2rem;">
+                            <li class="item"  @click="setTag('全部')">全部</li>
+                            <li class="item" @click="setTag(item.tag_name)" v-for="(item, index) in tags" :key="index">{{item.tag_name}}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="blank88"></div>
+        <div class="bd">
+            <ul class="comic-sort">
+                <li class="item" v-for="(item, index) in books" :key="index">
+                    <div class="comic-item">
+                        <div class="thumbnail">
+                            <a :href="'/{$book_ctrl}/'+ item.param" :title="item.book_name">
+                                <img src="https://ae01.alicdn.com/kf/He3cda13f34d44e8fb85dcdf6c7768398F.gif"
+                                :data-src="item.cover_url" :alt="item.book_name"/>
+                                <span class="chapter">{{item.summary}}</span>
+                                <span class="ift-xing score">9.8</span>
+                            </a>
+                        </div>
+                        <h3 class="title">
+                            <a :href="'/{$book_ctrl}/'+ item.param" :title="item.book_name">{{item.book_name}}</a>
+                        </h3>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+{/block}
+{block name="js"}
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            books: [],
+            tags: [],
+            tag: '全部',
+            page: 0,
+            isMore: 1,
+            show: 'none'
+        },
+        methods: {
+            getBooks(isRefresh) {
+                axios.get("/getBooks", {
+                    params: {
+                        tag: this.tag,
+                        page: this.page
+                    }
+                }).then(response => {
+                    if (isRefresh == 1) { //为1是重新渲染
+                        this.books = response.data.books
+                    } else {
+                        if (response.data.err == 1) {
+                            this.isMore = 0 //设置好之后，上拉加载就不再请求接口了
+                            __global.layerMsg('没有更多了');
+                        } else {
+                            this.books = this.books.concat(response.data.books)
+                        }
+                    }
+                })
+            },
+            setTag(tag) {
+                this.tag = tag
+                this.page = 0
+                this.isMore = 1
+                this.show = 'none'
+                this.getBooks(1)
+            },
+            setEnd(end) {
+                this.end = end
+                this.page = 0
+                this.isMore = 1
+                this.getBooks(1)
+            },
+            tagMenu() {
+                if (this.show == 'none') {
+                    this.show = 'block'
+                } else {
+                    this.show = 'none'
+                }
+            },
+            onScroll() {                    //可滚动容器的高度
+                var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+                //变量windowHeight是可视区的高度
+                var windowHeight = document.documentElement.clientHeight || document.body.clientHeight;
+                //变量scrollHeight是滚动条的总高度
+                var scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
+                //滚动条到底部的条件
+                if (scrollTop + windowHeight == scrollHeight) {
+                    if (this.isMore == 1) { //如果还有更多数据，再请求接口，否则不再请求，节省服务器资源
+                        this.page = this.page + 15
+                        this.getBooks(0)
+                    }
+                }
+            }
+        },
+        mounted() {
+            axios.get("/getOptions").then(response => {
+                this.tags = response.data.tags
+            })
+            this.getBooks(1)
+        },
+        created() {
+            window.addEventListener('scroll', this.onScroll);
+        }
+    })
+</script>
+{/block}

@@ -1,0 +1,58 @@
+{extend name="./template/zymk/pub/base.html" /}
+{block name="seo"}
+<title>帮助列表-{$site_name}</title>
+{/block}
+{block name="content"}
+<section class="mk-container">
+   <div class="help">
+    <header class="mk-header fixed">
+     <div class="left">
+      <a href="/ucenter"><i class="back ift-goback"></i></a>
+     </div>
+     <h1 class="title">使用帮助</h1>
+    </header>
+    <div class="blank88"></div>
+    <div class="menus">
+     <div class="help-menu-item" data-id="293">
+      <span>观看规则？</span>
+     </div>
+     <div class="content hide" data-done="true">
+      <p>推广、每日登陆一次账户、卡密充值</p>
+      <p>获得规则：免费获取</p>
+      <p>想要获得余额，用自己的推广链接去推广或者购买卡密充值</p>
+     </div>
+    </div>
+    <div class="menus">
+     <div class="help-menu-item" data-id="48">
+      <span>APP怎么没有？</span>
+     </div>
+     <div class="content hide" data-done="true">
+      <p>APP在开发中..</p>
+      <p>APP无广告而且只给VIP用户使用</p>
+     </div>
+    </div>
+    <div class="menus">
+     <div class="help-menu-item" data-id="47">
+      <span>怎么反馈问题章节报错？</span>
+     </div>
+     <div class="content hide" data-done="true">
+      <p>在用户中心点击“反馈报错”即可进入</p>
+     </div>
+    </div>
+    <div class="menus">
+     <div class="help-menu-item" data-id="46">
+      <span>站点更新速度怎么样？</span>
+     </div>
+     <div class="content hide" data-done="true">
+      <p>全天24小时后台软件自动更新。</p>
+     </div>
+    </div>
+   </div>
+  </section>
+   <script>
+  	$('.menus').click(function(){
+  	   	 $(this).addClass('active').siblings().removeClass('active').find('.content').addClass('hide');
+  	   	 $(this).find('.content').removeClass('hide');
+  	});
+  </script>
+{/block}

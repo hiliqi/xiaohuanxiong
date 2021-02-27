@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    {block name="seo"}{/block}
+    <link rel="shortcut icon" href="/static/images/favicon.ico">
+    <link href="/static/css/style.css" rel="stylesheet" type="text/css">
+    <link href="/static/css/userinfo-vendor.css" rel="stylesheet" type="text/css">
+    <link href="/static/css/dm5_style.css" rel="stylesheet" type="text/css">
+    {block name="css"}{/block}
+    <!---识别手机或电脑的js开始--->
+    <script>
+        function is_mobile() {
+            var regex_match = /(nokia|iphone|android|motorola|^mot-|softbank|foma|docomo|kddi|up.browser|up.link|htc|dopod|blazer|netfront|helio|hosin|huawei|novarra|CoolPad|webos|techfaith|palmsource|blackberry|alcatel|amoi|ktouch|nexian|samsung|^sam-|s[cg]h|^lge|ericsson|philips|sagem|wellcom|bunjalloo|maui|symbian|smartphone|midp|wap|phone|windows ce|iemobile|^spice|^bird|^zte-|longcos|pantech|gionee|^sie-|portalmmm|jigs browser|hiptop|^benq|haier|^lct|operas*mobi|opera*mini|320x320|240x320|176x220)/i;
+            var u = navigator.userAgent;
+            if (null == u) {
+                return true;
+            }
+            var result = regex_match.exec(u);
+
+            if (null == result) {
+                return false
+            } else {
+                return true
+            }
+        }
+        if (is_mobile()) {
+            var pathname = window.location.pathname;
+            var url = window.location.search; //获取url中"?"符后的字串
+            window.location.href= '{$mobile_url}' + pathname + url;
+        }
+    </script>
+    <!---识别手机或电脑的js结束--->
+    {if $cdn == 'bootcdn'}
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+    <script src="https://cdn.bootcss.com/axios/0.19.0-beta.1/axios.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
+    {else /}
+    <script src="https://lib.baomitu.com/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://lib.baomitu.com/vue/2.6.10/vue.min.js"></script>
+    <script src="https://lib.baomitu.com/axios/0.19.2/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+    {/if}
+    <script src="/static/js/index.js"></script>
+</head>
+
+<body class="white">
+<!-- 页面头部 -->
+<header class="header container-fluid " style="left: 0px;">
+    <div class="container">
+        <!-- 左侧logo -->
+        <a href="/">
+            <img class="header-logo" src="/static/images/header-logo.png">
+        </a>
+        <!-- 左侧菜单标题 -->
+        <ul class="header-title">
+            <li><a href="/">首页</a></li>
+            <li><a href="/{$booklist_act}">分类</a></li>
+            <li><a href="/{$update_act}">更新</a></li>
+            <li><a href="/{$rank_ctrl}">排行</a></li>
+            <li><a href="/{$booklist_act}"><i class="icon icon-cat" style="font-size:19px;vertical-align: sub;"></i></a></li>
+        </ul>
+        <script>
+            var url = location.href;
+            if (url.indexOf('booklist') > -1) {
+                if (url.indexOf('end=0') > -1) {
+                    $('.header-title li a').eq(1).addClass('active');
+                } else if (url.indexOf('end=1') > -1) {
+                    $('.header-title li a').eq(2).addClass('active');
+                } else {
+                    $('.header-title li a').eq(5).addClass('active');
+                }
+            }  else if (url.indexOf('rank') > -1) {
+                $('.header-title li a').eq(4).addClass('active');
+            } else if (url.indexOf('update') > -1) {
+                $('.header-title li a').eq(3).addClass('active');
+            } else {
+                $('.header-title li a').eq(0).addClass('active');
+            }
+        </script>
+        <!-- 搜索栏 -->
+        <div class="header-search">
+            <input id="txtKeywords" type="text" value="">
+            <a id="btnSearch">搜索</a>
+            <script>
+                $('#btnSearch').click(function () {
+                    var keyword = $('#txtKeywords').val();
+                    window.location.href = '/{$search_ctrl}?keyword=' + keyword;
+                })
+            </script>
+        </div>
+        <ul class="header-bar">
+            <li class="vip">
+                <a href="/vip">
+                    <div class="header-vip"></div>
+                    <p>VIP</p>
+                </a>
+            </li>
+            <li class="hover">
+                <a href="/history" target="_blank">
+                    <i class="icon icon-clock"></i>
+                    <p>历史</p>
+                </a>
+            </li>
+            <li class="hover">
+                <a href="/bookshelf" data-isload="0" target="_blank">
+                    <i class="icon icon-fav"></i>
+                    <p>收藏</p>
+                    <span class="red-sign"></span>
+                </a>
+            </li>
+        </ul>
+        <div class="header_login hover">
+            <a href="/ucenter" class="js_header_login_btn">
+                <img data-isload="0" class="header-avatar" src="/static/images/mrtx.gif">
+            </a>
+        </div>
+    </div>
+</header>
+{block name="content"}{/block}
+<div class="footer mt16 cf">
+    <div class="footer-wrap">
+        <div class="footer-cont container">
+            <p>{$site_name}为纯属个人爱好收集。并不具备版权，所以免费分享供朋友们阅读，朋友们如果喜欢，且有支付能力，请您一定支持正版.本站收集纯属无奈，中国有太多的人真的没有支付能力。我希望我们若干年后，拥有了支付能力，一定像我去看周星驰的大话西游一样。还他一张票钱。
+            </p>
+            <p>Copyright © 2016-2018 <em>/</em> {$url} <em>/</em> All Rights Reserved <em>/</em>
+                <a href="https://jinshuju.net/f/cBs5xb" target="_blank" rel="nofollow">版权投诉</a> 联系我们
+            </p>
+        </div>
+    </div>
+</div>
+<div class="alertTop_1" style="display: none;">
+    <p id="alertTop_1"></p>
+</div>
+<script src="/static/js/user-booklist.js"></script>
+{include file="./template/zymk/pc/pub/others.html"}
+</body>
+
+</html>

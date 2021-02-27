@@ -1,0 +1,74 @@
+{extend name="./template/default/m/pub/base.html" /}
+{block name="seo"}
+<title>购买历史-{$site_name}</title>
+{/block}
+{block name="content"}
+{include file="./template/default/m/pub/top3.html" /}
+<div style="margin-top:60px;" id="app">
+    <div class="buy-manga" v-for="(item, index) in buys" :key="index">
+        <div class="buy-manga-cover">
+            <a :href="'/{$book_ctrl}/'+item.book.param">
+                <img :src="item.book.cover_url">
+            </a>
+        </div>
+        <div class="buy-manga-info">
+            <a :href="'/{$book_ctrl}/'+item.book.param">
+                <p class="buy-manga-title">{{item.book.book_name}}</p>
+            </a>
+            <p class="buy-manga-author">作者:{{item.author_name}}</p>
+            <a :href="'/{$chapter_ctrl}/' + item.chapter.id">
+                <p class="buy-manga-new">{{item.chapter.chapter_name}}</p>
+            </a>
+            <a :href="'/{$chapter_ctrl}/' + item.chapter.id" class="buy-manga-right  active"> 点击阅读 </a>
+        </div>
+    </div>
+</div>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            buys: [],
+            page: 0,
+            isMore: 1,
+        },
+        methods: {
+            getBuys() {
+                axios.get("/getBuyHistory", {
+                    params: {
+                        page: this.page
+                    }
+                }).then(response => {
+                    if (response.data.err == 1) {
+                        this.isMore = 0 //设置好之后，上拉加载就不再请求接口了
+                        ShowDialog('没有更多了')
+                    } else {
+                        this.buys = this.buys.concat(response.data.buys)
+                        console.log(this.buys)
+                    }
+                })
+            },
+            onScroll() {                    //可滚动容器的高度
+                var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+                //变量windowHeight是可视区的高度
+                var windowHeight = document.documentElement.clientHeight || document.body.clientHeight;
+                //变量scrollHeight是滚动条的总高度
+                var scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
+                //滚动条到底部的条件
+                if (scrollTop + windowHeight == scrollHeight) {
+                    if (this.isMore == 1) { //如果还有更多数据，再请求接口，否则不再请求，节省服务器资源
+                        this.getBuys(0)
+                        this.page = this.page + 15
+                    }
+                }
+            }
+        },
+        mounted() {
+            this.getBuys()
+            this.page = this.page + 15
+        },
+        created() {
+            window.addEventListener('scroll', this.onScroll);
+        }
+    })
+</script>
+{/block}

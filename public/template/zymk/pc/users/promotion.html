@@ -1,0 +1,89 @@
+{extend name="./template/zymk/pub/base.html" /}
+{block name="seo"}
+<title>推广赚钱-{$site_name}</title>
+{/block}
+{block name="content"}
+<section class="mk-container">
+   <header class="mk-header fixed">
+    <div class="left">
+      <a href="/ucenter"><i class="back ift-goback"></i></a>
+    </div>
+    <h1 class="title">推广赚钱</h1>
+   </header>
+   <div class="blank88"></div>
+   <div class="mk-face">
+    <img class="face-img" src="https://ae01.alicdn.com/kf/He3cda13f34d44e8fb85dcdf6c7768398F.gif" alt="复制链接" style="background: url(./template/zymk/images/holdupingot.png) center center / cover no-repeat; opacity: 1;" />
+    <div class="face-signin" id="signBtn">
+     复制链接
+    </div>
+    <div class="face-hint">
+     每邀请1人可获得奖励，当日邀请8人可获得当日VIP
+    </div>
+   </div>
+   <div class="mk-calendar">
+    <div class="calendar-header">
+     <span id="calendarDay">下线任意1笔消费,您都有{$promotion_rate}%的奖励</span>
+     <div class="calendar-tag">
+      已奖励
+      <span id="continuousDay">{$promotion_sum}</span>元
+     </div>
+    </div>
+    <div class="calendar-body">
+     <div class="week clear">
+      <div class="week-num">
+       推广时间
+      </div>
+      <div class="week-num">
+       推广奖励
+      </div>
+     </div>
+     <div class="days">
+      <div id="calendarContainer" class="days-container clear"> 
+       {volist name="rewards" id="vo"}
+       <div class="day e-day" data-type="now">{$vo.create_time|date='Y-m-d'}</div> 
+       {/volist}
+       {volist name="rewards" id="vo"}
+       <div class="day e-day day-gift" data-type="max">{$vo.money} 元<i class="ift-gift"></i></div> 
+        {/volist}
+      </div>
+     </div>
+    </div>
+    <div class="calendar-info">
+     <div class="article">
+      把链接分享给亲密好友,论坛
+      <br />社区都可以哦~
+     </div>
+     <div class="board">
+      <label>当前已邀请</label> 
+      <span><strong id="supplementDay">0</strong> 人</span>
+     </div>
+    </div>
+        <div class="calendar-info">
+     <div class="yqurl">
+     	<b>如上方按钮失效请手动复制</b><br />
+     	{$url}?pid={$Think.session.xwx_user_id}
+     </div>
+     <div class="erweima">
+      <img src="http://api.k780.com:88/?app=qr.get&data={$url}?pid={$Think.session.xwx_user_id}&level=L&size=6">
+     </div>
+     <input type="text" value="精品免费韩漫站,最新最热都有同步更新,每日邀请8人可获得当天VIP权限,请复制链接在浏览器中打开!{$url}?pid={$Think.session.xwx_user_id}" id="copy-text" style="display:none;">
+    </div>
+   </div>
+  </section>
+  <script type="text/javascript">
+    window.onload = function(){
+       $('#supplementDay').text($('#calendarContainer div i').length);
+    }
+</script>
+<script src="https://cdn.bootcss.com/clipboard-polyfill/3.0.0-beta3/clipboard-polyfill.js"></script>
+  <script type="text/javascript">
+    $('#signBtn').click(function () {
+        var text=$('#copy-text').val();
+        clipboard.writeText(text).then(function(){
+            __global.layerMsg('复制成功');
+        }, function(err){
+            __global.layerMsg('复制失败');
+        });
+    })
+</script>
+{/block}

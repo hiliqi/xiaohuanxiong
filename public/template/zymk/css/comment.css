@@ -1,0 +1,403 @@
+.comment-textarea-box-ft .comment-submit:before,
+.comment-textarea-box-ft .comment-submit:hover:before {
+                                            content: "";
+                                            height: 0;
+                                            width: 0;
+                                            overflow: hidden
+}
+
+.comment-list-item,
+.comment-list-tabtitle,
+.comment-textarea-box-ft,
+.comment .comment-bars {
+    zoom: 1
+}
+
+.comment-list-item:after,
+.comment-list-tabtitle:after,
+.comment-textarea-box-ft:after,
+.comment .comment-bars:after {
+    content: "";
+    display: table;
+    clear: both
+}
+
+@font-face {
+    font-family: ACGN_comment;
+    src: url(//static.321mh.com/comment/fonts/iconfont.eot);
+    src: url(//static.321mh.com/comment/fonts/iconfont.eot#iefix) format("embedded-opentype"), url(//static.321mh.com/comment/fonts/iconfont.woff) format("woff"), url(//static.321mh.com/comment/fonts/iconfont.woff2) format("woff2"), url(//static.321mh.com/comment/fonts/iconfont.ttf) format("truetype"), url(//static.321mh.com/comment/fonts/iconfont.svg#ACGN_comment) format("svg")
+}
+
+.comment-ift,
+[class*=comment-ift-] {
+    font-family: ACGN_comment !important;
+    font-size: 16px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale
+}
+
+.comment-ift-support:before,
+.comment-ift-supported:before {
+    content: "\e6f1"
+}
+
+.comment-ift-elite:before {
+    content: "\e6f0"
+}
+
+.comment-ift-top:before {
+    content: "\e6f2"
+}
+
+.comment {
+    font-size: 14px;
+    padding: 10px;
+    font-family: Microsoft Yahei, SimSun, Tahoma, arial, SimHei, sans-serif;
+    background: white
+}
+
+.comment * {
+    padding: 0;
+    margin: 0
+}
+
+.comment .comment-hd {
+    border-bottom: 1px solid #fc6454;
+    margin-bottom: 10px;
+    height: 40px
+}
+
+.comment .comment-hd .title {
+    float: left;
+    position: relative;
+    z-index: 1;
+    height: 40px;
+    padding: 0 20px;
+    line-height: 40px;
+    font-size: 20px;
+    border: 1px solid #fc6454;
+    border-bottom: 0;
+    margin-bottom: -1px;
+    border-radius: 3px 3px 0 0;
+    color: #fc6454;
+    background-color: white;
+    cursor: pointer
+}
+
+.comment-number {
+    float: right;
+    padding-top: 10px;
+    height: 30px;
+    line-height: 30px;
+    color: #fc6454
+}
+
+.comment-number strong {
+    padding: 0 5px;
+    font-size: 20px;
+    font-family: Impact
+}
+
+.comment-more-box {
+    height: 30px;
+    margin-bottom: 10px;
+    line-height: 30px;
+    border-radius: 0 0 3px 3px;
+    background: #f5f5f5;
+    text-align: center
+}
+
+.comment-more-box .comment-more {
+    font-size: 14px;
+    color: #999;
+    cursor: pointer
+}
+
+.comment .comment-bars {
+    margin-top: 10px;
+    height: 20px;
+    line-height: 20px;
+    font-size: 12px;
+    color: #999
+}
+
+.comment .comment-time {
+    float: left
+}
+
+.comment .comment-avatar {
+    margin-left: -56px;
+    float: left;
+    width: 48px;
+    padding-top: 4px
+}
+
+.comment .comment-figure {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 1px solid #f5f5f5;
+    text-align: center;
+    line-height: 40px
+}
+
+.comment .comment-figure img {
+    width: 100%;
+    height: auto;
+    font-size: 0;
+    vertical-align: top
+}
+
+.comment .comment-user {
+    height: 24px;
+    line-height: 24px;
+    color: #fc6454;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden
+}
+
+.comment-list-title {
+    font-size: 16px;
+    height: 21px;
+    line-height: 21px;
+    color: #fc6454
+}
+
+.comment-list-title:before {
+    content: "";
+    margin-right: 5px;
+    border-left: 4px solid #fc6454;
+    font-size: 12px;
+    vertical-align: 1px
+}
+
+.comment-list-tabtitle {
+    border-bottom: 1px solid #e5e5e5;
+    font-size: 14px
+}
+
+.comment-list-tabtitle-item {
+    float: left;
+    font-size: 14px;
+    margin-right: 10px;
+    color: #d25ab9;
+    cursor: pointer
+}
+
+.comment-list-tabtitle-item.comment-active {
+    position: relative;
+    color: #fc6454
+}
+
+.comment-list-tabtitle-item.comment-active:before {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: -1px;
+    height: 1px;
+    width: 100%;
+    background-color: #fc6454
+}
+
+.comment-list-item {
+    padding: 10px 0 10px 56px;
+    border-bottom: 1px dotted #e5e5e5
+}
+
+.comment-list-item .comment-list-item {
+    padding: 10px 0
+}
+
+.comment-list-item .comment-list-item.last,
+.comment-list-item .comment-list-item.last-child,
+.comment-list-item .comment-list-item:last-child {
+    border-bottom: 0
+}
+
+.comment-list-item .comment-list-item .comment-avatar {
+    width: 40px;
+    margin-left: -40px;
+    padding-top: 0
+}
+
+.comment-list-item .comment-list-item .comment-figure {
+    width: 32px;
+    height: 32px;
+    line-height: 32px
+}
+
+.comment .comment-issue {
+    margin-top: 5px;
+    min-height: 20px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #666;
+    word-break: break-all
+}
+
+.comment-textarea-box {
+    margin-bottom: 10px;
+    font-size: 0
+}
+
+.comment-textarea-box .comment-textarea {
+    width: 100%;
+    box-sizing: border-box;
+    display: block;
+    min-height: 60px;
+    margin: 0;
+    border: none;
+    outline: none;
+    padding: 5px 5px 0;
+    font-size: 14px;
+    color: #333;
+    background: transparent
+}
+
+.comment-textarea-box .comment-input-num {
+    position: absolute;
+    height: 12px;
+    line-height: 12px;
+    left: 0;
+    bottom: 0;
+    padding: 0 5px;
+    font-size: 12px;
+    color: #dcdcdc
+}
+
+.comment-textarea-box-bd {
+    position: relative;
+    border: 1px solid #fc6454;
+    border-radius: 3px;
+    padding-bottom: 12px
+}
+
+.comment-textarea-box-bd:hover {
+    box-shadow: 0 0 5px #f39f96
+}
+
+.comment-textarea-box-ft {
+    padding: 10px 0;
+    text-align: right
+}
+
+.comment-textarea-box-ft .comment-submit {
+    position: relative;
+    height: 32px;
+    padding: 0 16px;
+    border: 0;
+    outline: none;
+    font-size: 16px;
+    background-color: #fc6454;
+    color: #fff;
+    border-radius: 8px 8px 8px 0
+}
+
+.comment-textarea-box-ft .comment-submit:before {
+    position: absolute;
+    left: -5px;
+    bottom: 0;
+    border-bottom: 5px solid #fc6454;
+    border-left: 5px dashed transparent;
+    border-right: 5px dashed transparent
+}
+
+.comment-textarea-box-ft .comment-submit:hover {
+    opacity: .9
+}
+
+.comment-textarea-box-ft .comment-submit:hover:before {
+    border-bottom: 5px solid #fc6454;
+    border-left: 5px dashed transparent;
+    border-right: 5px dashed transparent
+}
+
+.comment-textarea-box .comment-noinfo {
+    text-align: center;
+    padding: 15px 0;
+    font-size: 14px;
+    color: #999
+}
+
+.comment-textarea-box .comment-noinfo .comment-bg {
+    padding-top: 110px;
+    text-align: center;
+    background: url(//static.321mh.com/comment/default/images/asmh_pic.png) 50% no-repeat;
+    background-size: contain
+}
+
+.comment .comment-reply-support {
+    vertical-align: middle;
+    float: right
+}
+
+.comment .comment-reply-support span {
+    display: inline-block;
+    vertical-align: middle;
+    height: 20px
+}
+
+.comment .comment-reply-support .comment-replay {
+    margin-left: 8px;
+    cursor: pointer
+}
+
+.comment .comment-ift-support,
+.comment .comment-ift-supported {
+    font-size: 14px;
+    cursor: pointer
+}
+
+.comment .comment-ift-support {
+    color: #dcdcdc
+}
+
+.comment .comment-ift-supported,
+.comment .comment-ift-top {
+    color: #fc6454
+}
+
+.comment .comment-ift-elite {
+    color: #ff7647
+}
+
+.comment .comment-loading {
+    height: 300px;
+    text-align: center;
+    line-height: 300px
+}
+
+.comment-layer-modal {
+    position: fixed;
+    z-index: 999;
+    top: 50%;
+    left: 50%;
+    width: 200px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    margin-left: -100px;
+    background: #333;
+    opacity: .7;
+    border-radius: 8px;
+    color: #fff
+}
+
+.comment .comment-noinfo {
+    padding: 40px 0;
+    text-align: center;
+    color: #999
+}
+
+.comment .comment-noinfo-bg {
+    display: block;
+    margin: 0 auto;
+    width: 126px;
+    height: 144px;
+    text-align: center;
+    background: url(//static.321mh.com/comment/default/images/noinfo.png) 50% no-repeat;
+    background-size: contain
+}

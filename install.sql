@@ -169,7 +169,7 @@ CREATE TABLE `xwx_book`
     `area_id`         int(11) NOT NULL COMMENT '漫画所属地区',
     `is_top`          tinyint(4) NOT NULL DEFAULT 0 COMMENT '是否推荐',
     `src_url`         varchar(255)   DEFAULT NULL COMMENT '原地址',
-    `is_copyright`    tinyint(4) NOT NULL DEFAULT 2 COMMENT '是否开启版权',
+    `is_copyright`    tinyint(4) NOT NULL DEFAULT 0 COMMENT '是否开启版权',
     PRIMARY KEY (`id`) USING BTREE,
     KEY               `tags` (`tags`) USING BTREE,
     KEY               `end` (`end`) USING BTREE,

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Language" content="zh-CN">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    {block name="seo"}{/block}
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta itemprop="name" content="韩国漫画，怦然心动漫画，真人漫画大全，免费漫画 - {$site_name}">
+    <meta itemprop="image" content="/static/images/favicon.ico">
+    <meta name="applicable-device" content="mobile">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="telephone=no" name="format-detection">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="full-screen" content="yes">
+    <meta name="x5-fullscreen" content="true">
+    <meta name="browsermode" content="application">
+    <meta name="x5-page-mode" content="app">
+    <meta name="msapplication-tap-highlight" content="no">
+    {block name="css"}{/block}
+    <script>!
+        function(i, e) {
+            function t() {
+                var e = n.getBoundingClientRect().width;
+                540 < e / m && (e = 540 * m);
+                var t = e / 10;
+                n.style.fontSize = t + "px",
+                    d.rem = i.rem = t
+            }
+            var a, r = i.document,
+                n = r.documentElement,
+                o = r.querySelector('meta[name="viewport"]'),
+                l = r.querySelector('meta[name="flexible"]'),
+                m = 0,
+                s = 0,
+                d = e.flexible || (e.flexible = {});
+            if (o) {
+                console.warn("将根据已有的meta标签来设置缩放比例");
+                var p = o.getAttribute("content").match(/initial\-scale=([\d\.]+)/);
+                p && (s = parseFloat(p[1]), m = parseInt(1 / s))
+            } else if (l) {
+                var c = l.getAttribute("content");
+                if (c) {
+                    var u = c.match(/initial\-dpr=([\d\.]+)/),
+                        f = c.match(/maximum\-dpr=([\d\.]+)/);
+                    u && (m = parseFloat(u[1]), s = parseFloat((1 / m).toFixed(2))),
+                    f && (m = parseFloat(f[1]), s = parseFloat((1 / m).toFixed(2)))
+                }
+            }
+            if (!m && !s) {
+                var v = (i.navigator.appVersion.match(/android/gi), i.navigator.appVersion.match(/iphone/gi)),
+                    h = i.devicePixelRatio;
+                s = 1 / (m = v ? 3 <= h && (!m || 3 <= m) ? 3 : 2 <= h && (!m || 2 <= m) ? 2 : 1 : 1)
+            }
+            if (n.setAttribute("data-dpr", m), !o) if ((o = r.createElement("meta")).setAttribute("name", "viewport"), o.setAttribute("content", "initial-scale=" + s + ", maximum-scale=" + s + ", minimum-scale=" + s + ", user-scalable=no"), n.firstElementChild) n.firstElementChild.appendChild(o);
+            else {
+                var x = r.createElement("div");
+                x.appendChild(o),
+                    r.write(x.innerHTML)
+            }
+            i.addEventListener("resize",
+                function() {
+                    clearTimeout(a),
+                        a = setTimeout(t, 300)
+                },
+                !1),
+                i.addEventListener("pageshow",
+                    function(e) {
+                        e.persisted && (clearTimeout(a), a = setTimeout(t, 300))
+                    },
+                    !1),
+                "complete" === r.readyState ? r.body.style.fontSize = 12 * m + "px": r.addEventListener("DOMContentLoaded",
+                    function() {
+                        r.body.style.fontSize = 12 * m + "px"
+                    },
+                    !1),
+                t(),
+                d.dpr = i.dpr = m,
+                d.refreshRem = t,
+                d.rem2px = function(e) {
+                    var t = parseFloat(e) * this.rem;
+                    return "string" == typeof e && e.match(/rem$/) && (t += "px"),
+                        t
+                },
+                d.px2rem = function(e) {
+                    var t = parseFloat(e) / this.rem;
+                    return "string" == typeof e && e.match(/px$/) && (t += "rem"),
+                        t
+                }
+        } (window, window.lib || (window.lib = {}))
+    </script>
+    <link rel="stylesheet" href="/template/zymk/css/entry.allcss.e7bf7e.css">
+    
+</head>
+
+<body>
+{block name="content"}{/block}
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="/template/zymk/js/vendor.275f47.js"></script>
+<script src="/template/zymk/js/common.33060a.js"></script>
+<script src="https://lib.baomitu.com/vue/2.6.10/vue.min.js"></script>
+<script src="https://lib.baomitu.com/axios/0.19.2/axios.min.js"></script>
+{block name="js"}{/block}
+{include file="./template/zymk/m/pub/others.html"}
+</body>
+
+</html>

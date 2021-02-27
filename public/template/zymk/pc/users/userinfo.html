@@ -1,0 +1,28 @@
+{extend name="./template/zymk/pub/base.html" /}
+{block name="seo"}
+<title>修改昵称-{$site_name}</title>
+{/block}
+{block name="content"}
+<section class="mk-container">
+   <div class="setper">
+    <header class="mk-header fixed">
+     <div class="left">
+      <a href="/ucenter"><i class="back ift-goback"></i></a>
+     </div>
+     <h1 class="title">昵称</h1>
+    </header>
+    <div class="blank88"></div>
+    <div class="input-area">
+     <div class="userName">
+      <i class="ift-mantou_ thumbnail"></i> 
+      <input type="input" placeholder="请输入您的新昵称" autocomplete="off" maxlength="20" id="nick_name" />
+     </div>
+     <span class="tips">允许使用中英文、数字和下划线,可输入20字符</span>
+     <div >
+      <a href="javascript:void(0);" class="updateBtn" id="btnsave">确定</a>
+     </div>
+    </div>
+   </div>
+  </section>
+  <script src="./template/zymk/js/entry.userinfo.bf0a33.js"></script>
+{/block}

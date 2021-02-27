@@ -16,29 +16,30 @@ class Paynotify extends BaseController
     public function index()
     {
         $data = request()->param();
-        $alipay_config['partner'] = config('payment.pay.appid');
-        $alipay_config['key'] = config('payment.pay.appkey');
-        //签名方式 不需修改
-        $alipay_config['sign_type'] = strtoupper('MD5');
-        //字符编码格式 目前支持 gbk 或 utf-8
-        $alipay_config['input_charset'] = strtolower('utf-8');
-        //访问模式,根据自己的服务器是否支持ssl访问，若支持请选择https；若不支持请选择http
-        $alipay_config['transport'] = str_replace('://', '', 'http://');
-        $alipay_config['transport'] = str_replace('://', '', 'https://');
-        //支付API地址
-        $alipay_config['apiurl'] = config('payment.pay.getway');
-        $alipayNotify = new AlipayNotify($alipay_config);
-        $verify_result = $alipayNotify->verifyNotify();
-        if($verify_result){
+        ksort($_POST); //排序post参数
+        reset($_POST); //内部指针指向数组中的第一个元素
+        $codepay_key=config('payment.pay.appkey'); //这是您的密钥
+        $sign = '';//初始化
+        foreach ($_POST AS $key => $val) { //遍历POST参数
+            if ($val == '' || $key == 'sign') continue; //跳过这些不签名
+            if ($sign) $sign .= '&'; //第一个字符串签名不加& 其他加&连接起来参数
+            $sign .= "$key=$val"; //拼接为url参数形式
+        }
+        if (!$data['pay_no'] || md5($sign . $codepay_key) != $data['sign']) { //不合法的数据
+            return 'fail';  //返回失败 继续补单
+        } else { //合法的数据
+            //业务处理
+            $money = (float)$data['money']; //实际付款金额
+            $price = (float)$data['price']; //订单的原价
             $number = config('site.domain').'_';
-            $order_id = str_replace($number, '', $data['out_trade_no']);
+            $order_id = str_replace($number, '', $data['pay_id']);
             try {
                 $order = UserOrder::findOrFail($order_id); //通过返回的订单id查询数据库
                 $status = 0;
-                if ((int)$data['trade_status'] == "TRADE_SUCCESS") { //如果已支付，则更新用户财务信息
+                if ($money == $price) { //如果已支付，则更新用户财务信息
                     $status = 1;
                     if (intval($order->status) == 0) {
-                        $order->money = $data['money'];
+                        $order->money = $money;
                         $order->update_time = time(); //云端处理订单时间戳
                         $order->status = $status;
                         $order->save(); //更新订单
@@ -47,7 +48,7 @@ class Paynotify extends BaseController
                         $userFinance->user_id = $order->user_id;
                         $userFinance->money = $order->money;
                         $userFinance->usage = (int)$order->pay_type == 1 ? 1 : 2;
-                        $userFinance->summary = '易支付';
+                        $userFinance->summary = '码支付';
                         $userFinance->save(); //存储用户财务数据
 
                         if (intval($order->pay_type) == 2) { //再处理一遍购买vip的逻辑
@@ -83,8 +84,6 @@ class Paynotify extends BaseController
             } catch (ModelNotFoundException $e) {
                 return 'fail';
             }
-        } else {
-            return 'fail';
         }
     }
 }

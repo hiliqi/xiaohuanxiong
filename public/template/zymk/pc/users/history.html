@@ -1,0 +1,75 @@
+{extend name="./template/zymk/pub/base.html" /}
+{block name="seo"}
+<title>阅读记录-{$site_name}</title>
+{/block}
+{block name="content"}
+<section class="mk-container">
+   <div class="record">
+    <header class="mk-header fixed">
+     <div class="left">
+      <a href="/ucenter"><i class="back ift-goback"></i></a>
+     </div>
+     <h1 class="title">阅读历史</h1>
+     <div class="right">
+      <i class="layout ift-layout-list" id="layout" onclick="javascript:listHistory();"></i>
+      <i class="layout ift-layout-nine" id="layoutclose" style="display:none;" onclick="javascript:nineReadhistoryClose();" ></i>
+      <i class="manage ift-manage" id="manage" onclick="javascript:editReadhistory();"></i>
+      <i class="manage ift-unmanage" id="btneditclose" style="display:none;" onclick="javascript:editReadhistoryClose();"></i>
+     </div>
+    </header>
+    <div class="blank88"></div>
+    
+    <ul class="container layout-nine" style="min-height: 16.61rem;">
+    {volist name="books" id="vo" empty="<p  style='padding: .26667rem .53334rem .53334rem;text-align: center;height: 75px;line-height: 75px;color: #999;margin: auto;'>暂无数据</p>"}
+      <li class="comicItem">
+        <div class="comic-item">
+      	<div class="thumbnail">
+      		<div class="check" style="display: none;" href="javascript:void(0);" mid="{$vo.book_id}"></div>
+      		<a href="/book/{$id_salt}{$vo.book_id}" title="{$vo.book_name}">
+      		<img class="item-img" src="https://ae01.alicdn.com/kf/He3cda13f34d44e8fb85dcdf6c7768398F.gif" mid="{$vo.book_id}" style="background: url({$img_site}/static/upload/book/{$vo.book_id}/cover.jpg) center center / cover no-repeat; opacity: 1;">
+      		</a>
+      		</div>
+      		<span class="title ellipsis">{$vo.book_name}</span>
+      		
+      		</div>
+      	</li>
+      	 {/volist}
+    </ul>
+    <ul class="container layout-list" style="display: none; min-height: 16.61rem;">
+    {volist name="books" id="vo" empty="<p  style='padding: .26667rem .53334rem .53334rem;text-align: center;height: 75px;line-height: 75px;color: #999;margin: auto;'>暂无数据</p>"}
+     <li class="listItem">
+    <div class="check1" mid="{$vo.book_id}">
+     <div class="thumbnail">
+     <a href="/book/{$id_salt}{$vo.book_id}" title="{$vo.book_name}">
+      <img class="item-img" src="https://ae01.alicdn.com/kf/He3cda13f34d44e8fb85dcdf6c7768398F.gif" mid="{$vo.book_id}" style="background: url({$img_site}/static/upload/book/{$vo.book_id}/cover.jpg) center center / cover no-repeat; opacity: 1;" />
+       </a>
+     </div>
+     
+     <div class="textBox" mid="{$vo.book_id}">
+     <a href="/book/{$id_salt}{$vo.book_id}" title="{$vo.book_name}">
+      <span class="itemTitle" mid="{$vo.book_id}">{$vo.book_name}</span>
+      <div class="chapterInfo" mid="{$vo.book_id}">
+       <span class="lastChapter" mid="{$vo.book_id}">更新到：{$vo.chapter_name}</span>
+      </div>
+      </a>
+      <div class="listCheck ift-uncheck" id="listCheck" mid="{$vo.book_id}" style="color: #fc6454; display:none;"></div>
+     </div>
+    </div>
+    </li>
+    {/volist}
+    </ul>
+
+    <footer style="display:none">
+     <div class="checkAll ift-check" data-type="checkAll">
+      <a href="javascript:deleteAllReadhistory();" >清空</a>
+     </div>
+     <a href="javascript:deleteReadhistory();" class="del ift-del" data-type="del">
+      删除
+      <span class="checkNum"></span>
+      </a>
+    </footer>
+    <div class="blank44" style="display: none;"></div>
+   </div>
+  </section>
+  <script src="./template/zymk/js/entry.record.c8746c.js"></script>
+{/block}

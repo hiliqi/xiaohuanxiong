@@ -1,0 +1,28 @@
+{extend name="./template/zymk/pub/base.html" /}
+{block name="seo"}
+<title>反馈报错-{$site_name}</title>
+{/block}
+{block name="content"}
+ <section class="mk-container">
+   <div class="feedback">
+    <header class="mk-header fixed">
+     <div class="left">
+       <a href="/ucenter"><i class="back ift-goback"></i></a>
+     </div>
+     <h1 class="title">反馈报错</h1>
+    </header>
+    <div class="blank88"></div>
+    <div class="m-twotab">
+       <a class="cz crt" href="javascript:;" tab="tab-recharge" provider="CZ"><span>留言提交</span></a>
+       <a class="xf" href="/message" tab="tab-cost" provider="XF"><span>查看回复</span></a>
+     </div>
+    <form>
+     <div class="inputArea">
+      <textarea  id="txtHelpContent" class="usermsg" placeholder="输入反馈意见"></textarea> 
+     </div>
+     <input type="button" onclick="subForm(1)" class="submit" value="提交"  />
+    </form>
+   </div>
+  </section>
+  <script src="./template/zymk/js/entry.feedback.771bd4.js"></script>
+{/block}

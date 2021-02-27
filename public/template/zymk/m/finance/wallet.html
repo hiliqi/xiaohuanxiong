@@ -1,0 +1,30 @@
+{extend name="./template/default/m/pub/base.html" /}
+{block name="seo"}
+<title>我的钱包-{$site_name}</title>
+{/block}
+{block name="content"}
+{include file="./template/default/m/pub/top3.html" /}
+<div class="wallet-main">
+    <div class="wallet-main-coin">
+        <div class="wallet-main-coin-left">
+            <span class="wallet-main-coin-title"> 账户余额 </span>
+        </div>
+        <div class="wallet-main-coin-right">
+            <span class="wallet-main-coin-value">{$balance}</span> 元
+        </div>
+    </div>
+    <a href="/charge" class="wallet-main-coin-btn">去充值</a>
+</div>
+<div class="wallet-menu">
+    <a class="wallet-menu-item" href="/chargehistory">充值记录
+        <img class="wallet-menu-arrow" src="/static/images/wallet-menu-arrow.png">
+    </a>
+    <a class="wallet-menu-item" href="/spendinghistory">消费记录
+        <img class="wallet-menu-arrow" src="/static/images/wallet-menu-arrow.png">
+    </a>
+    <a class="wallet-menu-item" href="/buyhistory">购买的作品
+        <img class="wallet-menu-arrow" src="/static/images/wallet-menu-arrow.png">
+    </a>
+</div>
+
+{/block}

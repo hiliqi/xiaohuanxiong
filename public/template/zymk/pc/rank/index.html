@@ -1,0 +1,104 @@
+{extend name="./template/zymk/pc/pub/base.html" /}
+{block name="seo"}
+<title>漫画排行榜-{$site_name}</title>
+{/block}
+{block name="content"}
+<div class="container top-padding">
+    <div class="row">
+        <div class="crumb">
+            <em>当前位置</em> : <a href="/" title="{$site_name}">{$site_name} </a>>
+            <a href="/{$rank_ctrl}" title="排行榜">排行榜</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="rank-aside">
+            <dl class="rank-type">
+                <dt class="hd">漫画排行</dt>
+                <dd class="bd">
+                    <a title="根据漫画更新日期排名" onclick="shift('newest','更新榜')">
+                        <i class="ift-ticket"></i>更新榜
+                    </a>
+                    <a title="根据漫画点击量排名" onclick="shift('hot','人气榜')">
+                        <i class="ift-click"></i>人气榜
+                    </a>
+                    <a title="根据漫画完结排名" onclick="shift('ends','完结榜')">
+                        <i class="ift-recommend"></i>完结榜
+                    </a>
+                </dd>
+            </dl>
+        </div>
+        <div class="rank-main">
+            <div class="warp-main">
+                <div class="tabs">
+                    <div class="hd">
+                        <h2 class="title"><i class="ift-rank"></i>漫画更新榜</h2>
+                    </div>
+                    <div class="bd rank-type-box">
+                        {volist name="list" id="item"}
+                        <div class="tabs-item clearfix" id="{$item['id']}">
+                            <div class="col-8">
+                                <ul class="rank-list align-left">
+                                    {volist name="item['keyword']" id="keyword" offset="0" length="10"}
+                                    <li class="item">
+                                        <span class="count-num">
+                                            <strong>{$keyword.clicks}</strong>
+                                            <i class="ift-ticket"></i>
+                                        </span>
+                                        <span class="rank-num">{$i}</span>
+                                        <a href="/{$book_ctrl}/{$keyword.param}" title="{$keyword.book_name}漫画">{$keyword.book_name}</a>
+                                    </li>
+                                    {/volist}
+                                </ul>
+                            </div>
+
+                            <div class="col-8">
+                                <ul class="rank-list align-left">
+                                    {volist name="item['keyword']" id="keyword" offset="10" length="10"}
+                                    <li class="item">
+                                        <span class="count-num">
+                                            <strong>{$keyword.clicks} </strong>
+                                            <i class="ift-ticket"></i>
+                                        </span>
+                                        <span class="rank-num">{$i}</span>
+                                        <a href="/{$book_ctrl}/{$keyword.param}" title="{$keyword.book_name}漫画">{$keyword.book_name}</a>
+                                    </li>
+                                    {/volist}
+                                </ul>
+                            </div>
+
+                            <div class="col-8">
+                                <ul class="rank-list align-left">
+                                    {volist name="item['keyword']" id="keyword" offset="20" length="10"}
+                                    <li class="item">
+                                        <span class="count-num">
+                                            <strong>{$keyword.clicks} </strong>
+                                            <i class="ift-ticket"></i>
+                                        </span>
+                                        <span class="rank-num">{$i}</span>
+                                        <a href="/{$book_ctrl}/{$keyword.param}" title="{$keyword.book_name}漫画">{$keyword.book_name}</a>
+                                    </li>
+                                    {/volist}
+                                </ul>
+                            </div>
+                        </div>
+                        {/volist}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            $(function () {
+                $('#charge').hide();
+                $('#hot').hide();
+                $('#ends').hide();
+            })
+
+            function shift(id, title) {
+                $('.tabs-item').hide();
+                $('#' + id).show();
+                $('h2').innerText = '漫画' + title;
+            }
+        </script>
+    </div>
+</div>
+{/block}

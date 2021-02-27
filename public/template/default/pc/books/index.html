@@ -143,7 +143,7 @@
                 <div class="detail-list-title" id="detail-list-title">
                     <a href="javascript:void(0);" onclick="sortBtnClick();" mode="0" class="order desc inverted">倒序</a>
                 </div>
-                {if $book.is_copyright == 2}
+                {if $book.is_copyright == 0}
                 <div id="chapterlistload">
                     <ul class="view-win-list detail-list-select" id="detail-list-select">
                         {volist name="book.chapters" id="vo"}

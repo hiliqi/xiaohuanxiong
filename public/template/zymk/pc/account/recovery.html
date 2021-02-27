@@ -1,0 +1,74 @@
+{extend name="./template/zymk/pub/user_base.html" /}
+{block name="seo"}
+<title>找回密码 - {$site_name}</title>
+<link rel="stylesheet" href="./template/zymk/css/account.css">
+{/block}
+{block name="content"}
+{if $Think.session.xwx_user == null}{else /}<script type="text/javascript">window.location.href="/ucenter";</script>{/if}
+<div class="main-content">
+    <div class="container--response">
+      <div class="login-box">
+<div class="dialog-login">
+  <div class="j-pay-close dialog-pay_header--close" style="display: none;">
+    <i class="iconfont icon-ic_buy_toast_close"></i>
+  </div>
+  <div class="dialog-login_headerbar clearfix">
+    <div class="j-tab-title nav-item">找回密码</div>
+    <div class="nav-item-line"></div>
+  </div>
+  <div class="dialog-login_content clearfix">
+    <div class="tab-content">
+      <div class="j-tab-item tab-item active">
+	  	<form method="post" action="recovery" onsubmit="return resetpwdbyphone();">
+        <div class="dialog-login_form">
+          <h3 class="title">{$site_name}找回密码</h3>
+          <div class="form-item">
+            <div class="input-block">
+              <input type="text" id="txt_phone" name="txt_phone" class="txt_phone" autocomplete="off" placeholder="账户绑定手机号">
+            </div>
+          </div>
+          <div class="form-item">
+            <div class="input-block--inline">
+              <input type="text" id="txt_phonecode" name="txt_phonecode" placeholder="输入验证码" autocomplete="off">
+              <div class="j-sms-btn sms-btn" data-status="false" isok="1" id="btnphonecodeget">获取验证码</div>
+              <span class="form-tip mt" style="display:none;"></span>
+            </div>
+             </div>
+          <div class="form-item">
+            <div class="input-block">
+              <input type="password" id="txt_password" name="txt_password" placeholder="新密码" autocomplete="off">
+            </div>
+          </div>
+           <div class="form-item">
+            <div class="input-block">
+              <input id="txt_password2" name="txt_password2"  type="password"  placeholder="再次输入新密码" autocomplete="off">
+            </div>
+          </div>
+          <div class="form-item">
+            	<input type="submit" onclick="javascript:$('form').submit();" name="dosubmit" class="j-login-submit submit-btn disabled-select" value="提交">
+          </div>
+        </div>
+      </form>
+	  </div>
+      </div>
+    <div class="other-login">
+      <h3 class="title">账户操作</h3>
+      <div class="other-login-qq">
+        <a href="/login" rel="nofollow">
+          <i class="iconfont icon-ic_buytoast_qq"></i>登陆
+        </a>
+      </div>
+      <div class="other-login-wx">
+        <a href="/register" rel="nofollow">
+          <i class="iconfont icon-ic_buytoast_qq"></i>注册
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+      </div>
+    </div>
+  </div>
+  <script src="./template/zymk/js/phone.js"></script>
+  <script></script>
+{/block}

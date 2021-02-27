@@ -1,0 +1,41 @@
+{extend name="./template/default/m/pub/base.html" /}
+{block name="seo"}
+<title>vip-{$site_name}</title>
+{/block}
+{block name="content"}
+{include file="./template/default/m/pub/top3.html" /}
+<div class="vip-exchange">
+    <p class="vip-exchange-title"><span>VIP兑换</span></p>
+    <p id="hint" style="color: red;"></p>
+    <input id="code" class="vip-exchange-input" type="text" value="" placeholder="输入兑换码">
+    <a class="vip-exchange-btn" href="javascript:subCode();">立即兑换</a>
+    <div class="vip-exchange-tip">
+        <p class="vip-exchange-tip-title">兑换说明</p>
+        <p class="vip-exchange-tip-content">1、请在有效期内输入兑换码兑换VIP会员</p>
+        <p class="vip-exchange-tip-content">2、兑换成功后，可享受包月VIP特权</p>
+        <p class="vip-exchange-tip-content">3、如您已是VIP用户，兑换成功过后，VIP有效期会在原有时间上累加天数</p>
+    </div>
+</div>
+<div class="toast" style="display:none;"></div>
+<script>
+    function subCode() {
+        var code = $('#code').val();
+        if (code == '') {
+            ShowDialog('请输入vip码');
+        } else {
+            $.post({
+                url: '/vipexchange',
+                data: {'code': code},
+                success: function (res) {
+                    ShowDialog(res.msg);
+                    if (res.err == 0) {
+                        setTimeout(function () {
+                            location.href = '/ucenter';
+                        }, 1000);
+                    }
+                }
+            })
+        }
+    }
+</script>
+{/block}

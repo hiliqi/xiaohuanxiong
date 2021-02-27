@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>{$chapter.book.book_name}-{$chapter.chapter_name}免费阅读-{$site_name}</title>
+    <meta name="description" itemprop="description" content="当前阅读的是{$chapter.book.book_name}的{$chapter.chapter_name}">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <!---识别手机或电脑的js开始--->
+    <script>
+        function is_mobile() {
+            var regex_match = /(nokia|iphone|android|motorola|^mot-|softbank|foma|docomo|kddi|up.browser|up.link|htc|dopod|blazer|netfront|helio|hosin|huawei|novarra|CoolPad|webos|techfaith|palmsource|blackberry|alcatel|amoi|ktouch|nexian|samsung|^sam-|s[cg]h|^lge|ericsson|philips|sagem|wellcom|bunjalloo|maui|symbian|smartphone|midp|wap|phone|windows ce|iemobile|^spice|^bird|^zte-|longcos|pantech|gionee|^sie-|portalmmm|jigs browser|hiptop|^benq|haier|^lct|operas*mobi|opera*mini|320x320|240x320|176x220)/i;
+            var u = navigator.userAgent;
+            if (null == u) {
+                return true;
+            }
+            var result = regex_match.exec(u);
+
+            if (null == result) {
+                return false
+            } else {
+                return true
+            }
+        }
+        if (is_mobile()) {
+            var pathname = window.location.pathname;
+            var url = window.location.search; //获取url中"?"符后的字串
+            window.location.href= '{$mobile_url}' + pathname + url;
+        }
+    </script>
+    <!---识别手机或电脑的js结束--->
+    <link rel="stylesheet" type="text/css" href="/static/css/pc_read.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/view.css">
+</head>
+
+<body class="read-view">
+<div class="header">
+    <div class="row">
+        <div class="crumbs">
+            <a href="/" title="{$site_name}">{$site_name}</a> &gt;
+            <a class="comic-name" href="/{$book_ctrl}/{$chapter.book_id}" title="{$chapter.book.book_name}">{$chapter.book.book_name}</a>
+        </div>
+        <h1 class="title">{$chapter.book.book_name} {$chapter.chapter_name}</h1>
+        <div class="shareBtn">
+            <a href="javascript:void(0)" class="phone">微信中阅读
+                <span class="code"><img src="/static/images/wxqrcode.jpg"><p>扫码关注公众号</p></span>
+            </a>
+        </div>
+    </div>
+</div>
+<div class="view-pay">
+    <div class="view-pay-form">
+        <div class="top">
+            <p class="subtitle">此章节为付费章节</p>
+            <p class="tip">您可以直接购买，或是关注公众号购买阅读</p>
+            <img src="/static/images/wxqrcode.jpg" class="code">
+            <div class="bottom"><span>当前余额：{$balance}元</span></div>
+        </div>
+        <div class="main">
+            <p class="subtitle">购买此章节</p>
+            <p class="tip">应付：<span class="red">{$price}元</span></p>
+            <a href="javascript:void(0)" class="view-pay-btn" id="view-chapterpay-btn">购买本章</a>
+            <a style="top:150px;right: 40px;position: absolute;color: red" href="/charge">余额不足？请先充值</a>
+        </div>
+        <p class="view-sales"><span>vip</span><a href="/vip">购买vip 畅读所有付费漫画</a> </p>
+    </div>
+</div>
+<div class="alertTop_1" style="display: none;">
+    <p id="alertTop_1"></p>
+</div>
+<script src="/static/js/index.js"></script>
+{if $cdn == 'bootcdn'}
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+{else /}
+<script src="https://lib.baomitu.com/jquery/1.12.4/jquery.min.js"></script>
+{/if}
+<script>
+    $('#view-chapterpay-btn').click(function () {
+        $.post({
+            url: '/buychapter',
+            data: {chapter_id: '{$chapter.id}'},
+            success: function (res) {
+                if (res.err == 0) {
+                    ShowDialog(res.msg);
+                    setTimeout(function () {
+                        location.href = '/{$chapter_ctrl}/{$chapter.id}';
+                    },1000);
+                } else {
+                    ShowDialog(res.msg);
+                }
+            }, error: function (jqXHR, textStatus, errorThrown) {
+                ShowDialog('遇到问题了');
+            }
+        })
+    })
+</script>
+{include file="./template/default/m/pub/others.html"}
+</body>
+
+</html>

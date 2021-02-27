@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Language" content="zh-CN">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    {block name="seo"}{/block}
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta itemprop="image" content="/static/images/favicon.ico">
+    <!---识别手机或电脑的js开始--->
+    <script>
+        function is_mobile() {
+            var regex_match = /(nokia|iphone|android|motorola|^mot-|softbank|foma|docomo|kddi|up.browser|up.link|htc|dopod|blazer|netfront|helio|hosin|huawei|novarra|CoolPad|webos|techfaith|palmsource|blackberry|alcatel|amoi|ktouch|nexian|samsung|^sam-|s[cg]h|^lge|ericsson|philips|sagem|wellcom|bunjalloo|maui|symbian|smartphone|midp|wap|phone|windows ce|iemobile|^spice|^bird|^zte-|longcos|pantech|gionee|^sie-|portalmmm|jigs browser|hiptop|^benq|haier|^lct|operas*mobi|opera*mini|320x320|240x320|176x220)/i;
+            var u = navigator.userAgent;
+            if (null == u) {
+                return true;
+            }
+            var result = regex_match.exec(u);
+
+            if (null == result) {
+                return false
+            } else {
+                return true
+            }
+        }
+        if (is_mobile()) {
+            var pathname = window.location.pathname;
+            var url = window.location.search; //获取url中"?"符后的字串
+            window.location.href= '{$mobile_url}' + pathname + url;
+        }
+    </script>
+    <!---识别手机或电脑的js结束--->
+    <link rel="shortcut icon" href="/static/images/favicon.ico">
+    <meta name="renderer" content="webkit">
+    <link rel="stylesheet" href="/template/zymk/css/vendor.ddc039.css">
+    {block name="css"}{/block}
+    <script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+<div class="container">
+    {block name="content"}{/block}
+    <div id="footer">
+        <div class="row ft-nav-bar">
+            <ul class="ft-rqCode">
+                <li class="item">
+                    <div class="thumbnail">
+                        <img src="https://ae01.alicdn.com/kf/Hc75026a77e3e49929a5ff37f95a583a3U.png" width="114" height="114" alt="扫描下载APP">
+                    </div>
+                    <p class="info" title="扫描下载APP">扫描下载APP</p>
+                </li>
+                <li class="item">
+                    <img title="少年有梦，青春有爱" src="https://ae01.alicdn.com/kf/H0a2e505e5fd84abb80b0dc7beb5b767cE.png" width="192" height="48" alt="少年有梦，青春有爱!">
+                </li>
+            </ul>
+            <div class="ft-nav">
+                <dl class="w1">
+                    <dt>关于我们</dt>
+                    <dd><a href="#" title="漫客简介">漫客简介</a></dd>
+                    <dd><a href="#" title="法律声明">法律声明</a></dd>
+                    <dd><a href="#" rel="nofollow" title="帮助中心">帮助中心</a></dd>
+                </dl>
+                <dl class="w1">
+                    <dt>商务合作</dt>
+                    <dd><a href="#" title="版权合作">版权合作</a></dd>
+                    <dd><a href="#" title="投稿指南">投稿指南</a></dd>
+                </dl>
+                <dl class="w2">
+                    <dt>友情链接</dt>
+                    {volist name="links" id="vo"}
+                    <dd><a href="{$vo.url}" title="{$vo.name}" target="_blank">{$vo.name}</a></dd>
+                    {/volist}
+                </dl>
+                <dl class="w3">
+                    <dt>关注我们</dt>
+                    <dd style="overflow:initial">
+                        <div class="ft-threepart">
+                            <a href="javascript:;" class="item" rel="nofollow"><i class="ift-weixin"></i>
+                            <div class="bd">
+                                <div class="thumbnail">
+                                    <img src="https://ae01.alicdn.com/kf/Hbb73205983fd4b80b80484e2865062c4G.jpg" alt=""></div>
+                                <p class="info">扫一扫，关注我们</p>
+                            </div>
+                        </a>
+                            <a href="#" class="item" rel="nofollow"><i class="ift-sina"></i>
+                            <div class="bd">
+                                <div class="thumbnail">
+                                    <img src="https://ae01.alicdn.com/kf/Hbb73205983fd4b80b80484e2865062c4G.jpg" alt="">
+                                </div>
+                                <p class="info">扫一扫，关注我们</p>
+                            </div>
+                        </a>
+                            <a href="#" class="item" rel="nofollow">
+                                <i class="ift-weibo"></i>
+                            <div class="bd">
+                                <div class="thumbnail">
+                                    <img src="https://ae01.alicdn.com/kf/Hbb73205983fd4b80b80484e2865062c4G.jpg"></div>
+                                <p class="info">扫一扫，关注我们</p>
+                            </div>
+                        </a></div>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+        <div class="row">
+            <p class="copyright tac">
+              Copyright &copy;2006-2019&nbsp;&nbsp;
+                <a href="{$url}" title="{$site_name}">{$site_name}</a>　{$site_name}　版权所有&nbsp;&nbsp;<br>
+            </p>
+        </div>
+    </div>
+    <ul class="toolbar" id="J_toolbar">
+        <li class="item">
+            <div class="hd"><i class="ift-phone"></i></div>
+            <div class="bd">
+                <ul class="app-download clearfix">
+                    <li class="item"><img src="https://ae01.alicdn.com/kf/Hd44bfd78746248abb503bf0add6646deL.png" alt="">
+                        <p class="text">扫描下载IOS/Android</p>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <li class="item">
+            <div class="hd"><i class="ift-weixin"></i></div>
+            <div class="bd">
+                <ul class="rq-corde clearfix">
+                    <li class="item">
+                        <a href="javascript:;" rel="nofollow">
+                            <img src="https://ae01.alicdn.com/kf/Hbb73205983fd4b80b80484e2865062c4G.jpg" alt="">
+                            <p class="text">微信</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <li class="item">
+            <div class="hd"><i class="ift-share"></i></div>
+            <div class="bd">
+                <div class="share bdsharebuttonbox bdshare-button-style0-16">
+                    <ul>
+                        <li><a href="javascript:;" rel="nofollow" data-cmd="sqq" class="ift-qq bds_sqq"></a>
+                            <h6 class="shareName">QQ</h6>
+                        </li>
+                        <li><a href="javascript:;" rel="nofollow" data-cmd="tsina" class="ift-sina bds_tsina"></a>
+                            <h6 class="shareName">新浪</h6>
+                        </li>
+                        <li><a href="javascript:;" rel="nofollow" data-cmd="weixin"
+                               class="ift-weixin bds_weixin"></a>\<h6 class="shareName">微信</h6>
+                        </li>
+                        <li><a href="javascript:;" rel="nofollow" data-cmd="qzone" class="ift-qqzone bds_qzone"></a>
+                            <h6 class="shareName">QQ空间</h6>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </li>
+        <li class="item" id="J_backtop">
+            <div class="hd"><i class="ift-up"></i></div>
+        </li>
+    </ul>
+    <div id="header">
+        <div class="row">
+            <div id="logo">
+                <a href="/" class="figuire" title="{$site_name}">
+                <img class="icon-logo" src="/template/zymk/images/logo.png" alt="{$site_name}"></a>
+            </div>
+            <div id="nav">
+                <ul>
+                    <li><a href="/" title="网站首页">首页</a></li>
+                    <li><a href="/{$booklist_act}" title="漫画分类大全">分类</a></li>
+                    <li><a href="/{$rank_ctrl}" title="漫画排行榜">排行</a></li>
+                    <li><a href="/{$update_act}" title="更新记录">更新</a></li>
+                    <li><a href="#" title="{$site_name}APP">APP</a></li>
+                </ul><i class="modify hide"></i>
+            </div>
+            <div class="aside">
+                <div class="search">
+                    <div class="bd">
+                        <input type="text" autocomplete="off" name="search" placeholder="斗破苍穹"
+                                           class="input" id="search">
+                        <button type="button" class="search-submit" id="J_search_btn">
+                            <label for="search" class="ift-search"></label>
+                        </button>
+                        <script>
+                            $('#J_search_btn').click(function () {
+                                var keyword = $('#search').val();
+                                window.location.href = '/{$search_ctrl}?keyword=' + keyword;
+                            })
+                        </script>
+                    </div>
+                </div>
+                <ul id="aside-nav">
+                    <li class="user">
+                        <div class="hd"><a href="/ucenter" title="用户登录"><i class="ift-user"></i></a></div>
+                    </li>
+                    <li class="mobile-web">
+                        <a href="#" title="下载手机app"><i class="ift-phone"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/template/zymk/js/vendor.ddc039.js"></script>
+<script src="/template/zymk/js/entry.index.572ed7.js"></script>
+{include file="./template/zymk/pc/pub/others.html"}
+</body>
+
+</html>

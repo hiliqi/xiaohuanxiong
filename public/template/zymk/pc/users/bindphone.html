@@ -1,0 +1,40 @@
+{extend name="./template/zymk/pub/base.html" /}
+{block name="seo"}
+<title>绑定手机-{$site_name}</title>
+{/block}
+{block name="css"}
+<link rel="stylesheet" href="/static/css/account.css">
+{/block}
+{block name="content"}
+<section class="mk-container">
+   <div class="pay">
+    <header class="mk-header fixed">
+     <div class="left">
+      <a href="/ucenter"><i class="back ift-goback"></i></a>
+     </div>
+     <h1 class="title">绑定手机</h1>
+    </header>
+<div class="line-container">
+    <p class="input-con-tip2">绑定新手机</p>
+    <div class="input-con">
+        <span class="input-con-title">国家/地区</span>
+        <select id="txt_areacode" name="txt_areacode" class="txt_areacode">
+            <option value="86">中国</option>
+        </select>
+    </div>
+    <div class="input-con">
+        <span class="input-con-title">+86（中国）</span>
+        <input id="txt_phone" class="txt_phone" type="text" placeholder="输入手机号码" value="">
+    </div>
+    <div class="input-con">
+        <span class="input-con-title">短信验证码</span>
+        <input id="txt_phonecode" type="text" placeholder="输入短信验证码" value="">
+        <a href="javascript:void(0);" isok="1" class="input-con-code btnphonecodeget">获取验证码</a>
+    </div>
+    <p class="input-con-tip2">绑定新手机号码，原手机号将不再能用</p>
+    <input id="txt_code" name="code" type="hidden">
+</div>
+<a id="sub" class="line-container-btn">绑定</a>
+<div class="toast" style="display: none;"></div>
+<script src="/static/js/phone.js"></script>
+{/block}

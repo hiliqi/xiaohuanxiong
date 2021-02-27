@@ -1,0 +1,94 @@
+{extend name="./template/zymk/pub/base.html" /}
+{block name="seo"}
+<title>反馈报错-{$site_name}</title>
+{/block}
+{block name="content"}
+<style>
+.pagination a:nth-child(1){
+    position: fixed;
+    bottom: 10%;
+    width: 0.8rem;
+    height: 0.8rem;
+    z-index: 99;
+    color: white;
+    border-radius: 0.3rem;
+    text-align: center;
+    padding-top: 0.15rem;
+    left: 0.08rem;
+    background-color: #fc6454;
+    }
+
+.pagination a:nth-child(2) {
+    position: fixed;
+    bottom: 10%;
+    width: 0.8rem;
+    height: 0.8rem;
+    z-index: 99;
+    color: white;
+    border-radius: 0.3rem;
+    text-align: center;
+    padding-top: 0.15rem;
+    right: 0.08rem;
+    background-color: #fc6454;
+}
+</style>
+ <section class="mk-container">
+   <div class="feedback">
+    <header class="mk-header fixed">
+     <div class="left">
+       <a href="/ucenter"><i class="back ift-goback"></i></a>
+     </div>
+     <h1 class="title">查看回复</h1>
+    </header>
+    <div class="blank88"></div>
+    <div class="m-twotab">
+       <a class="cz" href="/leavemsg" tab="tab-recharge" provider="CZ"><span>留言提交</span></a>
+       <a class="xf crt" href="javascript:;" tab="tab-cost" provider="XF"><span>查看回复</span></a>
+     </div>
+    <ul id="js_comment_list">
+    {volist name="msgs" id="vo"}
+       <li id="30971725" class="comment-list-itemMessage">
+       <div class="comment-avatarMessage">
+       <div class="comment-figure">
+       <img src="https://ae01.alicdn.com/kf/He3cda13f34d44e8fb85dcdf6c7768398F.gif" alt="Christiane *" style="background: url(./template/zymk/images/payislogin.png) center center / cover no-repeat; height: 1.3rem;width: 1.3rem;">
+       </div>
+       </div>
+      <div class="comment-message">
+      <div class="comment-issueMessage"><p>{$vo.content}</p></div>
+             <div class="comment-bars">
+               <time class="comment-time">{$vo.create_time|date='Y-m-d'}</time>
+              <div class="comment-reply-support">
+              <i class="comment-ift-support" ></i>
+              <span class="comment-support-num" ></span>
+              <span class="comment-replay">自己</span>
+            </div>
+          </div>
+        </div>
+      </li>
+   {volist name="vo.replys" id="reply"}
+       <li id="30971725" class="comment-list-itemMessage">
+       <div class="comment-avatarMessage">
+       <div class="comment-figure">
+       <img src="https://ae01.alicdn.com/kf/He3cda13f34d44e8fb85dcdf6c7768398F.gif" alt="Christiane *" style="background: url(/static/images/admin.png) center center / cover no-repeat; height: 1.3rem;width: 1.3rem;">
+       </div>
+       </div>
+      <div class="comment-message">
+      <div class="comment-issue"><p>{$reply.content}</p></div>
+             <div class="comment-bars">
+               <time class="comment-time">{$vo.create_time|date='Y-m-d'}</time>
+              <div class="comment-reply-support">
+              <i class="comment-ift-support" ></i>
+              <span class="comment-support-num" ></span>
+              <span class="comment-replay" style="color: red;font-weight: bold;">客服回复</span>
+            </div>
+          </div>
+        </div>
+      </li>
+      {/volist}
+      {/volist}
+      </ul>
+      {$msgs|raw}
+   </div>
+  </section>
+  <script src="./template/zymk/js/entry.feedback.771bd4.js"></script>
+{/block}

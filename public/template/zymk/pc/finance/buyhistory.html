@@ -1,0 +1,80 @@
+{extend name="./template/default/pc/pub/base.html" /}
+{block name="seo"}
+<title>购买历史-{$site_name}</title>
+{/block}
+{block name="content"}
+<main class="container mt30 mb20 overflow-Show clearfix" style="min-height:750px;">
+    {include file="./template/default/pc/pub/uc_menu.html"}
+    <article class="article-main pull-right">
+        <section class="box ">
+            <header class="box-header border-bottom">
+                <h1><span class="small">我购买的作品</span></h1>
+            </header>
+            <div class="box-body">
+                <ul class="mh-list col1">
+                    {volist name="buys" id="vo"}
+                    <li>
+                        <div class="mh-item horizontal booklist">
+                            <a href="/{$book_ctrl}/{$vo.book.param}" title="{$vo.book.book_name}" class="mh-cover"
+                               style="background-image: url({$vo.book.cover_url})"> </a>
+                            <div class="mh-item-detali autoHeight">
+                                <h2 class="title">
+                                    <a href="/{$book_ctrl}/{$vo.book.param}">{$vo.book.book_name}</a>
+                                </h2>
+                                <p class="info">
+                                    <span class="new">
+                                        <a href="/{$chapter_ctrl}/{$vo.chapter.id}">{$vo.chapter.chapter_name}</a>
+                                    </span>
+                                </p>
+                                <p class="info">
+                                    <span>购买时间：</span>
+                                    <span>{$vo.create_time|date='Y-m-d'}</span>
+                                </p>
+                                <p class="mh-label">购买金额：{$vo.money}元</p>
+                                <div class="chapter-list mt30">
+                                    {$vo.chapter.book.summary|subtext=60}...
+                                </div>
+                                <div class="bottom">
+                                    <div>
+                                        <a href="/{$chapter_ctrl}/{$vo.chapter.id}" class="read-btn"> 点击阅读 </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    {/volist}
+                </ul>
+            </div>
+            <footer>
+                <div class="page-pagination mt20">
+                    <ul>
+                        <div class="pagination">
+                            {if $page.last_page > 1}
+                            {if $page.current_page == 1}
+                            <li><a>&lt;</a></li>
+                            {else/}
+                            <li><a id="prevPage" href="/buyhistory?page={$page.current_page-1}{$param}" title="上一页">&lt;</a></li>
+                            {/if}
+
+                            {for start="1" end="$page.last_page + 1"}
+                            {if $i == $page.current_page }
+                            <li><a href="/buyhistory?page={$i}{$param}" class="active">{$i}</a></li>
+                            {else/}
+                            <li><a href="/buyhistory?page={$i}{$param}" title="第{$i}页">{$i}</a></li>
+                            {/if}
+                            {/for}
+
+                            {if $page.current_page == $page.last_page}
+                            <li><a>&gt;</a></li>
+                            {else/}
+                            <li><a id="nextPage" href="/buyhistory?page={$page.current_page+1}{$param}" title="下一页">&gt;</a></li>
+                            {/if}
+                            {/if}
+                        </div>
+                    </ul>
+                </div>
+            </footer>
+        </section>
+    </article> <input id="hidUserId" type="hidden" value="274756461">
+</main>
+{/block}
