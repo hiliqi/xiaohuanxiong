@@ -40,8 +40,8 @@ class Postbot
                     $author->save();
                 }
                 $book = new Book();
-                // $book->unique_id = $this->convert($data['book_name']).md5(time() . mt_rand(1,1000000));
-                $book->unique_id = $data['unique_id'];
+                $book->unique_id = $this->convert($data['book_name']).md5(time() . mt_rand(1,1000000));
+                //$book->unique_id = $data['unique_id'];
                 $book->author_id = $author->id;
                 $book->author_name = $data['author'] ?: '侠名';
                 $book->area_id = trim($data['area_id']);
