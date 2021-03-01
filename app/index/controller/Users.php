@@ -157,15 +157,15 @@ class Users extends BaseUc
     {
         $code = generateRandomString();
         $phone = trim(input('phone'));
-        $validate = Validate::make([
-            'phone' => 'mobile'
-        ]);
-        $data = [
-            'phone' => $phone
-        ];
-        if (!$validate->check($data)) {
-            return ['msg' => '手机格式不正确'];
-        }
+//        $validate = Validate::make([
+//            'phone' => 'mobile'
+//        ]);
+//        $data = [
+//            'phone' => $phone
+//        ];
+//        if (!$validate->check($data)) {
+//            return ['msg' => '手机格式不正确'];
+//        }
         $result = sendcode($phone, $code);
         if ($result['status'] == 0) { //如果发送成功
             session('xwx_sms_code', $code); //写入session
@@ -173,7 +173,7 @@ class Users extends BaseUc
             $redis = RedisHelper::GetInstance();
             $redis->set($this->redis_prefix . ':xwx_mobile_unlock:' . $this->uid, 1, 300); //设置解锁缓存，让用户可以更改手机
         }
-        return ['msg' => $result['msg']];
+        return json(['msg' => $result['msg']]);
     }
 
     public function userphone()

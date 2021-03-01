@@ -4,6 +4,7 @@
 namespace app\app\controller;
 
 use app\validate\Phone;
+use think\facade\Session;
 
 class Util extends Base
 {
@@ -20,8 +21,8 @@ class Util extends Base
         }
         $result = sendcode($mobile, $code);
         if ($result['status'] == 0) { //如果发送成功
-            session('xwx_sms_code', $code); //写入session
-            session('xwx_cms_phone', $mobile);
+            Session::set('xwx_sms_code', $code); //写入session
+            Session::set('xwx_cms_phone', $mobile);
             return json(['success' => 1, 'code' => $code, 'msg' => '成功发送验证码']);
         } else {
             return json(['success' => 0, 'msg' => $result['msg']]);

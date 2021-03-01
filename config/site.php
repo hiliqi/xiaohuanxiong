@@ -9,7 +9,7 @@ return [
     'salt' => 'hanmantai',
     'api_key' => 'hahmh', 
     'app_key' => 'clwlxw',
-    'tpl' => 'default',
+    'tpl' => 'qq',
     'img_per_page' => '0',
     'up_server' => 'http://mh.fancys.shop/',
     'json_server' => 'http://mhup.fancys.shop/'   
