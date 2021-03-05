@@ -152,15 +152,14 @@ class Finance extends BaseAuth
 
     public function dailySign()
     {
-        $redis = RedisHelper::GetInstance();
-        $day = 'dailySign:' . $this->uid . ':' . date('d');
-        $val = (int)$redis->get($day);
-        if ($val == 1) {
+        $map[] = ['user_id', '=', $this->uid];
+        $map[] = ['summary', '=', '每日签到奖励'];
+        try {
+            $sign = UserFinance::where($map)->findOrFail();
             return json(['success' => 0, 'msg' => '今日已经签到']);
-        } else {
+        } catch (ModelNotFoundException $e) { //没有签到再签到
             $amount = config('payment.sign_rewards');
-            $this->promotionService->setReward($this->uid, $amount, 5, '每日签到奖励');
-            $redis->set($day, 1, 60 * 60 * 24); //写入锁
+            $this->promotionService->setReward($this->uid, $amount, 4, '每日签到奖励');
             return json(['success' => 1, 'reward' => $amount]);
         }
     }
