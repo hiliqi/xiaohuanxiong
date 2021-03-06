@@ -56,11 +56,13 @@ CREATE TABLE `xwx_user_finance`
     `money`       decimal(10, 2) NOT NULL DEFAULT 0 COMMENT '充值/消费金额',
     `usage`       tinyint(4) NOT NULL COMMENT '用途，1.充值，2.购买vip，3.购买章节，4.推广奖励, 5.每日签到奖励',
     `summary`     text COMMENT '备注',
+    `sign_day`    date,
     `create_time` int(11) DEFAULT '0',
     `update_time` int(11) DEFAULT '0',
     PRIMARY KEY (`id`) USING BTREE,
     key           `user_id` (`user_id`) USING BTREE,
-    key           `usage` (`usage`) USING BTREE
+    key           `usage` (`usage`) USING BTREE,
+    key `sign_day` (`sign_day`) USING BTREE
 ) ENGINE = InnoDB  ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------

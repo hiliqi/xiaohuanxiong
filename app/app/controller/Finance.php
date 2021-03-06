@@ -156,13 +156,26 @@ class Finance extends BaseAuth
         $map[] = ['summary', '=', '每日签到奖励'];
         try {
             $sign = UserFinance::where($map)->findOrFail();
-            return json(['success' => 0, 'msg' => '今日已经签到']);
+            $time = $sign['create_time'];
+            if (date('Ymd', $time) == date('Ymd')) {
+                return json(['success' => 0, 'msg' => '今日已经签到']);
+            }
         } catch (ModelNotFoundException $e) { //没有签到再签到
             $amount = config('payment.sign_rewards');
             $this->promotionService->setReward($this->uid, $amount, 4, '每日签到奖励');
             return json(['success' => 1, 'reward' => $amount]);
         }
     }
+
+    public function getDailySign()
+    {
+        $map[] = ['user_id', '=', $this->uid];
+        $map[] = ['summary', '=', '每日签到奖励'];
+        $map[] = ['sign_day', '=', date('Y-m-d')];
+        $sign = UserFinance::where($map)->findOrFail();
+        return json(['success' => 1, 'sign' => $sign]);
+    }
+
 
     public function vipexchange()
     {

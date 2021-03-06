@@ -129,16 +129,11 @@ class Chapters extends Base
                     'select * from ' . $this->prefix . 'chapter where book_id=' . $book_id . ' and chapter_order>' . $chapter->chapter_order . ' order by id limit 1');
                 cache('chapter_next:' . $id, $next, null, 'redis');
             }
-            $chapters = cache('chapters:' . $book_id);
-            if (!$chapters) {
-                $chapters = Chapter::where('book_id', '=', $book_id)->select();
-                cache('chapters:' . $book_id, $chapters, null, 'redis');
-            }
+
             if ($flag) {
                 $result = [
                     'success' => 1,
                     'chapter' => $chapter,
-                    'chapters' => $chapters,
                     'prev' => count($prev) > 0 ? $prev[0]['id'] : -1,
                     'next' => count($next) > 0 ? $next[0]['id'] : -1
                 ];
@@ -152,7 +147,6 @@ class Chapters extends Base
                 $result = [
                     'success' => 0,
                     'pic' => $pic,
-                    'chapters' => $chapters,
                     'money' => $chapter->book->money,
                     'prev' => count($prev) > 0 ? $prev[0]['id'] : -1,
                     'next' => count($next) > 0 ? $next[0]['id'] : -1
