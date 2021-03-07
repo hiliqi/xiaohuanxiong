@@ -172,11 +172,15 @@ class Finance extends BaseAuth
 
     public function getDailySign()
     {
-        $map[] = ['user_id', '=', $this->uid];
-        $map[] = ['summary', '=', '每日签到奖励'];
-        $map[] = ['create_time', '=', date('Y-m-d')];
-        $sign = UserFinance::where($map)->findOrFail();
-        return json(['success' => 1, 'sign' => $sign]);
+        try{
+            $map[] = ['user_id', '=', $this->uid];
+            $map[] = ['summary', '=', '每日签到奖励'];
+            $map[] = ['create_time', '=', date('Y-m-d')];
+            $sign = UserFinance::where($map)->findOrFail();
+            return json(['success' => 1, 'sign' => $sign]);
+         }catch (ModelNotFoundException $e) { //没有签到再签到
+            return json(['success' => 0, 'msg' => '今日没签到']);
+        }
     }
 
 
