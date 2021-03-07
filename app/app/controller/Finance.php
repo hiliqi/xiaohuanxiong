@@ -150,16 +150,19 @@ class Finance extends BaseAuth
         ]);
     }
 
+
     public function dailySign()
     {
         $map[] = ['user_id', '=', $this->uid];
         $map[] = ['summary', '=', '每日签到奖励'];
+        $map[] = ['create_time', '=', date('Y-m-d')];
         try {
             $sign = UserFinance::where($map)->findOrFail();
-            $time = $sign['create_time'];
-            if (date('Ymd', $time) == date('Ymd')) {
-                return json(['success' => 0, 'msg' => '今日已经签到']);
-            }
+            return json(['success' => 0, 'msg' => '今日已经签到']);
+//            $time = $sign['create_time'];
+//            if (date('Ymd', $time) == date('Ymd')) {
+//
+//            }
         } catch (ModelNotFoundException $e) { //没有签到再签到
             $amount = config('payment.sign_rewards');
             $this->promotionService->setReward($this->uid, $amount, 4, '每日签到奖励');
@@ -171,7 +174,7 @@ class Finance extends BaseAuth
     {
         $map[] = ['user_id', '=', $this->uid];
         $map[] = ['summary', '=', '每日签到奖励'];
-        $map[] = ['sign_day', '=', date('Y-m-d')];
+        $map[] = ['create_time', '=', date('Y-m-d')];
         $sign = UserFinance::where($map)->findOrFail();
         return json(['success' => 1, 'sign' => $sign]);
     }

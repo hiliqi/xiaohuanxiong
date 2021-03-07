@@ -8,11 +8,9 @@ use think\Model;
 
 class UserFinance extends Model
 {
+    protected $autoWriteTimestamp = 'datetime';
+
     public function setSummaryAttr($value){
         return trim($value);
-    }
-
-    public function setSignDay($value){
-        return date('Y-m-d');
     }
 }
