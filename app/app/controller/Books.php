@@ -147,21 +147,25 @@ class Books extends Base
 
     public function getmostcharged()
     {
-        $most_charged = cache('mostChargedApp');
-        if (!$most_charged) {
-            $arr = $this->bookService->getMostChargedBook($this->end_point);
-            if (count($arr) > 0) {
-                foreach ($arr as $item) {
-                    $most_charged[] = $item['book'];
-                }
+        $num = input('num');
+        $books = $this->bookService->getMostChargedBook($num);
+        foreach ($books as &$book) {
+            $book['clicks'] = (int)(Clicks::where('book_id','=',$book['id'])->sum('id')) + mt_rand(2000,5000);
+            $book['zan'] = (int)($book['clicks'] * 0.3);
+            if (substr($book['cover_url'], 0, 4) === "http") {
+
             } else {
-                $arr = [];
+                $book['cover_url'] = $this->img_domain . $book->cover_url;
             }
-            cache('mostChargedApp', $most_charged, null, 'redis');
+            if (substr($book['banner_url'], 0, 4) === "http") {
+
+            } else {
+                $book['banner_url'] = $this->img_domain . $book->banner_url;
+            }
         }
         $result = [
             'success' => 1,
-            'mostCharged' => $most_charged
+            'books' => $books
         ];
         return json($result);
     }

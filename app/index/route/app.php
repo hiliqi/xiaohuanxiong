@@ -1,15 +1,18 @@
 <?php
+
 use think\facade\Route;
 
-Route::rule('/'.BOOKCTRL.'/:id', 'books/index');
-Route::rule('/'.BOOKLISTACT, 'booklist/index');
+Route::rule('/' . BOOKCTRL . '/:id', 'books/index');
+Route::rule('/' . BOOKLISTACT, 'booklist/index');
 Route::rule('/getBooks', 'booklist/getBooks');
 Route::rule('/getOptions', 'booklist/getOptions');
-Route::rule('/'.CHAPTERCTRL.'/:id', 'chapters/index');
-Route::rule('/'.SEARCHCTRL.'/[:keyword]', 'index/search');
-Route::rule('/'.RANKCTRL, 'rank/index');
-Route::rule('/'.UPDATEACT, 'update/index');
-Route::rule('/'.AUTHORCTRL.'/:id', 'authors/index');
+Route::rule('/' . CHAPTERCTRL . '/:id', 'chapters/index');
+Route::rule('/' . SEARCHCTRL . '/[:keyword]', 'index/search');
+Route::rule('/' . RANKCTRL, 'rank/index');
+Route::rule('/' . UPDATEACT, 'update/index');
+Route::rule('/' . AUTHORCTRL . '/:id', 'authors/index');
+Route::rule('/tails/:id', 'tails/index');
+Route::rule('/tailist', 'tails/list');
 Route::rule('/article/:id', 'articles/index');
 Route::rule('/articlelist', 'articles/list');
 Route::rule('/topic/:id', 'topics/index');

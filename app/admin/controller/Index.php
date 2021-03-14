@@ -61,8 +61,6 @@ class Index extends BaseAdmin
         $domain = config('site.domain');
         $img_domain = config('site.img_domain');
         $mobile_domain = config('site.mobile_domain');
-        $api_domain = config('site.api_domain');
-        $app_domain = config('site.app_domain');
         $salt = config('site.salt');
         $api_key = config('site.api_key');
         $app_key = config('site.app_key');
@@ -86,8 +84,6 @@ class Index extends BaseAdmin
             'domain' => $domain,
             'img_domain' => $img_domain,
             'mobile_domain' => $mobile_domain,
-            'api_domain' => $api_domain,
-            'app_domain' => $app_domain,
             'salt' => $salt,
             'api_key' => $api_key,
             'app_key' => $app_key,
@@ -107,8 +103,6 @@ class Index extends BaseAdmin
             $domain = input('domain');
             $img_domain = input('img_domain');
             $mobile_domain = input('mobile_domain');
-            $api_domain = input('api_domain');
-            $app_domain = input('app_domain');
             $salt = input('salt');
             $api_key = input('api_key');
             $app_key = input('app_key');
@@ -121,9 +115,7 @@ class Index extends BaseAdmin
 return [
     'domain' => '{$domain}',
     'img_domain' => '{$img_domain}',
-    'mobile_domain' => '{$mobile_domain}',
-    'api_domain' => '{$api_domain}',
-    'app_domain' => '{$app_domain}',
+    'mobile_domain' => '{$mobile_domain}', 
     'site_name' => '{$site_name}',
     'salt' => '{$salt}',
     'api_key' => '{$api_key}', 

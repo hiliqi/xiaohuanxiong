@@ -2,10 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="744eb552-3b2d-452b-9c85-a7e014af20fe" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/index/controller/Tails.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/mobile/controller/Tails.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/model/Tail.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/service/TailService.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/template/default/m/tails/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/template/default/m/tails/list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/template/default/pc/tails/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/template/default/pc/tails/list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/admin/view/payment/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/admin/view/payment/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app/controller/Finance.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/app/controller/Finance.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/model/UserFinance.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/UserFinance.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/admin/controller/Index.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/admin/controller/Index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/admin/view/index/sys.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/admin/view/index/sys.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/app/controller/Books.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/app/controller/Books.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/index/controller/Books.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/index/controller/Books.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/index/route/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/index/route/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/mobile/route/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/mobile/route/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/provider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/provider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/service/BookService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/service/BookService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/site.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/site.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/install.sql" beforeDir="false" afterPath="$PROJECT_DIR$/install.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -83,7 +97,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../youtiao" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
     <property name="vue.rearranger.settings.migration" value="true" />
@@ -228,6 +242,15 @@
       <workItem from="1615048249600" duration="219000" />
       <workItem from="1615095341459" duration="46000" />
       <workItem from="1615099254478" duration="256000" />
+      <workItem from="1615374484059" duration="614000" />
+      <workItem from="1615392602408" duration="341000" />
+      <workItem from="1615440481632" duration="8000" />
+      <workItem from="1615529686407" duration="122000" />
+      <workItem from="1615531623168" duration="266000" />
+      <workItem from="1615531973912" duration="7767000" />
+      <workItem from="1615623665165" duration="5599000" />
+      <workItem from="1615696025992" duration="7000" />
+      <workItem from="1615701404562" duration="1199000" />
     </task>
     <servers />
   </component>

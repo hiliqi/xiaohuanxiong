@@ -451,5 +451,18 @@ CREATE TABLE `xwx_photo_logs`
     INDEX      `log_time`(`log_time`) USING BTREE,
     INDEX      `src`(`src`) USING BTREE
 ) ENGINE = InnoDB ROW_FORMAT=Dynamic;
+
+CREATE TABLE IF NOT EXISTS `xwx_tail` (
+    `id` int(11) NOT NULL AUTO_INCREMENT,
+    `book_id` int(11) unsigned NOT NULL DEFAULT '0',
+    `tailname` varchar(200) NOT NULL COMMENT '长尾词',
+    `tailcode` varchar(255) NOT NULL COMMENT '唯一标识',
+    `create_time` int(11) DEFAULT '0',
+    `update_time` int(11) DEFAULT '0',
+    PRIMARY KEY (`id`),
+    KEY `tailname` (`tailname`),
+    unique key `tailcode` (`tailcode`) USING BTREE
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 INSERT INTO xwx_admin(username, `password`)
 VALUES ('admin', '123456')

@@ -11,6 +11,8 @@ Route::rule('/'.RANKCTRL, 'rank/index');
 Route::rule('/'.UPDATEACT, 'update/index');
 Route::rule('/getUpdate', 'update/getBooks');
 Route::rule('/'.AUTHORCTRL.'/:id', 'authors/index');
+Route::rule('/tails/:id', 'tails/index');
+Route::rule('/tailist', 'tails/list');
 Route::rule('/article/:id', 'articles/index');
 Route::rule('/articlelist', 'articles/list');
 Route::rule('/topic/:id', 'topics/index');

@@ -1,0 +1,42 @@
+{extend name="./template/default/pc/pub/base.html" /}
+{block name="seo"}
+<title>最新书单-{$site_name}</title>
+{/block}
+{block name="content"}
+<section class="box container pb40 overflow-Show js_update_mh_list" style="min-height:800px;margin-top: 20px;">
+    <header class="box-header"> <i class="icon icon-date" style="width:30px;"> <span class="number">30</span> </i>
+        <h1>最新书单</h1>
+        <small>
+            推荐了
+            <span class="color-main" id="daykeyupdatecount">{$total}</span><span id="daykeycontent">本，刷新看更多</span>
+        </small>
+    </header>
+    <div class="box-body">
+        <ul class="mh-list col7" id="update_30">
+            {volist name="tails" id="vo"}
+            <li>
+                <div class="mh-item">
+                    <a href="/pc/tails/{$vo.id}" title="{$vo.tailname}">
+                        <p class="mh-cover" style="background-image: url({$vo.book.cover_url})"></p>
+                    </a>
+                    <div class="mh-item-detali">
+                        <h2 class="title">
+                            <a href="/pc/tails/{$vo.id}" title="{$vo.tailname}" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                                {$vo.tailname}
+                            </a>
+                        </h2>
+                        <p class="zl">
+                            <span>评分:</span>
+                            <span class="mh-star-line star-5"></span>
+                        </p>
+                        <p class="chapter" style="width: 181px;">
+                            {$vo.book.summary}
+                        </p>
+                    </div>
+                </div>
+            </li>
+            {/volist}
+        </ul>
+    </div>
+</section>
+{/block}

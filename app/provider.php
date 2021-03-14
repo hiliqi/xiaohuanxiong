@@ -19,5 +19,6 @@ return [
     'userService' => \app\service\UserService::class,
     'articleService' => \app\service\ArticleService::class,
     'topicService' => \app\service\TopicService::class,
-    'payService' => \app\service\PayService::class
+    'payService' => \app\service\PayService::class,
+    'tailService' => \app\service\TailService::class
 ];

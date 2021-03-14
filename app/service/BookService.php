@@ -10,27 +10,6 @@ use think\facade\Db;
 
 class BookService
 {
-//    public function getBooksById($ids)
-//    {
-//        if (empty($ids) || strlen($ids) <= 0) {
-//            return [];
-//        }
-//        $exp = new Expression('field(id,' . $ids . ')');
-//        try {
-//            $books = Book::where('id', 'in', $ids)->with(['author,chapters'])->order($exp)->selectOrFail();
-//            foreach ($books as &$book) {
-//                $book['chapter_count'] = count($book->chapters);
-//            }
-//            return $books;
-//        } catch (DataNotFoundException $e) {
-//            return [];
-//        } catch (ModelNotFoundException $e) {
-//            return [];
-//        } catch (DbException $e) {
-//            return [];
-//        }
-//    }
-
     public function getPagedBooks($num, $end_point, $order = 'id', $where = '1=1')
     {
         $data = Book::where($where)->with('chapters')->order($order, 'desc')
@@ -77,25 +56,21 @@ class BookService
     {
         $data = UserBuy::with(['book' => ['author']])->field('book_id,sum(money) as sum')
             ->group('book_id')->select();
-        if (count($data) > 0) {
-            foreach ($data as &$item) {
-                if (!is_null($item['book'])) {
-                    $book = $item['book'];
-                    $book['taglist'] = explode('|', $item['book']['tags']);
-                    $item['book'] = $book;
-                    if ($end_point == 'id') {
-                        $book['param'] = $book['id'];
-                    } else {
-                        $book['param'] = $book['unique_id'];
-                    }
+        foreach ($data as &$item) {
+            if (!is_null($item['book'])) {
+                $book = $item['book'];
+                $book['taglist'] = explode('|', $item['book']['tags']);
+                $item['book'] = $book;
+                if ($end_point == 'id') {
+                    $book['param'] = $book['id'];
+                } else {
+                    $book['param'] = $book['unique_id'];
                 }
             }
-            $arr = $data->toArray();
-            array_multisort(array_column($arr, 'sum'), SORT_DESC, $arr);
-            return $arr;
-        } else {
-            return [];
         }
+        $arr = $data->toArray();
+        array_multisort(array_column($arr, 'sum'), SORT_DESC, $arr);
+        return $arr;
     }
 
     public function getRecommand($tags, $end_point)
