@@ -72,6 +72,8 @@ class Postbot
                 $chapter->update_time = time();
                 $chapter->save();
                 $book->last_time = time();
+                $book->last_chapter_id = $chapter->id;
+                $book->last_chapter = $chapter->chapter_name;
                 $book->save();
                 // $preg = '/\bsrc\b\s*=\s*[\'\"]?([^\'\"]*)[\'\"]?/i';
                 // preg_match_all($preg, $data['images'], $img_urls);

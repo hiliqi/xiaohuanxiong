@@ -54,23 +54,19 @@ class BookService
 
     public function getMostChargedBook($end_point)
     {
-        $data = UserBuy::with(['book' => ['author']])->field('book_id,sum(money) as sum')
-            ->group('book_id')->select();
-        foreach ($data as &$item) {
-            if (!is_null($item['book'])) {
-                $book = $item['book'];
-                $book['taglist'] = explode('|', $item['book']['tags']);
-                $item['book'] = $book;
-                if ($end_point == 'id') {
-                    $book['param'] = $book['id'];
-                } else {
-                    $book['param'] = $book['unique_id'];
-                }
-            }
+        $data = UserBuy::with('book.author')->field('book_id,sum(money) as sum')
+        ->limit($num)->group('book_id')->select()->toArray();
+    array_multisort(array_column($data, 'sum'), SORT_DESC, $data);
+    $books = array();
+    foreach ($data as &$item) {
+        if (!empty($item['book'])) {
+            $book = $item['book'];
+            $book['taglist'] = explode('|', $item['book']['tags']);
+            array_push($books, $book);
         }
-        $arr = $data->toArray();
-        array_multisort(array_column($arr, 'sum'), SORT_DESC, $arr);
-        return $arr;
+
+    }
+    return $books;
     }
 
     public function getRecommand($tags, $end_point)
