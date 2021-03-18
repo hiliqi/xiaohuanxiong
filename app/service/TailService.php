@@ -4,6 +4,7 @@
 namespace app\service;
 
 
+use app\model\Book;
 use app\model\Tail;
 
 class TailService
@@ -20,23 +21,5 @@ class TailService
         $tails = Tail::with('book')->where('id','in',$random_number_array)->select();
 
         return $tails;
-
-//        $data = Tail::with('book.cate')->order($order, 'desc')
-//            ->paginate([
-//                'list_rows' => $num,
-//                'query' => request()->param(),
-//            ]);
-//
-//        $books = $data->toArray();
-//        return [
-//            'tails' => $books['data'],
-//            'page' => [
-//                'total' => $books['total'],
-//                'per_page' => $books['per_page'],
-//                'current_page' => $books['current_page'],
-//                'last_page' => $books['last_page'],
-//                'query' => request()->param()
-//            ]
-//        ];
     }
 }

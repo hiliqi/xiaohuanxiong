@@ -21,25 +21,25 @@ class Sitemap extends BaseAdmin
         return view();
     }
 
-    private function gen($pagesize, $part, $name)
+    private function gen($pagesize, $part, $end)
     {
-        if ($name == 'pc') {
+        if ($end == 'pc') {
             $site_name =  config('site.domain');
-        } elseif ($name == 'm') {
+        } elseif ($end == 'm') {
             $site_name = config('site.mobile_domain');
-        } elseif ($name == 'mip') {
+        } elseif ($end == 'mip') {
             $site_name = config('site.mip_domain');
         }
         if ($part == 'book') {
-            $this->genbook($pagesize, $site_name, $name);
+            $this->genbook($pagesize, $site_name, $end);
         } elseif ($part == 'chapter') {
-            $this->genchapter($pagesize, $site_name, $name);
+            $this->genchapter($pagesize, $site_name, $end);
         } elseif ($part == 'article') {
-            $this->genarticle($pagesize, $site_name, $name);
+            $this->genarticle($pagesize, $site_name, $end);
         }
     }
 
-    private function genbook($pagesize, $site_name, $name)
+    private function genbook($pagesize, $site_name, $end)
     {
         $data = Book::where('1=1');
         $total = $data->count();
@@ -55,7 +55,7 @@ class Sitemap extends BaseAdmin
                     $book['param'] = $book['unique_id'];
                 }
                 $temp = array(
-                    'loc' => $site_name . '/' . $name . '/' . BOOKCTRL . '/' . $book['param'],
+                    'loc' => $site_name . '/' . $end . '/' . BOOKCTRL . '/' . $book['param'],
                     'priority' => '0.9',
                 );
                 array_push($arr, $temp);
@@ -64,10 +64,10 @@ class Sitemap extends BaseAdmin
                 $content .= $this->create_item($item);
             }
             $content .= '</urlset>';
-            $sitemap_name = '/sitemap_' . $name . '_' . 'books' . '_' . $i . '.xml';
+            $sitemap_name = '/sitemap_book_' . $end . '_' . 'books' . '_' . $i . '.xml';
             file_put_contents(App::getRootPath() . 'public' .$sitemap_name, $content);
-            file_put_contents(App::getRootPath() . 'public' .'/sitemap_' . $name . '_newest' . '.xml', $content);
-            echo '<a href="' . $sitemap_name . '" target="_blank">' . $name . '端网站地图制作成功！点击这里查看</a><br />';
+            file_put_contents(App::getRootPath() . 'public' .'/sitemap_book_' . $end . '_newest' . '.xml', $content);
+            echo '<a href="' . $sitemap_name . '" target="_blank">' . $end . '端网站地图制作成功！点击这里查看</a><br />';
             flush();
             ob_flush();
             unset($arr);
@@ -75,7 +75,7 @@ class Sitemap extends BaseAdmin
         }
     }
 
-    private function genchapter($pagesize, $site_name, $name) {
+    private function genchapter($pagesize, $site_name, $end) {
         $data = Chapter::where('1=1');
         $total = $data->count();
         $page = intval(ceil($total / $pagesize));
@@ -85,7 +85,7 @@ class Sitemap extends BaseAdmin
             $chapters = $data->limit($pagesize * ($i - 1), $pagesize)->select();
             foreach ($chapters as $chapter) {
                 $temp = array(
-                    'loc' => $site_name . '/' . $name . '/' . CHAPTERCTRL . '/' . $chapter['id'],
+                    'loc' => $site_name . '/' . $end . '/' . CHAPTERCTRL . '/' . $chapter['id'],
                     'priority' => '0.9',
                 );
                 array_push($arr, $temp);
@@ -94,10 +94,10 @@ class Sitemap extends BaseAdmin
                 $content .= $this->create_item($item);
             }
             $content .= '</urlset>';
-            $sitemap_name = '/sitemap_' . $name . '_' . 'chapters' . '_' . $i . '.xml';
+            $sitemap_name = '/sitemap_chapter_' . $end . '_' . 'chapters' . '_' . $i . '.xml';
             file_put_contents(App::getRootPath() . 'public' .$sitemap_name, $content);
-            file_put_contents(App::getRootPath() . 'public' .'/sitemap_' . $name . '_newest' . '.xml', $content);
-            echo '<a href="' . $sitemap_name . '" target="_blank">' . $name . '端网站地图制作成功！点击这里查看</a><br />';
+            file_put_contents(App::getRootPath() . 'public' .'/sitemap_chapter_' . $end . '_newest' . '.xml', $content);
+            echo '<a href="' . $sitemap_name . '" target="_blank">' . $end . '端网站地图制作成功！点击这里查看</a><br />';
             flush();
             ob_flush();
             unset($arr);
@@ -105,7 +105,7 @@ class Sitemap extends BaseAdmin
         }
     }
 
-    private function genarticle($pagesize, $site_name, $name) {
+    private function genarticle($pagesize, $site_name, $end) {
         $data = Article::where('1=1');
         $total = $data->count();
         $page = intval(ceil($total / $pagesize));
@@ -120,7 +120,7 @@ class Sitemap extends BaseAdmin
                     $article['param'] = $article['unique_id'];
                 }
                 $temp = array(
-                    'loc' => $site_name . '/' . $name . '/' . CHAPTERCTRL . '/' . $article['param'],
+                    'loc' => $site_name . '/' . $end . '/' . CHAPTERCTRL . '/' . $article['param'],
                     'priority' => '0.9',
                 );
                 array_push($arr, $temp);
@@ -129,10 +129,10 @@ class Sitemap extends BaseAdmin
                 $content .= $this->create_item($item);
             }
             $content .= '</urlset>';
-            $sitemap_name = '/sitemap_' . $name . '_' . $i . '.xml';
+            $sitemap_name = '/sitemap_article_' . $end . '_' . $i . '.xml';
             file_put_contents(App::getRootPath() . 'public' .$sitemap_name, $content);
-            file_put_contents(App::getRootPath() . 'public' .'/sitemap_' . $name . '_newest' . '.xml', $content);
-            echo '<a href="' . $sitemap_name . '" target="_blank">' . $name . '端网站地图制作成功！点击这里查看</a><br />';
+            file_put_contents(App::getRootPath() . 'public' .'/sitemap_article_' . $end . '_newest' . '.xml', $content);
+            echo '<a href="' . $sitemap_name . '" target="_blank">' . $end . '端网站地图制作成功！点击这里查看</a><br />';
             flush();
             ob_flush();
             unset($arr);
