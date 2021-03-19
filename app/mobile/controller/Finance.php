@@ -264,14 +264,16 @@ class Finance extends BaseUc
                         }
                     }
                 }
+            } else {
+                View::assign([
+                    'balance' => $this->balance,
+                    'header_title' => 'vip会员',
+                    'vips' => config('payment.vip'),
+                    'payments' => config('payment.pay.channel'),
+                ]);
+                return view($this->tpl);
             }
-            View::assign([
-                'balance' => $this->balance,
-                'header_title' => 'vip会员',
-                'vips' => config('payment.vip'),
-                'payments' => config('payment.pay.channel'),
-            ]);
-            return view($this->tpl);
+
         } catch (DataNotFoundException $e) {
             abort(404, '用户不存在');
         } catch (ModelNotFoundException $e) {
