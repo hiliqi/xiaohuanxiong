@@ -1,5 +1,0 @@
-if (!-e $request_filename) {  
-      rewrite  ^(.*)$  /index.php?s=/$1  last;  
-      break;  
-	}  
-rewrite ^/template/(.*).(html)$ 404.html last;

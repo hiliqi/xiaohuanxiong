@@ -1,4 +1,5 @@
 <?php
+
 namespace Yurun\Util\YurunHttp\Pool\Config;
 
 class PoolConfig
@@ -11,19 +12,24 @@ class PoolConfig
     protected $url;
 
     /**
-     * 最大连接数量
+     * 最大连接数量.
      *
      * @var int
      */
     protected $maxConnections;
 
     /**
-     * 等待超时时间
+     * 等待超时时间.
      *
      * @var float
      */
     protected $waitTimeout;
 
+    /**
+     * @param string $url
+     * @param int    $maxConnections
+     * @param float  $waitTimeout
+     */
     public function __construct($url, $maxConnections, $waitTimeout)
     {
         $this->url = $url;
@@ -32,7 +38,7 @@ class PoolConfig
     }
 
     /**
-     * 获取最大连接数量
+     * 获取最大连接数量.
      *
      * @return int
      */
@@ -42,8 +48,8 @@ class PoolConfig
     }
 
     /**
-     * 设置最大连接数量
-     * 
+     * 设置最大连接数量.
+     *
      * @param int $maxConnections
      *
      * @return void
@@ -54,7 +60,7 @@ class PoolConfig
     }
 
     /**
-     * 获取等待超时时间
+     * 获取等待超时时间.
      *
      * @return float
      */
@@ -64,9 +70,10 @@ class PoolConfig
     }
 
     /**
-     * 设置等待超时时间
+     * 设置等待超时时间.
      *
      * @param float $waitTimeout
+     *
      * @return void
      */
     public function setWaitTimeout($waitTimeout)
@@ -78,7 +85,7 @@ class PoolConfig
      * Get 地址
      *
      * @return string
-     */ 
+     */
     public function getUrl()
     {
         return $this->url;

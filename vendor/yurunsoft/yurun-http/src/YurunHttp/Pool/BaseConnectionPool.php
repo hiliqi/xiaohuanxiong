@@ -1,4 +1,5 @@
 <?php
+
 namespace Yurun\Util\YurunHttp\Pool;
 
 use Yurun\Util\YurunHttp\Pool\Contract\IConnectionPool;
@@ -6,7 +7,7 @@ use Yurun\Util\YurunHttp\Pool\Contract\IConnectionPool;
 abstract class BaseConnectionPool implements IConnectionPool
 {
     /**
-     * 连接池配置
+     * 连接池配置.
      *
      * @var \Yurun\Util\YurunHttp\Pool\Config\PoolConfig
      */
@@ -21,10 +22,10 @@ abstract class BaseConnectionPool implements IConnectionPool
     }
 
     /**
-     * 获取连接池配置
+     * 获取连接池配置.
      *
      * @return \Yurun\Util\YurunHttp\Pool\Config\PoolConfig
-     */ 
+     */
     public function getConfig()
     {
         return $this->config;

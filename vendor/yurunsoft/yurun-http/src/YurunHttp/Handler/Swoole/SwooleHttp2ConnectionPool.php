@@ -1,4 +1,5 @@
 <?php
+
 namespace Yurun\Util\YurunHttp\Handler\Swoole;
 
 use Swoole\Coroutine\Channel;
@@ -16,7 +17,7 @@ class SwooleHttp2ConnectionPool extends BaseConnectionPool
     protected $channel;
 
     /**
-     * 连接数组
+     * 连接数组.
      *
      * @var Client[]
      */
@@ -32,7 +33,7 @@ class SwooleHttp2ConnectionPool extends BaseConnectionPool
     }
 
     /**
-     * 关闭连接池和连接池中的连接
+     * 关闭连接池和连接池中的连接.
      *
      * @return void
      */
@@ -41,14 +42,14 @@ class SwooleHttp2ConnectionPool extends BaseConnectionPool
         $connections = $this->connections;
         $this->connections = [];
         $this->channel = new Channel(1024);
-        foreach($connections as $connection)
+        foreach ($connections as $connection)
         {
             $connection->close();
         }
     }
 
     /**
-     * 创建一个连接，但不受连接池管理
+     * 创建一个连接，但不受连接池管理.
      *
      * @return mixed
      */
@@ -58,7 +59,7 @@ class SwooleHttp2ConnectionPool extends BaseConnectionPool
         $uri = new Uri($config->getUrl());
         $scheme = $uri->getScheme();
         $client = new Client($uri->getHost(), Uri::getServerPort($uri), 'https' === $scheme || 'wss' === $scheme);
-        if($client->connect())
+        if ($client->connect())
         {
             return $client;
         }
@@ -77,7 +78,7 @@ class SwooleHttp2ConnectionPool extends BaseConnectionPool
     {
         $config = $this->getConfig();
         $maxConnections = $this->getConfig()->getMaxConnections();
-        if($this->getFree() > 0 || (0 != $maxConnections && $this->getCount() >= $maxConnections))
+        if ($this->getFree() > 0 || (0 != $maxConnections && $this->getCount() >= $maxConnections))
         {
             return $this->channel->pop($config->getWaitTimeout());
         }
@@ -96,7 +97,7 @@ class SwooleHttp2ConnectionPool extends BaseConnectionPool
      */
     public function release($connection)
     {
-        if(in_array($connection, $this->connections))
+        if (\in_array($connection, $this->connections))
         {
             $this->channel->push($connection);
         }

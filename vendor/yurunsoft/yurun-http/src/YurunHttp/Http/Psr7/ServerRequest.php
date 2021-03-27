@@ -1,8 +1,9 @@
 <?php
+
 namespace Yurun\Util\YurunHttp\Http\Psr7;
 
-use Yurun\Util\YurunHttp\Http\Psr7\UploadedFile;
 use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Message\UriInterface;
 use Yurun\Util\YurunHttp;
 use Yurun\Util\YurunHttp\Http\Psr7\Consts\MediaType;
 use Yurun\Util\YurunHttp\Http\Psr7\Consts\RequestHeader;
@@ -11,48 +12,64 @@ use Yurun\Util\YurunHttp\Http\Psr7\Consts\RequestMethod;
 class ServerRequest extends Request implements ServerRequestInterface
 {
     /**
-     * 服务器信息
+     * 服务器信息.
+     *
      * @var array
      */
     protected $server = [];
 
     /**
-     * cookie数据
+     * cookie数据.
+     *
      * @var array
      */
     protected $cookies = [];
-    
+
     /**
-     * get数据
+     * get数据.
+     *
      * @var array
      */
     protected $get = [];
 
     /**
-     * post数据
+     * post数据.
+     *
      * @var array
      */
     protected $post = [];
 
     /**
-     * 上传的文件
+     * 上传的文件.
+     *
      * @var \Yurun\Util\YurunHttp\Http\Psr7\UploadedFile[]
      */
     protected $files = [];
 
     /**
-     * 处理过的主体内容
-     * @var null|array|object
+     * 处理过的主体内容.
+     *
+     * @var array|object|null
      */
     protected $parsedBody;
-    
+
     /**
-     * 属性数组
+     * 属性数组.
      *
      * @var array
      */
     protected $attributes = [];
 
+    /**
+     * @param string|UriInterface|null $uri
+     * @param array                    $headers
+     * @param string                   $body
+     * @param string                   $method
+     * @param string                   $version
+     * @param array                    $server
+     * @param array                    $cookies
+     * @param array                    $files
+     */
     public function __construct($uri = null, array $headers = [], $body = '', $method = RequestMethod::GET, $version = '1.1', array $server = [], array $cookies = [], array $files = [])
     {
         $this->server = $server;
@@ -74,11 +91,13 @@ class ServerRequest extends Request implements ServerRequestInterface
     {
         return $this->server;
     }
-    
+
     /**
-     * 获取server参数
+     * 获取server参数.
+     *
      * @param string $name
-     * @param mixed $default
+     * @param mixed  $default
+     *
      * @return string
      */
     public function getServerParam($name, $default = null)
@@ -115,20 +134,24 @@ class ServerRequest extends Request implements ServerRequestInterface
      * immutability of the message, and MUST return an instance that has the
      * updated cookie values.
      *
-     * @param array $cookies Array of key/value pairs representing cookies.
+     * @param array $cookies array of key/value pairs representing cookies
+     *
      * @return static
      */
     public function withCookieParams(array $cookies)
     {
         $self = clone $this;
         $self->cookies = $cookies;
+
         return $self;
     }
-    
+
     /**
      * 获取cookie值
+     *
      * @param string $name
-     * @param mixed $default
+     * @param mixed  $default
+     *
      * @return mixed
      */
     public function getCookie($name, $default = null)
@@ -171,14 +194,16 @@ class ServerRequest extends Request implements ServerRequestInterface
      * immutability of the message, and MUST return an instance that has the
      * updated query string arguments.
      *
-     * @param array $query Array of query string arguments, typically from
-     *     $_GET.
+     * @param array $query array of query string arguments, typically from
+     *                     $_GET
+     *
      * @return static
      */
     public function withQueryParams(array $query)
     {
         $self = clone $this;
         $self->get = $query;
+
         return $self;
     }
 
@@ -191,8 +216,8 @@ class ServerRequest extends Request implements ServerRequestInterface
      * These values MAY be prepared from $_FILES or the message body during
      * instantiation, or MAY be injected via withUploadedFiles().
      *
-     * @return UploadedFile[] An array tree of UploadedFileInterface instances; an empty
-     *     array MUST be returned if no data is present.
+     * @return UploadedFile[] an array tree of UploadedFileInterface instances; an empty
+     *                        array MUST be returned if no data is present
      */
     public function getUploadedFiles()
     {
@@ -206,13 +231,16 @@ class ServerRequest extends Request implements ServerRequestInterface
      * immutability of the message, and MUST return an instance that has the
      * updated body parameters.
      *
-     * @param array An array tree of UploadedFileInterface instances.
+     * @param array $uploadedFiles an array tree of UploadedFileInterface instances
+     *
      * @return static
-     * @throws \InvalidArgumentException if an invalid structure is provided.
+     *
+     * @throws \InvalidArgumentException if an invalid structure is provided
      */
     public function withUploadedFiles(array $uploadedFiles)
     {
         $self = clone $this;
+
         return $this->setUploadedFiles($self, $uploadedFiles);
     }
 
@@ -228,18 +256,18 @@ class ServerRequest extends Request implements ServerRequestInterface
      * potential types MUST be arrays or objects only. A null value indicates
      * the absence of body content.
      *
-     * @return null|array|object The deserialized body parameters, if any.
-     *     These will typically be an array or object.
+     * @return array|object|null The deserialized body parameters, if any.
+     *                           These will typically be an array or object.
      */
     public function getParsedBody()
     {
         $parsedBody = &$this->parsedBody;
-        if(null === $parsedBody)
+        if (null === $parsedBody)
         {
             $body = $this->body;
             $contentType = strtolower($this->getHeaderLine(RequestHeader::CONTENT_TYPE));
             // post
-            if('POST' === $this->method && in_array($contentType, [
+            if ('POST' === $this->method && \in_array($contentType, [
                 MediaType::APPLICATION_FORM_URLENCODED,
                 MediaType::MULTIPART_FORM_DATA,
             ]))
@@ -247,7 +275,7 @@ class ServerRequest extends Request implements ServerRequestInterface
                 $parsedBody = $this->post;
             }
             // json
-            else if(in_array($contentType, [
+            elseif (\in_array($contentType, [
                 MediaType::APPLICATION_JSON,
                 MediaType::APPLICATION_JSON_UTF8,
             ]))
@@ -255,7 +283,7 @@ class ServerRequest extends Request implements ServerRequestInterface
                 $parsedBody = json_decode($body, true);
             }
             // xml
-            else if(in_array($contentType, [
+            elseif (\in_array($contentType, [
                 MediaType::TEXT_XML,
                 MediaType::APPLICATION_ATOM_XML,
                 MediaType::APPLICATION_RSS_XML,
@@ -269,9 +297,10 @@ class ServerRequest extends Request implements ServerRequestInterface
             // 其它
             else
             {
-                $parsedBody = (object)(string)$body;
+                $parsedBody = (object) (string) $body;
             }
         }
+
         return $parsedBody;
     }
 
@@ -297,16 +326,19 @@ class ServerRequest extends Request implements ServerRequestInterface
      * immutability of the message, and MUST return an instance that has the
      * updated body parameters.
      *
-     * @param null|array|object $data The deserialized body data. This will
-     *     typically be in an array or object.
+     * @param array|object|null $data The deserialized body data. This will
+     *                                typically be in an array or object.
+     *
      * @return static
+     *
      * @throws \InvalidArgumentException if an unsupported argument type is
-     *     provided.
+     *                                   provided
      */
     public function withParsedBody($data)
     {
         $self = clone $this;
         $self->parsedBody = $data;
+
         return $self;
     }
 
@@ -319,7 +351,7 @@ class ServerRequest extends Request implements ServerRequestInterface
      * deserializing non-form-encoded message bodies; etc. Attributes
      * will be application and request specific, and CAN be mutable.
      *
-     * @return array Attributes derived from the request.
+     * @return array attributes derived from the request
      */
     public function getAttributes()
     {
@@ -337,14 +369,16 @@ class ServerRequest extends Request implements ServerRequestInterface
      * specifying a default value to return if the attribute is not found.
      *
      * @see getAttributes()
-     * @param string $name The attribute name.
-     * @param mixed $default Default value to return if the attribute does not exist.
+     *
+     * @param string $name    the attribute name
+     * @param mixed  $default default value to return if the attribute does not exist
+     *
      * @return mixed
      */
     public function getAttribute($name, $default = null)
     {
         $attributes = $this->attributes;
-        if(array_key_exists($name, $attributes))
+        if (\array_key_exists($name, $attributes))
         {
             return $attributes[$name];
         }
@@ -365,14 +399,17 @@ class ServerRequest extends Request implements ServerRequestInterface
      * updated attribute.
      *
      * @see getAttributes()
-     * @param string $name The attribute name.
-     * @param mixed $value The value of the attribute.
+     *
+     * @param string $name  the attribute name
+     * @param mixed  $value the value of the attribute
+     *
      * @return static
      */
     public function withAttribute($name, $value)
     {
         $self = clone $this;
         $self->attributes[$name] = $value;
+
         return $self;
     }
 
@@ -387,31 +424,36 @@ class ServerRequest extends Request implements ServerRequestInterface
      * the attribute.
      *
      * @see getAttributes()
-     * @param string $name The attribute name.
+     *
+     * @param string $name the attribute name
+     *
      * @return static
      */
     public function withoutAttribute($name)
     {
         $self = clone $this;
-        if(array_key_exists($name, $self->attributes))
+        if (\array_key_exists($name, $self->attributes))
         {
             unset($self->attributes[$name]);
         }
+
         return $self;
     }
-    
+
     /**
-     * 设置上传的文件
-     * @param self $object
+     * 设置上传的文件.
+     *
+     * @param static                                         $object
      * @param \Yurun\Util\YurunHttp\Http\Psr7\UploadedFile[] $files
+     *
      * @return static
      */
     protected function setUploadedFiles(self $object, array $files)
     {
         $object->files = [];
-        foreach($files as $name => $file)
+        foreach ($files as $name => $file)
         {
-            if($file instanceof UploadedFile)
+            if ($file instanceof UploadedFile)
             {
                 $object->files[$name] = $file;
             }
@@ -420,7 +462,7 @@ class ServerRequest extends Request implements ServerRequestInterface
                 $object->files[$name] = new UploadedFile($file['name'], $file['type'], $file['tmp_name'], $file['size'], $file['error']);
             }
         }
+
         return $object;
     }
-
 }

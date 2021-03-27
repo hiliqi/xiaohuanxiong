@@ -3,7 +3,10 @@
 
 namespace app\service;
 
+
 //支付宝官方支付
+use think\exception\ValidateException;
+
 class PayService
 {
     public function submit($order_id, $money, $pay_type, $pay_code)
@@ -21,7 +24,7 @@ class PayService
         $pay = new \Yurun\PaySDK\AlipayApp\SDK($params);
         // 支付接口
         $request = new \Yurun\PaySDK\AlipayApp\Wap\Params\Pay\Request;
-        $request->notify_url =  config('site.api_domain') . '/paynotify'; // 支付后通知地址（作为支付成功回调，这个可靠）
+        $request->notify_url = config('site.api_domain') . '/paynotify'; // 支付后通知地址（作为支付成功回调，这个可靠）
         $request->return_url = config('payment.returnUrl'); // 支付后跳转返回地址
         $request->businessParams->out_trade_no = $order_id; // 商户订单号
         $request->businessParams->total_amount = $money; // 价格

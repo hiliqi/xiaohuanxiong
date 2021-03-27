@@ -1,4 +1,5 @@
 <?php
+
 namespace Yurun\Util\YurunHttp\Handler\Curl;
 
 use Yurun\Util\YurunHttp\Pool\BaseConnectionPool;
@@ -13,7 +14,7 @@ class CurlConnectionPool extends BaseConnectionPool
     protected $queue;
 
     /**
-     * 连接数组
+     * 连接数组.
      *
      * @var array
      */
@@ -29,7 +30,7 @@ class CurlConnectionPool extends BaseConnectionPool
     }
 
     /**
-     * 关闭连接池和连接池中的连接
+     * 关闭连接池和连接池中的连接.
      *
      * @return void
      */
@@ -38,14 +39,14 @@ class CurlConnectionPool extends BaseConnectionPool
         $connections = $this->connections;
         $this->connections = [];
         $this->queue = new \SplQueue();
-        foreach($connections as $connection)
+        foreach ($connections as $connection)
         {
             curl_close($connection);
         }
     }
 
     /**
-     * 创建一个连接，但不受连接池管理
+     * 创建一个连接，但不受连接池管理.
      *
      * @return mixed
      */
@@ -61,14 +62,14 @@ class CurlConnectionPool extends BaseConnectionPool
      */
     public function getConnection()
     {
-        if($this->getFree() > 0)
+        if ($this->getFree() > 0)
         {
             return $this->queue->dequeue();
         }
         else
         {
             $maxConnections = $this->getConfig()->getMaxConnections();
-            if(0 != $maxConnections && $this->getCount() >= $maxConnections)
+            if (0 != $maxConnections && $this->getCount() >= $maxConnections)
             {
                 return false;
             }
@@ -88,7 +89,7 @@ class CurlConnectionPool extends BaseConnectionPool
      */
     public function release($connection)
     {
-        if(in_array($connection, $this->connections))
+        if (\in_array($connection, $this->connections))
         {
             $this->queue->enqueue($connection);
         }

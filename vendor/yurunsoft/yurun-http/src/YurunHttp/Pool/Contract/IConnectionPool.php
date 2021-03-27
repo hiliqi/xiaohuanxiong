@@ -1,17 +1,18 @@
 <?php
+
 namespace Yurun\Util\YurunHttp\Pool\Contract;
 
 interface IConnectionPool
 {
     /**
-     * 关闭连接池和连接池中的连接
+     * 关闭连接池和连接池中的连接.
      *
      * @return void
      */
     public function close();
 
     /**
-     * 创建一个连接，但不受连接池管理
+     * 创建一个连接，但不受连接池管理.
      *
      * @return mixed
      */
@@ -55,10 +56,9 @@ interface IConnectionPool
     public function getUsed();
 
     /**
-     * 获取连接池配置
+     * 获取连接池配置.
      *
      * @return \Yurun\Util\YurunHttp\Pool\Config\PoolConfig
      */
     public function getConfig();
-
 }

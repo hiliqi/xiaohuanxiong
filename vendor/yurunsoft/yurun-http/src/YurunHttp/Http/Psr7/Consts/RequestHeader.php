@@ -1,8 +1,9 @@
 <?php
+
 namespace Yurun\Util\YurunHttp\Http\Psr7\Consts;
 
 /**
- * 常见的http请求头
+ * 常见的http请求头.
  */
 abstract class RequestHeader
 {

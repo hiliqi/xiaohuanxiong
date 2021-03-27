@@ -1,4 +1,5 @@
 <?php
+
 namespace Yurun\Util\YurunHttp\Http\Psr7;
 
 use Psr\Http\Message\ResponseInterface;
@@ -8,16 +9,23 @@ class Response extends AbstractMessage implements ResponseInterface
 {
     /**
      * 状态码
+     *
      * @var int
      */
     protected $statusCode;
 
     /**
-     * 状态码原因短语
+     * 状态码原因短语.
+     *
      * @var string
      */
     protected $reasonPhrase;
 
+    /**
+     * @param string|\Psr\Http\Message\StreamInterface $body
+     * @param int                                      $statusCode
+     * @param string|null                              $reasonPhrase
+     */
     public function __construct($body = '', $statusCode = StatusCode::OK, $reasonPhrase = null)
     {
         parent::__construct($body);
@@ -31,7 +39,7 @@ class Response extends AbstractMessage implements ResponseInterface
      * The status code is a 3-digit integer result code of the server's attempt
      * to understand and satisfy the request.
      *
-     * @return int Status code.
+     * @return int status code
      */
     public function getStatusCode()
     {
@@ -49,20 +57,23 @@ class Response extends AbstractMessage implements ResponseInterface
      * immutability of the message, and MUST return an instance that has the
      * updated status and reason phrase.
      *
-     * @link http://tools.ietf.org/html/rfc7231#section-6
-     * @link http://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml
-     * @param int $code The 3-digit integer result code to set.
-     * @param string $reasonPhrase The reason phrase to use with the
-     *     provided status code; if none is provided, implementations MAY
-     *     use the defaults as suggested in the HTTP specification.
+     * @see http://tools.ietf.org/html/rfc7231#section-6
+     * @see http://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml
+     *
+     * @param int    $code         the 3-digit integer result code to set
+     * @param string $reasonPhrase the reason phrase to use with the
+     *                             provided status code; if none is provided, implementations MAY
+     *                             use the defaults as suggested in the HTTP specification
+     *
      * @return static
-     * @throws \InvalidArgumentException For invalid status code arguments.
+     *
+     * @throws \InvalidArgumentException for invalid status code arguments
      */
     public function withStatus($code, $reasonPhrase = '')
     {
         $self = clone $this;
         $self->statusCode = $code;
-        if('' === $reasonPhrase)
+        if ('' === $reasonPhrase)
         {
             $self->reasonPhrase = StatusCode::getReasonPhrase($code);
         }
@@ -70,6 +81,7 @@ class Response extends AbstractMessage implements ResponseInterface
         {
             $self->reasonPhrase = $reasonPhrase;
         }
+
         return $self;
     }
 
@@ -82,9 +94,10 @@ class Response extends AbstractMessage implements ResponseInterface
      * listed in the IANA HTTP Status Code Registry) for the response's
      * status code.
      *
-     * @link http://tools.ietf.org/html/rfc7231#section-6
-     * @link http://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml
-     * @return string Reason phrase; must return an empty string if none present.
+     * @see http://tools.ietf.org/html/rfc7231#section-6
+     * @see http://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml
+     *
+     * @return string reason phrase; must return an empty string if none present
      */
     public function getReasonPhrase()
     {

@@ -1,4 +1,5 @@
 <?php
+
 namespace Yurun\Util\YurunHttp\Cookie;
 
 use Yurun\Util\YurunHttp\Http\Psr7\Uri;
@@ -6,14 +7,14 @@ use Yurun\Util\YurunHttp\Http\Psr7\Uri;
 class CookieManager
 {
     /**
-     * Cookie 列表
+     * Cookie 列表.
      *
      * @var \Yurun\Util\YurunHttp\Cookie\CookieItem[]
      */
     protected $cookieList;
 
     /**
-     * 关联集合
+     * 关联集合.
      *
      * @var array
      */
@@ -21,14 +22,15 @@ class CookieManager
 
     /**
      * 自增ID
-     * 会比当前列表长度+1
+     * 会比当前列表长度+1.
      *
      * @var int
      */
     protected $autoIncrementId;
 
     /**
-     * __construct
+     * __construct.
+     *
      * @param array $cookieList
      */
     public function __construct($cookieList = [])
@@ -37,9 +39,10 @@ class CookieManager
     }
 
     /**
-     * 设置 Cookie 列表
+     * 设置 Cookie 列表.
      *
      * @param array $cookieList
+     *
      * @return void
      */
     public function setCookieList($cookieList)
@@ -47,7 +50,7 @@ class CookieManager
         $this->autoIncrementId = 1;
         $this->cookieList = [];
         $this->relationMap = [];
-        foreach($cookieList as $item)
+        foreach ($cookieList as $item)
         {
             $item = CookieItem::newInstance($item);
             $this->insertCookie($item);
@@ -55,7 +58,7 @@ class CookieManager
     }
 
     /**
-     * 获取 Cookie 列表
+     * 获取 Cookie 列表.
      *
      * @return array
      */
@@ -65,15 +68,16 @@ class CookieManager
     }
 
     /**
-     * 添加 Set-Cookie
+     * 添加 Set-Cookie.
      *
      * @param string $setCookie
+     *
      * @return \Yurun\Util\YurunHttp\Cookie\CookieItem
      */
     public function addSetCookie($setCookie)
     {
         $item = CookieItem::fromSetCookie($setCookie);
-        if(($id = $this->findCookie($item)) > 0)
+        if (($id = $this->findCookie($item)) > 0)
         {
             $this->updateCookie($id, $item);
         }
@@ -81,25 +85,27 @@ class CookieManager
         {
             $this->insertCookie($item);
         }
+
         return $item;
     }
 
     /**
-     * 设置 Cookie
+     * 设置 Cookie.
      *
      * @param string $name
      * @param string $value
-     * @param integer $expires
+     * @param int    $expires
      * @param string $path
      * @param string $domain
-     * @param boolean $secure
-     * @param boolean $httpOnly
+     * @param bool   $secure
+     * @param bool   $httpOnly
+     *
      * @return \Yurun\Util\YurunHttp\Cookie\CookieItem
      */
     public function setCookie($name, $value, $expires = 0, $path = '/', $domain = '', $secure = false, $httpOnly = false)
     {
         $item = new CookieItem($name, $value, $expires, $path, $domain, $secure, $httpOnly);
-        if(($id = $this->findCookie($item)) > 0)
+        if (($id = $this->findCookie($item)) > 0)
         {
             $this->updateCookie($id, $item);
         }
@@ -107,28 +113,31 @@ class CookieManager
         {
             $this->insertCookie($item);
         }
+
         return $item;
     }
 
     /**
-     * Cookie 数量
+     * Cookie 数量.
      *
      * @return int
      */
     public function count()
     {
-        return count($this->cookieList);
+        return \count($this->cookieList);
     }
 
     /**
-     * 获取请求所需 Cookie 关联数组
+     * 获取请求所需 Cookie 关联数组.
      *
      * @param \Psr\Http\Message\UriInterface $uri
+     *
      * @return array
      */
     public function getRequestCookies($uri)
     {
-        if(defined('SWOOLE_VERSION') && SWOOLE_VERSION < 4.4)
+        // @phpstan-ignore-next-line
+        if (\defined('SWOOLE_VERSION') && \SWOOLE_VERSION < 4.4)
         {
             // Fix bug: https://github.com/swoole/swoole-src/pull/2644
             $result = json_decode('[]', true);
@@ -140,18 +149,18 @@ class CookieManager
         $uriDomain = Uri::getDomain($uri);
         $uriPath = $uri->getPath();
         $cookieList = &$this->cookieList;
-        foreach($this->relationMap as $relationDomain => $list1)
+        foreach ($this->relationMap as $relationDomain => $list1)
         {
-            if('' === $relationDomain || $this->checkDomain($uriDomain, $relationDomain))
+            if ('' === $relationDomain || $this->checkDomain($uriDomain, $relationDomain))
             {
-                foreach($list1 as $path => $idList)
+                foreach ($list1 as $path => $idList)
                 {
-                    if($this->checkPath($uriPath, $path))
+                    if ($this->checkPath($uriPath, $path))
                     {
-                        foreach($idList as $id)
+                        foreach ($idList as $id)
                         {
                             $cookieItem = $cookieList[$id];
-                            if((0 === $cookieItem->expires || $cookieItem->expires > time()) && (!$cookieItem->secure || 'https' === $uri->getScheme() || 'wss' === $uri->getScheme()) )
+                            if ((0 === $cookieItem->expires || $cookieItem->expires > time()) && (!$cookieItem->secure || 'https' === $uri->getScheme() || 'wss' === $uri->getScheme()))
                             {
                                 $result[$cookieItem->name] = $cookieItem->value;
                             }
@@ -160,101 +169,110 @@ class CookieManager
                 }
             }
         }
+
         return $result;
     }
 
     /**
-     * 获取请求所需 Cookie 关联数组
+     * 获取请求所需 Cookie 关联数组.
      *
      * @param \Psr\Http\Message\UriInterface $uri
+     *
      * @return string
      */
     public function getRequestCookieString($uri)
     {
         $content = '';
-        foreach($this->getRequestCookies($uri) as $name => $value)
+        foreach ($this->getRequestCookies($uri) as $name => $value)
         {
             $content .= "{$name}={$value}; ";
         }
+
         return $content;
     }
 
     /**
-     * 获取 CookieItem
+     * 获取 CookieItem.
      *
      * @param string $name
      * @param string $domain
      * @param string $path
-     * @return \Yurun\Util\YurunHttp\Cookie\CookieItem
+     *
+     * @return \Yurun\Util\YurunHttp\Cookie\CookieItem|null
      */
     public function getCookieItem($name, $domain = '', $path = '/')
     {
-        if(isset($this->relationMap[$domain][$path][$name]))
+        if (isset($this->relationMap[$domain][$path][$name]))
         {
             $id = $this->relationMap[$domain][$path][$name];
+
             return $this->cookieList[$id];
         }
+
         return null;
     }
 
     /**
-     * 检查 uri 域名和 cookie 域名
+     * 检查 uri 域名和 cookie 域名.
      *
      * @param string $uriDomain
      * @param string $cookieDomain
-     * @return boolean
+     *
+     * @return bool
      */
     private function checkDomain($uriDomain, $cookieDomain)
     {
         return ($uriDomain === $cookieDomain)
-                || (isset($cookieDomain[0]) && '.' === $cookieDomain[0] && substr($uriDomain, -strlen($cookieDomain) - 1) === '.' . $cookieDomain)
+                || (isset($cookieDomain[0]) && '.' === $cookieDomain[0] && substr($uriDomain, -\strlen($cookieDomain) - 1) === '.' . $cookieDomain)
                 ;
     }
 
     /**
-     * 检查 uri 路径和 cookie 路径
+     * 检查 uri 路径和 cookie 路径.
      *
-     * @param string $uriDomain
-     * @param string $cookieDomain
-     * @return boolean
+     * @param string $uriPath
+     * @param string $cookiePath
+     *
+     * @return bool
      */
     private function checkPath($uriPath, $cookiePath)
     {
         $uriPath = rtrim($uriPath, '/');
         $cookiePath = rtrim($cookiePath, '/');
-        if($uriPath === $cookiePath)
+        if ($uriPath === $cookiePath)
         {
             return true;
         }
         $uriPathDSCount = substr_count($uriPath, '/');
         $cookiePathDSCount = substr_count($cookiePath, '/');
-        if('' === $uriPath)
+        if ('' === $uriPath)
         {
             $uriPath = '/';
         }
-        if('' === $cookiePath)
+        if ('' === $cookiePath)
         {
             $cookiePath = '/';
         }
-        if($uriPathDSCount > $cookiePathDSCount)
+        if ($uriPathDSCount > $cookiePathDSCount)
         {
-            if(version_compare(PHP_VERSION, '7.0', '>='))
+            if (version_compare(\PHP_VERSION, '7.0', '>='))
             {
-                $path = dirname($uriPath, $uriPathDSCount - $cookiePathDSCount);
+                $path = \dirname($uriPath, $uriPathDSCount - $cookiePathDSCount);
             }
             else
             {
                 $count = $uriPathDSCount - $cookiePathDSCount;
                 $path = $uriPath;
-                while($count--)
+                while ($count--)
                 {
-                    $path = dirname($path);
+                    $path = \dirname($path);
                 }
             }
-            if('\\' === DIRECTORY_SEPARATOR && false !== strpos($path, DIRECTORY_SEPARATOR))
+            if ('\\' === \DIRECTORY_SEPARATOR && false !== strpos($path, \DIRECTORY_SEPARATOR))
             {
-                $path = str_replace(DIRECTORY_SEPARATOR, '/', $path);
+                $path = str_replace(\DIRECTORY_SEPARATOR, '/', $path);
             }
+
             return $path === $cookiePath;
         }
         else
@@ -264,28 +282,31 @@ class CookieManager
     }
 
     /**
-     * 更新 Cookie 数据
+     * 更新 Cookie 数据.
      *
-     * @param int $id
+     * @param int                                     $id
      * @param \Yurun\Util\YurunHttp\Cookie\CookieItem $item
-     * @return int
+     *
+     * @return void
      */
     private function updateCookie($id, $item)
     {
-        if(isset($this->cookieList[$id]))
+        if (isset($this->cookieList[$id]))
         {
             $object = $this->cookieList[$id];
-        }
-        foreach($item as $k => $v)
-        {
-            $object->$k = $v;
+            // @phpstan-ignore-next-line
+            foreach ($item as $k => $v)
+            {
+                $object->$k = $v;
+            }
         }
     }
 
     /**
-     * 插入 Cookie 数据
+     * 插入 Cookie 数据.
      *
      * @param \Yurun\Util\YurunHttp\Cookie\CookieItem $item
+     *
      * @return int
      */
     private function insertCookie($item)
@@ -293,18 +314,20 @@ class CookieManager
         $id = $this->autoIncrementId++;
         $this->cookieList[$id] = $item;
         $this->relationMap[$item->domain][$item->path][$item->name] = $id;
+
         return $id;
     }
 
     /**
-     * 查找 Cookie ID
+     * 查找 Cookie ID.
      *
      * @param \Yurun\Util\YurunHttp\Cookie\CookieItem $item
+     *
      * @return int|null
      */
     private function findCookie($item)
     {
-        if(isset($this->relationMap[$item->domain][$item->path][$item->name]))
+        if (isset($this->relationMap[$item->domain][$item->path][$item->name]))
         {
             return $this->relationMap[$item->domain][$item->path][$item->name];
         }
@@ -313,5 +336,4 @@ class CookieManager
             return null;
         }
     }
-
 }
