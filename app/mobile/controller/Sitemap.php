@@ -6,13 +6,13 @@ namespace app\mobile\controller;
 
 use app\model\Book;
 use app\model\Chapter;
+use app\model\Tail;
 
 class Sitemap extends Base
 {
     public function book()
     {
         $num = config('seo.sitemap_gen_num');
-        $site_name = config('site.mobile_domain');
         $books = Book::order('id','desc')->limit($num)->select();
         $data = array();
         $content = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
@@ -24,7 +24,7 @@ class Sitemap extends Base
                 $book['param'] = $book['unique_id'];
             }
             $temp = array(
-                'loc' => $site_name . '/m/' . BOOKCTRL . '/' . $book['param'],
+                'loc' => $this->mobile_url . '/m/' . BOOKCTRL . '/' . $book['param'],
                 'priority' => '0.9',
             );
             array_push($data, $temp);
@@ -40,14 +40,34 @@ class Sitemap extends Base
 
     public function chapter() {
         $num = config('seo.sitemap_gen_num');
-        $site_name = config('site.domain');
         $chapters = Chapter::order('id','desc')->limit($num)->select();
         $arr = array();
         $content = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
         $content .= '<urlset>';
         foreach ($chapters as $chapter) {
             $temp = array(
-                'loc' => $site_name . '/m/' . CHAPTERCTRL . '/' . $chapter['id'],
+                'loc' => $this->mobile_url . '/m/' . CHAPTERCTRL . '/' . $chapter['id'],
+                'priority' => '0.9',
+            );
+            array_push($arr, $temp);
+        }
+        foreach ($arr as $item) {
+            $content .= $this->create_item($item);
+        }
+        $content .= '</urlset>';
+        ob_clean();
+        return xml($content,200,[],['root_node'=>'xml']);
+    }
+
+    public function tail() {
+        $num = config('seo.sitemap_gen_num');
+        $tails = Tail::order('id','desc')->limit($num)->select();
+        $arr = array();
+        $content = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
+        $content .= '<urlset>';
+        foreach ($tails as $tail) {
+            $temp = array(
+                'loc' => $this->mobile_url . '/pc/tail/' . $tail['tailcode'],
                 'priority' => '0.9',
             );
             array_push($arr, $temp);
