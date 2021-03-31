@@ -82,17 +82,10 @@
                     {/if}
 
                     {for start="1" end="$page.last_page + 1"}
-                    {if ($i != 1 && $i != $page.last_page)
-                    and ($i < $page.current_page - 2 || $i > $page.current_page + 2)}
-                    <li>
-                        .
-                    </li>
-                    {else/}
                     {if $i == $page.current_page }
                     <li><a href="/pc/{$booklist_act}?page={$i}{$param}" class="active">{$i}</a></li>
-                    {else/}
+                    {elseif ($i > $page.current_page - 4 && $i < $page.current_page + 5)/}
                     <li><a href="/pc/{$booklist_act}?page={$i}{$param}" title="第{$i}页">{$i}</a></li>
-                    {/if}
                     {/if}
                     {/for}
                     

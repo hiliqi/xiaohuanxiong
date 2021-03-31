@@ -29,15 +29,16 @@ class Tails extends Base
 
     public function list()
     {
-        $data = cache('tails');
-        if (!$data) {
-            $data = $this->tailService->getlist(20, $this->end_point, 'id');
-            cache('tails', $data,null, 'redis');
+        $data = $this->tailService->getlist(40, 'id');
+        unset($data['page']['query']['page']);
+        $param = '';
+        foreach ($data['page']['query'] as $k => $v) {
+            $param .= '&' . $k . '=' . $v;
         }
-
         View::assign([
-            'tails' => $data,
-            'total' => count($data)
+            'tails' => $data['tails'],
+            'page' => $data['page'],
+            'param' => $param,
         ]);
         return view($this->tpl);
     }

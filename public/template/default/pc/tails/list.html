@@ -8,7 +8,7 @@
         <h1>最新书单</h1>
         <small>
             推荐了
-            <span class="color-main" id="daykeyupdatecount">{$total}</span><span id="daykeycontent">本，刷新看更多</span>
+            <span class="color-main" id="daykeyupdatecount">{$page.total}</span><span id="daykeycontent">本</span>
         </small>
     </header>
     <div class="box-body">
@@ -38,5 +38,34 @@
             {/volist}
         </ul>
     </div>
+    <footer>
+        <div class="page-pagination mt20">
+            <ul>
+                <div class="pagination">
+                    {if $page.last_page > 1}
+                    {if $page.current_page == 1}
+                    <li><a>&lt;</a></li>
+                    {else/}
+                    <li><a id="prevPage" href="/pc/{$booklist_act}?page={$page.current_page-1}{$param}" title="上一页">&lt;</a></li>
+                    {/if}
+
+                    {for start="1" end="$page.last_page + 1"}
+                    {if $i == $page.current_page }
+                    <li><a href="/pc/tailist?page={$i}{$param}" class="active">{$i}</a></li>
+                    {elseif ($i > $page.current_page - 4 && $i < $page.current_page + 5)/}
+                    <li><a href="/pc/tailist?page={$i}{$param}" title="第{$i}页">{$i}</a></li>
+                    {/if}
+                    {/for}
+
+                    {if $page.current_page == $page.last_page}
+                    <li><a>&gt;</a></li>
+                    {else/}
+                    <li><a id="nextPage" href="/pc/{$booklist_act}?page={$page.current_page+1}{$param}" title="下一页">&gt;</a></li>
+                    {/if}
+                    {/if}
+                </div>
+            </ul>
+        </div>
+    </footer>
 </section>
 {/block}

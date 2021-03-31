@@ -3,6 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="744eb552-3b2d-452b-9c85-a7e014af20fe" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/index/controller/Tails.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/index/controller/Tails.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/service/TailService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/service/TailService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/template/default/pc/tails/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/template/default/pc/tails/list.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +82,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../new-novel" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
     <property name="vue.rearranger.settings.migration" value="true" />
@@ -245,6 +248,7 @@
       <workItem from="1616826415733" duration="3065000" />
       <workItem from="1616832365888" duration="5591000" />
       <workItem from="1617085966470" duration="1332000" />
+      <workItem from="1617166652086" duration="2201000" />
     </task>
     <servers />
   </component>
