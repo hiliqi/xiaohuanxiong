@@ -45,7 +45,7 @@ class Account extends Base
 
     public function phonereg() {
         $data = request()->param();
-        if (verifycode($data['stoken'], $data['code'], $data['mobile']) == 0) {
+        if (vcode($data['stoken'], $data['code'], $data['mobile']) == 0) {
             return json(['success' => 0, 'msg' => '验证码错误']);
         }
         $validate = new Phone();

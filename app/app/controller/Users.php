@@ -152,7 +152,7 @@ class Users extends BaseAuth
                 return json(['success' => 0, 'msg' => '该手机号码已经存在']);
             }
             $user = User::findOrFail($this->uid);
-            if (verifycode($data['stoken'], $data['code'], $data['mobile']) == 0) {
+            if (vcode($data['stoken'], $data['code'], $data['mobile']) == 0) {
                 return json(['success' => 0, 'msg' => '验证码错误']);
             }
             if(!empty($user->mobile)) {

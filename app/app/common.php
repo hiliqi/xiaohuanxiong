@@ -2,7 +2,7 @@
 
 use Firebase\JWT\JWT;
 
-function verifycode($stoken, $code, $mobile)
+function vcode($stoken, $code, $mobile)
 {
     $key = config('site.api_key');
     try {
