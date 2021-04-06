@@ -94,12 +94,12 @@ class Finance extends BaseUc
     {
         if (request()->isPost()) {
             $data = request()->param();
-            $number = config('site.domain') . '_';
             $money = $data['money'];  //用户充值金额
             $pay_type = $data['pay_type']; //是充值金币还是购买vip
             $pay_code = $data['code'];
             $order = new UserOrder();
-            $order->order_id = $number . $order->id;
+            $number = config('site.domain') . '_';
+            $order->order_id = $number . gen_uid(10);
             $order->user_id = $this->uid;
             $order->money = $money;
             $order->status = 0; //未完成订单
@@ -108,7 +108,7 @@ class Finance extends BaseUc
             $res = $order->save();
             if ($res) {
                 $number = config('site.domain') . '_';
-                $r = $this->pay->submit($number . $order->id, $money, $pay_type, $pay_code); //调用功能类，进行充值处理
+                $r = $this->pay->submit($order->order_id, $money, $pay_type, $pay_code); //调用功能类，进行充值处理
                 if ($r['type'] == 'html') {
                     $template = new \think\Template();
                     $template->display($r['content']);

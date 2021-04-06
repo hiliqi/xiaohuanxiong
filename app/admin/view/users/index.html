@@ -46,9 +46,6 @@
                         <button class="layui-btn icon-btn" lay-filter="tbBasicTbSearch" lay-submit>
                             <i class="layui-icon">&#xe615;</i>搜索
                         </button>
-                        <button class="layui-btn icon-btn" type="button" id="create">
-                            <i class="layui-icon"></i>新增
-                        </button>
                     </div>
                 </div>
             </form>
@@ -81,16 +78,6 @@
         var index = layui.index;
         var dropdown = layui.dropdown;
         var form = layui.form
-
-        $('#create').click(function () {
-            index.openTab({
-                title: '新建用户',
-                url: "{:url('users/create')}",
-                end: function () {
-                    insTb.reload();
-                }
-            })
-        })
 
         /* 表格工具条点击事件 */
         table.on('tool(tbBasicTable)', function (obj) {

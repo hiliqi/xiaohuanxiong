@@ -47,6 +47,9 @@
                         <button class="layui-btn icon-btn" lay-filter="tbBasicTbSearch" lay-submit>
                             <i class="layui-icon">&#xe615;</i>搜索
                         </button>
+                        <button class="layui-btn icon-btn" type="button" id="create">
+                            <i class="layui-icon"></i>新增
+                        </button>
                     </div>
                 </div>
             </form>
@@ -85,9 +88,6 @@
             elem: '#tbBasicTable',
             url: '{:url("books/getlist")}',
             page: true,
-            toolbar: ['<p>',
-                '<button lay-event="add" class="layui-btn layui-btn-sm icon-btn"><i class="layui-icon">&#xe654;</i>添加</button>&nbsp;',
-                '</p>'].join(''),
             cellMinWidth: 100,
             cols: [[
                 {type: 'checkbox'},
@@ -136,7 +136,7 @@
             if (obj.event === 'edit') { // 修改
                 index.openTab({
                     title: '作品编辑',
-                    url: "/books/edit?id=" + data.id,
+                    url: "/author/books/edit?id=" + data.id,
                     end: function() {
                         insTb.reload()
                     }
@@ -154,7 +154,7 @@
             } else if (obj.event === 'chapter') {
                 index.openTab({
                     title: '章节管理',
-                    url: "/chapters/list?book_id=" + data.id,
+                    url: "/author/chapters/list?book_id=" + data.id,
                     end: function() {
                         insTb.reload()
                     }
@@ -163,18 +163,15 @@
             dropdown.hideAll();
         });
 
-        /* 表格头工具栏点击事件 */
-        table.on('toolbar(tbBasicTable)', function (obj) {
-            if (obj.event === 'add') { // 添加
-                index.openTab({
-                    title: '添加漫画',
-                    url:'/books/create',
-                    end: function() {
-                        insTb.reload()
-                    }
-                })
-            }
-        });
+        $('#create').click(function () {
+            index.openTab({
+                title: '添加漫画',
+                url:'/author/books/create',
+                end: function() {
+                    insTb.reload()
+                }
+            })
+        })
     });
 </script>
 {/block}
