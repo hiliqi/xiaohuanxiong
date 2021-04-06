@@ -31,7 +31,7 @@ class Books extends Base
         $num = input('num');
         $newest = cache('newestHomepageApp');
         if (!$newest) {
-            $newest = Book::limit($num)->order('last_time', 'desc')->select();
+            $newest = Book::limit(0, $num)->order('last_time', 'desc')->select();
             foreach ($newest as &$book) {
                 $book['clicks'] = Clicks::where('book_id','=',$book['id'])->sum('id');
                 if (substr($book->cover_url, 0, 4) === "http") {
@@ -94,7 +94,7 @@ class Books extends Base
         $num = input('num');
         $tops = cache('topsHomepageApp');
         if (!$tops) {
-            $tops = Book::where('is_top', '=', '1')->limit($num)->order('last_time', 'desc')->select();
+            $tops = Book::where('is_top', '=', '1')->limit(0, $num)->order('last_time', 'desc')->select();
             foreach ($tops as &$book) {
                 $book['clicks'] = Clicks::where('book_id','=',$book['id'])->sum('id');
                 if (substr($book->cover_url, 0, 4) === "http") {
@@ -122,7 +122,7 @@ class Books extends Base
         $num = input('num');
         $ends = cache('endsHomepageApp');
         if (!$ends) {
-            $ends = Book::where('end', '=', '1')->limit($num)->order('last_time', 'desc')->select();
+            $ends = Book::where('end', '=', '1')->limit(0, $num)->order('last_time', 'desc')->select();
             foreach ($ends as &$book) {
                 $book['clicks'] = Clicks::where('book_id','=',$book['id'])->sum('id');
                 if (substr($book->cover_url, 0, 4) === "http") {

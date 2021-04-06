@@ -32,9 +32,9 @@ class Paynotify extends BaseController
             $money = (float)$data['money']; //实际付款金额
             $price = (float)$data['price']; //订单的原价
             $number = config('site.domain').'_';
-            $order_id = str_replace($number, '', $data['pay_id']);
+            $order_id = $data['pay_id'];
             try {
-                $order = UserOrder::findOrFail($order_id); //通过返回的订单id查询数据库
+                $order = UserOrder::where('order_id','=',$order_id)->findOrFail(); //通过返回的订单id查询数据库
                 $status = 0;
                 if ($money == $price) { //如果已支付，则更新用户财务信息
                     $status = 1;

@@ -76,7 +76,7 @@ CREATE TABLE `xwx_user_order`
     `status`      tinyint(4) not null default 0 COMMENT '0为未支付，1为已支付',
     `pay_type`    tinyint(4) default 1 COMMENT '0为未知，1为充值金币，2为购买vip',
     `summary`     text COMMENT '备注',
-    `order_id`    varchar(100)            default '' COMMENT '云端订单号',
+    `order_id`    varchar(100) default '' COMMENT '云端订单号',
     `create_time` int(11) DEFAULT '0',
     `update_time` int(11) DEFAULT '0',
     `expire_time` int(11) default '0',

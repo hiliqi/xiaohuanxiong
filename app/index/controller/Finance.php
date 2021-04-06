@@ -93,10 +93,13 @@ class Finance extends BaseUc
     public function charge()
     {
         if (request()->isPost()) {
-            $money = request()->post('money'); //用户充值金额
-            $pay_type = 1; //充值渠道
-            $pay_code = request()->post('code');
+            $data = request()->param();
+            $number = config('site.domain') . '_';
+            $money = $data['money'];  //用户充值金额
+            $pay_type = $data['pay_type']; //是充值金币还是购买vip
+            $pay_code = $data['code'];
             $order = new UserOrder();
+            $order->order_id = $number . $order->id;
             $order->user_id = $this->uid;
             $order->money = $money;
             $order->status = 0; //未完成订单
