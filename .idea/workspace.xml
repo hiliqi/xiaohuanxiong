@@ -3,11 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="744eb552-3b2d-452b-9c85-a7e014af20fe" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/admin/view/users/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/admin/view/users/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app/controller/Finance.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/app/controller/Finance.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/author/view/books/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/author/view/books/list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/index/controller/Finance.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/index/controller/Finance.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/mobile/controller/Finance.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/mobile/controller/Finance.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -262,7 +257,7 @@
       <workItem from="1617679204614" duration="668000" />
       <workItem from="1617693263474" duration="1892000" />
       <workItem from="1617697109852" duration="69000" />
-      <workItem from="1617723232488" duration="1393000" />
+      <workItem from="1617723232488" duration="3121000" />
     </task>
     <servers />
   </component>
