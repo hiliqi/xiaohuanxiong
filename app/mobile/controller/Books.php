@@ -28,7 +28,6 @@ class Books extends Base
     {
         //$id = input('id');
         $book = cache('book:' . $id);
-        $tags = cache('tags:book:' . $id);
         if ($book == false) {
             try {
                 $book_end_point = config('seo.book_end_point');
@@ -47,12 +46,15 @@ class Books extends Base
             } catch (ModelNotFoundException $e) {
                 abort(404, $e->getMessage());
             }
+            cache('book:' . $id, $book, null, 'redis');
+        }
+        $tags = cache('tagsBook:' . $id);
+        if($tags == false) {
             $tags = [];
-            if (!empty($book->tags) || is_null($book->tags)) {
+            if (!empty($book->tags)) {
                 $tags = explode('|', $book->tags);
             }
-            cache('book:' . $id, $book, null, 'redis');
-            cache('tags:book:' . $id, $tags, null, 'redis');
+            cache('tagsBook' . $id, $tags, null, 'redis');
         }
         $redis = RedisHelper::GetInstance();
         $day = date("Y-m-d", time());

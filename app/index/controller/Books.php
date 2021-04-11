@@ -26,7 +26,6 @@ class Books extends Base
     public function index($id)
     {
         $book = cache('book:' . $id);
-        $tags = cache('tagsBook:' . $id);
         if ($book == false) {
             try {
                 $book_end_point = config('seo.book_end_point');
@@ -44,13 +43,17 @@ class Books extends Base
             } catch (ModelNotFoundException $e) {
                 abort(404, $e->getMessage());
             }
+            cache('book:' . $id, $book, null, 'redis');
+        }
+        $tags = cache('tagsBook:' . $id);
+        if($tags == false) {
             $tags = [];
             if (!empty($book->tags)) {
                 $tags = explode('|', $book->tags);
             }
-            cache('book:' . $id, $book, null, 'redis');
             cache('tagsBook' . $id, $tags, null, 'redis');
         }
+
         $redis = RedisHelper::GetInstance();
         $day = date("Y-m-d", time());
         //以当前日期为键，增加点击数
