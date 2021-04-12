@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="744eb552-3b2d-452b-9c85-a7e014af20fe" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/index/controller/Books.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/index/controller/Books.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/mobile/controller/Books.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/mobile/controller/Books.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,7 +79,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../maccms10" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
     <property name="vue.rearranger.settings.migration" value="true" />
@@ -262,7 +260,8 @@
       <workItem from="1617723232488" duration="4125000" />
       <workItem from="1617730720619" duration="28000" />
       <workItem from="1617853837045" duration="154000" />
-      <workItem from="1618152833470" duration="1817000" />
+      <workItem from="1618152833470" duration="2405000" />
+      <workItem from="1618208909920" duration="16000" />
     </task>
     <servers />
   </component>
