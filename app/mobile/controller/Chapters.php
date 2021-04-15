@@ -71,7 +71,7 @@ class Chapters extends Base
             }
 
             if ($flag) {
-                $num = config('page.img_per_page');
+                $num = config('site.img_per_page');
                 $page = empty(input('page')) ? '1' : input('page');
                 $data = $this->photoService->getPaged($chapter->id, $page, $num); //图片分页数据
 
