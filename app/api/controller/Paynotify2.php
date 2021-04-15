@@ -31,7 +31,6 @@ class Paynotify extends BaseController
             //业务处理
             $money = (float)$data['money']; //实际付款金额
             $price = (float)$data['price']; //订单的原价
-            $number = config('site.domain').'_';
             $order_id = $data['pay_id'];
             try {
                 $order = UserOrder::where('order_id','=',$order_id)->findOrFail(); //通过返回的订单id查询数据库

@@ -30,7 +30,6 @@ class Paynotify extends BaseController
         $alipayNotify = new AlipayNotify($alipay_config);
         $verify_result = $alipayNotify->verifyNotify();
         if($verify_result){
-            $number = config('site.domain').'_';
             $order_id = $data['out_trade_no'];
             try {
                 $order = UserOrder::where('order_id','=',$order_id)->findOrFail(); //通过返回的订单id查询数据库
