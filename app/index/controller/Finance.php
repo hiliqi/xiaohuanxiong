@@ -203,7 +203,7 @@ class Finance extends BaseUc
         }, 'book'])->cache('chapter:' . $id, 600, 'redis')->find($id);
         if (request()->isPost()) {
             $result = $this->financeService->buyChapter($chapter, $this->uid);
-            return $result;
+            return json($result);
         }
 
         View::assign([

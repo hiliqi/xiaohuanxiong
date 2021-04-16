@@ -168,7 +168,7 @@ class FinanceService
     }
 
     public function buyChapter($chapter, $uid) {
-        $price = $chapter->book->money; //获得单章价格
+        $price = isset($chapter['book']['money']) ? $chapter['book']['money'] : 0; //获得单章价格
         $this->balance = $this->getBalance($uid); //这里不查询缓存，直接查数据库更准确
         if ($price > $this->balance) { //如果价格高于用户余额，则不能购买
             return ['success' => 0, 'msg' => '余额不足'];
@@ -189,6 +189,6 @@ class FinanceService
             $userBuy->save();
         }
         Cache::clear('pay'); //删除缓存
-        return json(['success' => 1, 'msg' => '购买成功，等待跳转']);
+        return ['success' => 1, 'msg' => '购买成功，等待跳转'];
     }
 }
