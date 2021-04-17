@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '638c2f22c7de7d5a893bf6b1a26e2d5c958acd75',
+    'reference' => '451e5acca9573460dcc200b9d5ef5ff768966865',
     'name' => 'topthink/think',
   ),
   'versions' => 
@@ -76,12 +76,12 @@
     ),
     'overtrue/pinyin' => 
     array (
-      'pretty_version' => '4.0.6',
-      'version' => '4.0.6.0',
+      'pretty_version' => '4.0.7',
+      'version' => '4.0.7.0',
       'aliases' => 
       array (
       ),
-      'reference' => '9836dae1783bcf5934508a2abe32eca9ea5ee15d',
+      'reference' => '083de406907d42df2e0feaaeb83f1a3c2e0095eb',
     ),
     'psr/cache' => 
     array (
@@ -189,12 +189,12 @@
     ),
     'symfony/var-dumper' => 
     array (
-      'pretty_version' => 'v4.4.20',
-      'version' => '4.4.20.0',
+      'pretty_version' => 'v4.4.21',
+      'version' => '4.4.21.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'a1eab2f69906dc83c5ddba4632180260d0ab4f7f',
+      'reference' => '0da0e174f728996f5d5072d6a9f0a42259dbc806',
     ),
     'topthink/framework' => 
     array (
@@ -212,7 +212,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => '638c2f22c7de7d5a893bf6b1a26e2d5c958acd75',
+      'reference' => '451e5acca9573460dcc200b9d5ef5ff768966865',
     ),
     'topthink/think-captcha' => 
     array (
@@ -279,12 +279,12 @@
     ),
     'yurunsoft/pay-sdk' => 
     array (
-      'pretty_version' => 'v3.0.5',
-      'version' => '3.0.5.0',
+      'pretty_version' => 'v3.1.0',
+      'version' => '3.1.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'a7b33022f0078a08aec7028ef56de5b52fc3f0f3',
+      'reference' => '24d93b7ebd84e2c42ae0f95e49511a0bf7922ccf',
     ),
     'yurunsoft/yurun-http' => 
     array (

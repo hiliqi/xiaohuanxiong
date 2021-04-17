@@ -539,16 +539,16 @@
         },
         {
             "name": "overtrue/pinyin",
-            "version": "4.0.6",
+            "version": "4.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/overtrue/pinyin.git",
-                "reference": "9836dae1783bcf5934508a2abe32eca9ea5ee15d"
+                "reference": "083de406907d42df2e0feaaeb83f1a3c2e0095eb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/overtrue/pinyin/zipball/9836dae1783bcf5934508a2abe32eca9ea5ee15d",
-                "reference": "9836dae1783bcf5934508a2abe32eca9ea5ee15d",
+                "url": "https://api.github.com/repos/overtrue/pinyin/zipball/083de406907d42df2e0feaaeb83f1a3c2e0095eb",
+                "reference": "083de406907d42df2e0feaaeb83f1a3c2e0095eb",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -606,7 +606,7 @@
             ],
             "support": {
                 "issues": "https://github.com/overtrue/pinyin/issues",
-                "source": "https://github.com/overtrue/pinyin/tree/master"
+                "source": "https://github.com/overtrue/pinyin/tree/4.0.7"
             },
             "funding": [
                 {
@@ -614,7 +614,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2020-04-13T08:53:30+00:00"
+            "time": "2021-04-16T11:13:48+00:00"
         },
         {
             "name": "psr/cache",
@@ -1395,16 +1395,16 @@
         },
         {
             "name": "yurunsoft/pay-sdk",
-            "version": "v3.0.5",
+            "version": "v3.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Yurunsoft/PaySDK.git",
-                "reference": "a7b33022f0078a08aec7028ef56de5b52fc3f0f3"
+                "reference": "24d93b7ebd84e2c42ae0f95e49511a0bf7922ccf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Yurunsoft/PaySDK/zipball/a7b33022f0078a08aec7028ef56de5b52fc3f0f3",
-                "reference": "a7b33022f0078a08aec7028ef56de5b52fc3f0f3",
+                "url": "https://api.github.com/repos/Yurunsoft/PaySDK/zipball/24d93b7ebd84e2c42ae0f95e49511a0bf7922ccf",
+                "reference": "24d93b7ebd84e2c42ae0f95e49511a0bf7922ccf",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -1417,6 +1417,12 @@
                 "php": ">=5.5",
                 "yurunsoft/yurun-http": "~4.0"
             },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "2.18.3"
+            },
+            "bin": [
+                "src/Weixin/Tool/CertificateDownloader.php"
+            ],
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -1430,9 +1436,9 @@
             "description": "PHP 集成支付 SDK ，集成了支付宝、微信支付的支付接口和其它相关接口的操作。",
             "support": {
                 "issues": "https://github.com/Yurunsoft/PaySDK/issues",
-                "source": "https://github.com/Yurunsoft/PaySDK/tree/v3.0.5"
+                "source": "https://github.com/Yurunsoft/PaySDK/tree/v3.1.0"
             },
-            "time": "2021-03-16T11:38:11+00:00"
+            "time": "2021-04-09T06:19:08+00:00"
         },
         {
             "name": "yurunsoft/yurun-http",
@@ -1741,16 +1747,16 @@
         },
         {
             "name": "symfony/var-dumper",
-            "version": "v4.4.20",
+            "version": "v4.4.21",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/var-dumper.git",
-                "reference": "a1eab2f69906dc83c5ddba4632180260d0ab4f7f"
+                "reference": "0da0e174f728996f5d5072d6a9f0a42259dbc806"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/a1eab2f69906dc83c5ddba4632180260d0ab4f7f",
-                "reference": "a1eab2f69906dc83c5ddba4632180260d0ab4f7f",
+                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/0da0e174f728996f5d5072d6a9f0a42259dbc806",
+                "reference": "0da0e174f728996f5d5072d6a9f0a42259dbc806",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -1816,7 +1822,7 @@
                 "dump"
             ],
             "support": {
-                "source": "https://github.com/symfony/var-dumper/tree/v4.4.20"
+                "source": "https://github.com/symfony/var-dumper/tree/v4.4.21"
             },
             "funding": [
                 {
@@ -1832,7 +1838,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-01-27T09:09:26+00:00"
+            "time": "2021-03-27T19:49:03+00:00"
         },
         {
             "name": "topthink/think-trace",
