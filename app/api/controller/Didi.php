@@ -7,6 +7,7 @@ namespace app\api\controller;
 use app\BaseController;
 use app\model\FriendshipLink;
 use think\db\exception\ModelNotFoundException;
+use think\facade\Cache;
 
 class Didi extends BaseController
 {
@@ -31,16 +32,20 @@ class Didi extends BaseController
         $type = $data['type'];
         if ($type == 'insert_link') { //上链
             if ($this->verify($header)) {
-                $url = rtrim($data['url'], '/') ;
+                $srcUrl = rtrim($data['url'], '/') ;
+                $url = $this->parse($srcUrl);
                 try {
-                    $link = FriendshipLink::where('url', '=', $url)->findOrFail();
-                    return json(['code' => 1, 'msg' => '友链已存在']);
+                    $link = FriendshipLink::where('url', 'in', [
+                        'http://'.$url,'https://'.$url,'http://'.$url.'/','https://'.$url.'/'
+                    ])->findOrFail();
+                    return json(['code' => 0, 'msg' => '友链已存在']);
                 } catch (ModelNotFoundException $exception) {
                     $title = $data['title'];
                     $link = new FriendshipLink();
                     $link->name = $title;
-                    $link->url = $url;
+                    $link->url = $srcUrl;
                     $result = $link->save();
+                    Cache::delete('friendshipLink');
                     if ($result) {
                         return json(['code' => 0, 'msg' => '上链成功']);
                     } else {
@@ -55,6 +60,17 @@ class Didi extends BaseController
         } else if ($type == 'delete_link') { //下链
             if ($this->verify($header)) {
                 $url = rtrim($data['url'], '/') ;
+                $url = $this->parse($url);
+                try {
+                    $link = FriendshipLink::where('url', 'in', [
+                        'http://'.$url,'https://'.$url,'http://'.$url.'/','https://'.$url.'/'
+                    ])->findOrFail();
+                    $link->delete();
+                    Cache::delete('friendshipLink');
+                    return json(['code' => 0, 'msg' => '删除成功']);
+                } catch (ModelNotFoundException $exception){
+                    return json(['code' => 0, 'msg' => '删除失败']);
+                }
 
             } else {
                 return json(['code' => 1, 'msg' => '校验失败']);
@@ -74,7 +90,10 @@ class Didi extends BaseController
         } else if ($type == 'list') {
             if ($this->verify($header)) {
                 $url = $data['url'];
-                $links = FriendshipLink::where('url', '=', $url)->select();
+                $url = $this->parse($url);
+                $links = FriendshipLink::where('url', 'in', [
+                    'http://'.$url,'https://'.$url,'http://'.$url.'/','https://'.$url.'/'
+                ])->findOrFail();
                 return json(['code' => 0, 'msg' => '获取友链列表成功', 'list' => $links]);
             } else {
                 return json(['code' => 1, 'msg' => '校验失败']);
@@ -82,5 +101,14 @@ class Didi extends BaseController
         } else {
             return json(['code' => 1, 'msg' => '参数错误']);
         }
+    }
+
+    protected function parse($url){
+        $query       = parse_url($url, PHP_URL_QUERY);
+        $scheme      = parse_url($url, PHP_URL_SCHEME);
+        $host        = parse_url($url, PHP_URL_HOST);
+        $url         = parse_url($url, PHP_URL_HOST) . parse_url($url, PHP_URL_PATH);
+        if ($query) $url .= '?' . $query;
+        return $url;
     }
 }
