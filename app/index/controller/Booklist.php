@@ -55,7 +55,7 @@ class Booklist extends Base
             $end_selector = $end;
             $map[] = ['end', '=', $end];
         }
-        $data = $this->bookService->getPagedBooks(config('page.booklist_page'), $this->end_point, 'id', $map);
+        $data = $this->bookService->getPagedBooks(21, $this->end_point, 'id', $map);
 
         unset($data['page']['query']['page']);
         $param = '';
