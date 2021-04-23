@@ -101,8 +101,7 @@ class Finance extends BaseAuth
         $pay_type = $data['pay_type']; //是充值金币还是购买vip
         $pay_code = $data['code'];
         $order = new UserOrder();
-        $number = config('site.domain') . '_';
-        $order->order_id = $number . gen_uid(10);
+        $order->order_id = time()  . gen_uid(10);
         $order->user_id = $this->uid;
         $order->money = $money;
         $order->status = 0; //未完成订单
@@ -110,7 +109,6 @@ class Finance extends BaseAuth
         $order->expire_time = time() + 86400; //订单失效时间往后推一天
         $res = $order->save();
         if ($res) {
-            $number = config('site.domain').'_';
             $r = $this->pay->submit($order->order_id, $money, $pay_type, $pay_code);
             if ($r['type'] == 'html') {
                 return json(['success' => 1, 'type' => 'html', 'html' => $r['content'], 'order_id' => 'xwx_order_' . $order->id]);
