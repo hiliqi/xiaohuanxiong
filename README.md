@@ -17,7 +17,6 @@
 - 官方博客：https://www.xiaohuanxiong.net
 - 文档地址：https://www.kancloud.cn/hiliqi/raccoon5/1921259
 - 官方QQ群：780362399
-- 电报群：https://t.me/comiccms
 - 另外开源一套小说cms：https://github.com/hiliqi/novel
 
 # 开源协议
