@@ -26,14 +26,14 @@
             <span class="input-con-title">验证码</span>
             <input name="captcha" class="txt_phone" type="text" placeholder="验证码" value="">
             <p style="margin-top: 5px;">
-                <img id="captcha" src="/m/account/captcha" onclick = "this.src='/m/captcha?rnd=' + Math.random();">
+                <img id="captcha" src="/account/captcha" onclick = "this.src='/captcha?rnd=' + Math.random();">
             </p>
         </div>
     </div>
 </form>
 <a onclick="register();" class="line-container-btn">注册</a>
 <div class="line-tip">
-    <a class="line-tip-right" href="/m/login">直接登录</a> </div>
+    <a class="line-tip-right" href="/login">直接登录</a> </div>
 <div class="toast" style="display:none;"></div>
 <script>
     var regpwd = new RegExp("^[0-9A-Za-z\\-=\\[\\];,./~!@#$%^*()_+}{:?]{6,21}$");
@@ -105,26 +105,26 @@
         if (!$username || $.trim($username.val()) === "") {
             ShowDialog("必须填写用户名");
             $username.focus().css({ outlineWidth: 1, outlineColor: "#fd113a" });
-            $('#captcha').attr('src','/m/captcha?rnd=' + r)
+            $('#captcha').attr('src','/captcha?rnd=' + r)
             return;
         }
         if (!$pwd || $.trim($pwd.val()) === "") {
             ShowDialog("必须填写密码");
             $pwd.focus().css({ outlineWidth: 1, outlineColor: "#fd113a" });
-            $('#captcha').attr('src','/m/captcha?rnd=' + r)
+            $('#captcha').attr('src','/captcha?rnd=' + r)
             return;
         }
         if ($pwd1.length > 0 && $.trim($pwd1.val()) === "") {
             ShowDialog("请再次输入密码");
             $pwd1.focus().css({ outlineWidth: 1, outlineColor: "#fd113a" });
-            $('#captcha').attr('src','/m/captcha?rnd=' + r)
+            $('#captcha').attr('src','/captcha?rnd=' + r)
             return;
         }
         if ($pwd1.length > 0 && $.trim($pwd.val()) !== $.trim($pwd1.val())) {
             ShowDialog("两次输入的密码不一致");
             $pwd.focus().css({ outlineWidth: 1, outlineColor: "#fd113a" }).val("");
             $pwd1.val("");
-            $('#captcha').attr('src','/m/captcha?rnd=' + r)
+            $('#captcha').attr('src','/captcha?rnd=' + r)
             return;
         }
         if (!regpwd.test($username.val())) {
@@ -133,7 +133,7 @@
             if ($pwd1.length > 0) {
                 $pwd1.val("");
             }
-            $('#captcha').attr('src','/m/captcha?rnd=' + r)
+            $('#captcha').attr('src','/captcha?rnd=' + r)
             return;
         }
         if (!regpwd.test($pwd.val())) {
@@ -142,13 +142,13 @@
             if ($pwd1.length > 0) {
                 $pwd1.val("");
             }
-            $('#captcha').attr('src','/m/captcha?rnd=' + r)
+            $('#captcha').attr('src','/captcha?rnd=' + r)
             return;
         }
 
         $.ajax({
             type: 'POST',
-            url: "/m/register",
+            url: "/register",
             data: $('#form-reg').serialize(),
             dataType: 'json',
             success: function (data) {
@@ -156,15 +156,15 @@
                 if (result.err == 0){ //注册成功
                     ShowDialog(result.msg);
                     setTimeout(function () {
-                        location.href = '/m/login';
+                        location.href = '/login';
                     }, 1000);
                 } else {
-                    $('#captcha').attr('src','/m/captcha?rnd=' + r)
+                    $('#captcha').attr('src','/captcha?rnd=' + r)
                     ShowDialog(result.msg);
                 }
             },
             error: function (data) {
-                $('#captcha').attr('src','/m/captcha?rnd=' + r)
+                $('#captcha').attr('src','/captcha?rnd=' + r)
                 ShowDialog(data.msg);
             },
         });

@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="/static/css/reset.css">
     <link rel="stylesheet" type="text/css" href="/static/css/mstyle.css">
     {if $next != "null"}
-    <link rel="prefetch" href="/m/{$chapter_ctrl}/{$next.id}" />
+    <link rel="prefetch" href="/{$chapter_ctrl}/{$next.id}" />
     {/if}
     <link href="https://lib.baomitu.com/layer/3.1.1/theme/default/layer.css" rel="stylesheet">
     <script src="https://lib.baomitu.com/jquery/1.12.4/jquery.min.js"></script>
@@ -33,59 +33,27 @@
         </div>
     </div>
 </div>
-<div style="background-color: black;color: white;padding: 15px;">
-    <p style="text-align: center;line-height: 40px;">前往微信或app阅读无删减版漫画</p>
-    <div style="text-align: center;">
-        <button style="background-color: #4CAF50;font-size: 16px;color: white;border: none;border-radius: 12px;width: 60%;" onclick="javascript:location.href='/static/assets/wx.html';">点击打开微信</button>
-        <button style="background-color: orangered;font-size: 16px;color: white;border: none;border-radius: 12px;width: 60%;margin-top: 5px;" onclick="javascript:location.href='http://ldy.fanlimanhua.cn/?agentId=723&channelId=264&spreadId=0';">点击下载app</button>
-    </div>
-</div>
 <div class="view-main-1 readForm" id="cp_img">
-    {volist name="photos" id="vo"}
+    {raccoon:photos name="photos" order="pic_order asc" where="chapter_id='$chapter->id'"}
     <img class="lazy" data-original="{$vo.img_url}" src="https://p.pstatp.com/origin/ffa400036691f82c85e5">
-    {/volist}
+    {/raccoon:photos}
 </div>
 
 <ul class="view-bottom-bar">
     {if $prev == "null"}
     <li style="width:25%;opacity: 0.6;"><a class="view-bottom-bar-item">上一章</a></li>
     {else /}
-    <li style="width:25%;"><a class="view-bottom-bar-item" href="/m/{$chapter_ctrl}/{$prev.id}">上一章</a></li>
-    {/if}
-
-    {if $page.last_page > 1}
-    {if $page.current_page == 1}
-    <li style="width:25%;opacity: 0.6;">
-        <a class="view-bottom-bar-item">上一页</a>
-    </li>
-    {else/}
-    <li style="width:25%;">
-        <a class="view-bottom-bar-item" href="/m/{$chapter_ctrl}/{$chapter.id}?page={$page.current_page-1}">上一页</a>
-    </li>
-    {/if}
-
-    {if $page.current_page == $page.last_page}
-    <li style="width:25%;opacity: 0.6;">
-        <a class="view-bottom-bar-item">下一页</a>
-    </li>
-    {else/}
-    <li style="width:25%;">
-        <a class="view-bottom-bar-item" href="/m/{$chapter_ctrl}/{$chapter.id}?page={$page.current_page+1}">下一页</a>
-    </li>
-    {/if}
-    {else/}
-    <li style="width: 25%; visibility: hidden;"><a class="view-bottom-bar-item">占位用</a></li>
-    <li style="width: 25%; visibility: hidden;"><a class="view-bottom-bar-item">占位用</a></li>
+    <li style="width:25%;"><a class="view-bottom-bar-item" href="/{$chapter_ctrl}/{$prev.id}">上一章</a></li>
     {/if}
 
     {if $next == "null"}
     <li style="width:25%;opacity: 0.6;"><a class="view-bottom-bar-item" href="javascript:void(0)">下一章</a></li>
     {else /}
-    <li style="width:25%;"><a class="view-bottom-bar-item" href="/m/{$chapter_ctrl}/{$next.id}">下一章</a></li>
+    <li style="width:25%;"><a class="view-bottom-bar-item" href="/{$chapter_ctrl}/{$next.id}">下一章</a></li>
     {/if}
 </ul>
 <div class="view-fix-bottom-bar" mode="0">
-    <a class="view-fix-bottom-bar-item" href="/m/{$book_ctrl}/{$chapter.book.param}">
+    <a class="view-fix-bottom-bar-item" href="/{$book_ctrl}/{$chapter.book.param}">
         <img class="view-fix-bottom-bar-logo" src="/static/images/view-bottom-logo-1.png">
         <p class="view-fix-bottom-bar-title">目录</p>
     </a>
@@ -96,7 +64,7 @@
         <p class="view-fix-bottom-bar-title">上一章</p>
     </a>
     {else /}
-    <a class="view-fix-bottom-bar-item" href="/m/{$chapter_ctrl}/{$prev.id}">
+    <a class="view-fix-bottom-bar-item" href="/{$chapter_ctrl}/{$prev.id}">
         <img class="view-fix-bottom-bar-logo" src="/static/images/view-bottom-logo-5.png">
         <p class="view-fix-bottom-bar-title">上一章</p>
     </a>
@@ -108,7 +76,7 @@
         <p class="view-fix-bottom-bar-title">下一章</p>
     </a>
     {else /}
-    <a class="view-fix-bottom-bar-item" href="/m/{$chapter_ctrl}/{$next.id}">
+    <a class="view-fix-bottom-bar-item" href="/{$chapter_ctrl}/{$next.id}">
         <img class="view-fix-bottom-bar-logo" src="/static/images/view-bottom-logo-6.png">
         <p class="view-fix-bottom-bar-title">下一章</p>
     </a>

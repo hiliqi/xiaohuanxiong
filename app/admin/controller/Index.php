@@ -66,8 +66,8 @@ class Index extends BaseAdmin
         $app_key = config('site.app_key');
         $front_tpl = config('site.tpl');
         $img_per_page = config('site.img_per_page');
-        $up_server = config('site.up_server');
-        $json_server = config('site.json_server');
+        $ios = config('site.ios');
+        $android = config('site.android');
 
         $dirs = array();
         $dir = new DirectoryIterator(App::getRootPath() . 'public/template/');
@@ -90,8 +90,8 @@ class Index extends BaseAdmin
             'front_tpl' => $front_tpl,
             'img_per_page' => $img_per_page,
             'tpl_dirs' => $dirs,
-            'up_server' => $up_server,
-            'json_server' => $json_server
+            'ios' => $ios,
+            'android' => $android
         ]);
         return view();
     }
@@ -108,8 +108,8 @@ class Index extends BaseAdmin
             $app_key = input('app_key');
             $front_tpl = input('front_tpl');
             $img_per_page = input('img_per_page');
-            $up_server = input('up_server');
-            $json_server = input('json_server');
+            $ios = input('ios');
+            $android= input('android');
             $site_code = <<<INFO
 <?php
 return [
@@ -122,8 +122,8 @@ return [
     'app_key' => '{$app_key}',
     'tpl' => '{$front_tpl}',
     'img_per_page' => '{$img_per_page}',
-    'up_server' => '{$up_server}',
-    'json_server' => '{$json_server}'   
+    'ios' => '{$ios}',
+    'android' => '{$android}'   
  ];
 INFO;
             $file = App::getRootPath() . 'config/site.php';

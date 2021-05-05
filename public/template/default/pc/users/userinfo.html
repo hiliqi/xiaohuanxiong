@@ -38,7 +38,7 @@
             return;
         }
         $.post({
-            url:'/pc/userinfo',
+            url:'/userinfo',
             data:{nickname: nickname},
             success:function (res) {
                 ShowDialog(res.msg);

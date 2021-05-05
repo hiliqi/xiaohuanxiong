@@ -34,15 +34,15 @@
                         </p>
                         <p>
                             <input name="captcha" type="text" placeholder="验证码" style="width:150px;">
-                            <img id="captcha" src="/pc/captcha"
-                                 onclick = "this.src='/pc/captcha?rnd=' + Math.random();">
+                            <img id="captcha" src="/captcha"
+                                 onclick = "this.src='/captcha?rnd=' + Math.random();">
                         </p>
                     </form>
                     <p><button class="button" onclick="register()">立即注册</button></p>
                     <p class="options">
                         <label><input name="ck_accepted" type="checkbox" value="on" checked>我已经阅读并同意</label>
                         <span class="link"><a href="#" target="_blank" title="使用协议">《使用协议》</a></span>
-                        <span class="tabs-link pull-right"><a class="" href="/pc/login">已有账号，直接登录</a></span>
+                        <span class="tabs-link pull-right"><a class="" href="/login">已有账号，直接登录</a></span>
                     </p>
                 </div>
             </div>
@@ -119,26 +119,26 @@
         if (!$username || $.trim($username.val()) === "") {
             ShowDialog("必须填写用户名");
             $username.focus().css({ outlineWidth: 1, outlineColor: "#fd113a" });
-            $('#captcha').attr('src','/pc/captcha?rnd=' + r)
+            $('#captcha').attr('src','/captcha?rnd=' + r)
             return;
         }
         if (!$pwd || $.trim($pwd.val()) === "") {
             ShowDialog("必须填写密码");
             $pwd.focus().css({ outlineWidth: 1, outlineColor: "#fd113a" });
-            $('#captcha').attr('src','/pc/captcha?rnd=' + r)
+            $('#captcha').attr('src','/captcha?rnd=' + r)
             return;
         }
         if ($pwd1.length > 0 && $.trim($pwd1.val()) === "") {
             ShowDialog("请再次输入密码");
             $pwd1.focus().css({ outlineWidth: 1, outlineColor: "#fd113a" });
-            $('#captcha').attr('src','/pc/captcha?rnd=' + r)
+            $('#captcha').attr('src','/captcha?rnd=' + r)
             return;
         }
         if ($pwd1.length > 0 && $.trim($pwd.val()) !== $.trim($pwd1.val())) {
             ShowDialog("两次输入的密码不一致");
             $pwd.focus().css({ outlineWidth: 1, outlineColor: "#fd113a" }).val("");
             $pwd1.val("");
-            $('#captcha').attr('src','/pc/captcha?rnd=' + r)
+            $('#captcha').attr('src','/captcha?rnd=' + r)
             return;
         }
         if (!regpwd.test($username.val())) {
@@ -147,7 +147,7 @@
             if ($pwd1.length > 0) {
                 $pwd1.val("");
             }
-            $('#captcha').attr('src','/pc/captcha?rnd=' + r)
+            $('#captcha').attr('src','/captcha?rnd=' + r)
             return;
         }
         if (!regpwd.test($pwd.val())) {
@@ -156,13 +156,13 @@
             if ($pwd1.length > 0) {
                 $pwd1.val("");
             }
-            $('#captcha').attr('src','/pc/captcha?rnd=' + r)
+            $('#captcha').attr('src','/captcha?rnd=' + r)
             return;
         }
 
         $.ajax({
             type: 'POST',
-            url: "/pc/register",
+            url: "/register",
             data: $('#form-reg').serialize(),
             dataType: 'json',
             success: function (data) {
@@ -170,15 +170,15 @@
                 if (result.err == 0){ //注册成功
                     ShowDialog(result.msg);
                     setTimeout(function () {
-                        location.href = '/pc/login';
+                        location.href = '/login';
                     }, 1000);
                 } else {
-                    $('#captcha').attr('src','/pc/captcha?rnd=' + r)
+                    $('#captcha').attr('src','/captcha?rnd=' + r)
                     ShowDialog(result.msg);
                 }
             },
             error: function (data) {
-                $('#captcha').attr('src','/pc/captcha?rnd=' + r)
+                $('#captcha').attr('src','/captcha?rnd=' + r)
                 ShowDialog(data.msg);
             },
         });

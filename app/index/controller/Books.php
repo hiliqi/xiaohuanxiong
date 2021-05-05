@@ -15,14 +15,6 @@ use app\model\Comments;
 
 class Books extends Base
 {
-    protected $bookService;
-
-    public function initialize()
-    {
-        parent::initialize();
-        $this->bookService = new BookService();
-    }
-
     public function index($id)
     {
         $book = cache('book:' . $id);
@@ -45,31 +37,11 @@ class Books extends Base
             }
             cache('book:' . $id, $book, null, 'redis');
         }
-        $tags = cache('tagsBook:' . $id);
-        if($tags == false) {
-            $tags = [];
-            if (!empty($book->tags)) {
-                $tags = explode('|', $book->tags);
-            }
-            cache('tagsBook' . $id, $tags, null, 'redis');
-        }
 
         $redis = RedisHelper::GetInstance();
         $day = date("Y-m-d", time());
         //以当前日期为键，增加点击数
         $redis->zIncrBy('click:' . $day, 1, $book->id);
-
-        $recommand = cache('randBooks:' . $book->tags);
-        if (!$recommand) {
-            $recommand = $this->bookService->getRecommand($book->tags, $this->end_point);
-            cache('randBooks:' . $book->tags, $recommand, null, 'redis');
-        }
-
-        $updates = cache('updateBooks');
-        if (!$updates) {
-            $updates = $this->bookService->getBooks($this->end_point, 'last_time', [], 20);
-            cache('updateBooks', $updates, null, 'redis');
-        }
 
         $start = cache('bookStart:' . $id);
         if ($start == false) {
@@ -104,31 +76,13 @@ class Books extends Base
                 $start_pay = (float)$max_chapter_order - $abs; //计算出起始付费章节
             }
         }
-
-        $clicks = cache('bookClicks:' . $book->id);
-        if (!$clicks) {
-            $clicks = $this->bookService->getClicks($book->id, $this->prefix);
-            cache('bookClicks:' . $book->id, $clicks);
-        }
-
-//        $topics = cache('topics:'.md5($book->book_name));
-//        if (!$topics) {
-//            $topics = Db::query(
-//                "select * from " . $this->prefix . "topic where match(topic_name)
-//            against ('" . $book->book_name . "') LIMIT 5");
-//            cache('topics:'.md5($book->book_name), $topics, null, 'redis');
-//        }
-
         View::assign([
             'book' => $book,
-            'tags' => $tags,
             'start' => $start,
-            'updates' => $updates,
-            'recommand' => $recommand,
             'isfavor' => $isfavor,
             'comments' => $comments,
             'start_pay' => $start_pay,
-            'clicks' => $clicks,
+            'tags' => explode('|', $book['tags'])
         ]);
         return view($this->tpl);
     }

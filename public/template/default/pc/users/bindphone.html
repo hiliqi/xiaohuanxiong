@@ -58,7 +58,7 @@
                 }
                 var areacode = $(".txt_areacode").val();
                 $.ajax({
-                    url: '/pc/sendcms',
+                    url: '/sendcms',
                     data: {areacode: areacode, phone: phone},
                     async: false,
                     error: function (msg) {
@@ -76,7 +76,7 @@
 
     $('#sub').click(function () {
         $.post({
-            url: '/pc/bindphone',
+            url: '/bindphone',
             data: {
                 txt_phonecode: $('#txt_phonecode').val(),
                 txt_phone: $('#txt_phone').val()
@@ -85,7 +85,7 @@
                 if (res.err == 0) {
                     ShowDialog(res.msg);
                     setTimeout(function () {
-                        location.href = '/pc/ucenter';
+                        location.href = '/ucenter';
                     }, 2000);
                 } else {
                     ShowDialog(res.msg);
@@ -100,7 +100,7 @@
 
     $('#sub1').click(function () {
         $.post({
-            url: '/pc/verifyphone',
+            url: '/verifyphone',
             data: {
                 txt_phonecode: $('#txt_phonecode').val(),
                 txt_phone: $('#txt_phone').val()
@@ -112,7 +112,7 @@
                         location.reload();
                     }, 1000);
                 } else {
-                    location.href = '/pc/bindphone';
+                    location.href = '/bindphone';
                 }
             }
         })
@@ -121,7 +121,7 @@
     $('#resetpwd_sub').click(function () {
         if (resetpwd() == 4) {
             $.post({
-                url: '/pc/resetpwd',
+                url: '/resetpwd',
                 data: {password: $("#txt_password").val()},
                 success(res) {
                     if (res.err == '1') {
@@ -132,7 +132,7 @@
                     } else {
                         ShowDialog(res.msg);
                         setTimeout(function () {
-                            location.href = '/pc/ucenter';
+                            location.href = '/ucenter';
                         }, 2000);
                     }
                 }

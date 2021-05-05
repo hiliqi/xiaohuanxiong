@@ -92,15 +92,23 @@ class Authors extends BaseAdmin
         Author::destroy($ids);
     }
 
-    public function search($author_name)
+    public function search()
     {
-        $data = $this->authorService->getAuthors([
-            ['author_name', 'like', '%' . $author_name . '%']
+        $title = input('author_name');
+        $where = [
+            ['author_name', 'like', '%' . $title . '%']
+        ];
+        $page = intval(input('page'));
+        $limit = intval(input('limit'));
+        $data = Author::where($where);
+        $count = $data->count();
+        $authors = $data->limit(($page - 1) * $limit, $limit)->order('id', 'desc')->select();
+
+        return json([
+            'code' => 0,
+            'msg' => '',
+            'count' => $count,
+            'data' => $authors
         ]);
-        View::assign([
-            'authors' => $data['authors'],
-            'count' => $data['count']
-        ]);
-        return view('index');
     }
 }

@@ -677,10 +677,6 @@ li.detail-list-comment-sublist-more{padding: 4px 0;background: #EBEBEB;}
 .selector-update-top-item.active{color: #252525;}
 .selector-update-top-item.active:after{content:"";background-color: #FD113A;border-radius: 2.5px;width: 25px;height: 5px;display: block;position: absolute;bottom: 0;left: 50%;margin-left: -12.5px;}
 
-.pagination{ right: 35%; bottom: 20px;position: fixed;}
-.paginate-btn{opacity: 0.8;width: 60px;height: 25px;display: inline-block;line-height: 25px;text-align: center;top: 15px;right: 10px;background-color:white ;border-radius: 15px;font-size: 20px;color: black;box-shadow:1px 1px 3px #333333;}
-.paginate-disabled-btn{opacity: 0.8;width: 60px;height: 25px;display: inline-block;line-height: 25px;text-align: center;top: 15px;right: 10px;background-color:darkgrey ;border-radius: 15px;font-size: 20px;color: #F8F8F9;}
-
 .banner-bottom{z-index: 97;position: relative;}
 .banner-bottom img{width: 100%;position: absolute;bottom: -1px;}
 .index-bottom-ad{width: 60%;padding: 30px 20%;}
@@ -739,3 +735,31 @@ li.detail-list-comment-sublist-more{padding: 4px 0;background: #EBEBEB;}
 .guide{position: absolute;height: 100%;width: 100%;z-index: 999;overflow: hidden;top: 0;left: 0;}
 .guide img{width: 100%;}
 .guide a{position: absolute;margin-top: 110%;display: block;width: 50%;left: 25%;padding-top: 13%;top: 0;}
+
+.pagination {
+    font-size: 0;
+    line-height: normal;
+    text-align: center;
+    padding: 15px;
+}
+.pagination li {
+    display: inline-block;
+}
+.pagination .active a {
+    background-color: #ff741e;
+}
+.pagination a, .pagination span.now-page {
+    display: inline-block;
+    font-size: 14px;
+    color: #fff;
+    background-color: #333333;
+    margin: 2px 2.5px;
+    height: 27px;
+    line-height: 28px;
+    padding: 0 10px;
+    border-radius: 3px;
+}
+
+/*.pagination{ right: 35%; bottom: 20px;position: fixed;}*/
+/*.paginate-btn{opacity: 0.8;width: 60px;height: 25px;display: inline-block;line-height: 25px;text-align: center;top: 15px;right: 10px;background-color:white ;border-radius: 15px;font-size: 20px;color: black;box-shadow:1px 1px 3px #333333;}*/
+/*.paginate-disabled-btn{opacity: 0.8;width: 60px;height: 25px;display: inline-block;line-height: 25px;text-align: center;top: 15px;right: 10px;background-color:darkgrey ;border-radius: 15px;font-size: 20px;color: #F8F8F9;}*/

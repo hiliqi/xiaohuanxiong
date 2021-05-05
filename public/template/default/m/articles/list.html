@@ -78,25 +78,25 @@
 <div class="mod mod-news">
     <div class="news-list">
         <ul class="clearfix">
-            {volist name="articles" id="vo"}
+            {raccoon:pagedarticles name="pagedArticles" pagesize="20" order="id desc"}
             <li>
-                <a href="/m/article/{$vo.param}">{$vo.title}</a>
+                <a href="/article/{$vo.param}">{$vo.title}</a>
                 <span>{$vo.create_time|date='m-d'}</span>
             </li>
-            {/volist}
+            {/raccoon:pagedarticles}
         </ul>
         <div class="pages">
             {if $page.last_page > 1}
             {if $page.current_page == 1}
 
             {else/}
-            <a href="/m/articlelist?page={$page.current_page-1}{$param}" class="p-prev">上一页</a>
+            <a href="/articlelist?page={$page.current_page-1}{$param}" class="p-prev">上一页</a>
             {/if}
 
             {if $page.current_page == $page.last_page}
 
             {else/}
-            <a href="/m/articlelist?page={$page.current_page+1}{$param}" class="p-next">下一页</a>
+            <a href="/articlelist?page={$page.current_page+1}{$param}" class="p-next">下一页</a>
             {/if}
             {/if}
         </div>

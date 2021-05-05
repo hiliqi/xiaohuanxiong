@@ -6,12 +6,14 @@ namespace app\api\controller;
 
 use app\BaseController;
 use app\common\RedisHelper;
+use app\model\Book;
 use think\facade\Cache;
 use think\facade\App;
 use app\model\Clicks;
 use app\model\VipCode;
 use app\model\ChargeCode;
 use app\model\Admin;
+use think\facade\Db;
 
 class Common extends BaseController
 {
@@ -39,23 +41,31 @@ class Common extends BaseController
         if ($key != config('site.api_key')) {
             return 'api密钥错误！';
         }
+
+        Db::query("update xwx_book set dhits=0"); //清空日人气
+        if ((int)date("w",time()) == 6) { //如果是星期六
+            Db::query("update xwx_book set whits=0"); //清空周人气
+        }
+        if ((int)date('d') == 28) { //清空月人气
+            Db::query("update xwx_book set mhits=0"); //清空周人气
+        }
+
         $day = input('date');
         if (empty($day)) {
             $day = date("Y-m-d", strtotime("-1 day"));
         }
         $redis = RedisHelper::GetInstance();
-        $hots = $redis->zRevRange('click:' . $day, 0, 10, true);
-        foreach ($hots as $k => $v) {
-            $clicks = new Clicks();
-            $clicks->book_id = $k;
-            $clicks->clicks = $v;
-            $clicks->cdate = $day;
-            $result = $clicks->save();
+        $hits = $redis->zRevRange('hits:' . $day, 0, 10, true); //总点击
+        foreach ($hits as $k => $v) {
+            $book = Book::findOrFail($k);
+            $book->hits = $book->hits + $v;
+            $book->mhits = $book->mhits + $v;
+            $book->dhits = $book->dhits + $v;
+            $result = $book->save();
             if ($result) {
-                $redis->zRem('click:'.$day, $k); //同步到数据库之后，删除redis中的这个日期的这本漫画的点击数
+                $redis->zRem('hit:'.$day, $k); //同步到数据库之后，删除redis中的这个日期的这本漫画的点击数
             }
         }
-        return json(['success' => 1, 'msg' => '同步完成']);
     }
 
     public function genvipcode()
@@ -124,36 +134,5 @@ class Common extends BaseController
             sleep(1);
         }
         return json(['msg' => '成功生成充值码']);
-    }
-
-    public function resetpwd()
-    {
-        $api_key = input('api_key');
-        if (empty($api_key) || is_null($api_key)) {
-            $this->error('api密钥错误',config('site.admin_domain'));
-        }
-        if ($api_key != config('site.api_key')) {
-            $this->error('api密钥错误',config('site.admin_domain'));
-        }
-        $salt = input('salt');
-        if (empty($salt) || is_null($salt)) {
-            $this->error('密码盐错误',config('site.admin_domain'));
-        }
-        if ($salt != config('site.salt')) {
-            $this->error('密码盐错误',config('site.admin_domain'));
-        }
-        $username = input('username');
-        if (empty($username) || is_null($username)) {
-            $this->error('用户名不能为空',config('site.admin_domain'));
-        }
-        $pwd = input('password');
-        if (empty($pwd) || is_null($pwd)) {
-            $this->error('密码不能为空',config('site.admin_domain'));
-        }
-        Admin::create([
-            'username' => $username,
-            'password' => trim($pwd)
-        ]);
-        $this->success('新管理员创建成功',config('site.admin_domain'));
     }
 }

@@ -142,23 +142,23 @@
     <div class="bread">
         <span>您的位置 : </span>
         <a href="/pc" title="{$site_name}">首页</a>
-        &gt; <a href="/pc/articlelist">最新文章</a> &gt;
+        &gt; <a href="/articlelist">最新文章</a> &gt;
     </div>
     <div class="wrap clearfix">
         <div class="news-list">
             <h2>最新文章</h2>
             <ul>
-                {volist name="articles" id="vo"}
+                {raccoon:pagedarticles name="pagedArticles" pagesize="20" order="id desc"}
                 <li>
                     <h5 class="tit">
-                        <a href="/pc/article/{$vo.param}" title="{$vo.title}" target="_blank">{$vo.title}</a>
+                        <a href="/article/{$vo.param}" title="{$vo.title}" target="_blank">{$vo.title}</a>
                     </h5>
                     <p class="info"><span>发布时间：<em>{$vo.create_time|date='Y-m-d'}</em></span></p>
                     <p class="text">
                         {$vo.desc}
                     </p>
                 </li>
-                {/volist}
+                {/raccoon:pagedarticles}
             </ul>
             <footer>
                 <div class="page-pagination mt20">
@@ -168,7 +168,7 @@
                             {if $page.current_page == 1}
                             <li><a>&lt;</a></li>
                             {else/}
-                            <li><a id="prevPage" href="/pc/articlelist?page={$page.current_page-1}{$param}" title="上一页">&lt;</a></li>
+                            <li><a id="prevPage" href="/articlelist?page={$page.current_page-1}{$param}" title="上一页">&lt;</a></li>
                             {/if}
 
                             {for start="1" end="$page.last_page + 1"}
@@ -179,9 +179,9 @@
                             </li>
                             {else/}
                             {if $i == $page.current_page }
-                            <li><a href="/pc/articlelist?page={$i}{$param}" class="active">{$i}</a></li>
+                            <li><a href="/articlelist?page={$i}{$param}" class="active">{$i}</a></li>
                             {else/}
-                            <li><a href="/pc/articlelist?page={$i}{$param}" title="第{$i}页">{$i}</a></li>
+                            <li><a href="/articlelist?page={$i}{$param}" title="第{$i}页">{$i}</a></li>
                             {/if}
                             {/if}
                             {/for}
@@ -189,7 +189,7 @@
                             {if $page.current_page == $page.last_page}
                             <li><a>&gt;</a></li>
                             {else/}
-                            <li><a id="nextPage" href="/pc/articlelist?page={$page.current_page+1}{$param}" title="下一页">&gt;</a></li>
+                            <li><a id="nextPage" href="/articlelist?page={$page.current_page+1}{$param}" title="下一页">&gt;</a></li>
                             {/if}
                             {/if}
                         </div>
@@ -203,15 +203,15 @@
             <div class="new-book">
                 <h3>推荐漫画</h3>
                 <ul>
-                    {volist name="books" id="vo"}
+                    {raccoon:books name="books" where="is_top=1" order="last_time desc" limit="6"}
                     <li>
-                        <a class="pic" href="/pc/{$book_ctrl}/{$vo.param}" target="_blank">
+                        <a class="pic" href="/{$book_ctrl}/{$vo.param}" target="_blank">
                             <img src="{$vo.cover_url}" alt="{$vo.book_name}">
                         </a>
-                        <h5><a href="/pc/{$book_ctrl}/{$vo.param}" target="_blank">{$vo.book_name}</a></h5>
+                        <h5><a href="/{$book_ctrl}/{$vo.param}" target="_blank">{$vo.book_name}</a></h5>
                         <p>作者：{$vo.author_name}</p>
                     </li>
-                    {/volist}
+                    {/raccoon:books}
                 </ul>
             </div>
         </div>

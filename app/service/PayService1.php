@@ -31,6 +31,7 @@ class PayService
             'out_trade_no' => $order_id,
             'money' => $money,
             'sitename' => config('site.site_name'),
+            'name' => '漫画充值',
             'type' => $pay_code,
             'notify_url' => $notifyUrl,
             'return_url' => $backUrl,

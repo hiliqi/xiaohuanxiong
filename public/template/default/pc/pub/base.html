@@ -48,11 +48,11 @@
         </a>
         <!-- 左侧菜单标题 -->
         <ul class="header-title">
-            <li><a href="/pc">首页</a></li>
-            <li><a href="/pc/{$booklist_act}">分类</a></li>
-            <li><a href="/pc/{$update_act}">更新</a></li>
-            <li><a href="/pc/{$rank_ctrl}">排行</a></li>
-            <li><a href="/pc/{$booklist_act}"><i class="icon icon-cat" style="font-size:19px;vertical-align: sub;"></i></a></li>
+            <li><a href="/">首页</a></li>
+            <li><a href="/{$booklist_act}">分类</a></li>
+            <li><a href="/{$update_act}">更新</a></li>
+            <li><a href="/{$rank_ctrl}">排行</a></li>
+            <li><a href="/{$booklist_act}"><i class="icon icon-cat" style="font-size:19px;vertical-align: sub;"></i></a></li>
         </ul>
        
         <!-- 搜索栏 -->
@@ -62,25 +62,25 @@
             <script>
                 $('#btnSearch').click(function () {
                     var keyword = $('#txtKeywords').val();
-                    window.location.href = '/pc/{$search_ctrl}?keyword=' + keyword;
+                    window.location.href = '/{$search_ctrl}?keyword=' + keyword;
                 })
             </script>
         </div>
         <ul class="header-bar">
             <li class="vip">
-                <a href="/pc/vip">
+                <a href="/vip">
                     <div class="header-vip"></div>
                     <p>VIP</p>
                 </a>
             </li>
             <li class="hover">
-                <a href="/pc/history" target="_blank">
+                <a href="/history" target="_blank">
                     <i class="icon icon-clock"></i>
                     <p>历史</p>
                 </a>
             </li>
             <li class="hover">
-                <a href="/pc/bookshelf" data-isload="0" target="_blank">
+                <a href="/bookshelf" data-isload="0" target="_blank">
                     <i class="icon icon-fav"></i>
                     <p>收藏</p>
                     <span class="red-sign"></span>
@@ -88,7 +88,7 @@
             </li>
         </ul>
         <div class="header_login hover">
-            <a href="/pc/ucenter" class="js_header_login_btn">
+            <a href="/ucenter" class="js_header_login_btn">
                 <img data-isload="0" class="header-avatar" src="/static/images/mrtx.gif">
             </a>
         </div>

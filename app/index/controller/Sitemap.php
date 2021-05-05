@@ -25,7 +25,7 @@ class Sitemap extends Base
                 $book['param'] = $book['unique_id'];
             }
             $temp = array(
-                'loc' => $this->url  . '/pc/' . BOOKCTRL . '/' . $book['param'],
+                'loc' => $this->url  . '/' . BOOKCTRL . '/' . $book['param'],
                 'priority' => '0.9',
             );
             array_push($data, $temp);
@@ -47,7 +47,7 @@ class Sitemap extends Base
         $content .= '<urlset>';
         foreach ($chapters as $chapter) {
             $temp = array(
-                'loc' => $this->url  . '/pc/' . CHAPTERCTRL . '/' . $chapter['id'],
+                'loc' => $this->url  . '/' . CHAPTERCTRL . '/' . $chapter['id'],
                 'priority' => '0.9',
             );
             array_push($arr, $temp);
@@ -68,7 +68,7 @@ class Sitemap extends Base
         $content .= '<urlset>';
         foreach ($tails as $tail) {
             $temp = array(
-                'loc' => $this->url  . '/pc/tail/' . $tail['tailcode'],
+                'loc' => $this->url  . '/tail/' . $tail['tailcode'],
                 'priority' => '0.9',
             );
             array_push($arr, $temp);

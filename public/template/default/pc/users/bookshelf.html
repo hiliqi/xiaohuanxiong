@@ -10,8 +10,8 @@
             <header class="box-header">
                 <span class="title">我的书架</span>
                 <ul class="box-simple-tabs">
-                    <li><a class="active" href="/pc/bookshelf">我的收藏</a></li>
-                    <li><a href="/pc/history">阅读记录</a></li>
+                    <li><a class="active" href="/bookshelf">我的收藏</a></li>
+                    <li><a href="/history">阅读记录</a></li>
                 </ul>
                 <div class="pull-right">
                     <a href="#" class="more js_edit_booklist_btn">
@@ -48,27 +48,27 @@
                 </div>
                 <div class="mt20">
                     <ul class="mh-list col7">
-                        {volist name="favors" id="vo"}
+                        {raccoon:favors name="favors" user_id='$xwx_user_id'}
                         <li>
                             <div class="mh-item">
-                                <a href="/pc/{$book_ctrl}/{$vo.param}" class="mh-cover" style="background-image: url({$vo.cover_url})">
-                                    <span class="tag  mh-tag">{$vo.end?"完结":"连载"}</span>
-                                    <span class="read-section">{$vo.last_time|date='Y-m-d'}更新</span>
-                                    <span mid="{$vo.id}" class="edit-state">
+                                <a href="/{$book_ctrl}/{$vo.book.param}" class="mh-cover" style="background-image: url({$vo.book.cover_url})">
+                                    <span class="tag  mh-tag">{$vo.book.end?"完结":"连载"}</span>
+                                    <span class="read-section">{$vo.book.last_time|date='Y-m-d'}更新</span>
+                                    <span mid="{$vo.book.id}" class="edit-state">
                                         <i class="icon icon-ok"></i>
                                     </span>
                                 </a>
                                 <div class="mh-item-detali">
                                     <h2 class="title" style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
-                                        <a href="/pc/{$book_ctrl}/{$vo.param}">{$vo.book_name}</a>
+                                        <a href="/{$book_ctrl}/{$vo.book.param}">{$vo.book.book_name}</a>
                                     </h2>
                                     <p class="chapter" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">
-                                        <a href="/pc/{$book_ctrl}/{$vo.param}" target="_blank">{$vo.summary|subtext=12}</a>
+                                        <a href="/{$book_ctrl}/{$vo.book.param}" target="_blank">{$vo.book.summary|subtext=12}</a>
                                     </p>
                                 </div>
                             </div>
                         </li>
-                        {/volist}
+                        {/raccoon:favors}
                     </ul>
                 </div>
             </div>
@@ -80,21 +80,21 @@
                             {if $page.current_page == 1}
                             <li><a>&lt;</a></li>
                             {else/}
-                            <li><a id="prevPage" href="/pc/bookshelf?page={$page.current_page-1}{$param}" title="上一页">&lt;</a></li>
+                            <li><a id="prevPage" href="/bookshelf?page={$page.current_page-1}{$param}" title="上一页">&lt;</a></li>
                             {/if}
 
                             {for start="1" end="$page.last_page + 1"}
                             {if $i == $page.current_page }
-                            <li><a href="/pc/bookshelf?page={$i}{$param}" class="active">{$i}</a></li>
+                            <li><a href="/bookshelf?page={$i}{$param}" class="active">{$i}</a></li>
                             {else/}
-                            <li><a href="/pc/bookshelf?page={$i}{$param}" title="第{$i}页">{$i}</a></li>
+                            <li><a href="/bookshelf?page={$i}{$param}" title="第{$i}页">{$i}</a></li>
                             {/if}
                             {/for}
 
                             {if $page.current_page == $page.last_page}
                             <li><a>&gt;</a></li>
                             {else/}
-                            <li><a id="nextPage" href="/pc/bookshelf?page={$page.current_page+1}{$param}" title="下一页">&gt;</a></li>
+                            <li><a id="nextPage" href="/bookshelf?page={$page.current_page+1}{$param}" title="下一页">&gt;</a></li>
                             {/if}
                             {/if}
                         </div>
@@ -138,7 +138,7 @@
             var arr = $('span.edit-state.active');
             if (arr.length > 0) {
                 $.ajax({
-                    url: '/pc/delfavors',
+                    url: '/delfavors',
                     data: {ids: str},
                     type: 'POST',
                     dataType:'json',

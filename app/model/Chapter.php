@@ -8,15 +8,50 @@ use think\Model;
 
 class Chapter extends Model
 {
-    public function book(){
+    public function book()
+    {
         return $this->belongsTo('book');
     }
 
-    public function photos(){
+    public function photos()
+    {
         return $this->hasMany('photo');
     }
 
-    public function setChapterNameAttr($value){
+    public function setChapterNameAttr($value)
+    {
         return trim($value);
+    }
+
+    function getChapters($order, $where, $num)
+    {
+        if ($num == 0) {
+            $chapters = Chapter::where($where)
+                ->order($order)->select();
+        } else {
+            $chapters = Book::where($where)
+                ->limit($num)->order($order)->select();
+        }
+        return $chapters;
+    }
+
+    public function getPagedChapters($order, $where, $pagesize)
+    {
+        $data = Chapter::where($where)->order($order)
+            ->paginate([
+                'list_rows' => $pagesize,
+                'query' => request()->param(),
+            ]);
+        $arr = $data->toArray();
+        $paged = array();
+        $paged['chapters'] = $arr['data'];
+        $paged['page'] = [
+            'total' => $arr['total'],
+            'per_page' => $arr['per_page'],
+            'current_page' => $arr['current_page'],
+            'last_page' => $arr['last_page'],
+            'query' => request()->param()
+        ];
+        return $paged;
     }
 }

@@ -24,13 +24,13 @@
             ShowDialog('请输入vip码');
         } else {
             $.post({
-                url: '/m/vipexchange',
+                url: '/vipexchange',
                 data: {'code': code},
                 success: function (res) {
                     ShowDialog(res.msg);
                     if (res.err == 0) {
                         setTimeout(function () {
-                            location.href = '/m/ucenter';
+                            location.href = '/ucenter';
                         }, 1000);
                     }
                 }

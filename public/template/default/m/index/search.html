@@ -18,23 +18,24 @@
 <div class="search-label">
     {volist name="hot_search" id="vo"}
     {empty name="vo"}
-    <a class="search-label-item" href="/m/{$search_ctrl}?keyword=斗破苍穹">斗破苍穹</a>
+    <a class="search-label-item" href="/{$search_ctrl}?keyword=斗破苍穹">斗破苍穹</a>
     {else /}
-    <a class="search-label-item" href="/m/{$search_ctrl}?keyword={$vo}">{$vo}</a>
+    <a class="search-label-item" href="/{$search_ctrl}?keyword={$vo}">{$vo}</a>
     {/empty}
     {/volist}
 </div>
 
 <ul class="book-list">
-    {volist name="$books" id="vo"}
+    {raccoon:books name="books" order="last_time desc" limit="20"
+    where="book_name like '%$keyword%'"}
     <li>
         <div class="book-list-cover">
-            <a href="/m/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}">
+            <a href="/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}">
                 <img class="book-list-cover-img lazy" data-original="{$vo.cover_url}" src="https://p.pstatp.com/origin/ffa400036691f82c85e5" alt="{$vo.book_name}">
             </a>
         </div>
         <div class="book-list-info">
-            <a href="/m/{$book_ctrl}/{$vo.param}">
+            <a href="/{$book_ctrl}/{$vo.param}">
                 <p class="book-list-info-title">{$vo.book_name}</p>
                 <p class="book-list-info-desc">{$vo.summary|subtext=15}...</p>
             </a>
@@ -50,12 +51,12 @@
             </p>
         </div>
     </li>
-    {/volist}
+    {/raccoon:books}
 </ul>
 <script>
     function doSearch() {
         var keyword = $('#searchtxt').val();
-        location.href = '/m/{$search_ctrl}?keyword=' + keyword;
+        location.href = '/{$search_ctrl}?keyword=' + keyword;
     }
 </script>
 {/block}

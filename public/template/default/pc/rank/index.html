@@ -11,41 +11,36 @@
 <section class="box container pb40 overflow-Show js_top_container" style="min-height:800px;">
     <div class="box-body">
         <ul class="mh-list col3 top-cat">
-            {volist name="list" id="item"}
             <li>
-                <div class="title"> {$item.title}</div>
-                {volist name="item['keyword']" id="keyword" length="10"}
+                <div class="title"> 新书榜 </div>
+                {raccoon:books name="books" order="last_time desc" limit="10"}
                 {if $i == 1}
                 <div class="clearfix">
                     <div class="mh-item horizontal">
-                        <p class="mh-cover" style="background-image: url({$keyword.cover_url})">
+                        <p class="mh-cover" style="background-image: url({$vo.cover_url})">
                             <span class="num num-{$i}">{$i}</span>
                         </p>
                         <div class="mh-item-detali">
                             <h2 class="title">
-                                <a href="/pc/{$book_ctrl}/{$keyword.param}" title="{$keyword.book_name}">{$keyword.book_name}</a>
+                                <a href="/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}">{$vo.book_name}</a>
                             </h2>
                             <p class="zl">
                                 <span>作者：</span>
                                 <span>
-                                    <a href="#" target="_blank" style="color:#666;">{$keyword.author_name}</a>
+                                    <a href="#" target="_blank" style="color:#666;">{$vo.author_name}</a>
                                 </span>
                             </p>
                             <div class="bottom">
-                                <p class="chapter" style="width:181px;">
-                                    <span>点击</span>
-                                    <a href="#" target="_blank">{$keyword.clicks}</a>
-                                </p>
-                                <div class="desc"> {$keyword.summary|subtext=35}...</div>
+                                <div class="desc"> {$vo.summary|subtext=35}...</div>
 
                                 <p class="mh-label">
-                                    {volist name="keyword.taglist" id="tag"}
-                                    <a href="/pc/{$booklist_act}?tag={$tag}"><span>{$tag}</span></a>
+                                    {volist name="$vo.taglist" id="tag"}
+                                    <a href="/{$booklist_act}?tag={$tag}"><span>{$tag}</span></a>
                                     {/volist}
                                 </p>
 
                                 <p>
-                                    <a class="btn" href="/pc/{$book_ctrl}/{$keyword.param}" title="{$keyword.book_name}">查看详情</a>
+                                    <a class="btn" href="/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}">查看详情</a>
                                 </p>
                             </div>
                         </div>
@@ -53,19 +48,19 @@
                 </div>
                 {else /}
                 <div class="mh-itme-top">
-                    <a href="/pc/{$book_ctrl}/{$keyword.param}" onmouseover="pop(this)" onmouseout="hide(this)"
-                       title="{$keyword.book_name}" style="width:100%; display: block;">
-                        <span class="num num-{$i}">{$i}</span>{$keyword.book_name}
+                    <a href="/{$book_ctrl}/{$vo.param}" onmouseover="pop(this)" onmouseout="hide(this)"
+                       title="{$vo.book_name}" style="width:100%; display: block;">
+                        <span class="num num-{$i}">{$i}</span>{$vo.book_name}
                     </a>
                     <div class="mh-tip-wrap" style="z-index: 10; display: none; opacity: 1; margin-left: 0px;">
                         <div class="mh-item-tip">
-                            <a href="/pc/{$book_ctrl}/{$keyword.param}" title="{$keyword.book_name}"
+                            <a href="/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}"
                                style="height:auto;padding-left: 0;">
-                                <p class="mh-cover tip" style="background-image: url({$keyword.cover_url})"></p>
+                                <p class="mh-cover tip" style="background-image: url({$vo.cover_url})"></p>
                             </a>
                             <div class="mh-item-tip-detali">
                                 <h2 class="title">
-                                    <a href="/pc/{$book_ctrl}/{$keyword.param}" title="{$keyword.book_name}">{$keyword.book_name}</a>
+                                    <a href="/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}">{$vo.book_name}</a>
                                     <span class="mh-star star-4">
 
                                     </span>
@@ -73,25 +68,162 @@
                                 <p class="author">
                                     <span>作者：</span>
                                     <span>
-                                        <a href="#" target="_blank">{$keyword.author.author_name}</a>
+                                        <a href="#" target="_blank">{$vo.author.author_name}</a>
                                     </span>
                                 </p>
-                                <p class="chapter" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">
-                                    <span>点击</span>
-                                    <a href="/pc/{$book_ctrl}/{$keyword.param}" target="_blank">{$keyword.clicks} </a>
-                                </p>
-                                <div class="desc"> {$keyword.summary|subtext=20}...</div>
+                                <div class="desc"> {$vo.summary|subtext=20}...</div>
                                 <p>
-                                    <a class="btn" href="/pc/{$book_ctrl}/{$keyword.param}" target="_blank">查看详情</a>
+                                    <a class="btn" href="/{$book_ctrl}/{$vo.param}" target="_blank">查看详情</a>
                                 </p>
                             </div>
                         </div>
                     </div>
                 </div>
                 {/if}
-                {/volist}
+                {/raccoon:books}
             </li>
-            {/volist}
+            <li>
+                <div class="title"> 人气榜 </div>
+                {raccoon:books name="books" order="hits desc" limit="10"}
+                {if $i == 1}
+                <div class="clearfix">
+                    <div class="mh-item horizontal">
+                        <p class="mh-cover" style="background-image: url({$vo.cover_url})">
+                            <span class="num num-{$i}">{$i}</span>
+                        </p>
+                        <div class="mh-item-detali">
+                            <h2 class="title">
+                                <a href="/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}">{$vo.book_name}</a>
+                            </h2>
+                            <p class="zl">
+                                <span>作者：</span>
+                                <span>
+                                    <a href="#" target="_blank" style="color:#666;">{$vo.author_name}</a>
+                                </span>
+                            </p>
+                            <div class="bottom">
+                                <div class="desc"> {$vo.summary|subtext=35}...</div>
+
+                                <p class="mh-label">
+                                    {volist name="$vo.taglist" id="tag"}
+                                    <a href="/{$booklist_act}?tag={$tag}"><span>{$tag}</span></a>
+                                    {/volist}
+                                </p>
+
+                                <p>
+                                    <a class="btn" href="/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}">查看详情</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {else /}
+                <div class="mh-itme-top">
+                    <a href="/{$book_ctrl}/{$vo.param}" onmouseover="pop(this)" onmouseout="hide(this)"
+                       title="{$vo.book_name}" style="width:100%; display: block;">
+                        <span class="num num-{$i}">{$i}</span>{$vo.book_name}
+                    </a>
+                    <div class="mh-tip-wrap" style="z-index: 10; display: none; opacity: 1; margin-left: 0px;">
+                        <div class="mh-item-tip">
+                            <a href="/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}"
+                               style="height:auto;padding-left: 0;">
+                                <p class="mh-cover tip" style="background-image: url({$vo.cover_url})"></p>
+                            </a>
+                            <div class="mh-item-tip-detali">
+                                <h2 class="title">
+                                    <a href="/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}">{$vo.book_name}</a>
+                                    <span class="mh-star star-4">
+
+                                    </span>
+                                </h2>
+                                <p class="author">
+                                    <span>作者：</span>
+                                    <span>
+                                        <a href="#" target="_blank">{$vo.author.author_name}</a>
+                                    </span>
+                                </p>
+                                <div class="desc"> {$vo.summary|subtext=20}...</div>
+                                <p>
+                                    <a class="btn" href="/{$book_ctrl}/{$vo.param}" target="_blank">查看详情</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {/if}
+                {/raccoon:books}
+            </li>
+            <li>
+                <div class="title"> 完结榜 </div>
+                {raccoon:books name="books" order="last_time desc" where="end=1" limit="10"}
+                {if $i == 1}
+                <div class="clearfix">
+                    <div class="mh-item horizontal">
+                        <p class="mh-cover" style="background-image: url({$vo.cover_url})">
+                            <span class="num num-{$i}">{$i}</span>
+                        </p>
+                        <div class="mh-item-detali">
+                            <h2 class="title">
+                                <a href="/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}">{$vo.book_name}</a>
+                            </h2>
+                            <p class="zl">
+                                <span>作者：</span>
+                                <span>
+                                    <a href="#" target="_blank" style="color:#666;">{$vo.author_name}</a>
+                                </span>
+                            </p>
+                            <div class="bottom">
+                                <div class="desc"> {$vo.summary|subtext=35}...</div>
+
+                                <p class="mh-label">
+                                    {volist name="$vo.taglist" id="tag"}
+                                    <a href="/{$booklist_act}?tag={$tag}"><span>{$tag}</span></a>
+                                    {/volist}
+                                </p>
+
+                                <p>
+                                    <a class="btn" href="/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}">查看详情</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {else /}
+                <div class="mh-itme-top">
+                    <a href="/{$book_ctrl}/{$vo.param}" onmouseover="pop(this)" onmouseout="hide(this)"
+                       title="{$vo.book_name}" style="width:100%; display: block;">
+                        <span class="num num-{$i}">{$i}</span>{$vo.book_name}
+                    </a>
+                    <div class="mh-tip-wrap" style="z-index: 10; display: none; opacity: 1; margin-left: 0px;">
+                        <div class="mh-item-tip">
+                            <a href="/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}"
+                               style="height:auto;padding-left: 0;">
+                                <p class="mh-cover tip" style="background-image: url({$vo.cover_url})"></p>
+                            </a>
+                            <div class="mh-item-tip-detali">
+                                <h2 class="title">
+                                    <a href="/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}">{$vo.book_name}</a>
+                                    <span class="mh-star star-4">
+
+                                    </span>
+                                </h2>
+                                <p class="author">
+                                    <span>作者：</span>
+                                    <span>
+                                        <a href="#" target="_blank">{$vo.author.author_name}</a>
+                                    </span>
+                                </p>
+                                <div class="desc"> {$vo.summary|subtext=20}...</div>
+                                <p>
+                                    <a class="btn" href="/{$book_ctrl}/{$vo.param}" target="_blank">查看详情</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {/if}
+                {/raccoon:books}
+            </li>
         </ul>
     </div>
 </section>

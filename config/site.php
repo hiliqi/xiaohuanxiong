@@ -9,6 +9,6 @@ return [
     'app_key' => 'clwlxw',
     'tpl' => 'default',
     'img_per_page' => '0',
-    'up_server' => 'http://mh.fancys.shop/',
-    'json_server' => 'http://mhup.fancys.shop/'   
+    'ios' => '',
+    'android' => ''
  ];

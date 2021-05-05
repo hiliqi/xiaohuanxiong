@@ -19,7 +19,7 @@
             return;
         }
         $.post({
-            url:'/m/userinfo',
+            url:'/userinfo',
             data:{nickname: nickname},
             success:function (res) {
                 ShowDialog(res.msg);

@@ -29,15 +29,15 @@
                         </p>
                         <p>
                             <input name="captcha" type="text" placeholder="验证码" style="width:150px;">
-                            <img id="captcha" src="/pc/captcha" onclick = "this.src='/pc/captcha?rnd=' + Math.random();">
+                            <img id="captcha" src="/captcha" onclick = "this.src='/captcha?rnd=' + Math.random();">
                         </p>
                     </form>
                     <p><button class="button" onclick="login('pc')">立即登录</button></p>
                     <p class="options">
                         <label><input name="remember" type="checkbox" value="1">自动登录</label>
-                        <span class="find-pwd"><a href="/pc/recovery">忘记密码？</a></span>
+                        <span class="find-pwd"><a href="/recovery">忘记密码？</a></span>
                         <span class="tabs-link pull-right">
-                                <a class="" href="/pc/register" target="_blank">去注册</a>
+                                <a class="" href="/register" target="_blank">去注册</a>
                             </span>
                     </p>
                 </div>
@@ -113,18 +113,18 @@
         if (!$username || $.trim($username.val()) === "") {
             ShowDialog("必须填写用户名");
             $username.focus().css({ outlineWidth: 1, outlineColor: "#fd113a" });
-            $('#captcha').attr('src','/pc/captcha?rnd=' + r)
+            $('#captcha').attr('src','/captcha?rnd=' + r)
             return;
         }
         if (!$pwd || $.trim($pwd.val()) === "") {
             ShowDialog("必须填写密码");
             $pwd.focus().css({ outlineWidth: 1, outlineColor: "#fd113a" });
-            $('#captcha').attr('src','/pc/captcha?rnd=' + r)
+            $('#captcha').attr('src','/captcha?rnd=' + r)
             return;
         }
         $.ajax({
             type: 'POST',
-            url: "/pc/login",
+            url: "/login",
             data: $('#form-login').serialize(),
             dataType: 'json',
             success: function (data) {
@@ -132,15 +132,15 @@
                 if (result.err == 0){ //登录成功
                     ShowDialog(result.msg);
                     setTimeout(function () {
-                        location.href = '/pc/ucenter';
+                        location.href = '/ucenter';
                     }, 1000);
                 } else {
-                    $('#captcha').attr('src','/pc/captcha?rnd=' + r)
+                    $('#captcha').attr('src','/captcha?rnd=' + r)
                     ShowDialog(result.msg);
                 }
             },
             error: function (data) {
-                $('#captcha').attr('src','/pc/captcha?rnd=' + r)
+                $('#captcha').attr('src','/captcha?rnd=' + r)
                 ShowDialog(data.msg);
             },
         });

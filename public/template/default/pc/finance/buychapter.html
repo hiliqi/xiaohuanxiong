@@ -37,7 +37,7 @@
     <div class="row">
         <div class="crumbs">
             <a href="/pc" title="{$site_name}">{$site_name}</a> &gt;
-            <a class="comic-name" href="/pc/{$book_ctrl}/{$chapter.book_id}" title="{$chapter.book.book_name}">{$chapter.book.book_name}</a>
+            <a class="comic-name" href="/{$book_ctrl}/{$chapter.book_id}" title="{$chapter.book.book_name}">{$chapter.book.book_name}</a>
         </div>
         <h1 class="title">{$chapter.book.book_name} {$chapter.chapter_name}</h1>
         <div class="shareBtn">
@@ -59,7 +59,7 @@
             <p class="subtitle">购买此章节</p>
             <p class="tip">应付：<span class="red">{$price}元</span></p>
             <a href="javascript:void(0)" class="view-pay-btn" id="view-chapterpay-btn">购买本章</a>
-            <a style="top:150px;right: 40px;position: absolute;color: red" href="/pc/charge">余额不足？请先充值</a>
+            <a style="top:150px;right: 40px;position: absolute;color: red" href="/charge">余额不足？请先充值</a>
         </div>
         <p class="view-sales"><span>vip</span><a href="/vip">购买vip 畅读所有付费漫画</a> </p>
     </div>
@@ -72,13 +72,13 @@
 <script>
     $('#view-chapterpay-btn').click(function () {
         $.post({
-            url: '/pc/buychapter',
+            url: '/buychapter',
             data: {chapter_id: '{$chapter.id}'},
             success: function (res) {
                 if (res.success == 1) {
                     ShowDialog(res.msg);
                     setTimeout(function () {
-                        location.href = '/pc/{$chapter_ctrl}/{$chapter.id}';
+                        location.href = '/{$chapter_ctrl}/{$chapter.id}';
                     },1000);
                 } else {
                     ShowDialog(res.msg);

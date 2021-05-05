@@ -48,7 +48,7 @@
         }
     </style>
     {if $next != "null"}
-    <link rel="prefetch prerender" href="/pc/{$chapter_ctrl}/{$next.id}"/>
+    <link rel="prefetch prerender" href="/{$chapter_ctrl}/{$next.id}"/>
     {/if}
     <script src="https://lib.baomitu.com/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
@@ -62,63 +62,35 @@
             {if $prev == "null"}
             <a class="block" style="color: lightgrey">上一章</a>
             {else/}
-            <a href="/pc/{$chapter_ctrl}/{$prev.id}" class="block" title="{$prev.chapter_name}">上一章</a>
-            {/if}
-
-            {if $page.last_page > 1}
-            {if $page.current_page == 1}
-            <a style="color: lightgrey">上一页</a>
-            {else/}
-            <a href="/pc/{$chapter_ctrl}/{$chapter.id}?page={$page.current_page-1}" title="上一页">上一页</a>
-            {/if}
-
-            {if $page.current_page == $page.last_page}
-            <a style="color: lightgrey">下一页</a>
-            {else/}
-            <a href="/pc/{$chapter_ctrl}/{$chapter.id}?page={$page.current_page+1}" title="下一页">下一页</a>
-            {/if}
+            <a href="/{$chapter_ctrl}/{$prev.id}" class="block" title="{$prev.chapter_name}">上一章</a>
             {/if}
 
             {if $next == "null"}
             <a class="block" style="color: lightgrey">下一章</a>
             {else/}
-            <a href="/pc/{$chapter_ctrl}/{$next.id}" class="block" title="{$next.chapter_name}">下一章</a>
+            <a href="/{$chapter_ctrl}/{$next.id}" class="block" title="{$next.chapter_name}">下一章</a>
             {/if}
         </div>
         <div class="comiclist">
             <div class="comicpage">
-                {volist name="photos" id="vo"}
+                {raccoon:photos name="photos" order="pic_order asc" where="chapter_id='$chapter->id'"}
                 <div>
                     <img class="lazy" data-original="{$vo.img_url}" src="https://p.pstatp.com/origin/ffa400036691f82c85e5">
                 </div>
-                {/volist}
+                {/raccoon:photos}
             </div>
         </div>
         <div class="fanye">
             {if $prev == "null"}
             <a class="block" style="color: lightgrey">上一章</a>
             {else/}
-            <a href="/pc/{$chapter_ctrl}/{$prev.id}" class="block" title="{$prev.chapter_name}">上一章</a>
-            {/if}
-
-            {if $page.last_page > 1}
-            {if $page.current_page == 1}
-            <a style="color: lightgrey">上一页</a>
-            {else/}
-            <a href="/pc/{$chapter_ctrl}/{$chapter.id}?page={$page.current_page-1}" title="上一页">上一页</a>
-            {/if}
-
-            {if $page.current_page == $page.last_page}
-            <a style="color: lightgrey">下一页</a>
-            {else/}
-            <a href="/pc/{$chapter_ctrl}/{$chapter.id}?page={$page.current_page+1}" title="下一页">下一页</a>
-            {/if}
+            <a href="/{$chapter_ctrl}/{$prev.id}" class="block" title="{$prev.chapter_name}">上一章</a>
             {/if}
 
             {if $next == "null"}
             <a class="block" style="color: lightgrey">下一章</a>
             {else/}
-            <a href="/pc/{$chapter_ctrl}/{$next.id}" class="block" title="{$next.chapter_name}">下一章</a>
+            <a href="/{$chapter_ctrl}/{$next.id}" class="block" title="{$next.chapter_name}">下一章</a>
             {/if}
         </div>
     </div>
@@ -127,8 +99,8 @@
 <div class="header">
     <div class="row">
         <div class="crumbs">
-            <a href="/pc" title="{$site_name}">{$site_name}</a> &gt;
-            <a class="comic-name" href="/pc/{$book_ctrl}/{$chapter.book.param}" title="{$chapter.book.book_name}">{$chapter.book.book_name}</a>
+            <a href="/" title="{$site_name}">{$site_name}</a> &gt;
+            <a class="comic-name" href="/{$book_ctrl}/{$chapter.book.param}" title="{$chapter.book.book_name}">{$chapter.book.book_name}</a>
         </div>
         <h1 class="title">{$chapter.book.book_name} {$chapter.chapter_name}</h1>
         <div class="shareBtn">
@@ -141,19 +113,19 @@
 <div class="read-section sidebar-main" style="left: 0px;">
     <div class="sidebar-header">
         <i class="sidebar-header-l">章节</i>
-        <i class="sidebar-header-r">共{$chapter_count}话</i>
+        <i class="sidebar-header-r">共{$chapter.book.chapter_count}话</i>
     </div>
     <div class="sidebar-content">
         <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 357px;">
             <div class="mCustomScrollBox" style="overflow: hidden;width: auto;height: 519px;overflow-y: scroll;">
                 <ul>
-                    {volist name="chapters" id="vo"}
+                    {raccoon:chapters name="chapters" where="book_id='$chapter->book_id'" order="chapter_order asc"}
                     <li>
-                        <a href="/pc/{$chapter_ctrl}/{$vo.id}">
+                        <a href="/{$chapter_ctrl}/{$vo.id}">
                             {$vo.chapter_name}
                         </a>
                     </li>
-                    {/volist}
+                    {/raccoon:chapters}
                 </ul>
             </div>
             <div class="slimScrollBar"

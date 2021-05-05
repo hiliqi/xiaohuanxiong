@@ -28,20 +28,20 @@
     <p class="win-pay-bottom">
         <span class="win-pay-bottom-left">当前余额:</span>
         <span class="win-pay-bottom-center">{$balance}元</span>
-        <span class="win-pay-bottom-right"><a href="/m/charge">余额不足？请先充值</a></span>
+        <span class="win-pay-bottom-right"><a href="/charge">余额不足？请先充值</a></span>
     </p>
 </div>
 <div class="toast" style="display:none;"></div>
 <script>
     $('#view-chapterpay-btn').click(function () {
         $.post({
-            url: '/m/buychapter',
+            url: '/buychapter',
             data: {chapter_id: '{$chapter.id}'},
             success: function (res) {
                 if (res.success == 1) {
                     ShowDialog(res.msg);
                     setTimeout(function () {
-                        location.href = '/m/{$chapter_ctrl}/{$chapter.id}';
+                        location.href = '/{$chapter_ctrl}/{$chapter.id}';
                     },1000);
                 } else {
                     ShowDialog(res.msg);

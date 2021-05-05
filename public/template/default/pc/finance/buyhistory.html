@@ -12,18 +12,18 @@
             </header>
             <div class="box-body">
                 <ul class="mh-list col1">
-                    {volist name="buys" id="vo"}
+                    {raccoon:buys name="buys" where="user_id='$xwx_user_id'"}
                     <li>
                         <div class="mh-item horizontal booklist">
-                            <a href="/pc/{$book_ctrl}/{$vo.book.param}" title="{$vo.book.book_name}" class="mh-cover"
+                            <a href="/{$book_ctrl}/{$vo.book.param}" title="{$vo.book.book_name}" class="mh-cover"
                                style="background-image: url({$vo.book.cover_url})"> </a>
                             <div class="mh-item-detali autoHeight">
                                 <h2 class="title">
-                                    <a href="/pc/{$book_ctrl}/{$vo.book.param}">{$vo.book.book_name}</a>
+                                    <a href="/{$book_ctrl}/{$vo.book.param}">{$vo.book.book_name}</a>
                                 </h2>
                                 <p class="info">
                                     <span class="new">
-                                        <a href="/pc/{$chapter_ctrl}/{$vo.chapter.id}">{$vo.chapter.chapter_name}</a>
+                                        <a href="/{$chapter_ctrl}/{$vo.chapter_id}">{$vo.chapter.chapter_name}</a>
                                     </span>
                                 </p>
                                 <p class="info">
@@ -32,17 +32,17 @@
                                 </p>
                                 <p class="mh-label">购买金额：{$vo.money}元</p>
                                 <div class="chapter-list mt30">
-                                    {$vo.chapter.book.summary|subtext=60}...
+                                    {$vo.book.summary|subtext=60}...
                                 </div>
                                 <div class="bottom">
                                     <div>
-                                        <a href="/pc/{$chapter_ctrl}/{$vo.chapter.id}" class="read-btn"> 点击阅读 </a>
+                                        <a href="/{$chapter_ctrl}/{$vo.chapter.id}" class="read-btn"> 点击阅读 </a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </li>
-                    {/volist}
+                    {/raccoon:buys}
                 </ul>
             </div>
             <footer>
@@ -53,21 +53,21 @@
                             {if $page.current_page == 1}
                             <li><a>&lt;</a></li>
                             {else/}
-                            <li><a id="prevPage" href="/pc/buyhistory?page={$page.current_page-1}{$param}" title="上一页">&lt;</a></li>
+                            <li><a id="prevPage" href="/buyhistory?page={$page.current_page-1}{$param}" title="上一页">&lt;</a></li>
                             {/if}
 
                             {for start="1" end="$page.last_page + 1"}
                             {if $i == $page.current_page }
-                            <li><a href="/pc/buyhistory?page={$i}{$param}" class="active">{$i}</a></li>
+                            <li><a href="/buyhistory?page={$i}{$param}" class="active">{$i}</a></li>
                             {else/}
-                            <li><a href="/pc/buyhistory?page={$i}{$param}" title="第{$i}页">{$i}</a></li>
+                            <li><a href="/buyhistory?page={$i}{$param}" title="第{$i}页">{$i}</a></li>
                             {/if}
                             {/for}
 
                             {if $page.current_page == $page.last_page}
                             <li><a>&gt;</a></li>
                             {else/}
-                            <li><a id="nextPage" href="/pc/buyhistory?page={$page.current_page+1}{$param}" title="下一页">&gt;</a></li>
+                            <li><a id="nextPage" href="/buyhistory?page={$page.current_page+1}{$param}" title="下一页">&gt;</a></li>
                             {/if}
                             {/if}
                         </div>

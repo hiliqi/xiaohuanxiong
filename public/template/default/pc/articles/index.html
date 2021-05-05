@@ -250,8 +250,8 @@
 <div class="article clearfix">
     <div class="bread">
         <span>您的位置 : </span>
-        <a href="/pc" title="{$site_name}">首页</a>
-        &gt; <a href="/pc/articlelist">最新文章</a> &gt;
+        <a href="/" title="{$site_name}">首页</a>
+        &gt; <a href="/articlelist">最新文章</a> &gt;
     </div>
     <div class="wrap clearfix">
         <!--primary-->
@@ -267,18 +267,18 @@
             <div class="book">
                 <dl class="clearfix">
                     <dt>
-                        <a href="/pc/{$book_ctrl}/{$article.book.param}" target="_blank">
-                            <img src="/pc/{$article.book.cover_url}" alt="{$article.book.book_name}">
+                        <a href="/{$book_ctrl}/{$article.book.param}" target="_blank">
+                            <img src="/{$article.book.cover_url}" alt="{$article.book.book_name}">
                         </a>
                     </dt>
                     <dd>
-                        <h4><a href="/pc/{$book_ctrl}/{$article.book.param}">{$article.book.book_name}</a></h4>
+                        <h4><a href="/{$book_ctrl}/{$article.book.param}">{$article.book.book_name}</a></h4>
                         <p class="info">
                             <span>作者：{$article.book.author_name}</span>
                         </p>
                         <p class="intro">{$article.book.summary}</p>
                         <p class="star"><i style="width:100%;"></i></p>
-                        <a class="view" href="/pc/{$book_ctrl}/{$article.book.param}" target="_blank">漫画详情</a>
+                        <a class="view" href="/{$book_ctrl}/{$article.book.param}" target="_blank">漫画详情</a>
                     </dd>
                 </dl>
             </div>
@@ -290,26 +290,26 @@
             <div class="hot-news">
                 <h3>热门资讯</h3>
                 <ul>
-                    {volist name="articles" id="vo"}
+                    {raccoon:articles name="articles" order="hits desc" limit="6"}
                     <li class="s1">
-                        <a href="/pc/articles/{$vo.param}" target="_blank">{$vo.title}</a>
+                        <a href="/articles/{$vo.param}" target="_blank">{$vo.title}</a>
                     </li>
-                   {/volist}
+                    {/raccoon:articles}
                 </ul>
             </div>
             <!--new-book-->
             <div class="new-book">
                 <h3>推荐漫画</h3>
                 <ul>
-                    {volist name="books" id="vo"}
+                    {raccoon:books name="books" where="is_top=1" order="last_time desc" limit="6"}
                     <li>
-                        <a class="pic" href="/pc/{$book_ctrl}/{$vo.param}" target="_blank">
-                            <img src="/pc/{$vo.cover_url}" alt="{$vo.book_name}">
+                        <a class="pic" href="/{$book_ctrl}/{$vo.param}" target="_blank">
+                            <img src="/{$vo.cover_url}" alt="{$vo.book_name}">
                         </a>
-                        <h5><a href="/pc/{$book_ctrl}/{$vo.param}" target="_blank">{$vo.book_name}</a></h5>
+                        <h5><a href="/{$book_ctrl}/{$vo.param}" target="_blank">{$vo.book_name}</a></h5>
                         <p>作者：{$vo.author_name}</p>
                     </li>
-                    {/volist}
+                    {/raccoon:books}
                 </ul>
             </div>
         </div>

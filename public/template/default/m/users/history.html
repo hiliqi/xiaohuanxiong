@@ -6,8 +6,8 @@
 {include file="./template/default/m/pub/top3.html" /}
 
 <div class="selector-top" style="position: fixed;top: 46px;left: 0;width: 100%;z-index: 9;">
-    <a class="selector-top-item" href="/m/bookshelf">收藏</a>
-    <a class="selector-top-item active" href="/m/history">历史</a>
+    <a class="selector-top-item" href="/bookshelf">收藏</a>
+    <a class="selector-top-item active" href="/history">历史</a>
     <a href="javascript:editReadhistory();" id="btnedit">
         <img class="selector-top-right-logo" src="/static/images/selector-top-right.png">
     </a>
@@ -17,21 +17,21 @@
 <div style="margin-top: 105px;" id="app">
     <div class="buy-manga" v-for="(item, index) in books" :key="index">
         <div class="buy-manga-cover">
-            <a v-bind:href="'/m/{$book_ctrl}/' + item.param">
+            <a v-bind:href="'/{$book_ctrl}/' + item.param">
                 <img v-bind:src="item.cover_url">
             </a>
             <a class="buy-manga-cover-hover" href="javascript:void(0);" v-bind:mid="item.book_id" style="display:none;"></a>
         </div>
         <div class="buy-manga-info">
-            <a v-bind:href="'/m/{$book_ctrl}/' + item.param" class="readlink" v-bind:mid="item.book_id">
+            <a v-bind:href="'/{$book_ctrl}/' + item.param" class="readlink" v-bind:mid="item.book_id">
                 <p class="buy-manga-title">{{item.book_name}}</p>
             </a>
             <p class="buy-manga-author">{{item.last_time}}更新</p>
-            <a v-bind:href="'/m/{$chapter_ctrl}/' + item.chapter_id" class="readlink">
+            <a v-bind:href="'/{$chapter_ctrl}/' + item.chapter_id" class="readlink">
                 <p class="buy-manga-new">{{item.chapter_name}}</p>
             </a>
 
-            <a class="buy-manga-right-a readlink" v-bind:mid="item.book_id" v-bind:href="'/m/{$chapter_ctrl}/' + item.chapter_id">
+            <a class="buy-manga-right-a readlink" v-bind:mid="item.book_id" v-bind:href="'/{$chapter_ctrl}/' + item.chapter_id">
                 <img class="buy-manga-right-img" src="/static/images/buy-manga-right.png">
                 <p class="buy-manga-right-title">续看</p>
             </a>

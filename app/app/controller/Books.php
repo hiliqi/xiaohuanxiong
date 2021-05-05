@@ -10,6 +10,7 @@ use app\model\Author;
 use app\model\Book;
 use app\model\Clicks;
 use app\model\Comments;
+use app\model\UserBuy;
 use think\db\exception\DataNotFoundException;
 use think\db\exception\DbException;
 use think\db\exception\ModelNotFoundException;
@@ -17,39 +18,29 @@ use think\facade\Db;
 
 class Books extends Base
 {
-    protected $bookService;
-
-
-    public function initialize()
-    {
-        parent::initialize();
-        $this->bookService = app('bookService');
-    }
-
     public function getNewest()
     {
         $num = input('num');
-        $newest = cache('newestHomepageApp');
-        if (!$newest) {
-            $newest = Book::limit(0, $num)->order('last_time', 'desc')->select();
-            foreach ($newest as &$book) {
-                $book['clicks'] = Clicks::where('book_id','=',$book['id'])->sum('id');
-                if (substr($book->cover_url, 0, 4) === "http") {
+        $books = cache('newestHomepageApp');
+        if (!$books) {
+            $books = Book::limit(0, $num)->order('last_time', 'desc')->select();
+            foreach ($books as &$book) {
+                if (substr($book['cover_url'], 0, 4) === "http") {
 
                 } else {
-                    $book->cover_url = $this->img_domain . $book->cover_url;
+                    $book['cover_url'] = $this->img_domain . $book['cover_url'];
                 }
-                if (substr($book->banner_url, 0, 4) === "http") {
+                if (substr($book['banner_url'], 0, 4) === "http") {
 
                 } else {
-                    $book->banner_url = $this->img_domain . $book->banner_url;
+                    $book['banner_url'] = $this->img_domain . $book['banner_url'];
                 }
             }
-            cache('newestHomepageApp', $newest, null, 'redis');
+            cache('newestHomepageApp', $books, null, 'redis');
         }
         $result = [
             'success' => 1,
-            'newest' => $newest
+            'newest' => $books
         ];
         return json($result);
     }
@@ -57,34 +48,26 @@ class Books extends Base
     public function getHot()
     {
         $num = input('num');
-        $hot_books = cache('hotBooksApp');
-        if (!$hot_books) {
-            $data = Db::query("SELECT book_id,SUM(clicks) as clicks FROM " . $this->prefix . "clicks 
- GROUP BY book_id ORDER BY clicks DESC LIMIT :num", ['num' => $num]);
-            $hot_books = array();
-            foreach ($data as $val) {
-                $book = Book::with('chapters')->find($val['book_id']);
-                if ($book) {
-                    $book['taglist'] = explode('|', $book->tags);
-                    $book['clicks'] = $val['clicks'];
-                    if (substr($book->cover_url, 0, 4) === "http") {
+        $books = cache('hotBooksApp');
+        if (!$books) {
+            $books = Book::limit(0, $num)->order('hits', 'desc')->select();
+            foreach ($books as &$book) {
+                if (substr($book['cover_url'], 0, 4) === "http") {
 
-                    } else {
-                        $book->cover_url = $this->img_domain . $book->cover_url;
-                    }
-                    if (substr($book->banner_url, 0, 4) === "http") {
+                } else {
+                    $book['cover_url'] = $this->img_domain . $book['cover_url'];
+                }
+                if (substr($book['banner_url'], 0, 4) === "http") {
 
-                    } else {
-                        $book->banner_url = $this->img_domain . $book->banner_url;
-                    }
-                    array_push($hot_books, $book);
+                } else {
+                    $book['banner_url'] = $this->img_domain . $book['banner_url'];
                 }
             }
-            cache('hotBooksApp', $hot_books, null, 'redis');
+            cache('newestHomepageApp', $books, null, 'redis');
         }
         $result = [
             'success' => 1,
-            'hots' => $hot_books
+            'hots' => $books
         ];
         return json($result);
     }
@@ -92,26 +75,25 @@ class Books extends Base
     public function getTops()
     {
         $num = input('num');
-        $tops = cache('topsHomepageApp');
-        if (!$tops) {
-            $tops = Book::where('is_top', '=', '1')->limit(0, $num)->order('last_time', 'desc')->select();
-            foreach ($tops as &$book) {
-                $book['clicks'] = Clicks::where('book_id','=',$book['id'])->sum('id');
-                if (substr($book->cover_url, 0, 4) === "http") {
+        $books = cache('topsHomepageApp');
+        if (!$books) {
+            $books = Book::where('is_top', '=', '1')->limit(0, $num)->order('last_time', 'desc')->select();
+            foreach ($books as &$book) {
+                if (substr($book['cover_url'], 0, 4) === "http") {
 
                 } else {
-                    $book->cover_url = $this->img_domain . $book->cover_url;
+                    $book['cover_url'] = $this->img_domain . $book['cover_url'];
                 }
-                if (substr($book->banner_url, 0, 4) === "http") {
+                if (substr($book['banner_url'], 0, 4) === "http") {
 
                 } else {
-                    $book->banner_url = $this->img_domain . $book->banner_url;
+                    $book['banner_url'] = $this->img_domain . $book['banner_url'];
                 }
             }
-            cache('topsHomepageApp', $tops, null, 'redis');
+            cache('topsHomepageApp', $books, null, 'redis');
             $result = [
                 'success' => 1,
-                'tops' => $tops
+                'tops' => $books
             ];
             return json($result);
         }
@@ -120,27 +102,26 @@ class Books extends Base
     public function getEnds()
     {
         $num = input('num');
-        $ends = cache('endsHomepageApp');
-        if (!$ends) {
-            $ends = Book::where('end', '=', '1')->limit(0, $num)->order('last_time', 'desc')->select();
-            foreach ($ends as &$book) {
-                $book['clicks'] = Clicks::where('book_id','=',$book['id'])->sum('id');
-                if (substr($book->cover_url, 0, 4) === "http") {
+        $books = cache('endsHomepageApp');
+        if (!$books) {
+            $books = Book::where('end', '=', '1')->limit(0, $num)->order('last_time', 'desc')->select();
+            foreach ($books as &$book) {
+                if (substr($book['cover_url'], 0, 4) === "http") {
 
                 } else {
-                    $book->cover_url = $this->img_domain . $book->cover_url;
+                    $book['cover_url'] = $this->img_domain . $book['cover_url'];
                 }
-                if (substr($book->banner_url, 0, 4) === "http") {
+                if (substr($book['banner_url'], 0, 4) === "http") {
 
                 } else {
-                    $book->banner_url = $this->img_domain . $book->banner_url;
+                    $book['banner_url'] = $this->img_domain . $book['banner_url'];
                 }
             }
-            cache('endsHomepageApp', $ends, null, 'redis');
+            cache('endsHomepageApp', $books, null, 'redis');
         }
         $result = [
             'success' => 1,
-            'ends' => $ends
+            'ends' => $books
         ];
         return json($result);
     }
@@ -148,19 +129,24 @@ class Books extends Base
     public function getmostcharged()
     {
         $num = input('num');
-        $books = $this->bookService->getMostChargedBook($num);
-        foreach ($books as &$book) {
-            $book['clicks'] = (int)(Clicks::where('book_id','=',$book['id'])->sum('id')) + mt_rand(2000,5000);
-            $book['zan'] = (int)($book['clicks'] * 0.3);
-            if (substr($book['cover_url'], 0, 4) === "http") {
+        $data = UserBuy::with('book.author')->field('book_id,sum(money) as sum')
+            ->limit($num)->group('book_id')->select()->toArray();
+        array_multisort(array_column($data, 'sum'), SORT_DESC, $data);
+        $books = array();
+        foreach ($data as &$item) {
+            if (!empty($item['book'])) {
+                $book = $item['book'];
+                if (substr($book['cover_url'], 0, 4) === "http") {
 
-            } else {
-                $book['cover_url'] = $this->img_domain . $book->cover_url;
-            }
-            if (substr($book['banner_url'], 0, 4) === "http") {
+                } else {
+                    $book['cover_url'] = $this->img_domain . $book['cover_url'];
+                }
+                if (substr($book['banner_url'], 0, 4) === "http") {
 
-            } else {
-                $book['banner_url'] = $this->img_domain . $book->banner_url;
+                } else {
+                    $book['banner_url'] = $this->img_domain . $book['banner_url'];
+                }
+                array_push($books, $book);
             }
         }
         $result = [
@@ -177,16 +163,15 @@ class Books extends Base
         $count = $data->count();
         $books = $data->limit($startItem, $pageSize)->select();
         foreach ($books as &$book) {
-            $book['clicks'] = Clicks::where('book_id','=',$book['id'])->sum('id');
-            if (substr($book->cover_url, 0, 4) === "http") {
+            if (substr($book['cover_url'], 0, 4) === "http") {
 
             } else {
-                $book->cover_url = $this->img_domain . $book->cover_url;
+                $book['cover_url'] = $this->img_domain . $book['cover_url'];
             }
-            if (substr($book->banner_url, 0, 4) === "http") {
+            if (substr($book['banner_url'], 0, 4) === "http") {
 
             } else {
-                $book->banner_url = $this->img_domain . $book->banner_url;
+                $book['banner_url'] = $this->img_domain . $book['banner_url'];
             }
         }
         $result = [
@@ -200,6 +185,7 @@ class Books extends Base
     public function search()
     {
         $keyword = input('keyword');
+        $num = input('num');
 //        $redis = RedisHelper::GetInstance();
 //        $redis->zIncrBy($this->redis_prefix . 'hot_search:', 1, $keyword);
 //        $hot_search_json = $redis->zRevRange($this->redis_prefix . 'hot_search', 1, 4, true);
@@ -209,29 +195,23 @@ class Books extends Base
 //        }
         $books = cache('appsearchresult:' . $keyword);
         if (!$books) {
-            $books = $this->bookService->search($keyword, 20);
+            $map[] = ['delete_time','=',0];
+            $map[] = ['book_name','like','%'.$keyword.'%'];
+            $books = Book::where($map)->limit($num)->select();
             foreach ($books as &$book) {
-                $author = Author::find($book['author_id']);
-                if ($author) {
-                    $book['author'] = $author;
-                } else {
-                    $book['author'] = '佚名';
-                }
                 if (substr($book['cover_url'], 0, 4) === "http") {
 
                 } else {
                     $book['cover_url'] = $this->img_domain . $book['cover_url'];
                 }
-                if (substr($book->banner_url, 0, 4) === "http") {
+                if (substr($book['banner_url'], 0, 4) === "http") {
 
                 } else {
-                    $book->banner_url = $this->img_domain . $book->banner_url;
+                    $book['banner_url'] = $this->img_domain . $book['banner_url'];
                 }
-                $book['clicks'] = Clicks::where('book_id','=',$book['id'])->sum('id');
             }
             cache('appsearchresult:' . $keyword, $books, null, 'redis');
         }
-
 
         $result = [
             'success' => 1,
@@ -249,22 +229,20 @@ class Books extends Base
         if ($book == false) {
             try {
                 $book = Book::with('area')->findOrFail($id);
-                if (substr($book->cover_url, 0, 4) === "http") {
+                if (substr($book['cover_url'], 0, 4) === "http") {
 
                 } else {
-                    $book->cover_url = $this->img_domain . $book->cover_url;
+                    $book['cover_url'] = $this->img_domain . $book['cover_url'];
                 }
-                if (substr($book->banner_url, 0, 4) === "http") {
+                if (substr($book['banner_url'], 0, 4) === "http") {
 
                 } else {
-                    $book->banner_url = $this->img_domain . $book->banner_url;
+                    $book['banner_url'] = $this->img_domain . $book['banner_url'];
                 }
                 $redis = RedisHelper::GetInstance();
                 $day = date("Y-m-d", time());
                 //以当前日期为键，增加点击数
                 $redis->zIncrBy('click:' . $day, 1, $id);
-                $clicks = $this->bookService->getClicks($id, $this->prefix);
-                $book['clicks'] = $clicks;
             } catch (DataNotFoundException $e) {
                 return json(['success' => 0, 'msg' => '该漫画不存在']);
             } catch (ModelNotFoundException $e) {
@@ -307,43 +285,5 @@ class Books extends Base
             'comments' => $comments
         ];
         return json($result);
-    }
-
-    public function getRecommend()
-    {
-        $book_id = input('book_id');
-        try {
-            $book = Book::findOrFail($book_id);
-            $recommends = cache('randBooksApp:' . $book->tags);
-            if (!$recommends) {
-                $recommends = $this->bookService->getRecommand($book->tags, $this->end_point);
-                foreach ($recommends as &$book) {
-                    if (substr($book->cover_url, 0, 4) === "http") {
-
-                    } else {
-                        $book->cover_url = $this->img_domain . $book->cover_url;
-                    }
-                    if (substr($book->banner_url, 0, 4) === "http") {
-
-                    } else {
-                        $book->banner_url = $this->img_domain . $book->banner_url;
-                    }
-                    $book['clicks'] = Clicks::where('book_id','=',$book['id'])->sum('id');
-                }
-                cache('randBooksApp:' . $book->tags, $recommends, null, 'redis');
-            }
-            foreach ($recommends as &$recommend) {
-                $recommend['area_name'] = Area::find($recommend['area_id'])['area_name'];
-            }
-            $result = [
-                'success' => 1,
-                'recommends' => $recommends
-            ];
-            return json($result);
-        } catch (DataNotFoundException $e) {
-            return ['success' => 0, 'msg' => '漫画不存在'];
-        } catch (ModelNotFoundException $e) {
-            return ['success' => 0, 'msg' => '漫画不存在'];
-        }
     }
 }

@@ -8,36 +8,93 @@
     <a class="rank-selector-item active" href="javascript:void(0);" onclick="btnClick(this,'#rankList_1');">新番榜</a>
     <a class="rank-selector-item" href="javascript:void(0);" onclick="btnClick(this,'#rankList_2'); ">人气榜</a>
     <a class="rank-selector-item" href="javascript:void(0);" onclick="btnClick(this,'#rankList_3'); ">完结榜</a>
-    <a class="rank-selector-item" href="javascript:void(0);" onclick="btnClick(this,'#rankList_4');">充值榜</a>
+    <a class="rank-selector-item" href="javascript:void(0);" onclick="btnClick(this,'#rankList_4');">推荐榜</a>
 </div>
 <div class="rank-list-con">
-    {volist name="list" id="item" key="k"}
-    {if $k == 1}
-    <ul class="rank-list" id="rankList_{$k}" style="display: block;">
-        {else /}
-        <ul class="rank-list" id="rankList_{$k}" style="display: none;">
-            {/if}
-            {volist name="item['keyword']" id="keyword" key="j"}
-            <a href="/m/{$book_ctrl}/{$keyword.param}" title="{$keyword.book_name}">
-                <li>
-                    <div class="rank-list-cover">
-                        <img class="rank-list-cover-img lazy" data-original="{$keyword.cover_url}"
-                             src="https://p.pstatp.com/origin/ffa400036691f82c85e5" alt="{$keyword.book_name}">
+    <ul class="rank-list" id="rankList_1">
+        {raccoon:books name="books" order="last_time desc" limit="10"}
+        <a href="/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}">
+            <li>
+                <div class="rank-list-cover">
+                    <img class="rank-list-cover-img lazy" data-original="{$vo.cover_url}"
+                         src="https://p.pstatp.com/origin/ffa400036691f82c85e5" alt="{$vo.book_name}">
+                </div>
+                <div class="rank-list-info">
+                    <div class="rank-list-info-left">
+                        <span class="rank-list-info-left-index top-{$i-1}">{$i-1}</span>
                     </div>
-                    <div class="rank-list-info">
-                        <div class="rank-list-info-left">
-                            <span class="rank-list-info-left-index top-{$j-1}">{$j-1}</span>
-                        </div>
-                        <div class="rank-list-info-right">
-                            <p class="rank-list-info-right-title">{$keyword.book_name}</p>
-                            <p class="rank-list-info-right-subtitle">{$keyword.summary|subtext=15}...</p>
-                        </div>
+                    <div class="rank-list-info-right">
+                        <p class="rank-list-info-right-title">{$vo.book_name}</p>
+                        <p class="rank-list-info-right-subtitle">{$vo.summary|subtext=15}...</p>
                     </div>
-                </li>
-            </a>
-            {/volist}
-        </ul>
-        {/volist}
+                </div>
+            </li>
+        </a>
+        {/raccoon:books}
+    </ul>
+    <ul class="rank-list" id="rankList_2">
+        {raccoon:books name="books" order="hits desc" limit="10"}
+        <a href="/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}">
+            <li>
+                <div class="rank-list-cover">
+                    <img class="rank-list-cover-img lazy" data-original="{$vo.cover_url}"
+                         src="https://p.pstatp.com/origin/ffa400036691f82c85e5" alt="{$vo.book_name}">
+                </div>
+                <div class="rank-list-info">
+                    <div class="rank-list-info-left">
+                        <span class="rank-list-info-left-index top-{$i-1}">{$i-1}</span>
+                    </div>
+                    <div class="rank-list-info-right">
+                        <p class="rank-list-info-right-title">{$vo.book_name}</p>
+                        <p class="rank-list-info-right-subtitle">{$vo.summary|subtext=15}...</p>
+                    </div>
+                </div>
+            </li>
+        </a>
+        {/raccoon:books}
+    </ul>
+    <ul class="rank-list" id="rankList_3">
+        {raccoon:books name="books" order="last_time desc" where="end=1" limit="10"}
+        <a href="/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}">
+            <li>
+                <div class="rank-list-cover">
+                    <img class="rank-list-cover-img lazy" data-original="{$vo.cover_url}"
+                         src="https://p.pstatp.com/origin/ffa400036691f82c85e5" alt="{$vo.book_name}">
+                </div>
+                <div class="rank-list-info">
+                    <div class="rank-list-info-left">
+                        <span class="rank-list-info-left-index top-{$i-1}">{$i-1}</span>
+                    </div>
+                    <div class="rank-list-info-right">
+                        <p class="rank-list-info-right-title">{$vo.book_name}</p>
+                        <p class="rank-list-info-right-subtitle">{$vo.summary|subtext=15}...</p>
+                    </div>
+                </div>
+            </li>
+        </a>
+        {/raccoon:books}
+    </ul>
+    <ul class="rank-list" id="rankList_4">
+        {raccoon:books name="books" order="last_time desc" where="is_top=1" limit="10"}
+        <a href="/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}">
+            <li>
+                <div class="rank-list-cover">
+                    <img class="rank-list-cover-img lazy" data-original="{$vo.cover_url}"
+                         src="https://p.pstatp.com/origin/ffa400036691f82c85e5" alt="{$vo.book_name}">
+                </div>
+                <div class="rank-list-info">
+                    <div class="rank-list-info-left">
+                        <span class="rank-list-info-left-index top-{$i-1}">{$i-1}</span>
+                    </div>
+                    <div class="rank-list-info-right">
+                        <p class="rank-list-info-right-title">{$vo.book_name}</p>
+                        <p class="rank-list-info-right-subtitle">{$vo.summary|subtext=15}...</p>
+                    </div>
+                </div>
+            </li>
+        </a>
+        {/raccoon:books}
+    </ul>
 </div>
 <div class="noDataFont" style="padding:10px;font-size:12px;color:#767676;text-align: center;">主人，下面木有了~</div>
 <script>

@@ -30,17 +30,17 @@
         <section class="box container overflow-Show mb20" style="margin-top:30px;">
             <div class="box-body">
                 <ul class="mh-list col7">
-                    {volist name="books" id="vo"}
+                    {raccoon:books name="books" order="hits desc" limit="14"}
                     <li>
                         <div class="mh-item">
-                            <a href="/pc/{$book_ctrl}/{$vo.id}">
+                            <a href="/{$book_ctrl}/{$vo.id}">
                                 <p class="mh-cover" style="background-image: url({$vo.cover_url})">
                                     <span class="tag mh-vip-tag">精选</span>
                                 </p>
                             </a>
                             <div class="mh-item-detali">
                                 <h2 class="title">
-                                    <a href="/pc/{$book_ctrl}/{$vo.id}" title="{$vo.book_name}"
+                                    <a href="/{$book_ctrl}/{$vo.id}" title="{$vo.book_name}"
                                        style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
                                         {$vo.book_name}
                                     </a>
@@ -53,7 +53,7 @@
 
                         </div>
                     </li>
-                    {/volist}
+                    {/raccoon:books}
                 </ul>
             </div>
         </section>
@@ -66,13 +66,13 @@
             ShowDialog('请输入充值码');
         } else {
             $.post({
-                url: '/pc/kami',
+                url: '/kami',
                 data: {'code': code},
                 success: function (res) {
                     ShowDialog(res.msg);
                     if (res.err == 0) {
                         setTimeout(function () {
-                            location.href = '/pc/ucenter';
+                            location.href = '/ucenter';
                         }, 1000);
                     }
                 }

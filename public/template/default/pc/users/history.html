@@ -10,8 +10,8 @@
             <header class="box-header">
                 <span class="title">我的书架</span>
                 <ul class="box-simple-tabs">
-                    <li><a href="/pc/bookshelf">我的收藏</a></li>
-                    <li><a class="active" href="/pc/history">阅读记录</a></li>
+                    <li><a href="/bookshelf">我的收藏</a></li>
+                    <li><a class="active" href="/history">阅读记录</a></li>
                 </ul>
                 <div class="pull-right">
                     <a href="#" class="more js_edit_booklist_btn">
@@ -50,7 +50,7 @@
                         <li>
                             <div class="mh-item">
                                 <a class="mh-cover" v-bind:style="{'background-image': 'url(' + item.cover_url + ')'}"
-                                   v-bind:href="'/pc/{$book_ctrl}/' + item.param">
+                                   v-bind:href="'/{$book_ctrl}/' + item.param">
                                     <span class="tag  mh-tag">{{item.end}}</span>
                                     <span class="read-section">{{item.last_time}}更新</span>
                                     <span v-bind:mid="item.book_id" class="edit-state">
@@ -59,11 +59,11 @@
                                 </a>
                                 <div class="mh-item-detali">
                                     <h2 class="title" style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
-                                        <a  v-bind:href="'/pc/{$book_ctrl}/' + item.param">{{item.book_name}}</a>
+                                        <a  v-bind:href="'/{$book_ctrl}/' + item.param">{{item.book_name}}</a>
                                     </h2>
                                     <p class="chapter" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">
                                         <span>最近阅读</span>
-                                        <a v-bind:href="'/pc/{$chapter_ctrl}/' + item.chapter_id" target="_blank">{{item.chapter_name}}</a>
+                                        <a v-bind:href="'/{$chapter_ctrl}/' + item.chapter_id" target="_blank">{{item.chapter_name}}</a>
                                     </p>
                                 </div>
                             </div>

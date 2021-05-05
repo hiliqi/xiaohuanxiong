@@ -7,53 +7,21 @@
 <link rel="stylesheet" href="https://lib.baomitu.com/Swiper/4.5.0/css/swiper.min.css" />
 {/block}
 {block name="content"}
-<div class="ad-top-info">
-    <a href="javascript:$('.ad-top-info').remove();">
-        <img class="ad-top-info-cross" src="http://css99tel.cdndm5.com/v201905271815/blue/images/mobile/search-downlist-item-cross.png"></a>
-    <div class="ad-top-info-main" onclick="window.location.href = 'http://ldy.fanlimanhua.cn/?agentId=723&channelId=264&spreadId=0'">
-        <div class="ad-top-info-main-cover logo">
-            <img src="https://ae01.alicdn.com/kf/Hc75026a77e3e49929a5ff37f95a583a3U.png">
-        </div>
-        <div class="ad-top-info-main-right logo">
-            <p class="ad-top-info-main-right-title">下载app</p>
-            <div class="swiper-container3 swiper-container-vertical swiper-container-android swiper-container-wp8-vertical" style="height: 30px;">
-                <div class="swiper-wrapper" style="transition-duration: 0ms; transform: translate3d(0px, -60px, 0px);">
-                    <div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-next" data-swiper-slide-index="2" style="height: 30px;">
-                        <p class="ad-top-info-main-right-subtitle">每日签到抽好礼,免费看精彩漫画</p>
-                    </div>
-                    <div class="swiper-slide swiper-slide-prev" data-swiper-slide-index="0" style="height: 30px;">
-                        <p class="ad-top-info-main-right-subtitle">好漫画,为看漫画的人而生</p>
-                    </div>
-                    <div class="swiper-slide swiper-slide-active" data-swiper-slide-index="1" style="height: 30px;">
-                        <p class="ad-top-info-main-right-subtitle">秒速追更,随时随地口袋阅读</p>
-                    </div>
-                    <div class="swiper-slide swiper-slide-next" data-swiper-slide-index="2" style="height: 30px;">
-                        <p class="ad-top-info-main-right-subtitle">每日签到抽好礼,免费看精彩漫画</p>
-                    </div>
-                    <div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-prev" data-swiper-slide-index="0" style="height: 30px;">
-                        <p class="ad-top-info-main-right-subtitle">好漫画,为看漫画的人而生</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <a class="ad-top-info-right" href="http://normal.jjxs518.cn/?uid=0&cid=0050&sign=5081f00db2de0e3d&pid=jjmanhua2&noShare=true">打开</a>
-</div>
 {include file="./template/default/m/pub/top1.html"}
 <div class="index-banner">
     <div class="swiper-container swiper-container-horizontal swiper-container-ios swiper-container-wp8-horizontal">
         <div class="swiper-wrapper" style="transition-duration: 0ms; transform: translate3d(-1875px, 0px, 0px);">
-            {volist name="banners" id="vo" key="k"}
+            {raccoon:banners name="banners" order="banner_order desc" key="k"}
             <div class="swiper-slide" data-swiper-slide-index="{$k}" style="width: 375px;">
                 <a href="{if $end_point == 'id'}
-                  /m/{$book_ctrl}/{$vo.book_id}
+                  /{$book_ctrl}/{$vo.book_id}
                   {else /}
-                  /m/{$book_ctrl}/{$vo.book.unique_id}
+                  /{$book_ctrl}/{$vo.book.unique_id}
                   {/if}" title="{$vo.title}">
                     <img src="{$vo.pic_name}" alt="{$vo.title}">
                 </a>
             </div>
-            {/volist}
+            {/raccoon:banners}
         </div> <!-- 如果需要分页器 -->
         <div class="swiper-pagination swiper-pagination-bullets">
         </div>
@@ -64,25 +32,25 @@
 </div>
 <div class="index-menu">
     <div class="index-menu-item">
-        <a href="/m/{$booklist_act}">
+        <a href="/{$booklist_act}">
             <img class="index-menu-item-img" src="/static/images/index-menu-1.png">
             <p class="index-menu-item-title">分类</p>
         </a>
     </div>
     <div class="index-menu-item">
-        <a href="/m/{$rank_ctrl}">
+        <a href="/{$rank_ctrl}">
             <img class="index-menu-item-img" src="/static/images/index-menu-2.png">
             <p class="index-menu-item-title">排行</p>
         </a>
     </div>
     <div class="index-menu-item">
-        <a href="/m/{$update_act}">
+        <a href="/{$update_act}">
             <img class="index-menu-item-img" src="/static/images/index-menu-3.png">
             <p class="index-menu-item-title">更新</p>
         </a>
     </div>
     <div class="index-menu-item">
-        <a href="/m/bookshelf">
+        <a href="/bookshelf">
             <img class="index-menu-item-img" src="/static/images/index-menu-4.png">
             <p class="index-menu-item-title">历史</p>
         </a>
@@ -91,187 +59,120 @@
 
 <div class="manga-list">
     <div class="manga-list-title index">万人追更
-        <a href="/m/{$booklist_act}?end=0" class="manga-list-title-more">更多</a>
+        <a href="/{$booklist_act}?end=0" class="manga-list-title-more">更多</a>
     </div>
     <ul class="manga-list-2">
         <div class="swiper-container2 swiper-container-horizontal swiper-container-free-mode swiper-container-ios swiper-container-wp8-horizontal">
             <div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px);">
                 <div class="swiper-slide swiper-slide-active">
-                    {volist name="newest" id="vo" offset="0" length="3"}
+                    {raccoon:books name="books" order="last_time desc" limit="1,3"}
                     <li>
                         <div class="manga-list-2-cover">
-                            <a href="/m/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}">
+                            <a href="/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}">
                                 <img class="manga-list-2-cover-img lazy" data-original="{$vo.cover_url}" src="https://p.pstatp.com/origin/ffa400036691f82c85e5">
                             </a>
                         </div>
                         <p class="manga-list-2-title">
-                            <a href="/m/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}">{$vo.book_name}</a> </p>
+                            <a href="/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}">{$vo.book_name}</a> </p>
                         <p class="manga-list-2-tip">
-                            <a href="/m/{$book_ctrl}/{$vo.param}">{$vo.summary}</a>
+                            <a href="/{$book_ctrl}/{$vo.param}">{$vo.summary}</a>
                         </p>
                     </li>
-                    {/volist}
+                    {/raccoon:books}
                 </div>
                 <div class="swiper-slide swiper-slide-next">
-                    {volist name="newest" id="vo" offset="3" length="3"}
+                    {raccoon:books name="books" order="last_time desc" limit="4,3"}
                     <li>
                         <div class="manga-list-2-cover">
-                            <a href="/m/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}">
+                            <a href="/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}">
                                 <img class="manga-list-2-cover-img lazy" data-original="{$vo.cover_url}" src="https://p.pstatp.com/origin/ffa400036691f82c85e5">
                             </a>
                         </div>
                         <p class="manga-list-2-title">
-                            <a href="/m/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}">{$vo.book_name}</a> </p>
+                            <a href="/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}">{$vo.book_name}</a> </p>
                         <p class="manga-list-2-tip">
-                            <a href="/m/{$book_ctrl}/{$vo.param}">{$vo.summary}</a>
+                            <a href="/{$book_ctrl}/{$vo.param}">{$vo.summary}</a>
                         </p>
                     </li>
-                    {/volist}
+                    {/raccoon:books}
                 </div>
                 <div class="swiper-slide">
-                    {volist name="newest" id="vo" offset="6" length="3"}
+                    {raccoon:books name="books" order="last_time desc" limit="7,3"}
                     <li>
                         <div class="manga-list-2-cover">
-                            <a href="/m/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}">
+                            <a href="/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}">
                                 <img class="manga-list-2-cover-img lazy" data-original="{$vo.cover_url}" src="https://p.pstatp.com/origin/ffa400036691f82c85e5">
                             </a>
                         </div>
                         <p class="manga-list-2-title">
-                            <a href="/m/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}">{$vo.book_name}</a> </p>
+                            <a href="/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}">{$vo.book_name}</a> </p>
                         <p class="manga-list-2-tip">
-                            <a href="/m/{$book_ctrl}/{$vo.param}">{$vo.summary}</a>
+                            <a href="/{$book_ctrl}/{$vo.param}">{$vo.summary}</a>
                         </p>
                     </li>
-                    {/volist}
+                    {/raccoon:books}
                 </div>
             </div>
         </div>
     </ul>
 
     <div class="manga-list-title index">最热漫画
-        <a href="/m/{$booklist_act}" class="manga-list-title-more">更多</a>
+        <a href="/{$booklist_act}" class="manga-list-title-more">更多</a>
     </div>
     <ul class="manga-list-2">
         <div class="swiper-container2 swiper-container-horizontal swiper-container-free-mode swiper-container-ios swiper-container-wp8-horizontal">
             <div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px);">
                 <div class="swiper-slide swiper-slide-active">
-                    {volist name="hot" id="vo" offset="0" length="3"}
+                    {raccoon:books name="books" order="hits desc" limit="1,3"}
                     <li>
                         <div class="manga-list-2-cover">
-                            <a href="/m/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}">
+                            <a href="/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}">
                                 <img class="manga-list-2-cover-img lazy" data-original="{$vo.cover_url}" src="https://p.pstatp.com/origin/ffa400036691f82c85e5">
                             </a>
                         </div>
                         <p class="manga-list-2-title">
-                            <a href="/m/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}">{$vo.book_name}</a> </p>
+                            <a href="/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}">{$vo.book_name}</a> </p>
                         <p class="manga-list-2-tip">
-                            <a href="/m/{$book_ctrl}/{$vo.param}">{$vo.clicks}次点击</a>
+                            <a href="/{$book_ctrl}/{$vo.param}">{$vo.clicks}次点击</a>
                         </p>
                     </li>
-                    {/volist}
+                    {/raccoon:books}
                 </div>
                 <div class="swiper-slide swiper-slide-next">
-                    {volist name="hot" id="vo" offset="3" length="3"}
+                    {raccoon:books name="books" order="hits desc" limit="4,3"}
                     <li>
                         <div class="manga-list-2-cover">
-                            <a href="/m/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}">
+                            <a href="/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}">
                                 <img class="manga-list-2-cover-img lazy" data-original="{$vo.cover_url}" src="https://p.pstatp.com/origin/ffa400036691f82c85e5">
                             </a>
                         </div>
                         <p class="manga-list-2-title">
-                            <a href="/m/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}">{$vo.book_name}</a> </p>
+                            <a href="/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}">{$vo.book_name}</a> </p>
                         <p class="manga-list-2-tip">
-                            <a href="/m/{$book_ctrl}/{$vo.param}">{$vo.clicks}次点击</a>
+                            <a href="/{$book_ctrl}/{$vo.param}">{$vo.clicks}次点击</a>
                         </p>
                     </li>
-                    {/volist}
+                    {/raccoon:books}
                 </div>
                 <div class="swiper-slide">
-                    {volist name="hot" id="vo" offset="6" length="3"}
+                    {raccoon:books name="books" order="hits desc" limit="7,3"}
                     <li>
                         <div class="manga-list-2-cover">
-                            <a href="/m/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}">
+                            <a href="/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}">
                                 <img class="manga-list-2-cover-img lazy" data-original="{$vo.cover_url}" src="https://p.pstatp.com/origin/ffa400036691f82c85e5">
                             </a>
                         </div>
                         <p class="manga-list-2-title">
-                            <a href="/m/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}">{$vo.book_name}</a> </p>
+                            <a href="/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}">{$vo.book_name}</a> </p>
                         <p class="manga-list-2-tip">
-                            <a href="/m/{$book_ctrl}/{$vo.param}">{$vo.clicks}次点击</a>
+                            <a href="/{$book_ctrl}/{$vo.param}">{$vo.clicks}次点击</a>
                         </p>
                     </li>
-                    {/volist}
+                    {/raccoon:books}
                 </div>
             </div>
         </div>
     </ul>
-
-    {volist name="catelist" id="cateItem"}
-    {in name="$cateItem.tag.id" value="1,2,3"} <!-- value里的数字是后台分类ID，填哪几个数字就展示哪几个分类 -->
-    <div class="manga-list-title index">{$cateItem.tag.tag_name}
-        <a href="/m/{$booklist_act}?tag={$cateItem.tag.tag_name}" class="manga-list-title-more">更多</a>
-    </div>
-    <ul class="manga-list-2">
-        <div class="swiper-container2 swiper-container-horizontal swiper-container-free-mode swiper-container-ios swiper-container-wp8-horizontal">
-            <div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px);">
-
-                <div class="swiper-slide swiper-slide-active">
-                    {volist name="cateItem.books" id="vo" offset="0" length="3"}
-                    <li>
-                        <div class="manga-list-2-cover">
-                            <a href="/m/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}">
-                                <img class="manga-list-2-cover-img lazy" data-original="{$vo.cover_url}" src="https://p.pstatp.com/origin/ffa400036691f82c85e5">
-                            </a>
-                        </div>
-                        <p class="manga-list-2-title">
-                            <a href="/m/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}">{$vo.book_name}</a> </p>
-                        <p class="manga-list-2-tip">
-                            <a href="/m/{$book_ctrl}/{$vo.param}">{$vo.summary}</a>
-                        </p>
-                    </li>
-                    {/volist}
-                </div>
-
-                <div class="swiper-slide swiper-slide-next">
-                    {volist name="cateItem.books" id="vo" offset="3" length="3"}
-                    <li>
-                        <div class="manga-list-2-cover">
-                            <a href="/m/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}">
-                                <img class="manga-list-2-cover-img lazy" data-original="{$vo.cover_url}" src="https://p.pstatp.com/origin/ffa400036691f82c85e5">
-                            </a>
-                        </div>
-                        <p class="manga-list-2-title">
-                            <a href="/m/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}">{$vo.book_name}</a> </p>
-                        <p class="manga-list-2-tip">
-                            {$vo.summary}
-                        </p>
-                    </li>
-                    {/volist}
-                </div>
-
-                <div class="swiper-slide">
-                    {volist name="cateItem.books" id="vo" offset="6" length="3"}
-                    <li>
-                        <div class="manga-list-2-cover">
-                            <a href="/m/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}">
-                                <img class="manga-list-2-cover-img lazy" data-original="{$vo.cover_url}" src="https://p.pstatp.com/origin/ffa400036691f82c85e5">
-                            </a>
-                        </div>
-                        <p class="manga-list-2-title">
-                            <a href="/m/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}">{$vo.book_name}</a> </p>
-                        <p class="manga-list-2-tip">
-                            {$vo.summary}
-                        </p>
-                    </li>
-                    {/volist}
-                </div>
-
-
-            </div>
-        </div>
-    </ul>
-    {/in}
-    {/volist}
 
     <div class="manga-list-title index">完结优选
         <a href="/{$rank_ctrl}?end=0" class="manga-list-title-more">更多</a>
@@ -280,7 +181,7 @@
         <div class="swiper-container2 swiper-container-horizontal swiper-container-free-mode swiper-container-ios swiper-container-wp8-horizontal">
             <div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px);">
                 <div class="swiper-slide swiper-slide-active">
-                    {volist name="ends" id="vo" offset="0" length="3"}
+                    {raccoon:books name="books" order="id dessc" where="end=1" limit="1,3"}
                     <li>
                         <div class="manga-list-2-cover">
                             <a href="/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}">
@@ -293,10 +194,10 @@
                              {$vo.summary}
                         </p>
                     </li>
-                    {/volist}
+                    {/raccoon:books}
                 </div>
                 <div class="swiper-slide swiper-slide-next">
-                    {volist name="ends" id="vo" offset="3" length="3"}
+                    {raccoon:books name="books" order="id dessc" where="end=1" limit="4,3"}
                     <li>
                         <div class="manga-list-2-cover">
                             <a href="/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}">
@@ -309,10 +210,10 @@
                             {$vo.summary}
                         </p>
                     </li>
-                    {/volist}
+                    {/raccoon:books}
                 </div>
                 <div class="swiper-slide">
-                    {volist name="ends" id="vo" offset="6" length="3"}
+                    {raccoon:books name="books" order="id dessc" where="end=1" limit="7,3"}
                     <li>
                         <div class="manga-list-2-cover">
                             <a href="/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}">
@@ -325,7 +226,7 @@
                             {$vo.summary}
                         </p>
                     </li>
-                    {/volist}
+                    {/raccoon:books}
                 </div>
             </div>
         </div>
@@ -345,9 +246,9 @@
         <div class="swiper-container-horizontal swiper-container-ios swiper-container-wp8-horizontal" id="rank_list">
             <div class="swiper-wrapper" style="transition-duration: 0ms; transform: translate3d(-1380px, 0px, 0px);">
                 <div class="swiper-slide swiper-slide-duplicate" id="rank_1" data-swiper-slide-index="0">
-                    {volist name="newest" id="vo" offset="0" length="5"}
+                    {raccoon:books name="books" order="id desc" limit="5"}
                     <li>
-                        <a href="/m/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}">
+                        <a href="/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}">
                             <div class="rank-list-cover">
                                 <img class="rank-list-cover-img lazy" data-original="{$vo.cover_url}" src="https://p.pstatp.com/origin/ffa400036691f82c85e5" alt="{$vo.book_name}">
                             </div>
@@ -359,12 +260,12 @@
                             </div>
                         </a>
                     </li>
-                    {/volist}
+                    {/raccoon:books}
                 </div>
                 <div class="swiper-slide swiper-slide-duplicate" id="rank_2" data-swiper-slide-index="1">
-                    {volist name="hot" id="vo"  offset="0" length="5"}
+                    {raccoon:books name="books" order="hits desc" limit="5"}
                     <li>
-                        <a href="/m/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}">
+                        <a href="/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}">
                             <div class="rank-list-cover">
                                 <img class="rank-list-cover-img lazy" data-original="{$vo.cover_url}" src="https://p.pstatp.com/origin/ffa400036691f82c85e5" alt="{$vo.book_name}">
                             </div>
@@ -376,12 +277,12 @@
                             </div>
                         </a>
                     </li>
-                    {/volist}
+                    {/raccoon:books}
                 </div>
                 <div class="swiper-slide swiper-slide-duplicate" id="rank_3" data-swiper-slide-index="2">
-                    {volist name="ends" id="vo"  offset="0" length="5"}
+                    {raccoon:books name="books" order="hits desc" where="end=1" limit="5"}
                     <li>
-                        <a href="/m/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}">
+                        <a href="/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}">
                             <div class="rank-list-cover">
                                 <img class="rank-list-cover-img lazy" data-original="{$vo.cover_url}" src="https://p.pstatp.com/origin/ffa400036691f82c85e5" alt="{$vo.book_name}">
                             </div>
@@ -393,12 +294,12 @@
                             </div>
                         </a>
                     </li>
-                    {/volist}
+                    {/raccoon:books}
                 </div>
                 <div class="swiper-slide swiper-slide-duplicate" id="rank_4" data-swiper-slide-index="3">
-                    {volist name="tops" id="vo"  offset="0" length="5"}
+                    {raccoon:books name="books" order="last_time desc" where="is_top=1" limit="5"}
                     <li>
-                        <a href="/m/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}">
+                        <a href="/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}">
                             <div class="rank-list-cover">
                                 <img class="rank-list-cover-img lazy" data-original="{$vo.cover_url}" src="https://p.pstatp.com/origin/ffa400036691f82c85e5" alt="{$vo.book_name}">
                             </div>
@@ -410,7 +311,7 @@
                             </div>
                         </a>
                     </li>
-                    {/volist}
+                    {/raccoon:books}
                 </div>
             </div>
         </div>

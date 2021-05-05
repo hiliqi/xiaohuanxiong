@@ -43,7 +43,7 @@ class Paynotify extends BaseController
                     $userFinance = new UserFinance();
                     $userFinance->user_id = $order->user_id;
                     $userFinance->money = $order->money;
-                    $userFinance->usage = (int)$order->pay_type == 1 ? 1 : 2;
+                    $userFinance->usage = (int)$order->pay_type == 1;
                     $userFinance->summary = '支付宝官方支付';
                     $userFinance->save(); //存储用户财务数据
 

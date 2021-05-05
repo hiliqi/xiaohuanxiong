@@ -12,22 +12,14 @@ use app\model\Chapter;
 
 class Postbot
 {
-    protected $chapterService;
-    protected $photoService;
-
-    public function initialize()
-    {
-        $this->chapterService = new \app\service\ChapterService();
-        $this->photoService = new \app\service\PhotoService();
-    }
 
     public function save(Request $request)
     {
         if ($request->isPost()) {
             $data = $request->param();
-        if (!isset($data['api_key']) || $data['api_key'] != config('site.api_key'))
+            if (!isset($data['api_key']) || $data['api_key'] != config('site.api_key'))
                 return json(['code' => 1, 'message' => 'Api密钥为空/密钥错误']);
-            $book = Book::where(array('book_name'=>$data['book_name'],'unique_id'=>$data['unique_id']))->find();
+            $book = Book::where('book_name', $data['book_name'])->find();
             if (!$book) { //如果漫画不存在
                 $author = Author::where('author_name', '=', trim($data['author']))->find();
                 if (is_null($author)) {//如果作者不存在
@@ -40,7 +32,7 @@ class Postbot
                     $author->save();
                 }
                 $book = new Book();
-                $book->unique_id = $this->convert($data['book_name']).md5(time() . mt_rand(1,1000000));
+                $book->unique_id = $this->convert($data['book_name']) . md5(time() . mt_rand(1, 1000000));
                 //$book->unique_id = $data['unique_id'];
                 $book->author_id = $author->id;
                 $book->author_name = $data['author'] ?: '侠名';
@@ -60,7 +52,7 @@ class Postbot
                 //      $book->click = rand(1000, 9999);
                 $book->save();
             }
-              $chapter = Chapter::where(['chapter_name'=>$data['chapter_name'],'book_id'=>$book->id])->find();
+            $chapter = Chapter::where(['chapter_name' => $data['chapter_name'], 'book_id' => $book->id])->find();
 
             if ($chapter) {
                 return json(['code' => 0, 'message' => '章节已存在', 'info' => ['book' => $book, 'chapter' => $chapter]]);

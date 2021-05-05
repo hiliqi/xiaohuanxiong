@@ -23,21 +23,18 @@
             <a href="#">{$book.author.author_name|substr=10}...</a>
         </p>
         <p class="detail-main-info-author">地区：
-            <a href="/m/{$booklist_act}/?area={$book.area_id}">{$book.area.area_name}</a>
+            <a href="/{$booklist_act}/?area={$book.area_id}">{$book.area.area_name}</a>
         </p>
         <p class="detail-main-info-class">
             {volist name="tags" id="vo"}
             <span>
-                <a href="/m/{$booklist_act}/?tag={$vo}">{$vo}</a>
+                <a href="/{$booklist_act}/?tag={$vo}">{$vo}</a>
             </span>
             {/volist}
         </p>
     </div>
 </div>
 <p class="detail-desc">{$book.summary}</p>
-<a href="http://normal.jjxs518.cn/?uid=0&cid=0050&sign=5081f00db2de0e3d&pid=jjmanhua2&noShare=true">
-    <img style="width: 100%;height: auto;" src="https://ae01.alicdn.com/kf/HTB1OJ3IcNiH3KVjSZPfq6xBiVXa3.jpg" alt="歪歪漫画">
-</a>
 <div id="tempc">
     <div class="detail-selector item-3">
         <a class="detail-selector-item active" href="javascript:void(0);"
@@ -58,14 +55,14 @@
         </div>
         {if $book.is_copyright == 0}
         <ul class="detail-list-1 detail-list-select" id="detail-list-select">
-            {volist name="book.chapters" id="vo"}
+            {raccoon:chapters name="chapters" where="book_id='$book->id'" order="chapter_order asc"}
             <li>
-                <a href="/m/{$chapter_ctrl}/{$vo.id}" title="{$vo.chapter_name}" class="chapteritem">{$vo.chapter_name}</a>
+                <a href="/{$chapter_ctrl}/{$vo.id}" title="{$vo.chapter_name}" class="chapteritem">{$vo.chapter_name}</a>
                 {if $vo.chapter_order >= $start_pay }
                 <img class="detail-list-3-info-right" src="/static/images/center-main-list-logo-4.png">
                 {/if}
             </li>
-            {/volist}
+            {/raccoon:chapters}
         </ul>
         {/if}
         <div class="detail-fix-bottom">
@@ -93,7 +90,7 @@
                 {if $start == -1}
                 <a href="#" class="detail-bottom-btn">暂无章节</a>
                 {else /}
-                <a href="/m/{$chapter_ctrl}/{$start}" class="detail-bottom-btn">开始阅读</a>
+                <a href="/{$chapter_ctrl}/{$start}" class="detail-bottom-btn">开始阅读</a>
                 {/if}
             {/if}
         </div>
@@ -120,7 +117,7 @@
         $('a.collection').click(function () {
             var val = $(this).attr('data-val');
             $.post({
-                url:`/m/addfavor`,
+                url:`/addfavor`,
                 data:{'book_id' : {$book.id}, 'val' : val },
                 success: function (res) {
                     if (res.err == 1){
@@ -156,7 +153,7 @@
     <input type="hidden" id="session_uid" value="{$xwx_user_id|default=-1}">
     <div id="comment" style="display:none;" class="selector-zero">
         <ul class="detail-list-comment" style="display: block;">
-            {volist name="comments" id="vo"}
+            {raccoon:comments name="comments" where="book_id='$book->id'" order="id desc"}
             <li>
                 <div class="detail-list-comment-cover">
                     <img src="/static/images/mrtx.gif">
@@ -169,7 +166,7 @@
                     <p class="detail-list-comment-content recommentbtn" >{$vo.content|raw}</p>
                 </div>
             </li>
-            {/volist}
+            {/raccoon:comments}
         </ul>
         <div class="detail-comment-fix-bottom">
             <a class="detail-comment-fix-bottom-a btncomment" href="javascript:$('#win-comment').show();">
@@ -178,29 +175,30 @@
         </div>
     </div>
     <div id="recommand" style="display:none;" class="selector-zero">
-        {volist name="recommand" id="vo"}
+        {raccoon:books name="books" where="tags like '%book->tags%' or area_id='$book->area_id'"
+        order="last_time desc" limit="6"}
         <div class="buy-manga">
             <div class="buy-manga-cover">
-                <a href="/m/{$book_ctrl}/{$vo.param}">
+                <a href="/{$book_ctrl}/{$vo.param}">
                     <img src="{$vo.cover_url}">
                 </a>
                 <a class="buy-manga-cover-hover" href="javascript:void(0);" mid="2941" style="display:none;"></a>
             </div>
             <div class="buy-manga-info">
-                <a href="/m/{$book_ctrl}/{$vo.param}" class="readlink" mid="2941">
+                <a href="/{$book_ctrl}/{$vo.param}" class="readlink" mid="2941">
                     <p class="buy-manga-title">{$vo.book_name}</p>
                 </a>
                 <p class="buy-manga-author">{$vo.last_time|date='Y-m-d'}更新</p>
-                <a href="/m/{$book_ctrl}/{$vo.param}" class="readlink" mid="40683">
+                <a href="/{$book_ctrl}/{$vo.param}" class="readlink" mid="40683">
                     <p class="buy-manga-new">{$vo.summary|subtext=12}...</p>
                 </a>
-                <a class="buy-manga-right-a readlink" href="/m/{$book_ctrl}/{$vo.param} ">
+                <a class="buy-manga-right-a readlink" href="/{$book_ctrl}/{$vo.param} ">
                     <img class="buy-manga-right-img" src="/static/images/buy-manga-right.png">
                     <p class="buy-manga-right-title">阅读</p>
                 </a>
             </div>
         </div>
-        {/volist}
+        {/raccoon:books}
     </div>
 </div>
 <div class="toast" style="display:none;"></div>
@@ -224,7 +222,7 @@
             ShowDialog('请勿提交空评论');
         } else {
             $.post({
-                url: '/m/commentadd',
+                url: '/commentadd',
                 data: {comment: comment, book_id: book_id},
                 success(res) {
                     if (res.err === 1) {
