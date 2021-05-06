@@ -67,6 +67,7 @@ class Index extends BaseAdmin
         $front_tpl = config('site.tpl');
         $ios = config('site.ios');
         $android = config('site.android');
+        $appupdate = config('site.appupdate');
 
         $dirs = array();
         $dir = new DirectoryIterator(App::getRootPath() . 'public/template/');
@@ -89,7 +90,8 @@ class Index extends BaseAdmin
             'front_tpl' => $front_tpl,
             'tpl_dirs' => $dirs,
             'ios' => $ios,
-            'android' => $android
+            'android' => $android,
+            'appupdate' => $appupdate
         ]);
         return view();
     }
@@ -107,6 +109,7 @@ class Index extends BaseAdmin
             $front_tpl = input('front_tpl');
             $ios = input('ios');
             $android= input('android');
+            $appupdate=input('appupdate');
             $site_code = <<<INFO
 <?php
 return [
@@ -119,7 +122,8 @@ return [
     'app_key' => '{$app_key}',
     'tpl' => '{$front_tpl}',
     'ios' => '{$ios}',
-    'android' => '{$android}'   
+    'android' => '{$android}',
+    'appupdate' => '{$appupdate}'   
  ];
 INFO;
             $file = App::getRootPath() . 'config/site.php';

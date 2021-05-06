@@ -10,5 +10,6 @@ return [
     'tpl' => 'default',
     'img_per_page' => '0',
     'ios' => '',
-    'android' => ''
+    'android' => '',
+    'appupdate' => ''
  ];

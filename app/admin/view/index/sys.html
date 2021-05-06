@@ -91,6 +91,14 @@
                 </div>
 
                 <div class="layui-form-item">
+                    <label class="layui-form-label layui-form-required">APP更新配置文件:</label>
+                    <div class="layui-input-block">
+                        <input name="appupdate" value="{$appupdate}" class="layui-input"
+                               lay-verType="tips" lay-verify="required" required/>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
                     <label class="layui-form-label layui-form-required">选择模板:</label>
                     <div class="layui-input-block">
                         <select name="front_tpl" lay-vertype="tips" lay-verify="required" required="">
