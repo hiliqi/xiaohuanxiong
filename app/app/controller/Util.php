@@ -36,4 +36,11 @@ class Util extends Base
             return json(['success' => 0, 'msg' => $result['msg']]);
         }
     }
+
+    public function appupdate()
+    {
+        $ios = config('site.ios');
+        $android = config('site.android');
+        return json(['success' => 1, 'ios' => $ios, 'android' => $android]);
+    }
 }
