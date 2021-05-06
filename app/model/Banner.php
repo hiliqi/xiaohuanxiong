@@ -26,8 +26,13 @@ class Banner extends Model
             $banners = Banner::with('book')
                 ->order($order)->where($where)->select();
         } else {
-            $banners = Banner::with('book')
-                ->order($order)->where($where)->limit($num)->select();
+            if (strlen($num) == 3) {
+                $arr = explode(',',$num);
+                $banners = Banner::where($where)
+                    ->limit($arr[0],$arr[1])->order($order)->select();
+            } else {
+                $banners = Banner::with('book')->order($order)->where($where)->limit($num)->select();
+            }
         }
 
         foreach ($banners as &$banner) {

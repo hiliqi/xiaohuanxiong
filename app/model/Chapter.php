@@ -29,8 +29,14 @@ class Chapter extends Model
             $chapters = Chapter::where($where)
                 ->order($order)->select();
         } else {
-            $chapters = Book::where($where)
-                ->limit($num)->order($order)->select();
+            if (strlen($num) == 3) {
+                $arr = explode(',',$num);
+                $chapters = Chapter::where($where)
+                    ->limit($arr[0],$arr[1])->order($order)->select();
+            } else {
+                $chapters = Chapter::where($where)->limit($num)->order($order)->select();
+            }
+
         }
         return $chapters;
     }

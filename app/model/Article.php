@@ -17,8 +17,14 @@ class Article extends Model
             $articles = Article::where($where)
                 ->order($order)->select();
         } else {
-            $articles = Article::where($where)
-                ->limit($num)->order($order)->select();
+            if (strlen($num) == 3) {
+                $arr = explode(',',$num);
+                $articles = Article::where($where)
+                    ->limit($arr[0],$arr[1])->order($order)->select();
+            } else {
+                $articles = Article::where($where)->limit($num)->order($order)->select();
+            }
+
         }
         return $articles;
     }

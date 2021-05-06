@@ -18,7 +18,14 @@ class Tags extends Model
         if ($num == 0) {
             $cates = Tags::order($order)->where($where)->select();
         } else {
-            $cates = Tags::order($order)->where($where)->limit($num)->select();
+            if (strlen($num) == 3) {
+                $arr = explode(',',$num);
+                $cates = Tags::where($where)
+                    ->limit($arr[0],$arr[1])->order($order)->select();
+            } else {
+                $cates = Tags::order($order)->where($where)->limit($num)->select();
+            }
+
         }
         return $cates;
     }
