@@ -36,10 +36,4 @@ class Util extends Base
             return json(['success' => 0, 'msg' => $result['msg']]);
         }
     }
-
-    public function appupdate()
-    {
-        $appupdate = config('site.appupdate');
-        return json(['success' => 1, 'appupdate' => $appupdate]);
-    }
 }

@@ -65,7 +65,6 @@ class Index extends BaseAdmin
         $api_key = config('site.api_key');
         $app_key = config('site.app_key');
         $front_tpl = config('site.tpl');      
-        $appupdate = config('site.appupdate');
 
         $dirs = array();
         $dir = new DirectoryIterator(App::getRootPath() . 'public/template/');
@@ -87,7 +86,6 @@ class Index extends BaseAdmin
             'app_key' => $app_key,
             'front_tpl' => $front_tpl,
             'tpl_dirs' => $dirs,         
-            'appupdate' => $appupdate
         ]);
         return view();
     }
@@ -103,7 +101,6 @@ class Index extends BaseAdmin
             $api_key = input('api_key');
             $app_key = input('app_key');
             $front_tpl = input('front_tpl');       
-            $appupdate=input('appupdate');
             $site_code = <<<INFO
 <?php
 return [
@@ -115,7 +112,6 @@ return [
     'api_key' => '{$api_key}', 
     'app_key' => '{$app_key}',
     'tpl' => '{$front_tpl}',  
-    'appupdate' => '{$appupdate}'   
  ];
 INFO;
             $file = App::getRootPath() . 'config/site.php';
