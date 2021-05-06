@@ -9,7 +9,5 @@ return [
     'app_key' => 'clwlxw',
     'tpl' => 'default',
     'img_per_page' => '0',
-    'ios' => '',
-    'android' => '',
     'appupdate' => ''
  ];

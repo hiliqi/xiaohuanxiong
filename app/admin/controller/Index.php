@@ -64,9 +64,7 @@ class Index extends BaseAdmin
         $salt = config('site.salt');
         $api_key = config('site.api_key');
         $app_key = config('site.app_key');
-        $front_tpl = config('site.tpl');
-        $ios = config('site.ios');
-        $android = config('site.android');
+        $front_tpl = config('site.tpl');      
         $appupdate = config('site.appupdate');
 
         $dirs = array();
@@ -88,9 +86,7 @@ class Index extends BaseAdmin
             'api_key' => $api_key,
             'app_key' => $app_key,
             'front_tpl' => $front_tpl,
-            'tpl_dirs' => $dirs,
-            'ios' => $ios,
-            'android' => $android,
+            'tpl_dirs' => $dirs,         
             'appupdate' => $appupdate
         ]);
         return view();
@@ -106,9 +102,7 @@ class Index extends BaseAdmin
             $salt = input('salt');
             $api_key = input('api_key');
             $app_key = input('app_key');
-            $front_tpl = input('front_tpl');
-            $ios = input('ios');
-            $android= input('android');
+            $front_tpl = input('front_tpl');       
             $appupdate=input('appupdate');
             $site_code = <<<INFO
 <?php
@@ -120,9 +114,7 @@ return [
     'salt' => '{$salt}',
     'api_key' => '{$api_key}', 
     'app_key' => '{$app_key}',
-    'tpl' => '{$front_tpl}',
-    'ios' => '{$ios}',
-    'android' => '{$android}',
+    'tpl' => '{$front_tpl}',  
     'appupdate' => '{$appupdate}'   
  ];
 INFO;
