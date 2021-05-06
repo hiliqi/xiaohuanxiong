@@ -41,6 +41,7 @@ class Util extends Base
     {
         $ios = config('site.ios');
         $android = config('site.android');
-        return json(['success' => 1, 'ios' => $ios, 'android' => $android]);
+        $appupdate = config('site.appupdate');
+        return json(['success' => 1, 'ios' => $ios, 'android' => $android, 'appupdate' => $appupdate]);
     }
 }
