@@ -2,141 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="744eb552-3b2d-452b-9c85-a7e014af20fe" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/app/middleware.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/common/taglib/Raccoon.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/index/common.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/admin/controller/Articles.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/admin/controller/Articles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/admin/controller/Authors.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/admin/controller/Authors.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/admin/controller/Books.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/admin/controller/Books.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/admin/controller/Chapters.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/admin/controller/Chapters.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/admin/controller/Messages.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/admin/controller/Payment.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/admin/controller/Payment.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/admin/controller/Photos.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/admin/controller/Photos.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/admin/controller/Users.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/admin/controller/Users.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/api/controller/Common.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/controller/Common.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/api/controller/Paynotify.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/controller/Paynotify.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/api/controller/Paynotify1.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/controller/Paynotify1.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/api/controller/Paynotify2.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/controller/Paynotify2.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/api/controller/Postbot.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/controller/Postbot.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app/controller/Books.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/app/controller/Books.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/index/controller/Articles.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/index/controller/Articles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/index/controller/Base.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/index/controller/Base.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/index/controller/BaseUc.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/index/controller/BaseUc.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/index/controller/Booklist.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/index/controller/Booklist.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/index/controller/Books.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/index/controller/Books.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/index/controller/Chapters.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/index/controller/Chapters.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/index/controller/Finance.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/index/controller/Finance.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/index/controller/Index.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/index/controller/Index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/index/controller/Rank.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/index/controller/Rank.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/index/controller/Sitemap.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/index/controller/Sitemap.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/index/controller/Tails.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/index/controller/Update.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/index/controller/Update.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/index/controller/Users.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/index/controller/Users.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/mobile/controller/Account.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/mobile/controller/Articles.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/mobile/controller/Base.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/mobile/controller/BaseUc.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/mobile/controller/Booklist.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/mobile/controller/Books.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/mobile/controller/Chapters.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/mobile/controller/Finance.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/mobile/controller/Index.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/mobile/controller/Rank.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/mobile/controller/Sitemap.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/mobile/controller/Tails.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/mobile/controller/Update.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/mobile/controller/Users.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/mobile/route/app.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/model/Area.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/Area.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/model/Article.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/Article.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/model/Banner.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/Banner.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/model/Book.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/Book.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/model/Chapter.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/Chapter.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/model/Clicks.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/model/Comments.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/Comments.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/model/Photo.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/Photo.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/model/Tags.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/Tags.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/model/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/model/UserFinance.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/UserFinance.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/provider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/provider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/service/ArticleService.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/service/AuthorService.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/service/BookService.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/service/ChapterService.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/service/FinanceService.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/service/PayService1.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/service/PayService1.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/service/PhotoService.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/service/TagsService.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/service/TailService.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/service/TopicService.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/service/UserService.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/payment.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/payment.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/view.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/view.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/install.sql" beforeDir="false" afterPath="$PROJECT_DIR$/install.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nginx.htaccess" beforeDir="false" afterPath="$PROJECT_DIR$/nginx.htaccess" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/nginx.htaccess" beforeDir="false" afterPath="$PROJECT_DIR$/public/nginx.htaccess" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/static/css/mstyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/static/css/mstyle.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/default/m/account/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/template/default/m/account/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/default/m/account/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/template/default/m/account/register.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/default/m/articles/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/template/default/m/articles/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/default/m/articles/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/template/default/m/articles/list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/default/m/booklist/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/template/default/m/booklist/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/default/m/books/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/template/default/m/books/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/default/m/chapters/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/template/default/m/chapters/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/default/m/finance/buychapter.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/template/default/m/finance/buychapter.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/default/m/finance/buyhistory.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/template/default/m/finance/buyhistory.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/default/m/finance/chargehistory.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/template/default/m/finance/chargehistory.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/default/m/finance/feedback.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/template/default/m/finance/feedback.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/default/m/finance/kami.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/template/default/m/finance/kami.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/default/m/finance/spendinghistory.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/template/default/m/finance/spendinghistory.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/default/m/finance/vipexchange.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/template/default/m/finance/vipexchange.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/default/m/finance/wallet.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/template/default/m/finance/wallet.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/default/m/index/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/template/default/m/index/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/default/m/index/search.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/template/default/m/index/search.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/default/m/pub/top1.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/template/default/m/pub/top1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/default/m/pub/top2.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/template/default/m/pub/top2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/default/m/pub/top3.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/template/default/m/pub/top3.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/default/m/rank/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/template/default/m/rank/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/default/m/tails/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/default/m/tails/list.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/default/m/update/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/template/default/m/update/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/default/m/users/bindphone.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/template/default/m/users/bindphone.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/default/m/users/bookshelf.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/template/default/m/users/bookshelf.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/default/m/users/history.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/template/default/m/users/history.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/default/m/users/ucenter.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/template/default/m/users/ucenter.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/default/m/users/userinfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/template/default/m/users/userinfo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/default/pc/account/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/template/default/pc/account/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/default/pc/account/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/template/default/pc/account/register.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/default/pc/articles/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/template/default/pc/articles/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/default/pc/articles/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/template/default/pc/articles/list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/default/pc/booklist/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/template/default/pc/booklist/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/default/pc/books/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/template/default/pc/books/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/default/pc/chapters/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/template/default/pc/chapters/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/default/pc/finance/buychapter.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/template/default/pc/finance/buychapter.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/default/pc/finance/buyhistory.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/template/default/pc/finance/buyhistory.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/default/pc/finance/chargehistory.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/template/default/pc/finance/chargehistory.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/default/pc/finance/feedback.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/template/default/pc/finance/feedback.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/default/pc/finance/kami.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/template/default/pc/finance/kami.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/default/pc/finance/spendinghistory.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/template/default/pc/finance/spendinghistory.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/default/pc/finance/vipexchange.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/template/default/pc/finance/vipexchange.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/default/pc/finance/wallet.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/template/default/pc/finance/wallet.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/default/pc/index/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/template/default/pc/index/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/default/pc/index/search.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/template/default/pc/index/search.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/default/pc/pub/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/template/default/pc/pub/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/default/pc/pub/uc_menu.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/template/default/pc/pub/uc_menu.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/default/pc/rank/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/template/default/pc/rank/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/default/pc/tails/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/default/pc/tails/list.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/default/pc/update/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/template/default/pc/update/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/default/pc/users/bindphone.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/template/default/pc/users/bindphone.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/default/pc/users/bookshelf.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/template/default/pc/users/bookshelf.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/default/pc/users/history.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/template/default/pc/users/history.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/default/pc/users/promotion.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/template/default/pc/users/promotion.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/default/pc/users/ucenter.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/template/default/pc/users/ucenter.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/default/pc/users/userinfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/template/default/pc/users/userinfo.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -437,6 +303,7 @@
       <workItem from="1620196201316" duration="163000" />
       <workItem from="1620199378168" duration="650000" />
       <workItem from="1620203217260" duration="6923000" />
+      <workItem from="1620210935750" duration="2067000" />
     </task>
     <servers />
   </component>

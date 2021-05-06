@@ -65,7 +65,6 @@ class Index extends BaseAdmin
         $api_key = config('site.api_key');
         $app_key = config('site.app_key');
         $front_tpl = config('site.tpl');
-        $img_per_page = config('site.img_per_page');
         $ios = config('site.ios');
         $android = config('site.android');
 
@@ -88,7 +87,6 @@ class Index extends BaseAdmin
             'api_key' => $api_key,
             'app_key' => $app_key,
             'front_tpl' => $front_tpl,
-            'img_per_page' => $img_per_page,
             'tpl_dirs' => $dirs,
             'ios' => $ios,
             'android' => $android
@@ -107,7 +105,6 @@ class Index extends BaseAdmin
             $api_key = input('api_key');
             $app_key = input('app_key');
             $front_tpl = input('front_tpl');
-            $img_per_page = input('img_per_page');
             $ios = input('ios');
             $android= input('android');
             $site_code = <<<INFO
@@ -121,7 +118,6 @@ return [
     'api_key' => '{$api_key}', 
     'app_key' => '{$app_key}',
     'tpl' => '{$front_tpl}',
-    'img_per_page' => '{$img_per_page}',
     'ios' => '{$ios}',
     'android' => '{$android}'   
  ];
