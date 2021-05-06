@@ -39,9 +39,7 @@ class Util extends Base
 
     public function appupdate()
     {
-        $ios = config('site.ios');
-        $android = config('site.android');
         $appupdate = config('site.appupdate');
-        return json(['success' => 1, 'ios' => $ios, 'android' => $android, 'appupdate' => $appupdate]);
+        return json(['success' => 1, 'appupdate' => $appupdate]);
     }
 }
