@@ -171,8 +171,8 @@ function getPagedPhotos($order, $where, $pagesize)
 
 function getFavors($order, $where, $pagesize)
 {
-    $userModel = app('userModel');
-    $data = $userModel->getFavors($order, $where, $pagesize);
+    $favorModel = app('favorModel');
+    $data = $favorModel->getFavors($order, $where, $pagesize);
     unset($data['page']['query']['page']);
     $param = '';
     foreach ($data['page']['query'] as $k => $v) {
@@ -187,8 +187,8 @@ function getFavors($order, $where, $pagesize)
 
 function getBuys($order, $where, $pagesize)
 {
-    $userModel = app('userModel');
-    $data = $userModel->getBuys($order, $where, $pagesize);
+    $buyModel = app('buyModel');
+    $data = $buyModel->getBuys($order, $where, $pagesize);
     unset($data['page']['query']['page']);
     $param = '';
     foreach ($data['page']['query'] as $k => $v) {

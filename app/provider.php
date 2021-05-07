@@ -20,5 +20,7 @@ return [
     'articleModel' => \app\model\Article::class,
     'photoModel' => \app\model\Photo::class,
     'userModel' => \app\model\User::class,
-    'financeModel' => \app\model\UserFinance::class
+    'financeModel' => \app\model\UserFinance::class,
+    'favorModel' => \app\model\UserFavor::class,
+    'buyModel' => \app\model\UserBuy::class
 ];
