@@ -320,23 +320,6 @@ CREATE TABLE `xwx_comments`
 ) ENGINE=InnoDB ROW_FORMAT=Dynamic;
 
 -- ----------------------------
--- Table structure for xwx_message
--- ----------------------------
-DROP TABLE IF EXISTS `xwx_message`;
-CREATE TABLE `xwx_message`
-(
-    `id`          int(10) unsigned NOT NULL AUTO_INCREMENT,
-    `pid`         int(10) unsigned DEFAULT -1 COMMENT '父级留言id，也就是受回复留言id，没有则为-1',
-    `uid`         int(10) unsigned DEFAULT -1 COMMENT '用户id，管理员为-1',
-    `create_time` int(10) unsigned DEFAULT '0',
-    `update_time` int(10) unsigned DEFAULT '0',
-    `content`     text,
-    PRIMARY KEY (`id`) USING BTREE,
-    KEY           `pid` (`pid`) USING BTREE,
-    KEY           `uid` (`uid`) USING BTREE
-) ENGINE=InnoDB ROW_FORMAT = Dynamic;
-
--- ----------------------------
 -- Table structure for xwx_article
 -- ----------------------------
 DROP TABLE IF EXISTS `xwx_article`;
