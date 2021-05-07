@@ -345,7 +345,7 @@ CREATE TABLE `xwx_article`
     KEY               `hits`(`hits`) USING BTREE,
     KEY               `mhits`(`mhits`) USING BTREE,
     KEY               `whits`(`whits`) USING BTREE,
-    KEY               `dhits`(`dhits`) USING BTREE,
+    KEY               `dhits`(`dhits`) USING BTREE
 ) ENGINE = InnoDB ROW_FORMAT = Dynamic;
 
 -- ----------------------------
