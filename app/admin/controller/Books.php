@@ -3,12 +3,8 @@
 
 namespace app\admin\controller;
 
-use app\model\Author;
 use app\model\Book;
-use think\db\exception\DataNotFoundException;
 use think\db\exception\ModelNotFoundException;
-use think\exception\HttpException;
-use think\exception\ValidateException;
 use think\facade\View;
 use app\model\Area;
 use Overtrue\Pinyin\Pinyin;

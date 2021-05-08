@@ -3,7 +3,6 @@
 
 namespace app\admin\controller;
 
-use app\service\ChapterService;
 use app\model\Book;
 use think\db\exception\DataNotFoundException;
 use think\db\exception\ModelNotFoundException;

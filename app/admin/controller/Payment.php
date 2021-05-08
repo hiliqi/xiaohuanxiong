@@ -3,7 +3,6 @@
 
 namespace app\admin\controller;
 
-use app\model\Rewards;
 use app\model\UserOrder;
 use think\db\exception\DataNotFoundException;
 use think\db\exception\ModelNotFoundException;

@@ -48,7 +48,7 @@
                 </div>
                 <div class="mt20">
                     <ul class="mh-list col7">
-                        {raccoon:favors name="favors" user_id='$xwx_user_id'}
+                        {raccoon:favors name="favors" where="user_id='$xwx_user_id'"}
                         <li>
                             <div class="mh-item">
                                 <a href="/{$book_ctrl}/{$vo.book.param}" class="mh-cover" style="background-image: url({$vo.book.cover_url})">

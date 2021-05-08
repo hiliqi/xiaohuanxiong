@@ -2,7 +2,6 @@
 
 namespace app\admin\controller;
 
-use app\service\AuthorService;
 use think\db\exception\DataNotFoundException;
 use think\db\exception\ModelNotFoundException;
 use think\facade\View;

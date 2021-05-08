@@ -6,9 +6,7 @@ namespace app\admin\controller;
 use app\model\Book;
 use app\model\Comments;
 use app\model\User;
-use think\db\exception\DataNotFoundException;
 use think\db\exception\ModelNotFoundException;
-use think\facade\View;
 
 class Comment extends BaseAdmin
 {

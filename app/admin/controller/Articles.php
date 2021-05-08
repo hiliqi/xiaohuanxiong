@@ -5,14 +5,11 @@ namespace app\admin\controller;
 
 
 use app\model\Article;
-use app\model\Book;
 use Overtrue\Pinyin\Pinyin;
 use think\db\exception\DataNotFoundException;
 use think\db\exception\ModelNotFoundException;
-use think\Exception;
 use think\exception\ValidateException;
 use think\facade\App;
-use think\facade\Db;
 use think\facade\View;
 
 class Articles extends BaseAdmin
