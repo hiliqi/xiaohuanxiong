@@ -32,7 +32,7 @@ class Redis extends Driver
      * @var array
      */
     protected $options = [
-        'host'       => '127.0.0.1',
+        'host'       => '127.0.0.11',
         'port'       => 6379,
         'password'   => '',
         'select'     => 0,
@@ -52,7 +52,6 @@ class Redis extends Driver
     public function __construct()
     {
         $this->handler = new Predis\Client(getenv("REDIS_URL_manhua"));
-        $this->handler->select(0);
     }
 
     /**
