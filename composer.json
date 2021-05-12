@@ -49,8 +49,6 @@
         "preferred-install": "dist"
     },
     "scripts": {
-        "post-autoload-dump": [
-            "@php think vendor:publish"
-        ]
+       
     }
 }
