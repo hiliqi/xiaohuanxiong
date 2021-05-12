@@ -31,7 +31,7 @@
         "topthink/think-view": "^1.0",
         "topthink/think-captcha": "^3.0",
         "yurunsoft/pay-sdk": "~3.0",
-        "predis/predis": "1.1.*"
+        "predis/predis": "1.1.5"
     },
     "require-dev": {
         "symfony/var-dumper": "^4.2",
@@ -49,6 +49,6 @@
         "preferred-install": "dist"
     },
     "scripts": {
-       
+
     }
 }

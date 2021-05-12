@@ -71,7 +71,7 @@ class ProcessorChain implements \ArrayAccess, ProcessorInterface
     /**
      * Returns an iterator over the list of command processor in the chain.
      *
-     * @return \Traversable<int, ProcessorInterface>
+     * @return \ArrayIterator
      */
     public function getIterator()
     {
@@ -89,7 +89,7 @@ class ProcessorChain implements \ArrayAccess, ProcessorInterface
     }
 
     /**
-     * @return bool
+     * {@inheritdoc}
      */
     public function offsetExists($index)
     {

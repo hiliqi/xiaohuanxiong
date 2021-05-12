@@ -600,7 +600,7 @@ class RedisCluster implements ClusterInterface, \IteratorAggregate, \Countable
     }
 
     /**
-     * @return int
+     * {@inheritdoc}
      */
     public function count()
     {
@@ -608,7 +608,7 @@ class RedisCluster implements ClusterInterface, \IteratorAggregate, \Countable
     }
 
     /**
-     * @return \Traversable<int, NodeConnectionInterface>
+     * {@inheritdoc}
      */
     public function getIterator()
     {

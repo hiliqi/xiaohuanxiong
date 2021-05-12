@@ -1,26 +1,7 @@
-v1.1.7 (2021-04-04)
-================================================================================
-
-- __FIX__: with the phpiredis-based connection backends, failed pipelines led to
-spurious responses returned after reconnecting to Redis because the underlying
-reader was not properly reset by discarding buffered replies after disconnecting
-(ISSUE #363).
-- __FIX__: removed `cweagans/composer-patches` dev dependency and apply patches
-using `post-update-cmd` script.
-
-
-v1.1.6 (2020-09-11)
-================================================================================
-
-- __FIX__: reverted support for sentinels authentication implemented in v1.1.5
-as it was bugged (see ISSUE #658), sorry for the trouble. This is now postponed
-as it requires a more thorough investigation.
-
-
 v1.1.5 (2020-09-10)
 ================================================================================
 
-- __FIX__:~~authentication for sentinels is now supported, previously it was not
+- __FIX__: authentication for sentinels is now supported, previously it was not
 possible to specify a `password` for sentinels as its value was stripped during
 initialization because sentinels did not support authentication until Redis 5.
 **Please note** that with the current implementation each sentinel must have
@@ -28,7 +9,7 @@ its own `password` parameter set in the parameters list despite this password is
 the same for all sentinels (read how `requirepass` works on the Redis docs). In
 this case you should avoid using the global `parameters` client option used to
 set default parameters for every connection created by Predis as this would end
-up using the same password even when connecting to actual Redis nodes.~~
+up using the same password even when connecting to actual Redis nodes.
 
 - __FIX__: the username is now correctly retrieved from the userinfo fragment of
 the URI when using the "redis" scheme and a "username:password" pair is present.
