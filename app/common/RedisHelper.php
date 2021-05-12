@@ -12,7 +12,7 @@ class RedisHelper extends Redis
     
     public function __construct()
     {
-        $options = Config::get('cache.stores.redis');
+        $options = getenv("REDIS_URL_MYCACHE");
         parent::__construct($options);
     }
 
