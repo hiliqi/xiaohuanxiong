@@ -50,7 +50,6 @@
     },
     "scripts": {
         "post-autoload-dump": [
-            "@php think service:discover",
             "@php think vendor:publish"
         ]
     }
