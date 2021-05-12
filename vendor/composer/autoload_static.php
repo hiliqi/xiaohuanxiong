@@ -54,6 +54,7 @@ class ComposerStaticInit6c205f7902622f3d453da6a609c50c48
             'Psr\\Http\\Client\\' => 16,
             'Psr\\Container\\' => 14,
             'Psr\\Cache\\' => 10,
+            'Predis\\' => 7,
         ),
         'O' => 
         array (
@@ -152,6 +153,10 @@ class ComposerStaticInit6c205f7902622f3d453da6a609c50c48
         'Psr\\Cache\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/cache/src',
+        ),
+        'Predis\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/predis/predis/src',
         ),
         'Overtrue\\Pinyin\\' => 
         array (
