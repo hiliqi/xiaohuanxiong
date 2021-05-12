@@ -13,6 +13,7 @@ declare (strict_types = 1);
 namespace think\cache\driver;
 
 use think\cache\Driver;
+use Predis;
 
 /**
  * Redis缓存驱动，适合单机部署、有前端代理实现高可用的场景，性能最好
@@ -50,8 +51,8 @@ class Redis extends Driver
      */
     public function __construct()
     {
-            $this->handler = new \Predis\Client(getenv("REDIS_URL_manhua"));
-            $this->handler->select(0);
+        $this->handler = new Predis\Client(getenv("REDIS_URL_manhua"));
+        $this->handler->select(0);
     }
 
     /**
