@@ -20,6 +20,8 @@ use Composer\Semver\VersionParser;
 
 
 
+
+
 class InstalledVersions
 {
 private static $installed = array (
@@ -30,7 +32,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '451e5acca9573460dcc200b9d5ef5ff768966865',
+    'reference' => '6314611f33a32053bef5573147c91766e8dfad4c',
     'name' => 'topthink/think',
   ),
   'versions' => 
@@ -64,12 +66,12 @@ private static $installed = array (
     ),
     'guzzlehttp/psr7' => 
     array (
-      'pretty_version' => '1.8.1',
-      'version' => '1.8.1.0',
+      'pretty_version' => '1.8.2',
+      'version' => '1.8.2.0',
       'aliases' => 
       array (
       ),
-      'reference' => '35ea11d335fd638b5882ff1725228b3d35496ab1',
+      'reference' => 'dc960a912984efb74d0a90222870c72c87f10c91',
     ),
     'league/flysystem' => 
     array (
@@ -159,12 +161,12 @@ private static $installed = array (
     ),
     'psr/log' => 
     array (
-      'pretty_version' => '1.1.3',
-      'version' => '1.1.3.0',
+      'pretty_version' => '1.1.4',
+      'version' => '1.1.4.0',
       'aliases' => 
       array (
       ),
-      'reference' => '0f73288fd15629204f9d42b7055f72dacbe811fc',
+      'reference' => 'd49695b909c3b7628b6289db5479a1c204601f11',
     ),
     'psr/simple-cache' => 
     array (
@@ -213,21 +215,21 @@ private static $installed = array (
     ),
     'symfony/var-dumper' => 
     array (
-      'pretty_version' => 'v4.4.21',
-      'version' => '4.4.21.0',
+      'pretty_version' => 'v4.4.22',
+      'version' => '4.4.22.0',
       'aliases' => 
       array (
       ),
-      'reference' => '0da0e174f728996f5d5072d6a9f0a42259dbc806',
+      'reference' => 'c194bcedde6295f3ec3e9eba1f5d484ea97c41a7',
     ),
     'topthink/framework' => 
     array (
-      'pretty_version' => 'v6.0.7',
-      'version' => '6.0.7.0',
+      'pretty_version' => 'v6.0.8',
+      'version' => '6.0.8.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'db8fe22520a9660dd5e4c87e304034ac49e39270',
+      'reference' => '4789343672aef06d571d556da369c0e156609bce',
     ),
     'topthink/think' => 
     array (
@@ -236,7 +238,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '451e5acca9573460dcc200b9d5ef5ff768966865',
+      'reference' => '6314611f33a32053bef5573147c91766e8dfad4c',
     ),
     'topthink/think-captcha' => 
     array (
@@ -267,12 +269,12 @@ private static $installed = array (
     ),
     'topthink/think-orm' => 
     array (
-      'pretty_version' => 'v2.0.39',
-      'version' => '2.0.39.0',
+      'pretty_version' => 'v2.0.40',
+      'version' => '2.0.40.0',
       'aliases' => 
       array (
       ),
-      'reference' => '39a9d0a0e52d9b8bad9d98484d8484cdf5b683a7',
+      'reference' => '1119d979b850849f3725856460cf108eec1c3eb8',
     ),
     'topthink/think-template' => 
     array (
@@ -336,7 +338,6 @@ $packages = array();
 foreach (self::getInstalled() as $installed) {
 $packages[] = array_keys($installed['versions']);
 }
-
 
 if (1 === \count($packages)) {
 return $packages[0];
@@ -533,6 +534,7 @@ self::$installedByVendor = array();
 
 
 
+
 private static function getInstalled()
 {
 if (null === self::$canGetVendors) {
@@ -542,7 +544,6 @@ self::$canGetVendors = method_exists('Composer\Autoload\ClassLoader', 'getRegist
 $installed = array();
 
 if (self::$canGetVendors) {
-
 foreach (ClassLoader::getRegisteredLoaders() as $vendorDir => $loader) {
 if (isset(self::$installedByVendor[$vendorDir])) {
 $installed[] = self::$installedByVendor[$vendorDir];
