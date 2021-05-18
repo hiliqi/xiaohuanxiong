@@ -146,7 +146,7 @@
         });
 
         admin.events.clearcache = function(){
-            admin.req('clearCache', function(res){
+            admin.req('{:url("index/clearCache")}', function(res){
                 layer.msg(res.msg);
             }, 'get');
         }

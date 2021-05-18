@@ -30,7 +30,8 @@ return [
         'app' => 'app', //如果不需要app，则忽略这项
         'author' => 'author', //如果不需要作者中心，则忽略这项
         '' => 'index',
-        'www' => 'index'
+        'www' => 'index',
+        //'localhost' => 'app' //如果是本地测试app接口，需要加这项，否则跨域报错
     ],
 
     // 禁止URL访问的应用列表（自动多应用模式有效）
