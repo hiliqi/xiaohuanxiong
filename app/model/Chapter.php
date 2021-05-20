@@ -60,4 +60,9 @@ class Chapter extends Model
         ];
         return $paged;
     }
+
+    public function getLastChapter($book_id)
+    {
+        return Chapter::where('book_id', '=', $book_id)->order('id', 'desc')->limit(1)->find();
+    }
 }
