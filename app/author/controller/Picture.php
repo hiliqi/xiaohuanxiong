@@ -17,17 +17,19 @@ class Picture extends Base
         $this->photoModel = app('photoModel');
     }
 
-    public function list() {
+    public function list()
+    {
         $chapter_id = input('chapter_id');
         View::assign('chapter_id', $chapter_id);
         return view();
     }
 
-    public function getlist() {
+    public function getlist()
+    {
         $chapter_id = input('chapter_id');
         $page = intval(input('page'));
         $limit = intval(input('limit'));
-        $data = Photo::where('chapter_id','=',$chapter_id)->order('pic_order', 'desc');
+        $data = Photo::where('chapter_id', '=', $chapter_id)->order('pic_order', 'desc');
         $count = $data->count();
         $pics = $data->limit(($page - 1) * $limit, $limit)->select();
         return json([
@@ -38,7 +40,8 @@ class Picture extends Base
         ]);
     }
 
-    public function create() {
+    public function create()
+    {
         $chapter_id = input('chapter_id');
         if (request()->isPost()) {
             $lastPhoto = $this->photoModel->getLastPhoto($chapter_id);
@@ -46,25 +49,32 @@ class Picture extends Base
             if ($lastPhoto != null) {
                 $order = $lastPhoto->pic_order + 1; //拿到最新图片的order，加1
             }
-            $param = input('pics');
-            $pics = explode('|', $param);
-            foreach ($pics as $pic) {
-                if(!empty($pic)) {
+            $files = request()->file('pics');
+
+            if ($files) {
+                $dir = 'book/cover';
+                foreach ($files as $file) {
+                    $savename = str_replace('\\', '/',
+                        \think\facade\Filesystem::disk('public')->putFile($dir, $file));
                     $photo = new Photo();
                     $photo->chapter_id = $chapter_id;
                     $photo->pic_order = $order;
-                    $photo->img_url = $pic;
+                    $photo->img_url = '/static/upload/' . $savename;
                     $photo->save();
                     $order++;
                 }
+                $this->success('添加成功');
+            } else {
+                $this->error('没有选择图片');
             }
-            return json(['err' =>0,'msg'=>'添加成功']);
+
         }
         View::assign('chapter_id', $chapter_id);
         return view();
     }
 
-    public function upload() {
+    public function upload()
+    {
         if (is_null(request()->file())) {
             return json([
                 'code' => 1
@@ -72,17 +82,18 @@ class Picture extends Base
         } else {
             $cover = request()->file('file');
             $dir = 'book/cover';
-            $savename =str_replace ( '\\', '/',
+            $savename = str_replace('\\', '/',
                 \think\facade\Filesystem::disk('public')->putFile($dir, $cover));
             return json([
                 'code' => 0,
                 'msg' => '',
-                'img' => '/static/upload/'.$savename
+                'img' => '/static/upload/' . $savename
             ]);
         }
     }
 
-    public function delete() {
+    public function delete()
+    {
         $id = input('id');
         Photo::destroy($id);
         return json(['err' => 0, 'msg' => '删除成功']);
