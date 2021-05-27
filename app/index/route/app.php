@@ -42,8 +42,10 @@ Route::rule('/message', 'users/message');
 Route::rule('/promotion', 'users/promotion');
 
 Route::rule('/wallet', 'finance/wallet');
+Route::rule('/cash', 'finance/cash');
 Route::rule('/chargehistory', 'finance/chargehistory');
 Route::rule('/spendinghistory', 'finance/spendinghistory');
+Route::rule('/cashhistory', 'finance/cashhistory');
 Route::rule('/buyhistory', 'finance/buyhistory');
 Route::rule('/charge', 'finance/charge');
 Route::rule('/feedback', 'finance/feedback');
@@ -51,4 +53,3 @@ Route::rule('/buychapter', 'finance/buychapter');
 Route::rule('/vip', 'finance/vip');
 Route::rule('/kami', 'finance/kami');
 Route::rule('/vipexchange', 'finance/vipexchange');
-

@@ -33,6 +33,18 @@ return [
 //            ['code' => '903', 'img' => 'alipay', 'title' => '支付宝'],
 //        ]
 //    ],
+    'cash' => [ //代付配置
+        'appid' => '', //商户id
+        'appkey' => '', //商户key
+        'getway' => '', //网关地址
+        'bankName' => '', //银行名称
+        'city' => '', //开户行城市
+        'ifscCode' => '',
+        'province' => '', //开户行省份
+        'bankBranchName' => '', //支行名称
+        'bankAccountName' => '', //开户人姓名
+        'bankCardNum' => '', //银行卡号
+    ],
     'returnUrl' => '',
     'kami' => [
         'url' => '' //卡密地址
@@ -48,5 +60,7 @@ return [
     'sign_rewards' => 1, //签到奖励金额，单位是元
     'login_rewards' => 0, //登录奖励
     'reg_reward' => 0, //注册奖励
-    'bind_phone_rewards' => 1 //绑定手机奖励
+    'bind_phone_rewards' => 1, //绑定手机奖励
+    'min_cash' => 100, //最小提现金额
+    'max_cash' => 1000, //单次最大提现金额
 ];

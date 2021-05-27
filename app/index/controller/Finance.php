@@ -11,6 +11,7 @@ use app\model\UserBuy;
 use app\model\UserFinance;
 use app\model\VipCode;
 use app\pay\Pay;
+use app\service\CashService;
 use app\service\FinanceService;
 use app\service\PromotionService;
 use think\db\exception\DataNotFoundException;
@@ -39,12 +40,58 @@ class Finance extends BaseUc
     {
         $charge_sum = $this->financeModel->getChargeSum($this->uid);
         $spending_sum = $this->financeModel->getSpendingSum($this->uid);
+        $cash_sum = $this->financeModel->getCashSum($this->uid);
         View::assign([
-            'balance' => $charge_sum - $spending_sum,
+            'balance' => $charge_sum - $spending_sum - $cash_sum,
             'charge_sum' => $charge_sum,
-            'spending_sum' => $spending_sum
+            'spending_sum' => $spending_sum,
+            'cash_sum' => $cash_sum
         ]);
         return view($this->tpl);
+    }
+
+    //用户提现
+    public function cash()
+    {
+        $min_cash = config('payment.min_cash');
+        if ($this->balance < $min_cash) {
+            $this->error('没达到提现标准');
+        }
+        $map = array();
+        $map[] = ['create_time', '=', date("Y-m-d")];
+        $map[] = ['usage', '=', 6];
+        $cash_sum_today = UserFinance::where($map)->sum('money');
+        $max_cash = config('payment.max_cash');
+        if ($cash_sum_today >= $max_cash) { //如果当日提现金额已经到了最大限制
+            $this->error('已达到当日最大提现金额');
+        }
+        $cash = $this->balance;
+        if ($cash > $max_cash) { //如果可提现余额大于最大限制
+            $cash = $this->balance - $max_cash;
+        }
+
+        $order = new UserOrder();
+        $order->order_id = time() . gen_uid(10);
+        $order->user_id = $this->uid;
+        $order->money = $cash;
+        $order->status = 0; //未完成订单
+        $order->pay_type = 3;
+        $order->expire_time = time() + 86400; //订单失效时间往后推一天
+        $result = $order->save();
+        if ($result)
+        {
+            $cashService = new CashService();
+            $res = $cashService->submit($order->order_id, $cash);
+            if ($res['err'] == 0) {
+                $this->success('提现成功，本次提现金额为' . $cash . '元');
+            } else {
+                $this->error('提现失败，具体错误为'. $res['msg']);
+            }
+        }
+        else
+        {
+            $this->error('生成订单失败');
+        }
     }
 
     //充值记录
@@ -57,7 +104,16 @@ class Finance extends BaseUc
         return view($this->tpl);
     }
 
+    //消费记录
     public function spendinghistory()
+    {
+        View::assign([
+            'balance' => $this->balance,
+        ]);
+        return view($this->tpl);
+    }
+
+    public function cashhistory()
     {
         View::assign([
             'balance' => $this->balance,
@@ -207,7 +263,7 @@ class Finance extends BaseUc
                         $order->expire_time = time() + 86400; //订单失效时间往后推一天
                         $res = $order->save();
                         if ($res) {
-                            $number = config('site.domain').'_';
+                            $number = config('site.domain') . '_';
                             $r = $this->pay->submit($number . $order->id, $money, $pay_type, $pay_code); //调用功能类，进行充值处理
                             if ($r['type'] == 'html') {
                                 $template = new \think\Template();

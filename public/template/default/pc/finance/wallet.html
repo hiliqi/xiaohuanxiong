@@ -17,6 +17,9 @@
                 <div class="pull-right">
                     <a class="btn wallet-btn" href="/charge">充值</a>
                 </div>
+                <div class="pull-right" style="margin-right: 5px">
+                    <a class="btn wallet-btn" href="/cash">提现</a>
+                </div>
             </header>
             <div class="box-body">
                 <div class="desc">
@@ -54,6 +57,13 @@
                                     <td>{$spending_sum} 元</td>
                                     <td>
                                         <a href="/spendinghistory">查看消费记录</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>提现</td>
+                                    <td>{$cash_sum} 元</td>
+                                    <td>
+                                        <a href="/cashhistory">查看提现记录</a>
                                     </td>
                                 </tr>
                                 </tbody>

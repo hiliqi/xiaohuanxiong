@@ -42,6 +42,16 @@ class UserFinance extends Model
         return $sum;
     }
 
+    //获得当前用户提现总和
+    public function getCashSum($uid)
+    {
+        $map = array();
+        $map[] = ['user_id', '=', $uid];
+        $map[] = ['usage', '=', 6];
+        $sum = UserFinance::where($map)->sum('money');
+        return $sum;
+    }
+
     public function getRewardsSum($uid)
     {
         $map = array();

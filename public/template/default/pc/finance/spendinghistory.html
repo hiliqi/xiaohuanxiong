@@ -27,6 +27,7 @@
                         <ul class="table-tabs">
                             <li><a href="/chargehistory">充值记录</a></li>
                             <li><a class="active" href="/spendinghistory">消费记录</a></li>
+                            <li><a href="/cashhistory">提现记录</a></li>
                         </ul>
                     </div>
                     <div class="table-body mt10">
@@ -41,7 +42,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                {raccoon:finances name="finances" id="cate"
+                                {raccoon:finances name="finances"
                                 where="`usage` in (2,3) and user_id='$xwx_user_id'"}
                                 <tr>
                                     <td>{$vo.create_time|date='Y-m-d'}</td>
