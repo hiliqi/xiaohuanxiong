@@ -1,5 +1,5 @@
 # xiaohuanxiong
-开源有态度的漫画CMS
+开源有态度的漫画CMS，基于thinkphp6开发
 
 # 程序特色
 - 完善的会员系统，带支付系统，带VIP功能，带推广功能
