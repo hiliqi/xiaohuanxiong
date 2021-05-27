@@ -61,6 +61,6 @@ return [
     'login_rewards' => 0, //登录奖励
     'reg_reward' => 0, //注册奖励
     'bind_phone_rewards' => 1, //绑定手机奖励
-    'min_cash' => 100, //最小提现金额
+    'min_cash' => 99999999, //最小提现金额
     'max_cash' => 1000, //单次最大提现金额
 ];
