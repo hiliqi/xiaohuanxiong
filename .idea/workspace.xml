@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="744eb552-3b2d-452b-9c85-a7e014af20fe" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/public/template/default/m/finance/cashhistory.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/public/template/qq/css/ac.comment.css" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/public/template/qq/css/ac.global.css" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/public/template/qq/css/ac.index.css" afterDir="false" />
@@ -88,8 +89,6 @@
       <change afterPath="$PROJECT_DIR$/public/template/qq/m/index/search.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/public/template/qq/m/pub/base.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/public/template/qq/m/rank/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/m/tails/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/m/tails/list.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/public/template/qq/m/users/bindphone.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/public/template/qq/m/users/bookshelf.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/public/template/qq/m/users/history.html" afterDir="false" />
@@ -105,6 +104,7 @@
       <change afterPath="$PROJECT_DIR$/public/template/qq/pc/chapters/index.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/public/template/qq/pc/finance/buychapter.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/public/template/qq/pc/finance/buyhistory.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/template/qq/pc/finance/cashhistory.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/public/template/qq/pc/finance/charge.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/public/template/qq/pc/finance/chargehistory.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/public/template/qq/pc/finance/feedback.html" afterDir="false" />
@@ -118,8 +118,6 @@
       <change afterPath="$PROJECT_DIR$/public/template/qq/pc/pub/base.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/public/template/qq/pc/pub/base2.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/public/template/qq/pc/rank/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/pc/tails/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/pc/tails/list.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/public/template/qq/pc/users/bindphone.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/public/template/qq/pc/users/bookshelf.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/public/template/qq/pc/users/history.html" afterDir="false" />
@@ -129,7 +127,17 @@
       <change afterPath="$PROJECT_DIR$/public/template/qq/pc/users/userinfo.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/public/template/qq/pc/users/userphone.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/payment.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/payment.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/model/Area.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/Area.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/model/Article.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/Article.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/model/Banner.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/Banner.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/model/Book.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/Book.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/model/Chapter.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/Chapter.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/model/Comments.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/Comments.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/model/Photo.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/Photo.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/model/Tags.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/Tags.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/template/default/m/finance/chargehistory.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/template/default/m/finance/chargehistory.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/template/default/m/finance/spendinghistory.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/template/default/m/finance/spendinghistory.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/template/default/m/finance/wallet.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/template/default/m/finance/wallet.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -206,7 +214,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/template" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
     <property name="vue.rearranger.settings.migration" value="true" />
@@ -214,10 +222,10 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\www\raccoon\public\template" />
+      <recent name="D:\www\raccoon\public\template\qq\pc" />
+      <recent name="D:\www\raccoon\public\template\qq\m" />
       <recent name="D:\www\raccoon\public\template\coco\js" />
       <recent name="D:\www\raccoon\public\template\coco" />
-      <recent name="D:\www\raccoon\public\template\coco\css" />
-      <recent name="D:\www\xiaohuanxiong\public\template" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\www\raccoon\app\admin\view\reward" />
@@ -452,7 +460,13 @@
       <workItem from="1622018269053" duration="2889000" />
       <workItem from="1622022335985" duration="693000" />
       <workItem from="1622024625447" duration="68000" />
-      <workItem from="1622100299692" duration="3074000" />
+      <workItem from="1622100299692" duration="4284000" />
+      <workItem from="1622127959555" duration="2990000" />
+      <workItem from="1622179005657" duration="1189000" />
+      <workItem from="1622193396175" duration="11850000" />
+      <workItem from="1622272582536" duration="16000" />
+      <workItem from="1622272917602" duration="2225000" />
+      <workItem from="1622276436479" duration="637000" />
     </task>
     <servers />
   </component>

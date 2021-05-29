@@ -22,7 +22,7 @@ class Comments extends Model
             $comments = Comments::where($where)
                 ->order($order)->select();
         } else {
-            if (strlen($num) == 3) {
+            if (strlen($num) >= 3) {
                 $arr = explode(',',$num);
                 $comments = Comments::where($where)
                     ->limit($arr[0],$arr[1])->order($order)->select();

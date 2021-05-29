@@ -29,7 +29,7 @@ class Chapter extends Model
             $chapters = Chapter::where($where)
                 ->order($order)->select();
         } else {
-            if (strlen($num) == 3) {
+            if (strlen($num) >= 3) {
                 $arr = explode(',',$num);
                 $chapters = Chapter::where($where)
                     ->limit($arr[0],$arr[1])->order($order)->select();

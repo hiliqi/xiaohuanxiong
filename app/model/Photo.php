@@ -17,7 +17,7 @@ class Photo extends Model
         if ($num == 0) {
             $photos = Photo::where($where)->order($order)->select();
         } else {
-            if (strlen($num) == 3) {
+            if (strlen($num) >= 3) {
                 $arr = explode(',',$num);
                 $photos = Photo::where($where)
                     ->limit($arr[0],$arr[1])->order($order)->select();
