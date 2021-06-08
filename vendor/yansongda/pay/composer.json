@@ -1,0 +1,43 @@
+{
+    "name": "yansongda/pay",
+    "description": "专注 Alipay 和 WeChat 的支付扩展包",
+    "keywords": ["alipay", "wechat", "pay"],
+    "type": "library",
+    "support": {
+        "issues": "https://github.com/yansongda/pay/issues",
+        "source": "https://github.com/yansongda/pay"
+    },
+    "authors": [
+        {
+            "name": "yansongda",
+            "email": "me@yansongda.cn"
+        }
+    ],
+    "require": {
+        "php": ">=7.1.3",
+        "ext-openssl": "*",
+        "ext-simplexml":"*",
+        "ext-libxml": "*",
+        "ext-json": "*",
+        "ext-bcmath": "*",
+        "yansongda/supports": "^2.0",
+        "symfony/http-foundation": "^4.0 || ^5.0.7",
+        "symfony/event-dispatcher": "^4.0 || ^5.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7.5",
+        "mockery/mockery": "^1.2",
+        "friendsofphp/php-cs-fixer": "^2.15"
+    },
+    "autoload": {
+        "psr-4": {
+            "Yansongda\\Pay\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Yansongda\\Pay\\Tests\\": "tests"
+        }
+    },
+    "license": "MIT"
+}

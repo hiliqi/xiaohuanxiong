@@ -2,142 +2,241 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="744eb552-3b2d-452b-9c85-a7e014af20fe" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/template/default/m/finance/cashhistory.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/css/ac.comment.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/css/ac.global.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/css/ac.index.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/css/ac.main-header-bg.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/css/ac.main-header-content.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/css/ac.main-header-nav.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/css/ac.page.chapter.view_v2.3.7.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/css/ac.page.comicall.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/css/ac.page.nav.index.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/css/ac.page.rank.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/css/ac.page.works.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/css/ac.tail.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/css/category-list.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/css/comicinfo.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/css/core.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/css/global.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/css/index.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/css/index_v2.2.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/css/rank.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/css/result.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/css/tail.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/fonts/iconfont.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/fonts/iconfont.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/fonts/iconfont.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/fonts/iconfont.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/images/ac.all_money.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/images/ac_arrow_bg.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/images/ac_body_bg.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/images/ac_comicview_all.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/images/ac_footer_bg.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/images/ac_global.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/images/ac_head_bg.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/images/ac_logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/images/ac_logo_seo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/images/ac_qr_img.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/images/ac_star_bg.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/images/ac_wx_img.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/images/all_icon_dm.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/images/bg_type_1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/images/i_sprite.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/images/in-animate-egg.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/images/in_sprite.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/images/liantu_ipad.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/images/page_comic_all.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/images/page_works_chapter_bg.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/images/page_works_sprite.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/images/page_works_stack_bg.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/images/png_sprite.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/images/qrcode.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/images/rank-banner-bg.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/images/sc_img_chapter_v2.1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/images/sc_img_comic-index.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/images/sc_img_default.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/images/sc_img_index.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/images/sc_img_search.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/images/star_off.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/images/star_on.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/images/top3_1bg.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/images/top3_2bg.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/images/top3_3bg.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/js/ac.base.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/js/ac.page.comic.all.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/js/ac.page.index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/js/ac.page.nav.index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/js/core.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/js/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/js/jquery-1.9.1.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/m/account/login.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/m/account/register.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/m/booklist/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/m/books/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/m/chapters/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/m/finance/buychapter.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/m/finance/buyhistory.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/m/finance/charge.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/m/finance/chargehistory.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/m/finance/feedback.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/m/finance/kami.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/m/finance/spendinghistory.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/m/finance/vip.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/m/finance/vipexchange.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/m/finance/wallet.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/m/index/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/m/index/search.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/m/pub/base.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/m/rank/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/m/users/bindphone.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/m/users/bookshelf.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/m/users/history.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/m/users/promotion.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/m/users/resetpwd.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/m/users/ucenter.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/m/users/userinfo.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/m/users/userphone.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/pc/account/login.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/pc/account/register.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/pc/booklist/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/pc/books/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/pc/chapters/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/pc/finance/buychapter.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/pc/finance/buyhistory.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/pc/finance/cashhistory.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/pc/finance/charge.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/pc/finance/chargehistory.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/pc/finance/feedback.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/pc/finance/kami.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/pc/finance/spendinghistory.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/pc/finance/vip.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/pc/finance/vipexchange.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/pc/finance/wallet.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/pc/index/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/pc/index/search.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/pc/pub/base.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/pc/pub/base2.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/pc/rank/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/pc/users/bindphone.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/pc/users/bookshelf.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/pc/users/history.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/pc/users/promotion.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/pc/users/resetpwd.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/pc/users/ucenter.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/pc/users/userinfo.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/template/qq/pc/users/userphone.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/model/Area.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/Area.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/model/Article.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/Article.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/model/Banner.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/Banner.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/model/Book.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/Book.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/model/Chapter.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/Chapter.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/model/Comments.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/Comments.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/model/Photo.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/Photo.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/model/Tags.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/Tags.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/default/m/finance/chargehistory.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/template/default/m/finance/chargehistory.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/default/m/finance/spendinghistory.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/template/default/m/finance/spendinghistory.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template/default/m/finance/wallet.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/template/default/m/finance/wallet.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/controller/Paynotify.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/controller/Paynotify.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/service/PayService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/service/PayService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bin/CertificateDownloader.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bin/CertificateDownloader.php.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/InstalledVersions.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/InstalledVersions.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_files.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_files.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.json" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/composer.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Alipay/Params/Pay/BusinessParams.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Alipay/Params/Pay/Request.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Alipay/Params/PublicParams.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Alipay/Params/Refund/BusinessParams.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Alipay/Params/Refund/Request.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Alipay/Params/RefundPwd/BusinessParams.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Alipay/Params/RefundPwd/Request.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Alipay/Params/WapPay/BusinessParams.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Alipay/Params/WapPay/ExtUserInfo.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Alipay/Params/WapPay/Request.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Alipay/SDK.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/AlipayApp/App/ExtUserInfo.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/AlipayApp/App/Params/Pay/BusinessParams.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/AlipayApp/App/Params/Pay/ExtendParams.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/AlipayApp/App/Params/Pay/Request.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/AlipayApp/FTF/Params/ExtendParams.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/AlipayApp/FTF/Params/GoodsDetail.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/AlipayApp/FTF/Params/Pay/BusinessParams.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/AlipayApp/FTF/Params/Pay/Request.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/AlipayApp/FTF/Params/QR/BusinessParams.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/AlipayApp/FTF/Params/QR/Request.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/AlipayApp/Fund/Query/BusinessParams.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/AlipayApp/Fund/Query/Request.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/AlipayApp/Fund/Transfer/BusinessParams.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/AlipayApp/Fund/Transfer/Request.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/AlipayApp/MiniApp/Params/Pay/BusinessParams.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/AlipayApp/MiniApp/Params/Pay/ExtendParams.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/AlipayApp/MiniApp/Params/Pay/Request.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/AlipayApp/Page/Params/GoodsDetail.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/AlipayApp/Page/Params/Pay/BusinessParams.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/AlipayApp/Page/Params/Pay/ExtendParams.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/AlipayApp/Page/Params/Pay/Request.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/AlipayApp/Params/Cancel/BusinessParams.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/AlipayApp/Params/Cancel/Request.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/AlipayApp/Params/Close/BusinessParams.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/AlipayApp/Params/Close/Request.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/AlipayApp/Params/DownloadBill/BusinessParams.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/AlipayApp/Params/DownloadBill/Request.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/AlipayApp/Params/PublicParams.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/AlipayApp/Params/Query/BusinessParams.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/AlipayApp/Params/Query/Request.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/AlipayApp/Params/Refund/BusinessParams.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/AlipayApp/Params/Refund/Request.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/AlipayApp/Params/RefundQuery/BusinessParams.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/AlipayApp/Params/RefundQuery/Request.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/AlipayApp/Params/Settle/BusinessParams.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/AlipayApp/Params/Settle/Request.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/AlipayApp/Params/Settle/RoyaltyParameter.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/AlipayApp/SDK.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/AlipayApp/Wap/Params/Pay/BusinessParams.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/AlipayApp/Wap/Params/Pay/ExtendParams.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/AlipayApp/Wap/Params/Pay/Request.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/AlipayCrossBorder/Customs/Query/Request.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/AlipayCrossBorder/Customs/Submit/Request.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/AlipayCrossBorder/InStore/BarcodePay/ExtendInfo.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/AlipayCrossBorder/InStore/BarcodePay/Request.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/AlipayCrossBorder/InStore/Cancel/Request.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/AlipayCrossBorder/InStore/CreateMerchantQR/BizData.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/AlipayCrossBorder/InStore/CreateMerchantQR/ChannelFee.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/AlipayCrossBorder/InStore/CreateMerchantQR/Request.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/AlipayCrossBorder/InStore/CreateQR/Request.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/AlipayCrossBorder/InStore/ModifyMerchantQR/Request.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/AlipayCrossBorder/InStore/ModifyStatus/Request.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/AlipayCrossBorder/InStore/PreCreate/ExtendInfo.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/AlipayCrossBorder/InStore/PreCreate/GoodsDetail.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/AlipayCrossBorder/InStore/PreCreate/Request.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/AlipayCrossBorder/InStore/Query/Request.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/AlipayCrossBorder/InStore/Refund/Request.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/AlipayCrossBorder/Online/DownloadCompare/Request.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/AlipayCrossBorder/Online/DownloadSettlement/Request.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/AlipayCrossBorder/Online/ExchageRate/Request.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/AlipayCrossBorder/Online/Notify/Base.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/AlipayCrossBorder/Online/Notify/Pay.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/AlipayCrossBorder/Online/Notify/Sync.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/AlipayCrossBorder/Online/NotifyVerify/Request.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/AlipayCrossBorder/Online/Pay/Request.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/AlipayCrossBorder/Online/Query/Request.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/AlipayCrossBorder/Online/Refund/Request.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/AlipayCrossBorder/Online/WapPay/Request.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/AlipayCrossBorder/Params/PublicParams.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/AlipayCrossBorder/Params/SplitFundInfo.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/AlipayCrossBorder/SDK.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/AlipayRequestBase.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Base.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Lib/CertUtil.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Lib/Encrypt/AES.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Lib/Encrypt/AES256GCM.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Lib/Encrypt/Base.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Lib/Encrypt/DSA.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Lib/Encrypt/RSA.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Lib/Encrypt/RSA2.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Lib/Encrypt/SHA256withRSA/SignatureResult.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Lib/Encrypt/SHA256withRSA/Signer.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Lib/ObjectToArray.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Lib/Util.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Lib/XML.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/NotifyBase.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/PublicBase.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/RequestBase.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Traits/FormParams.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Traits/JSONParams.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Traits/XMLParams.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Weixin/APP/Params/Client/Request.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Weixin/APP/Params/Pay/Request.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Weixin/APP/Params/SceneInfo.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Weixin/AuthCodeToOpenid/Request.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Weixin/CloseOrder/Request.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Weixin/CompanyPay/Bank/Pay/Request.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Weixin/CompanyPay/Bank/Query/Request.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Weixin/CompanyPay/Weixin/Pay/Request.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Weixin/CompanyPay/Weixin/Query/Request.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Weixin/CustomDeclareOrder/Request.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Weixin/CustomDeclareQuery/Request.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Weixin/DownloadBill/Request.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Weixin/ExchageRate/Request.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Weixin/GetPublicKey/Request.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Weixin/H5/Params/Pay/Request.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Weixin/H5/Params/SceneInfo.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Weixin/JSAPI/Params/JSParams/Request.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Weixin/JSAPI/Params/Pay/Request.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Weixin/JSAPI/Params/SceneInfo.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Weixin/Micropay/Params/Pay/Request.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Weixin/Micropay/Params/SceneInfo.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Weixin/Native/Params/Pay/Mode1Request.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Weixin/Native/Params/Pay/Request.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Weixin/Native/Params/SceneInfo.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Weixin/Notify/Base.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Weixin/Notify/BaseV3.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Weixin/Notify/Pay.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Weixin/Notify/PayMode1.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Weixin/Notify/Refund.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Weixin/OrderQuery/Request.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Weixin/Params/Detail.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Weixin/Params/GoodsDetail.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Weixin/Params/PayRequestBase.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Weixin/Params/PublicParams.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Weixin/Profit/AddReceiver/Request.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Weixin/Profit/AdderReceiver.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Weixin/Profit/AmountQuery/Request.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Weixin/Profit/Finish/Request.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Weixin/Profit/MerchantRatioQuery/Request.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Weixin/Profit/MultiProfitSharing/Request.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Weixin/Profit/ProfitSharing/Request.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Weixin/Profit/ProfitSharingQuery/Request.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Weixin/Profit/ProfitSharingReceiver.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Weixin/Profit/ProfitSharingReturn/Request.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Weixin/Profit/RemoveReceiver/Request.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Weixin/Profit/RemoverReceiver.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Weixin/Profit/ReturnQuery/Request.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Weixin/QueryComment/Request.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Weixin/Refund/Request.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Weixin/RefundQuery/Request.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Weixin/Reply/Base.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Weixin/Reply/BaseV3.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Weixin/Reply/Pay.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Weixin/Reply/PayMode1.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Weixin/Report/Request.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Weixin/Report/Trades.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Weixin/Reverse/Request.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Weixin/SDK.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Weixin/SDKV3.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Weixin/SettlementQuery/Request.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Weixin/Shorturl/Request.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Weixin/Tool/CertificateDownloader.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/Weixin/V3/Certificates/Request.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/WeixinRequestBase.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk/src/WeixinRequestBaseV3.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/yurun-http/.php_cs.dist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/yurun-http/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/yurun-http/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/yurun-http/composer.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/yurun-http/phpstan.neon" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/yurun-http/src/HttpRequest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/yurun-http/src/YurunHttp.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/yurun-http/src/YurunHttp/Attributes.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/yurun-http/src/YurunHttp/Co/Batch.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/yurun-http/src/YurunHttp/ConnectionPool.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/yurun-http/src/YurunHttp/Cookie/CookieItem.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/yurun-http/src/YurunHttp/Cookie/CookieManager.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/yurun-http/src/YurunHttp/Exception/WebSocketException.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/yurun-http/src/YurunHttp/FormDataBuilder.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/yurun-http/src/YurunHttp/Handler/Contract/IConnectionManager.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/yurun-http/src/YurunHttp/Handler/Curl.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/yurun-http/src/YurunHttp/Handler/Curl/CurlConnectionPool.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/yurun-http/src/YurunHttp/Handler/Curl/CurlHttpConnectionManager.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/yurun-http/src/YurunHttp/Handler/IHandler.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/yurun-http/src/YurunHttp/Handler/Swoole.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/yurun-http/src/YurunHttp/Handler/Swoole/SwooleHttp2ConnectionManager.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/yurun-http/src/YurunHttp/Handler/Swoole/SwooleHttp2ConnectionPool.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/yurun-http/src/YurunHttp/Handler/Swoole/SwooleHttpConnectionManager.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/yurun-http/src/YurunHttp/Handler/Swoole/SwooleHttpConnectionPool.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/yurun-http/src/YurunHttp/Http/Psr7/AbstractMessage.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/yurun-http/src/YurunHttp/Http/Psr7/Consts/MediaType.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/yurun-http/src/YurunHttp/Http/Psr7/Consts/RequestHeader.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/yurun-http/src/YurunHttp/Http/Psr7/Consts/RequestMethod.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/yurun-http/src/YurunHttp/Http/Psr7/Consts/ResponseHeader.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/yurun-http/src/YurunHttp/Http/Psr7/Consts/StatusCode.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/yurun-http/src/YurunHttp/Http/Psr7/Request.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/yurun-http/src/YurunHttp/Http/Psr7/Response.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/yurun-http/src/YurunHttp/Http/Psr7/ServerRequest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/yurun-http/src/YurunHttp/Http/Psr7/UploadedFile.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/yurun-http/src/YurunHttp/Http/Psr7/Uri.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/yurun-http/src/YurunHttp/Http/Request.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/yurun-http/src/YurunHttp/Http/Response.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/yurun-http/src/YurunHttp/Http2/IHttp2Client.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/yurun-http/src/YurunHttp/Http2/SwooleClient.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/yurun-http/src/YurunHttp/Pool/BaseConnectionPool.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/yurun-http/src/YurunHttp/Pool/Config/PoolConfig.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/yurun-http/src/YurunHttp/Pool/Contract/IConnectionPool.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/yurun-http/src/YurunHttp/Pool/Traits/TConnectionPoolConfigs.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/yurun-http/src/YurunHttp/Random.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/yurun-http/src/YurunHttp/Stream/FileStream.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/yurun-http/src/YurunHttp/Stream/MemoryStream.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/yurun-http/src/YurunHttp/Stream/StreamMode.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/yurun-http/src/YurunHttp/Traits/TCookieManager.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/yurun-http/src/YurunHttp/Traits/THandler.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/yurun-http/src/YurunHttp/WebSocket/IWebSocketClient.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yurunsoft/yurun-http/src/YurunHttp/WebSocket/Swoole.php" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -196,8 +295,14 @@
       <path value="$PROJECT_DIR$/vendor/topthink/think-multi-app" />
       <path value="$PROJECT_DIR$/vendor/topthink/think-view" />
       <path value="$PROJECT_DIR$/vendor/topthink/think-captcha" />
-      <path value="$PROJECT_DIR$/vendor/yurunsoft/pay-sdk" />
-      <path value="$PROJECT_DIR$/vendor/yurunsoft/yurun-http" />
+      <path value="$PROJECT_DIR$/vendor/yansongda/pay" />
+      <path value="$PROJECT_DIR$/vendor/yansongda/supports" />
+      <path value="$PROJECT_DIR$/vendor/monolog/monolog" />
+      <path value="$PROJECT_DIR$/vendor/psr/event-dispatcher" />
+      <path value="$PROJECT_DIR$/vendor/symfony/deprecation-contracts" />
+      <path value="$PROJECT_DIR$/vendor/symfony/event-dispatcher" />
+      <path value="$PROJECT_DIR$/vendor/symfony/http-foundation" />
+      <path value="$PROJECT_DIR$/vendor/symfony/event-dispatcher-contracts" />
     </include_path>
   </component>
   <component name="ProjectId" id="1n063GRh801dDjooegYl1TRJDTH" />
@@ -221,11 +326,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\www\raccoon\public\template\pink" />
       <recent name="D:\www\raccoon\public\template" />
       <recent name="D:\www\raccoon\public\template\qq\pc" />
       <recent name="D:\www\raccoon\public\template\qq\m" />
       <recent name="D:\www\raccoon\public\template\coco\js" />
-      <recent name="D:\www\raccoon\public\template\coco" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\www\raccoon\app\admin\view\reward" />
@@ -466,7 +571,10 @@
       <workItem from="1622193396175" duration="11850000" />
       <workItem from="1622272582536" duration="16000" />
       <workItem from="1622272917602" duration="2225000" />
-      <workItem from="1622276436479" duration="637000" />
+      <workItem from="1622276436479" duration="1037000" />
+      <workItem from="1622962219216" duration="2068000" />
+      <workItem from="1623074867661" duration="27000" />
+      <workItem from="1623162864180" duration="1627000" />
     </task>
     <servers />
   </component>

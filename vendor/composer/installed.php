@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '451e5acca9573460dcc200b9d5ef5ff768966865',
+    'reference' => 'ba31c56ab1109657cb9d8601bff5d2b8d98d18f8',
     'name' => 'topthink/think',
   ),
   'versions' => 
@@ -74,6 +74,15 @@
       ),
       'reference' => '3b9dff8aaf7323590c1d2e443db701eb1f9aa0d3',
     ),
+    'monolog/monolog' => 
+    array (
+      'pretty_version' => '2.2.0',
+      'version' => '2.2.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '1cb1cde8e8dd0f70cc0fe51354a59acad9302084',
+    ),
     'overtrue/pinyin' => 
     array (
       'pretty_version' => '4.0.7',
@@ -100,6 +109,22 @@
       array (
       ),
       'reference' => '8622567409010282b7aeebe4bb841fe98b58dcaf',
+    ),
+    'psr/event-dispatcher' => 
+    array (
+      'pretty_version' => '1.0.0',
+      'version' => '1.0.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'dbefd12671e8a14ec7f180cab83036ed26714bb0',
+    ),
+    'psr/event-dispatcher-implementation' => 
+    array (
+      'provided' => 
+      array (
+        0 => '1.0',
+      ),
     ),
     'psr/http-client' => 
     array (
@@ -142,6 +167,13 @@
       ),
       'reference' => '0f73288fd15629204f9d42b7055f72dacbe811fc',
     ),
+    'psr/log-implementation' => 
+    array (
+      'provided' => 
+      array (
+        0 => '1.0.0',
+      ),
+    ),
     'psr/simple-cache' => 
     array (
       'pretty_version' => '1.0.1',
@@ -159,6 +191,49 @@
       array (
       ),
       'reference' => '120b605dfeb996808c31b6477290a714d356e822',
+    ),
+    'symfony/deprecation-contracts' => 
+    array (
+      'pretty_version' => 'v2.4.0',
+      'version' => '2.4.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '5f38c8804a9e97d23e0c8d63341088cd8a22d627',
+    ),
+    'symfony/event-dispatcher' => 
+    array (
+      'pretty_version' => 'v5.3.0',
+      'version' => '5.3.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '67a5f354afa8e2f231081b3fa11a5912f933c3ce',
+    ),
+    'symfony/event-dispatcher-contracts' => 
+    array (
+      'pretty_version' => 'v2.4.0',
+      'version' => '2.4.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '69fee1ad2332a7cbab3aca13591953da9cdb7a11',
+    ),
+    'symfony/event-dispatcher-implementation' => 
+    array (
+      'provided' => 
+      array (
+        0 => '2.0',
+      ),
+    ),
+    'symfony/http-foundation' => 
+    array (
+      'pretty_version' => 'v5.3.1',
+      'version' => '5.3.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '8827b90cf8806e467124ad476acd15216c2fceb6',
     ),
     'symfony/polyfill-mbstring' => 
     array (
@@ -212,7 +287,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => '451e5acca9573460dcc200b9d5ef5ff768966865',
+      'reference' => 'ba31c56ab1109657cb9d8601bff5d2b8d98d18f8',
     ),
     'topthink/think-captcha' => 
     array (
@@ -277,23 +352,23 @@
       ),
       'reference' => 'edce0ae2c9551ab65f9e94a222604b0dead3576d',
     ),
-    'yurunsoft/pay-sdk' => 
+    'yansongda/pay' => 
     array (
-      'pretty_version' => 'v3.1.0',
-      'version' => '3.1.0.0',
+      'pretty_version' => 'v2.10.2',
+      'version' => '2.10.2.0',
       'aliases' => 
       array (
       ),
-      'reference' => '24d93b7ebd84e2c42ae0f95e49511a0bf7922ccf',
+      'reference' => '8c258853b142c6d7589629b047ca5cb21232b509',
     ),
-    'yurunsoft/yurun-http' => 
+    'yansongda/supports' => 
     array (
-      'pretty_version' => 'v4.3.6',
-      'version' => '4.3.6.0',
+      'pretty_version' => 'v2.2.0',
+      'version' => '2.2.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => '5b4b3d58cc6492be8e769f4d307b6ef331bc6ac1',
+      'reference' => 'de9a8d38b0461ddf9c12f27390dad9a40c9b4e3b',
     ),
   ),
 );
