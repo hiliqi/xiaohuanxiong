@@ -12,7 +12,7 @@ PASSWORD = {{$dbpass}}
 HOSTPORT = {{$dbport}}
 CHARSET = utf8
 DEBUG = true
-PREFIX = xwx_
+PREFIX = {{$dbpk}}
 
 [CACHE]
 HOSTNAME = 127.0.0.1
