@@ -57,8 +57,8 @@ class Index extends Base
                     $content = str_replace(['{{$dbhost}}','{{$dbname}}','{{$dbuser}}','{{$dbpass}}','{{$dbport}}','{{$dbpk}}'], 
                     [$dbhost,$dbname,$dbuser,$dbpass,$dbport,$dbpk], 
                     file_get_contents(app_path().'data'. DS .'database.tpl'));
-                    @mkdir(root_path()."config/database.php", 0755, true);
-                    @file_put_contents(root_path()."config/database.php",$content);
+                    @mkdir(root_path().".env", 0755, true);
+                    @file_put_contents(root_path().".env",$content);
                     @touch(public_path().'install.lock');
                     $data = "安装成功";
                     break;
