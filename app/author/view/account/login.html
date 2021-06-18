@@ -169,7 +169,7 @@
         </div>
         <div class="layui-form-item">
             <input type="checkbox" name="remember" title="记住密码" lay-skin="primary" checked>
-            <a href="{:url('account/register')}" class="layui-link pull-right">注册账号</a>
+            <a href="{:adminurl('account/register')}" class="layui-link pull-right">注册账号</a>
         </div>
         <div class="layui-form-item">
             <button class="layui-btn layui-btn-fluid" lay-filter="loginSubmit" lay-submit>登录</button>
@@ -189,14 +189,14 @@
         form.on('submit(loginSubmit)', function (obj) {
             $.ajax({
                 type: 'POST',
-                url: "{:url('account/login')}",
+                url: "{:adminurl('account/login')}",
                 data: $('#loginSubmit').serialize(),
                 dataType: 'json',
                 success: function (res) {
                     if (res.err == 0){ //登录成功
                         layer.msg(res.msg, {icon: 1, time: 1000});
                         setTimeout(function () {
-                            location.href = '{:url("index/index")}';
+                            location.href = '{:adminurl("index/index")}';
                         }, 1000);
                     } else {
                         layer.msg(res.msg, {icon: 2, time: 1000});
@@ -209,7 +209,7 @@
             return false;
         });
 
-        var captchaUrl = '{:url("account/captcha")}';
+        var captchaUrl = '{:adminurl("account/captcha")}';
         $('img.login-captcha').click(function () {
             this.src = captchaUrl + '?t=' + (new Date).getTime();
         }).trigger('click');

@@ -99,7 +99,7 @@
         $('#create').click(function () {
             index.openTab({
                 title: '生成VIP码',
-                url: "{:url('vipcodes/gencodes')}",
+                url: "{:adminurl('vipcodes/gencodes')}",
                 end: function () {
                     insTb.reload();
                 }
@@ -109,7 +109,7 @@
         $('#export').click(function () {
             $.ajax({
                 type: 'POST',
-                url: "{:url('export')}",
+                url: "{:adminurl('export')}",
                 dataType: 'json',
                 success: function (res) {
                     if (res.err == 0) { //删除成功
@@ -135,7 +135,7 @@
                 layer.confirm('确认要删除吗？', function (index) {
                     $.ajax({
                         type: 'POST',
-                        url: "{:url('delete')}",
+                        url: "{:adminurl('delete')}",
                         data: {id: data.id},
                         dataType: 'json',
                         success: function (res) {
@@ -161,7 +161,7 @@
         /* 渲染表格 */
         var insTb = table.render({
             elem: '#tbBasicTable',
-            url: "{:url('vipcodes/list')}",
+            url: "{:adminurl('vipcodes/list')}",
             page: true,
             cellMinWidth: 100,
             cols: [[
@@ -203,7 +203,7 @@
             var used = $('#used').val()
             table.render({
                 elem: '#tbBasicTable',
-                url: '{:url("list")}?days=' + days + '&used=' + used,
+                url: '{:adminurl("list")}?days=' + days + '&used=' + used,
                 page: true,
                 cellMinWidth: 100,
                 cols: [[

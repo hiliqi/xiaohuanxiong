@@ -51,11 +51,11 @@
         </div>
         <div class="comiclist">
             <div class="comicpage">
-                {raccoon:photos name="photos" order="pic_order asc" where="chapter_id='$chapter->id'"}
+                {raccoon:pagedphotos name="photos" pagesize="1" order="id asc" where="chapter_id='$chapter->id'"}
                 <div>
                     <img class="lazy" data-original="{$vo.img_url}" src="https://p.pstatp.com/origin/ffa400036691f82c85e5">
                 </div>
-                {/raccoon:photos}
+                {/raccoon:pagedphotos}
             </div>
         </div>
         <div class="fanye">
@@ -63,6 +63,20 @@
             <a class="block" style="color: lightgrey">上一章</a>
             {else/}
             <a href="/{$chapter_ctrl}/{$prev.id}" class="block" title="{$prev.chapter_name}">上一章</a>
+            {/if}
+
+            {if $page.last_page > 1}
+            {if $page.current_page == 1}
+            <a style="color: lightgrey">上一页</a>
+            {else/}
+            <a id="prevPage" href="/{$chapter_ctrl}/{$chapter.id}/?page={$page.current_page-1}{$param}" title="上一页">上一页</a>
+            {/if}
+
+            {if $page.current_page == $page.last_page}
+            <a style="color: lightgrey">下一页</a>
+            {else/}
+            <a id="nextPage" href="/{$chapter_ctrl}/{$chapter.id}?page={$page.current_page+1}{$param}" title="下一页">下一页</a>
+            {/if}
             {/if}
 
             {if $next == "null"}

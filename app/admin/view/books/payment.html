@@ -72,7 +72,7 @@
         /* 监听表单提交 */
         form.on('submit(formBasSubmit)', function (data) {
             $.ajax({
-                url:"{:url('payment')}",
+                url:"{:adminurl('payment')}",
                 type:'post',
                 data:$('form').serialize(),
                 success(res) {

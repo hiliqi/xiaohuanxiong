@@ -63,7 +63,7 @@
         /* 监听表单提交 */
         form.on('submit(formBasSubmit)', function (data) {
             $.ajax({
-                url:"{:url('didi')}",
+                url:"{:adminurl('didi')}",
                 type:'post',
                 data:$('form').serialize(),
                 success(res) {

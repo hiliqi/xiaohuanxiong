@@ -34,9 +34,9 @@
     </div>
 </div>
 <div class="view-main-1 readForm" id="cp_img">
-    {raccoon:photos name="photos" order="pic_order asc" where="chapter_id='$chapter->id'"}
+    {raccoon:pagedphotos name="photos" pagesize="1" order="pic_order asc" where="chapter_id='$chapter->id'"}
     <img class="lazy" data-original="{$vo.img_url}" src="https://p.pstatp.com/origin/ffa400036691f82c85e5">
-    {/raccoon:photos}
+    {/raccoon:pagedphotos}
 </div>
 
 <ul class="view-bottom-bar">
@@ -44,6 +44,20 @@
     <li style="width:25%;opacity: 0.6;"><a class="view-bottom-bar-item">上一章</a></li>
     {else /}
     <li style="width:25%;"><a class="view-bottom-bar-item" href="/{$chapter_ctrl}/{$prev.id}">上一章</a></li>
+    {/if}
+
+    {if $page.last_page > 1}
+    {if $page.current_page == 1}
+    <li style="width:25%;opacity: 0.6;"><a class="view-bottom-bar-item">上一页</a></li>
+    {else/}
+    <a class="view-bottom-bar-item" href="/{$chapter_ctrl}/{$chapter.id}/?page={$page.current_page-1}{$param}" title="上一页">上一页</a>
+    {/if}
+
+    {if $page.current_page == $page.last_page}
+    <li style="width:25%;opacity: 0.6;"><a class="view-bottom-bar-item">下一页</a></li>
+    {else/}
+    <a class="view-bottom-bar-item" href="/{$chapter_ctrl}/{$chapter.id}?page={$page.current_page+1}{$param}" title="下一页">下一页</a>
+    {/if}
     {/if}
 
     {if $next == "null"}
@@ -69,6 +83,7 @@
         <p class="view-fix-bottom-bar-title">上一章</p>
     </a>
     {/if}
+
 
     {if $next == "null"}
     <a class="view-fix-bottom-bar-item" style="opacity: 0.6;">

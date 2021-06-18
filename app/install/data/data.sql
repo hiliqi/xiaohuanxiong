@@ -1,8 +1,8 @@
 -- ----------------------------
 -- Table structure for admin
 -- ----------------------------
-DROP TABLE IF EXISTS `xwx_admin`;
-CREATE TABLE `xwx_admin`
+DROP TABLE IF EXISTS `{{$pk}}admin`;
+CREATE TABLE `{{$pk}}admin`
 (
     `id`              int(10) unsigned NOT NULL AUTO_INCREMENT,
     `username`        char(32) NOT NULL,
@@ -16,10 +16,10 @@ CREATE TABLE `xwx_admin`
 ) ENGINE=InnoDB  ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
--- Table structure for xwx_user
+-- Table structure for {{$pk}}user
 -- ----------------------------
-DROP TABLE IF EXISTS `xwx_user`;
-CREATE TABLE `xwx_user`
+DROP TABLE IF EXISTS `{{$pk}}user`;
+CREATE TABLE `{{$pk}}user`
 (
     `id`              int(10) unsigned NOT NULL AUTO_INCREMENT,
     `username`        char(32) NOT NULL,
@@ -46,10 +46,10 @@ CREATE TABLE `xwx_user`
 ) ENGINE=InnoDB  ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
--- Table structure for xwx_user_finance
+-- Table structure for {{$pk}}user_finance
 -- ----------------------------
-DROP TABLE IF EXISTS `xwx_user_finance`;
-CREATE TABLE `xwx_user_finance`
+DROP TABLE IF EXISTS `{{$pk}}user_finance`;
+CREATE TABLE `{{$pk}}user_finance`
 (
     `id`          int(10) unsigned NOT NULL AUTO_INCREMENT,
     `user_id`     int(10) NOT NULL DEFAULT 0,
@@ -65,10 +65,10 @@ CREATE TABLE `xwx_user_finance`
 ) ENGINE = InnoDB  ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
--- Table structure for xwx_user_order
+-- Table structure for {{$pk}}user_order
 -- ----------------------------
-DROP TABLE IF EXISTS `xwx_user_order`;
-CREATE TABLE `xwx_user_order`
+DROP TABLE IF EXISTS `{{$pk}}user_order`;
+CREATE TABLE `{{$pk}}user_order`
 (
     `id`          int(10) unsigned NOT NULL AUTO_INCREMENT,
     `user_id`     int(10) NOT NULL DEFAULT 0,
@@ -87,10 +87,10 @@ CREATE TABLE `xwx_user_order`
 ) ENGINE = InnoDB  ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
--- Table structure for xwx_user_buy
+-- Table structure for {{$pk}}user_buy
 -- ----------------------------
-DROP TABLE IF EXISTS `xwx_user_buy`;
-CREATE TABLE `xwx_user_buy`
+DROP TABLE IF EXISTS `{{$pk}}user_buy`;
+CREATE TABLE `{{$pk}}user_buy`
 (
     `id`          int(10) unsigned NOT NULL AUTO_INCREMENT,
     `user_id`     int(10) NOT NULL DEFAULT 0 COMMENT '购买用户ID',
@@ -106,8 +106,8 @@ CREATE TABLE `xwx_user_buy`
 -- ----------------------------
 -- Table structure for author
 -- ----------------------------
-DROP TABLE IF EXISTS `xwx_author`;
-CREATE TABLE `xwx_author`
+DROP TABLE IF EXISTS `{{$pk}}author`;
+CREATE TABLE `{{$pk}}author`
 (
     `id`          int(10) unsigned NOT NULL AUTO_INCREMENT,
     `username`    char(32)  DEFAULT 'nil',
@@ -128,8 +128,8 @@ CREATE TABLE `xwx_author`
 -- ----------------------------
 -- Table structure for banner
 -- ----------------------------
-DROP TABLE IF EXISTS `xwx_banner`;
-CREATE TABLE `xwx_banner`
+DROP TABLE IF EXISTS `{{$pk}}banner`;
+CREATE TABLE `{{$pk}}banner`
 (
     `id`           int(10) unsigned NOT NULL AUTO_INCREMENT,
     `pic_name`     varchar(255) DEFAULT '' COMMENT '轮播图完整路径名',
@@ -145,8 +145,8 @@ CREATE TABLE `xwx_banner`
 -- ----------------------------
 -- Table structure for book
 -- ----------------------------
-DROP TABLE IF EXISTS `xwx_book`;
-CREATE TABLE `xwx_book`
+DROP TABLE IF EXISTS `{{$pk}}book`;
+CREATE TABLE `{{$pk}}book`
 (
     `id`              int(10) unsigned NOT NULL AUTO_INCREMENT,
     `unique_id`       char(100)   NOT NULL COMMENT '漫画标识',
@@ -194,8 +194,8 @@ CREATE TABLE `xwx_book`
 -- ----------------------------
 -- Table structure for chapter
 -- ----------------------------
-DROP TABLE IF EXISTS `xwx_chapter`;
-CREATE TABLE `xwx_chapter`
+DROP TABLE IF EXISTS `{{$pk}}chapter`;
+CREATE TABLE `{{$pk}}chapter`
 (
     `id`            int(10) unsigned NOT NULL AUTO_INCREMENT,
     `chapter_name`  varchar(255)   NOT NULL COMMENT '章节名称',
@@ -212,8 +212,8 @@ CREATE TABLE `xwx_chapter`
 -- ----------------------------
 -- Table structure for photo
 -- ----------------------------
-DROP TABLE IF EXISTS `xwx_photo`;
-CREATE TABLE `xwx_photo`
+DROP TABLE IF EXISTS `{{$pk}}photo`;
+CREATE TABLE `{{$pk}}photo`
 (
     `id`          int(10) unsigned NOT NULL AUTO_INCREMENT,
     `chapter_id`  int(10) unsigned NOT NULL,
@@ -229,8 +229,8 @@ CREATE TABLE `xwx_photo`
 -- ----------------------------
 -- Table structure for tags
 -- ----------------------------
-DROP TABLE IF EXISTS `xwx_tags`;
-CREATE TABLE `xwx_tags`
+DROP TABLE IF EXISTS `{{$pk}}tags`;
+CREATE TABLE `{{$pk}}tags`
 (
     `id`          int(10) unsigned NOT NULL AUTO_INCREMENT,
     `tag_name`    varchar(20) NOT NULL COMMENT '分类名',
@@ -242,10 +242,10 @@ CREATE TABLE `xwx_tags`
 ) ENGINE=InnoDB  ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
--- Table structure for xwx_friendship_link
+-- Table structure for {{$pk}}friendship_link
 -- ----------------------------
-DROP TABLE IF EXISTS `xwx_friendship_link`;
-CREATE TABLE `xwx_friendship_link`
+DROP TABLE IF EXISTS `{{$pk}}friendship_link`;
+CREATE TABLE `{{$pk}}friendship_link`
 (
     `id`          int(10) unsigned NOT NULL AUTO_INCREMENT,
     `name`        varchar(100) NOT NULL COMMENT '友链名',
@@ -256,10 +256,10 @@ CREATE TABLE `xwx_friendship_link`
 ) ENGINE=InnoDB  ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
--- Table structure for xwx_area
+-- Table structure for {{$pk}}area
 -- ----------------------------
-DROP TABLE IF EXISTS `xwx_area`;
-CREATE TABLE `xwx_area`
+DROP TABLE IF EXISTS `{{$pk}}area`;
+CREATE TABLE `{{$pk}}area`
 (
     `id`          int(10) unsigned NOT NULL AUTO_INCREMENT,
     `area_name`   varchar(32) NOT NULL COMMENT '地区名',
@@ -270,10 +270,10 @@ CREATE TABLE `xwx_area`
 ) ENGINE=InnoDB ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
--- Table structure for xwx_user_book
+-- Table structure for {{$pk}}user_book
 -- ----------------------------
-DROP TABLE IF EXISTS `xwx_user_favor`;
-CREATE TABLE `xwx_user_favor`
+DROP TABLE IF EXISTS `{{$pk}}user_favor`;
+CREATE TABLE `{{$pk}}user_favor`
 (
     `id`          int(10) unsigned NOT NULL AUTO_INCREMENT,
     `book_id`     int(10) unsigned NOT NULL COMMENT '用户收藏的漫画ID',
@@ -286,10 +286,10 @@ CREATE TABLE `xwx_user_favor`
 ) ENGINE=InnoDB  ROW_FORMAT=Dynamic;
 
 -- ----------------------------
--- Table structure for xwx_user_history
+-- Table structure for {{$pk}}user_history
 -- ----------------------------
-DROP TABLE IF EXISTS `xwx_user_history`;
-CREATE TABLE `xwx_user_history`
+DROP TABLE IF EXISTS `{{$pk}}user_history`;
+CREATE TABLE `{{$pk}}user_history`
 (
     `id`          int(10) unsigned NOT NULL AUTO_INCREMENT,
     `book_id`     int(10) unsigned NOT NULL COMMENT '用户阅读的漫画ID',
@@ -303,10 +303,10 @@ CREATE TABLE `xwx_user_history`
 ) ENGINE=InnoDB  ROW_FORMAT=Dynamic;
 
 -- ----------------------------
--- Table structure for xwx_comments
+-- Table structure for {{$pk}}comments
 -- ----------------------------
-DROP TABLE IF EXISTS `xwx_comments`;
-CREATE TABLE `xwx_comments`
+DROP TABLE IF EXISTS `{{$pk}}comments`;
+CREATE TABLE `{{$pk}}comments`
 (
     `id`          int(10) unsigned NOT NULL AUTO_INCREMENT,
     `user_id`     int(10) unsigned NOT NULL DEFAULT '0',
@@ -320,10 +320,10 @@ CREATE TABLE `xwx_comments`
 ) ENGINE=InnoDB ROW_FORMAT=Dynamic;
 
 -- ----------------------------
--- Table structure for xwx_article
+-- Table structure for {{$pk}}article
 -- ----------------------------
-DROP TABLE IF EXISTS `xwx_article`;
-CREATE TABLE `xwx_article`
+DROP TABLE IF EXISTS `{{$pk}}article`;
+CREATE TABLE `{{$pk}}article`
 (
     `id`          int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
     `unique_id`   char(100)    DEFAULT NULL,
@@ -349,10 +349,10 @@ CREATE TABLE `xwx_article`
 ) ENGINE = InnoDB ROW_FORMAT = Dynamic;
 
 -- ----------------------------
--- Table structure for xwx_vip_code
+-- Table structure for {{$pk}}vip_code
 -- ----------------------------
-DROP TABLE IF EXISTS `xwx_vip_code`;
-CREATE TABLE `xwx_vip_code`
+DROP TABLE IF EXISTS `{{$pk}}vip_code`;
+CREATE TABLE `{{$pk}}vip_code`
 (
     `id`          int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
     `code`        varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT 'vip码',
@@ -366,10 +366,10 @@ CREATE TABLE `xwx_vip_code`
 ) ENGINE=InnoDB ROW_FORMAT=Dynamic;
 
 -- ----------------------------
--- Table structure for xwx_charge_code
+-- Table structure for {{$pk}}charge_code
 -- ----------------------------
-DROP TABLE IF EXISTS `xwx_charge_code`;
-CREATE TABLE `xwx_charge_code`
+DROP TABLE IF EXISTS `{{$pk}}charge_code`;
+CREATE TABLE `{{$pk}}charge_code`
 (
     `id`          int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
     `code`        varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '卡密',
@@ -382,8 +382,8 @@ CREATE TABLE `xwx_charge_code`
     INDEX         `used`(`used`) USING BTREE
 ) ENGINE=InnoDB ROW_FORMAT=Dynamic;
 
-DROP TABLE IF EXISTS `xwx_book_logs`;
-CREATE TABLE `xwx_book_logs`
+DROP TABLE IF EXISTS `{{$pk}}book_logs`;
+CREATE TABLE `{{$pk}}book_logs`
 (
     `id`        int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
     `book_id`   int(10) UNSIGNED NOT NULL DEFAULT 0,
@@ -402,8 +402,8 @@ CREATE TABLE `xwx_book_logs`
 -- ----------------------------
 -- Table structure for chapterlogs
 -- ----------------------------
-DROP TABLE IF EXISTS `xwx_chapter_logs`;
-CREATE TABLE `xwx_chapter_logs`
+DROP TABLE IF EXISTS `{{$pk}}chapter_logs`;
+CREATE TABLE `{{$pk}}chapter_logs`
 (
     `id`           int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
     `chapter_id`   int(10) UNSIGNED NOT NULL DEFAULT 0,
@@ -422,8 +422,8 @@ CREATE TABLE `xwx_chapter_logs`
 -- ----------------------------
 -- Table structure for photologs
 -- ----------------------------
-DROP TABLE IF EXISTS `xwx_photo_logs`;
-CREATE TABLE `xwx_photo_logs`
+DROP TABLE IF EXISTS `{{$pk}}photo_logs`;
+CREATE TABLE `{{$pk}}photo_logs`
 (
     `id`       int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
     `photo_id` int(10) UNSIGNED NOT NULL DEFAULT 0,
@@ -437,7 +437,8 @@ CREATE TABLE `xwx_photo_logs`
     INDEX      `src`(`src`) USING BTREE
 ) ENGINE = InnoDB ROW_FORMAT=Dynamic;
 
-CREATE TABLE IF NOT EXISTS `xwx_tail` (
+DROP TABLE IF EXISTS `{{$pk}}tail`;
+CREATE TABLE `{{$pk}}tail` (
     `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
     `book_id` int(10) unsigned NOT NULL DEFAULT '0',
     `tailname` varchar(200) NOT NULL COMMENT '长尾词',
@@ -447,7 +448,4 @@ CREATE TABLE IF NOT EXISTS `xwx_tail` (
     PRIMARY KEY (`id`),
     KEY `tailname` (`tailname`),
     unique key `tailcode` (`tailcode`) USING BTREE
-    ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-INSERT INTO xwx_admin(username, `password`)
-VALUES ('admin', '123456')
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

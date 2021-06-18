@@ -189,7 +189,7 @@
         /* 监听表单提交 */
         form.on('submit(userInfoSubmit)', function (data) {
             $.ajax({
-                url:"{:url('index/update')}",
+                url:"{:adminurl('index/update')}",
                 type:'post',
                 data:$('form').serialize(),
                 success(res) {

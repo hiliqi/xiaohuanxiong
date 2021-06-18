@@ -20,7 +20,7 @@
         layer.confirm('确认要删除吗？', function (index) {
             $.ajax({
                 type: 'POST',
-                url: "{:url('delete')}",
+                url: "{:adminurl('delete')}",
                 data: {id: id},
                 dataType: 'json',
                 success: function (data) {
