@@ -78,12 +78,12 @@
 <div class="mod mod-news">
     <div class="news-list">
         <ul class="clearfix">
-            {volist name="articles" id="vo"}
+            {raccoon:pagedarticles name="pagedArticles" pagesize="20" order="id desc"}
             <li>
                 <a href="/article/{$vo.param}">{$vo.title}</a>
                 <span>{$vo.create_time|date='m-d'}</span>
             </li>
-            {/volist}
+            {/raccoon:pagedarticles}
         </ul>
         <div class="pages">
             {if $page.last_page > 1}

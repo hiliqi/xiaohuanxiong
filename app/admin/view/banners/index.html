@@ -90,7 +90,7 @@
         $('#create').click(function () {
             index.openTab({
                 title: '新建轮播',
-                url: "{:url('banners/create')}",
+                url: "{:adminurl('banners/create')}",
                 end: function () {
                     insTb.reload();
                 }
@@ -103,7 +103,7 @@
             if (obj.event === 'edit') { // 修改
                 parent.layui.index.openTab({
                     title: '编辑轮播',
-                    url: "{:url('banners/edit')}?id=" + data.id,
+                    url: "{:adminurl('banners/edit')}?id=" + data.id,
                     end: function () {
                         insTb.reload();
                     }
@@ -112,7 +112,7 @@
                 layer.confirm('确认要删除吗？', function (index) {
                     $.ajax({
                         type: 'POST',
-                        url: "{:url('delete')}",
+                        url: "{:adminurl('delete')}",
                         data: {id: data.id},
                         dataType: 'json',
                         success: function (res) {
@@ -138,7 +138,7 @@
         /* 渲染表格 */
         var insTb = table.render({
             elem: '#tbBasicTable',
-            url: "{:url('banners/list')}",
+            url: "{:adminurl('banners/list')}",
             page: true,
             cellMinWidth: 100,
             cols: [[

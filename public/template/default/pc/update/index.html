@@ -25,7 +25,7 @@
             $(this).children('.date').html(moment().subtract(day,'days').format('MMMDo').replace('星期','周'));
             $(this).click(function () {
                 var date = moment().subtract(day,'days').format('YYYY-MM-DD');
-                location.href = 'update?date=' + date + '&day=' + day;
+                location.href = '/update?date=' + date + '&day=' + day;
             })
         })
     </script>
@@ -35,12 +35,13 @@
         <h1>最近更新</h1>
         <small>
             更新了
-            <span class="color-main" id="daykeyupdatecount">{$page.total}</span><span id="daykeycontent">本，持续更新中</span>
+            <span class="color-main" id="daykeyupdatecount">若干</span><span id="daykeycontent">本，持续更新中</span>
         </small>
     </header>
     <div class="box-body">
         <ul class="mh-list col7" id="update_30">
-            {volist name="books" id="vo"}
+            {raccoon:pagedbooks name="pagedBooks" pagesize="28" order="last_time desc"
+            where="last_time>='$time'"}
             <li>
                 <div class="mh-item">
                     <a href="/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}">
@@ -62,7 +63,7 @@
                     </div>
                 </div>
             </li>
-            {/volist}
+            {/raccoon:pagedbooks}
         </ul>
     </div>
     <footer>
@@ -73,21 +74,21 @@
                     {if $page.current_page == 1}
                     <li><a>&lt;</a></li>
                     {else/}
-                    <li><a id="prevPage" href="/{$update_act}?page={$page.current_page-1}{$param}" title="上一页">&lt;</a></li>
+                    <li><a id="prevPage" href="/{$booklist_act}?page={$page.current_page-1}{$param}" title="上一页">&lt;</a></li>
                     {/if}
 
                     {for start="1" end="$page.last_page + 1"}
                     {if $i == $page.current_page }
-                    <li><a href="/{$update_act}?page={$i}{$param}" class="active">{$i}</a></li>
-                    {else/}
-                    <li><a href="/{$update_act}?page={$i}{$param}" title="第{$i}页">{$i}</a></li>
+                    <li><a href="/{$booklist_act}?page={$i}{$param}" class="active">{$i}</a></li>
+                    {elseif ($i > $page.current_page - 4 && $i < $page.current_page + 5)/}
+                    <li><a href="/{$booklist_act}?page={$i}{$param}" title="第{$i}页">{$i}</a></li>
                     {/if}
                     {/for}
 
                     {if $page.current_page == $page.last_page}
                     <li><a>&gt;</a></li>
                     {else/}
-                    <li><a id="nextPage" href="/{$update_act}?page={$page.current_page+1}{$param}" title="下一页">&gt;</a></li>
+                    <li><a id="nextPage" href="/{$booklist_act}?page={$page.current_page+1}{$param}" title="下一页">&gt;</a></li>
                     {/if}
                     {/if}
                 </div>

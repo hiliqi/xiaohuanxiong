@@ -268,7 +268,7 @@
                 <dl class="clearfix">
                     <dt>
                         <a href="/{$book_ctrl}/{$article.book.param}" target="_blank">
-                            <img src="{$article.book.cover_url}" alt="{$article.book.book_name}">
+                            <img src="/{$article.book.cover_url}" alt="{$article.book.book_name}">
                         </a>
                     </dt>
                     <dd>
@@ -290,26 +290,26 @@
             <div class="hot-news">
                 <h3>热门资讯</h3>
                 <ul>
-                    {volist name="articles" id="vo"}
+                    {raccoon:articles name="articles" order="hits desc" limit="6"}
                     <li class="s1">
                         <a href="/articles/{$vo.param}" target="_blank">{$vo.title}</a>
                     </li>
-                   {/volist}
+                    {/raccoon:articles}
                 </ul>
             </div>
             <!--new-book-->
             <div class="new-book">
                 <h3>推荐漫画</h3>
                 <ul>
-                    {volist name="books" id="vo"}
+                    {raccoon:books name="books" where="is_top=1" order="last_time desc" limit="6"}
                     <li>
                         <a class="pic" href="/{$book_ctrl}/{$vo.param}" target="_blank">
-                            <img src="{$vo.cover_url}" alt="{$vo.book_name}">
+                            <img src="/{$vo.cover_url}" alt="{$vo.book_name}">
                         </a>
                         <h5><a href="/{$book_ctrl}/{$vo.param}" target="_blank">{$vo.book_name}</a></h5>
                         <p>作者：{$vo.author_name}</p>
                     </li>
-                    {/volist}
+                    {/raccoon:books}
                 </ul>
             </div>
         </div>

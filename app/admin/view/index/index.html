@@ -38,7 +38,7 @@
                     <dd lay-unselect><a ew-href="page/template/user-info.html">个人中心</a></dd>
                     <dd lay-unselect><a ew-event="psw">修改密码</a></dd>
                     <hr>
-                    <dd lay-unselect><a ew-event="logout" data-url="{:url('login/logout')}">退出</a></dd>
+                    <dd lay-unselect><a ew-event="logout" data-url="{:adminurl('login/logout')}">退出</a></dd>
                 </dl>
             </li>
             <li class="layui-nav-item" lay-unselect>
@@ -54,54 +54,60 @@
                 <li class="layui-nav-item">
                     <a><i class="layui-icon layui-icon-component"></i>&emsp;<cite>内容管理</cite></a>
                     <dl class="layui-nav-child">
-                        <dd><a lay-href="{:url('books/index')}">漫画列表</a></dd>
-                        <dd><a lay-href="{:url('books/disabled')}">下架漫画列表</a></dd>
-                        <dd><a lay-href="{:url('comment/index')}">评论管理</a></dd>
-                        <dd><a lay-href="{:url('banners/index')}">轮播列表</a></dd>
+                        <dd><a lay-href="{:adminurl('books/index')}">漫画列表</a></dd>
+                        <dd><a lay-href="{:adminurl('books/disabled')}">下架漫画列表</a></dd>
+                        <dd><a lay-href="{:adminurl('comment/index')}">评论管理</a></dd>
+                        <dd><a lay-href="{:adminurl('banners/index')}">轮播列表</a></dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item">
                     <a><i class="layui-icon layui-icon-component"></i>&emsp;<cite>题材和地区</cite></a>
                     <dl class="layui-nav-child">
-                        <dd><a lay-href="{:url('tag/index')}">题材列表</a></dd>
-                        <dd><a lay-href="{:url('areas/index')}">地区列表</a></dd>
+                        <dd><a lay-href="{:adminurl('tag/index')}">题材列表</a></dd>
+                        <dd><a lay-href="{:adminurl('areas/index')}">地区列表</a></dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item">
                      <a><i class="layui-icon layui-icon-component"></i>&emsp;<cite>用户和作者</cite></a>
                     <dl class="layui-nav-child">
-                        <dd><a lay-href="{:url('admins/index')}">管理员列表</a></dd>
-                        <dd><a lay-href="{:url('users/index')}">用户列表</a></dd>
-                        <dd><a lay-href="{:url('users/disabled')}">锁定用户列表</a></dd>
-                        <dd><a lay-href="{:url('authors/index')}">作者列表</a></dd>
+                        <dd><a lay-href="{:adminurl('admins/index')}">管理员列表</a></dd>
+                        <dd><a lay-href="{:adminurl('users/index')}">用户列表</a></dd>
+                        <dd><a lay-href="{:adminurl('users/disabled')}">锁定用户列表</a></dd>
+                        <dd><a lay-href="{:adminurl('authors/index')}">作者列表</a></dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item">
                     <a><i class="layui-icon layui-icon-component"></i>&emsp;<cite>支付管理</cite></a>
                     <dl class="layui-nav-child">
-                        <dd><a lay-href="{:url('payment/index')}">支付设置</a></dd>
-                        <dd><a lay-href="{:url('payment/rewards')}">奖励设置</a></dd>
-                        <dd><a lay-href="{:url('payment/orders')}">订单管理</a></dd>
-                        <dd><a lay-href="{:url('payment/finance')}">财务管理</a></dd>
-                        <dd><a lay-href="{:url('payment/charge')}">代充值</a></dd>
+                        <dd><a lay-href="{:adminurl('payment/index')}">支付设置</a></dd>
+                        <dd><a lay-href="{:adminurl('payment/orders')}">订单管理</a></dd>
+                        <dd><a lay-href="{:adminurl('payment/finance')}">财务管理</a></dd>
+                        <dd><a lay-href="{:adminurl('payment/charge')}">代充值</a></dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item">
                     <a><i class="layui-icon layui-icon-component"></i>&emsp;<cite>卡密管理</cite></a>
                     <dl class="layui-nav-child">
-                        <dd><a lay-href="{:url('vipcodes/index')}">VIP码管理</a></dd>
-                        <dd><a lay-href="{:url('chargecodes/index')}">充值码管理</a></dd>
+                        <dd><a lay-href="{:adminurl('vipcodes/index')}">VIP码管理</a></dd>
+                        <dd><a lay-href="{:adminurl('chargecodes/index')}">充值码管理</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a><i class="layui-icon layui-icon-component"></i>&emsp;<cite>友情链接</cite></a>
+                    <dl class="layui-nav-child">
+                        <dd><a lay-href="{:adminurl('friendshiplinks/index')}">友链管理</a></dd>
+                        <dd><a lay-href="{:adminurl('friendshiplinks/didi')}">滴滴友链</a></dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item">
                     <a><i class="layui-icon layui-icon-component"></i>&emsp;<cite>其他管理</cite></a>
                     <dl class="layui-nav-child">
-                        <dd><a lay-href="{:url('index/sys')}">系统设置</a></dd>
-                        <dd><a lay-href="{:url('sms/smsbao')}">短信设置</a></dd>
-                        <dd><a lay-href="{:url('index/seo')}">SEO设置</a></dd>
-                        <dd><a lay-href="{:url('index/routeconfig')}">路由设置</a></dd>
-                        <dd><a lay-href="{:url('sitemap/index')}">网站地图</a></dd>
-                        <dd><a lay-href="{:url('index/upgrade')}">检查更新</a></dd>
+                        <dd><a lay-href="{:adminurl('index/sys')}">系统设置</a></dd>
+                        <dd><a lay-href="{:adminurl('sms/smsbao')}">短信设置</a></dd>
+                        <dd><a lay-href="{:adminurl('index/seo')}">SEO设置</a></dd>
+                        <dd><a lay-href="{:adminurl('index/routeconfig')}">路由设置</a></dd>
+                        <dd><a lay-href="{:adminurl('sitemap/index')}">网站地图</a></dd>
+                        <dd><a lay-href="{:adminurl('index/upgrade')}">检查更新</a></dd>
                     </dl>
                 </li>
             </ul>
@@ -135,12 +141,12 @@
 
         // 默认加载主页
         index.loadHome({
-            menuPath: '{:url("index/info")}',
+            menuPath: '{:adminurl("index/info")}',
             menuName: '<i class="layui-icon layui-icon-home"></i>'
         });
 
         admin.events.clearcache = function(){
-            admin.req('clearCache', function(res){
+            admin.req('{:adminurl("index/clearCache")}', function(res){
                 layer.msg(res.msg);
             }, 'get');
         }

@@ -28,7 +28,7 @@
                     <span class="block">状态：<span>{$book.end == 2 ? '连载中':'已完结'}</span></span>
                     <span class="block ticai">地区：<a href="/{$booklist_act}/?area={$book.area_id}" target="_blank">{$book.area.area_name}</a></span>
                     <span class="block">更新时间：{$book.last_time|date='Y-m-d'}</span>
-                    <span class="block">点击：{$clicks}</span>
+                    <span class="block">点击：{$book.hits}</span>
                 </p>
                 <p class="tip" style="margin-top:10px;">
                     <span class="block">标签：
@@ -54,7 +54,7 @@
                     {/if}
 
                     {if $book.is_copyright == 1}
-                        <a href="{$book.src_url}" class="btn-2">正版阅读</a>
+                        <a href="/{$book.src_url}" class="btn-2">正版阅读</a>
                     {else /}
                         {if $start == -1}
                         <a href="#" class="btn-2">暂无章节</a>
@@ -96,7 +96,7 @@
             <div class="sub-manga">
                 <h2 class="top">最新更新</h2>
                 <ul class="list">
-                    {volist name="updates" id="vo"}
+                    {raccoon:books name="books" order="last_time desc" limit="6"}
                     <li>
                         <div class="cover">
                             <a href="/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}">
@@ -111,14 +111,15 @@
                             <p class="tip"><span>评分:</span><span class="mh-star-line star-5"></span></p>
                         </div>
                     </li>
-                    {/volist}
+                    {/raccoon:books}
                 </ul>
             </div>
 
             <div class="sub-manga">
                 <h2 class="top">相关推荐</h2>
                 <ul class="list">
-                    {volist name="recommand" id="vo"}
+                    {raccoon:books name="books" where="tags like '%book->tags%' or area_id='$book->area_id'"
+                        order="last_time desc" limit="6"}
                     <li>
                         <div class="cover">
                             <a href="/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}">
@@ -133,7 +134,7 @@
                             <p class="tip"><span>评分:</span><span class="mh-star-line star-5"></span></p>
                         </div>
                     </li>
-                    {/volist}
+                    {/raccoon:books}
                 </ul>
             </div>
         </div>
@@ -143,17 +144,17 @@
                 <div class="detail-list-title" id="detail-list-title">
                     <a href="javascript:void(0);" onclick="sortBtnClick();" mode="0" class="order desc inverted">倒序</a>
                 </div>
-                {if $book.is_copyright == 2}
+                {if $book.is_copyright == 0}
                 <div id="chapterlistload">
                     <ul class="view-win-list detail-list-select" id="detail-list-select">
-                        {volist name="book.chapters" id="vo"}
+                        {raccoon:chapters name="chapters" where="book_id='$book->id'" order="chapter_order asc"}
                         <li>
                             <a href="/{$chapter_ctrl}/{$vo.id}" target="_blank">{$vo.chapter_name}</a>
                             {if $vo.chapter_order >= $start_pay }
                             <img class="detail-list-3-info-right" src="/static/images/center-main-list-logo-4.png">
                             {/if}
                         </li>
-                        {/volist}
+                        {/raccoon:chapters}
                     </ul>
                     <script>
                         (function(){
@@ -188,7 +189,7 @@
                 </a>
             </div>
             <ul class="list">
-                {volist name="comments" id="vo"}
+                {raccoon:comments name="comments" where="book_id='$book->id'" order="id desc"}
                 <li>
                     <ul class="postlist">
                         <li class="dashed">
@@ -210,7 +211,7 @@
                         </li>
                     </ul>
                 </li>
-                {/volist}
+                {/raccoon:comments}
                 <li>
                     <div class="cover">
                         <img src="/static/images/mrtx.gif">
@@ -234,5 +235,35 @@
         </div>
     </div>
 </div>
-<script src="/static/js/comment.js"></script>
+<script>
+    function subcomment() {
+        var uid = $('#session_uid').val();
+        var comment = $('#content').val();
+        var book_id = $('#book_id').val();
+        if (uid === '-1') {
+            ShowDialog('请先登录');
+        } else if (comment.length <= 0) {
+            ShowDialog('请勿提交空评论');
+        } else {
+            $.post({
+                url: '/commentadd',
+                data: {comment: comment, book_id: book_id},
+                success(res) {
+                    if (res.err === 1) {
+                        ShowDialog(res.msg);
+                    } else {
+                        ShowDialog(res.msg);
+                        setTimeout(function () {
+                            location.reload();
+                        },1000)
+                    }
+                },
+                error(res) {
+                    ShowDialog('表单提交出错');
+                    return false;
+                }
+            })
+        }
+    }
+</script>
 {/block}

@@ -48,27 +48,27 @@
                 </div>
                 <div class="mt20">
                     <ul class="mh-list col7">
-                        {volist name="favors" id="vo"}
+                        {raccoon:favors name="favors" where="user_id='$xwx_user_id'"}
                         <li>
                             <div class="mh-item">
-                                <a href="/{$book_ctrl}/{$vo.param}" class="mh-cover" style="background-image: url({$vo.cover_url})">
-                                    <span class="tag  mh-tag">{$vo.end?"完结":"连载"}</span>
-                                    <span class="read-section">{$vo.last_time|date='Y-m-d'}更新</span>
-                                    <span mid="{$vo.id}" class="edit-state">
+                                <a href="/{$book_ctrl}/{$vo.book.param}" class="mh-cover" style="background-image: url({$vo.book.cover_url})">
+                                    <span class="tag  mh-tag">{$vo.book.end?"完结":"连载"}</span>
+                                    <span class="read-section">{$vo.book.last_time|date='Y-m-d'}更新</span>
+                                    <span mid="{$vo.book.id}" class="edit-state">
                                         <i class="icon icon-ok"></i>
                                     </span>
                                 </a>
                                 <div class="mh-item-detali">
                                     <h2 class="title" style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
-                                        <a href="/{$book_ctrl}/{$vo.param}">{$vo.book_name}</a>
+                                        <a href="/{$book_ctrl}/{$vo.book.param}">{$vo.book.book_name}</a>
                                     </h2>
                                     <p class="chapter" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">
-                                        <a href="/{$book_ctrl}/{$vo.param}" target="_blank">{$vo.summary|subtext=12}</a>
+                                        <a href="/{$book_ctrl}/{$vo.book.param}" target="_blank">{$vo.book.summary|subtext=12}</a>
                                     </p>
                                 </div>
                             </div>
                         </li>
-                        {/volist}
+                        {/raccoon:favors}
                     </ul>
                 </div>
             </div>
@@ -105,4 +105,60 @@
     </article>
     <input id="hidCount" type="hidden" value="0">
 </main>
+<script>
+    $(document).ready(function () {
+        // 选择
+        $('span.edit-state').click(function (ev) {
+            ev.stopPropagation();
+            ev.preventDefault();
+            var $item = $(this)
+            $item.hasClass('active') ? $item.removeClass('active') : $item.addClass('active')
+        });
+
+
+        // 显
+        $('.js_edit_booklist_btn').click(function (ev) {
+            ev.stopPropagation();
+            ev.preventDefault();
+            $(this).hide();
+            $('.box-booklist-edit-head').show();
+            $('span.edit-state').show();
+        })
+        // 隐
+        $('.js_esc_booklist_btn').click(function (ev) {
+            ev.stopPropagation();
+            ev.preventDefault();
+            $('.box-booklist-edit-head').hide();
+            $('.js_edit_booklist_btn').show();
+            $('span.edit-state').removeClass('active').hide();
+            $('.js_allsel_checkbox').prop('checked', false);
+        })
+
+        $("#book_del").click(function () {
+            var arr = $('span.edit-state.active');
+            if (arr.length > 0) {
+                $.ajax({
+                    url: '/delfavors',
+                    data: {ids: str},
+                    type: 'POST',
+                    dataType:'json',
+                    success:function(res){
+                        if (res.err === "0") {
+                            ShowDialog(res.msg);
+                        } else {
+                            ShowDialog(res.msg);
+                        }
+                    }
+                });
+
+            } else {
+                ShowDialog("请选择要删除的收藏或历史记录");
+            }
+            setTimeout(function () {
+                location.reload();
+            },2);
+        });
+    })
+
+</script>
 {/block}

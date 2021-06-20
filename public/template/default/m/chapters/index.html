@@ -33,17 +33,10 @@
         </div>
     </div>
 </div>
-<div style="background-color: black;color: white;padding: 15px;">
-    <p style="text-align: center;line-height: 40px;">前往微信或app阅读无删减版漫画</p>
-    <div style="text-align: center;">
-        <button style="background-color: #4CAF50;font-size: 16px;color: white;border: none;border-radius: 12px;width: 60%;" onclick="javascript:location.href='/static/assets/wx.html';">点击打开微信</button>
-        <button style="background-color: orangered;font-size: 16px;color: white;border: none;border-radius: 12px;width: 60%;margin-top: 5px;" onclick="javascript:location.href='http://normal.jjxs518.cn/?uid=0&cid=0050&sign=5081f00db2de0e3d&pid=jjmanhua2&noShare=true';">点击下载app</button>
-    </div>
-</div>
 <div class="view-main-1 readForm" id="cp_img">
-    {volist name="photos" id="vo"}
-    <img class="lazy" data-original="{$vo.img_url}" src="https://s1.ax1x.com/2018/12/27/FRm2Ks.jpg">
-    {/volist}
+    {raccoon:pagedphotos name="photos" pagesize="1" order="pic_order asc" where="chapter_id='$chapter->id'"}
+    <img class="lazy" data-original="{$vo.img_url}" src="https://p.pstatp.com/origin/ffa400036691f82c85e5">
+    {/raccoon:pagedphotos}
 </div>
 
 <ul class="view-bottom-bar">
@@ -55,27 +48,16 @@
 
     {if $page.last_page > 1}
     {if $page.current_page == 1}
-    <li style="width:25%;opacity: 0.6;">
-        <a class="view-bottom-bar-item">上一页</a>
-    </li>
+    <li style="width:25%;opacity: 0.6;"><a class="view-bottom-bar-item">上一页</a></li>
     {else/}
-    <li style="width:25%;">
-        <a class="view-bottom-bar-item" href="/{$chapter_ctrl}/{$chapter.id}?page={$page.current_page-1}">上一页</a>
-    </li>
+    <a class="view-bottom-bar-item" href="/{$chapter_ctrl}/{$chapter.id}/?page={$page.current_page-1}{$param}" title="上一页">上一页</a>
     {/if}
 
     {if $page.current_page == $page.last_page}
-    <li style="width:25%;opacity: 0.6;">
-        <a class="view-bottom-bar-item">下一页</a>
-    </li>
+    <li style="width:25%;opacity: 0.6;"><a class="view-bottom-bar-item">下一页</a></li>
     {else/}
-    <li style="width:25%;">
-        <a class="view-bottom-bar-item" href="/{$chapter_ctrl}/{$chapter.id}?page={$page.current_page+1}">下一页</a>
-    </li>
+    <a class="view-bottom-bar-item" href="/{$chapter_ctrl}/{$chapter.id}?page={$page.current_page+1}{$param}" title="下一页">下一页</a>
     {/if}
-    {else/}
-    <li style="width: 25%; visibility: hidden;"><a class="view-bottom-bar-item">占位用</a></li>
-    <li style="width: 25%; visibility: hidden;"><a class="view-bottom-bar-item">占位用</a></li>
     {/if}
 
     {if $next == "null"}
@@ -101,6 +83,7 @@
         <p class="view-fix-bottom-bar-title">上一章</p>
     </a>
     {/if}
+
 
     {if $next == "null"}
     <a class="view-fix-bottom-bar-item" style="opacity: 0.6;">

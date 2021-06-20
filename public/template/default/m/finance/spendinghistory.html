@@ -42,16 +42,53 @@
 <div class="selector-top" style="top: 46px;">
     <a class="selector-top-item" href="/chargehistory">充值记录</a>
     <a class="selector-top-item active" href="/spendinghistory">消费记录</a>
+    <a class="selector-top-item" href="/cashhistory">提现记录</a>
 </div>
 <div id="wrapper" style="touch-action: none;">
     <ul class="vip-record" style="transform: translate(0px, 0px) translateZ(0px);">
-        {volist name="spendings" id="vo"}
+        {raccoon:finances name="finances" id="cate"
+        where="`usage` in (2,3) and user_id='$xwx_user_id'"}
         <li class="gary">
             <p class="vip-record-title">{$vo.summary}</p>
             <p class="vip-record-tip">{$vo.create_time|date='Y-m-d'}</p>
             <span class="vip-record-right">{$vo.money}元</span>
         </li>
-        {/volist}
+        {/raccoon:finances}
+    </ul>
+    <ul class="pagination">
+        {if $page.last_page > 1}
+        {if $page.current_page == 1}
+        <li class="paginate_button page-item">
+            <a href="javascript:;" class="page-link">«</a>
+        </li>
+        {else/}
+        <li class="paginate_button page-item">
+            <a href="/{$booklist_act}?page={$page.current_page-1}{$param}" class="page-link">«</a>
+        </li>
+        {/if}
+
+        {for start="1" end="$page.last_page + 1"}
+        {if $i == $page.current_page }
+        <li class="paginate_button page-item active">
+            <a href="/{$booklist_act}?page={$i}{$param}"  class="page-link">{$i}</a>
+        </li>
+        {elseif ($i > $page.current_page - 4 && $i < $page.current_page + 5)/}
+        <li class="paginate_button page-item">
+            <a href="/{$booklist_act}?page={$i}{$param}"  class="page-link">{$i}</a>
+        </li>
+        {/if}
+        {/for}
+
+        {if $page.current_page == $page.last_page}
+        <li class="paginate_button page-item">
+            <a href="javascript:;" class="page-link">»</a>
+        </li>
+        {else/}
+        <li class="paginate_button page-item">
+            <a href="/{$booklist_act}?page={$page.current_page+1}{$param}" class="page-link">»</a>
+        </li>
+        {/if}
+        {/if}
     </ul>
 </div>
 

@@ -15,9 +15,6 @@ use Closure;
 use SplFileObject;
 use Generator;
 
-/**
- * Generator syntax(yield) Dict File loader.
- */
 class GeneratorFileDictLoader implements DictLoaderInterface
 {
     /**

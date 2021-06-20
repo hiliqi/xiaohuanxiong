@@ -95,7 +95,7 @@
                 layer.confirm('确认要删除吗？', function (index) {
                     $.ajax({
                         type: 'POST',
-                        url: "{:url('delete')}",
+                        url: "{:adminurl('delete')}",
                         data: {id: data.id},
                         dataType: 'json',
                         success: function (res) {
@@ -121,7 +121,7 @@
         /* 渲染表格 */
         var insTb = table.render({
             elem: '#tbBasicTable',
-            url: "{:url('payment/flist')}",
+            url: "{:adminurl('payment/flist')}",
             page: true,
             cellMinWidth: 100,
             cols: [[
@@ -155,7 +155,7 @@
             var usage = $('#usage').val()
             table.render({
                 elem: '#tbBasicTable',
-                url: '{:url("flist")}?usage=' + usage + '&user_id=' + user_id,
+                url: '{:adminurl("flist")}?usage=' + usage + '&user_id=' + user_id,
                 page: true,
                 cellMinWidth: 100,
                 cols: [[

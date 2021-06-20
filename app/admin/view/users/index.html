@@ -46,9 +46,6 @@
                         <button class="layui-btn icon-btn" lay-filter="tbBasicTbSearch" lay-submit>
                             <i class="layui-icon">&#xe615;</i>搜索
                         </button>
-                        <button class="layui-btn icon-btn" type="button" id="create">
-                            <i class="layui-icon"></i>新增
-                        </button>
                     </div>
                 </div>
             </form>
@@ -82,23 +79,13 @@
         var dropdown = layui.dropdown;
         var form = layui.form
 
-        $('#create').click(function () {
-            index.openTab({
-                title: '新建用户',
-                url: "{:url('users/create')}",
-                end: function () {
-                    insTb.reload();
-                }
-            })
-        })
-
         /* 表格工具条点击事件 */
         table.on('tool(tbBasicTable)', function (obj) {
             var data = obj.data; // 获得当前行数据
             if (obj.event === 'edit') { // 修改
                 parent.layui.index.openTab({
                     title: '编辑用户',
-                    url: "{:url('users/edit')}?id=" + data.id,
+                    url: "{:adminurl('users/edit')}?id=" + data.id,
                     end: function () {
                         insTb.reload();
                     }
@@ -107,7 +94,7 @@
                 layer.confirm('确认要删除吗？', function (index) {
                     $.ajax({
                         type: 'POST',
-                        url: "{:url('delete')}",
+                        url: "{:adminurl('delete')}",
                         data: {id: data.id},
                         dataType: 'json',
                         success: function (res) {
@@ -129,7 +116,7 @@
             } else if (obj.event === 'disable') {
                 $.ajax({
                     type: 'POST',
-                    url: "{:url('disable')}",
+                    url: "{:adminurl('disable')}",
                     data: {id: data.id},
                     dataType: 'json',
                     success: function (res) {
@@ -154,7 +141,7 @@
         /* 渲染表格 */
         var insTb = table.render({
             elem: '#tbBasicTable',
-            url: "{:url('users/list')}?status=1",
+            url: "{:adminurl('users/list')}?status=1",
             page: true,
             cellMinWidth: 100,
             cols: [[
@@ -193,7 +180,7 @@
             var username = $('#username').val()
             table.render({
                 elem: '#tbBasicTable',
-                url: '{:url("search")}?username=' + username,
+                url: '{:adminurl("search")}?username=' + username,
                 page: true,
                 cellMinWidth: 100,
                 cols: [[

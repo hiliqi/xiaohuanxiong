@@ -5,29 +5,6 @@
     <title>{$chapter.book.book_name}-{$chapter.chapter_name}免费阅读-{$site_name}</title>
     <meta name="description" itemprop="description" content="当前阅读的是{$chapter.book.book_name}的{$chapter.chapter_name}">
     <link rel="shortcut icon" href="/favicon.ico">
-    <!---识别手机或电脑的js开始--->
-    <script>
-        function is_mobile() {
-            var regex_match = /(nokia|iphone|android|motorola|^mot-|softbank|foma|docomo|kddi|up.browser|up.link|htc|dopod|blazer|netfront|helio|hosin|huawei|novarra|CoolPad|webos|techfaith|palmsource|blackberry|alcatel|amoi|ktouch|nexian|samsung|^sam-|s[cg]h|^lge|ericsson|philips|sagem|wellcom|bunjalloo|maui|symbian|smartphone|midp|wap|phone|windows ce|iemobile|^spice|^bird|^zte-|longcos|pantech|gionee|^sie-|portalmmm|jigs browser|hiptop|^benq|haier|^lct|operas*mobi|opera*mini|320x320|240x320|176x220)/i;
-            var u = navigator.userAgent;
-            if (null == u) {
-                return true;
-            }
-            var result = regex_match.exec(u);
-
-            if (null == result) {
-                return false
-            } else {
-                return true
-            }
-        }
-        if (is_mobile()) {
-            var pathname = window.location.pathname;
-            var url = window.location.search; //获取url中"?"符后的字串
-            window.location.href= '{$mobile_url}' + pathname + url;
-        }
-    </script>
-    <!---识别手机或电脑的js结束--->
     <link rel="stylesheet" type="text/css" href="/static/css/pc_read.css">
     <link rel="stylesheet" type="text/css" href="/static/css/view.css">
 </head>
@@ -36,7 +13,7 @@
 <div class="header">
     <div class="row">
         <div class="crumbs">
-            <a href="/" title="{$site_name}">{$site_name}</a> &gt;
+            <a href="/pc" title="{$site_name}">{$site_name}</a> &gt;
             <a class="comic-name" href="/{$book_ctrl}/{$chapter.book_id}" title="{$chapter.book.book_name}">{$chapter.book.book_name}</a>
         </div>
         <h1 class="title">{$chapter.book.book_name} {$chapter.chapter_name}</h1>
@@ -75,7 +52,7 @@
             url: '/buychapter',
             data: {chapter_id: '{$chapter.id}'},
             success: function (res) {
-                if (res.err == 0) {
+                if (res.success == 1) {
                     ShowDialog(res.msg);
                     setTimeout(function () {
                         location.href = '/{$chapter_ctrl}/{$chapter.id}';

@@ -2,7 +2,7 @@
 // +----------------------------------------------------------------------
 // | ThinkPHP [ WE CAN DO IT JUST THINK ]
 // +----------------------------------------------------------------------
-// | Copyright (c) 2006~2019 http://thinkphp.cn All rights reserved.
+// | Copyright (c) 2006~2021 http://thinkphp.cn All rights reserved.
 // +----------------------------------------------------------------------
 // | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
 // +----------------------------------------------------------------------
@@ -867,6 +867,24 @@ class Request implements ArrayAccess
         }
 
         return $this->input($this->param, $name, $default, $filter);
+    }
+
+    /**
+     * 获取包含文件在内的请求参数
+     * @access public
+     * @param  string|array $name 变量名
+     * @param  string|array $filter 过滤方法
+     * @return mixed
+     */
+    public function all($name = '', $filter = '')
+    {
+        $data = array_merge($this->param(), $this->file());
+
+        if (is_array($name)) {
+            $data = $this->only($name, $data, $filter);
+        }
+
+        return $data;
     }
 
     /**

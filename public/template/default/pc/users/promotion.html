@@ -19,8 +19,8 @@
             <div class="box-body">
                 <div class="desc">
                     <p><span class="title">关于推广</span></p>
-                    <p>通过您的推广链接注册的会员自动成为您的下线, 同时您会获得<span class="color-main">{$reg_reward}元</span>的奖励</p>
-                    <p>下线会员任何一笔充值，您都有<span class="color-main">{$promotion_rate}%</span>的奖励</p>
+                    <p>通过您的推广链接注册的会员自动成为您的下线, 同时您会获得<span class="color-main">{$payments.reg_reward}元</span>的奖励</p>
+                    <p>下线会员任何一笔充值，您都有<span class="color-main">{$payments.promotional_rewards_rate}%</span>的奖励</p>
                 </div>
                 <section class="">
                     <div class="table-head">
@@ -39,19 +39,20 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                {volist name="rewards" id="vo"}
+                                {raccoon:finances name="finances" id="cate"
+                                where="`usage` in (4,5) and user_id='$xwx_user_id'"}
                                 <tr>
                                     <td>{$vo.create_time|date='Y-m-d'}</td>
                                     <td>{$vo.money}元</td>
                                 </tr>
-                                {/volist}
+                                {/raccoon:finances}
                                 </tbody>
                             </table>
                         </div>
                         <hr class="mt30">
                         <div style="min-height:25px;">
                             <span class="count-info">奖励总额：
-                                <span class="count">{$promotion_sum}元</span>
+                                <span class="count">{$sum}元</span>
                             </span>
                             <div class="page-pagination pull-right">
                                 <ul></ul>

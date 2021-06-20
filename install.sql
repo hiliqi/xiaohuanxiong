@@ -192,6 +192,10 @@ CREATE TABLE `xwx_book`
     `is_top`          tinyint(4)       NOT NULL DEFAULT 0 COMMENT '是否推荐',
     `src_url`         varchar(255)              DEFAULT NULL COMMENT '原地址',
     `is_copyright`    tinyint(4)       NOT NULL DEFAULT 2 COMMENT '是否开启版权',
+    `hits` int(10) unsigned DEFAULT '0' COMMENT '总人气',
+    `mhits` int(10) unsigned DEFAULT '0' COMMENT '月人气',
+    `whits` int(10) unsigned DEFAULT '0' COMMENT '周人气',
+    `dhits` int(10) unsigned DEFAULT '0' COMMENT '日人气',
     PRIMARY KEY (`id`) USING BTREE,
     KEY `tags` (`tags`) USING BTREE,
     KEY `end` (`end`) USING BTREE,
@@ -200,6 +204,10 @@ CREATE TABLE `xwx_book`
     KEY `area_id` (`area_id`) USING BTREE,
     KEY `is_copyright` (`is_copyright`) USING BTREE,
     KEY `book_name` (`book_name`) USING BTREE,
+    KEY               `hits`(`hits`) USING BTREE,
+    KEY               `mhits`(`mhits`) USING BTREE,
+    KEY               `whits`(`whits`) USING BTREE,
+    KEY               `dhits`(`dhits`) USING BTREE,
     unique KEY `unique_id` (`unique_id`)
 ) ENGINE = InnoDB
   ROW_FORMAT = DYNAMIC;

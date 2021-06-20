@@ -76,7 +76,7 @@
         /* 监听表单提交 */
         form.on('submit(formBasSubmit)', function (data) {
             $.ajax({
-                url: "{:url('create')}",
+                url: "{:adminurl('create')}",
                 type: 'post',
                 data: $('form').serialize(),
                 success(res) {
@@ -91,7 +91,7 @@
             elem: '#file-btn-upload',
             accept: 'images',
             exts: 'jpg|png|jpeg',
-            url: '{:url("upload")}',
+            url: '{:adminurl("upload")}',
             before: function (obj) {
                 obj.preview(function (index, file, result) {
                     $('#pic').attr('src', result); //图片链接（base64）

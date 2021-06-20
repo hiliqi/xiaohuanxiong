@@ -165,7 +165,7 @@
             <i class="layui-icon layui-icon-auz"></i>
             <input class="layui-input" name="captcha" placeholder="请输入验证码" autocomplete="off"
                    lay-verType="tips" lay-verify="required" required/>
-            <img class="login-captcha" src="{:url('login/captcha')}"/>
+            <img class="login-captcha" src="{:adminurl('login/captcha')}"/>
         </div>
 
         <div class="layui-form-item">
@@ -191,14 +191,14 @@
         form.on('submit(loginSubmit)', function (obj) {
             $.ajax({
                 type: 'POST',
-                url: "{:url('login/login')}",
+                url: "{:adminurl('login/login')}",
                 data: $('#loginSubmit').serialize(),
                 dataType: 'json',
                 success: function (res) {
                     if (res.err == 0){ //登录成功
                         layer.msg(res.msg, {icon: 1, time: 1000});
                         setTimeout(function () {
-                            location.href = "{:url('index/index')}";
+                            location.href = "{:adminurl('index/index')}";
                         }, 1000);
                     } else {
                         layer.msg(res.msg, {icon: 2, time: 1000});
@@ -211,7 +211,7 @@
             return false;
         });
 
-        var captchaUrl = '{:url("login/captcha")}';
+        var captchaUrl = '{:adminurl("login/captcha")}';
         $('img.login-captcha').click(function () {
             this.src = captchaUrl + '?t=' + (new Date).getTime();
         }).trigger('click');
