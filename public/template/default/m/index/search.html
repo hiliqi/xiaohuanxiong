@@ -26,12 +26,11 @@
 </div>
 
 <ul class="book-list">
-    {raccoon:books name="books" order="last_time desc" limit="20"
-    where="book_name like '%$keyword%'"}
+    {volist name="$books" id="vo"}
     <li>
         <div class="book-list-cover">
             <a href="/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}">
-                <img class="book-list-cover-img lazy" data-original="{$vo.cover_url}" src="https://p.pstatp.com/origin/ffa400036691f82c85e5" alt="{$vo.book_name}">
+                <img class="book-list-cover-img lazy" data-original="{$vo.cover_url}" src="https://s1.ax1x.com/2018/12/13/FN8WLQ.jpg" alt="{$vo.book_name}">
             </a>
         </div>
         <div class="book-list-info">
@@ -51,7 +50,7 @@
             </p>
         </div>
     </li>
-    {/raccoon:books}
+    {/volist}
 </ul>
 <script>
     function doSearch() {

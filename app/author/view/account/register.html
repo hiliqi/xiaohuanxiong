@@ -178,7 +178,7 @@
             <img class="login-captcha" src=""/>
         </div>
         <div class="layui-form-item">
-            <a href="{:adminurl('account/login')}" class="layui-link">返回登录</a>
+            <a href="{:url('account/login')}" class="layui-link">返回登录</a>
         </div>
         <div class="layui-form-item" style="margin-bottom: 20px;">
             <button class="layui-btn layui-btn-fluid" lay-filter="loginSubmit" lay-submit>注册</button>
@@ -198,14 +198,14 @@
         form.on('submit(loginSubmit)', function (obj) {
             $.ajax({
                 type: 'POST',
-                url: "{:adminurl('account/register')}",
+                url: "{:url('account/register')}",
                 data: $('#loginSubmit').serialize(),
                 dataType: 'json',
                 success: function (res) {
                     if (res.err == 0){ //注册成功
                         layer.msg(res.msg, {icon: 1, time: 1000});
                         setTimeout(function () {
-                            location.href = "{:adminurl('account/login')}";
+                            location.href = "{:url('account/login')}";
                         }, 1000);
                     } else {
                         layer.msg(res.msg, {icon: 2, time: 1000});
@@ -219,7 +219,7 @@
         });
 
         /* 图形验证码 */
-        var captchaUrl = '{:adminurl("account/captcha")}';
+        var captchaUrl = '{:url("account/captcha")}';
         $('img.login-captcha').click(function () {
             this.src = captchaUrl + '?t=' + (new Date).getTime();
         }).trigger('click');

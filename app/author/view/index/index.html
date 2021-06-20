@@ -51,9 +51,9 @@
                     <cite>{$username}</cite>
                 </a>
                 <dl class="layui-nav-child">
-                    <dd lay-unselect><a href="{:adminurl('index/index')}">个人中心</a></dd>
+                    <dd lay-unselect><a href="{:url('index/index')}">个人中心</a></dd>
                     <hr>
-                    <dd lay-unselect><a ew-event="logout" data-url="{:adminurl('account/logout')}">退出</a></dd>
+                    <dd lay-unselect><a ew-event="logout" data-url="{:url('account/logout')}">退出</a></dd>
                 </dl>
             </li>
             <li class="layui-nav-item" lay-unselect>
@@ -69,7 +69,7 @@
                 <li class="layui-nav-item">
                     <a><i class="layui-icon layui-icon-component"></i>&emsp;<cite>作品管理</cite></a>
                     <dl class="layui-nav-child">
-                        <dd><a lay-href="{:adminurl('books/list')}">作品列表</a></dd>
+                        <dd><a lay-href="{:url('books/list')}">作品列表</a></dd>
                     </dl>
                 </li>
             </ul>
@@ -102,7 +102,7 @@
 
         // 默认加载主页
         index.loadHome({
-            menuPath: "{:adminurl('index/info')}",
+            menuPath: "{:url('index/info')}",
             menuName: '<i class="layui-icon layui-icon-home"></i>'
         });
 

@@ -204,7 +204,7 @@ class Client implements ClientInterface, \Psr\Http\Client\ClientInterface
     {
         return $option === null
             ? $this->config
-            : ($this->config[$option] ?? null);
+            : (isset($this->config[$option]) ? $this->config[$option] : null);
     }
 
     private function buildUri(UriInterface $uri, array $config): UriInterface

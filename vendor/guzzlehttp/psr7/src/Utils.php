@@ -75,7 +75,6 @@ final class Utils
      * @param StreamInterface $stream Stream to read
      * @param int             $maxLen Maximum number of bytes to read. Pass -1
      *                                to read the entire stream.
-     *
      * @return string
      *
      * @throws \RuntimeException on error.
@@ -182,7 +181,7 @@ final class Utils
                     $standardPorts = ['http' => 80, 'https' => 443];
                     $scheme = $changes['uri']->getScheme();
                     if (isset($standardPorts[$scheme]) && $port != $standardPorts[$scheme]) {
-                        $changes['set_headers']['Host'] .= ':' . $port;
+                        $changes['set_headers']['Host'] .= ':'.$port;
                     }
                 }
             }
@@ -203,7 +202,7 @@ final class Utils
         }
 
         if ($request instanceof ServerRequestInterface) {
-            $new = (new ServerRequest(
+            return (new ServerRequest(
                 isset($changes['method']) ? $changes['method'] : $request->getMethod(),
                 $uri,
                 $headers,
@@ -217,12 +216,6 @@ final class Utils
             ->withQueryParams($request->getQueryParams())
             ->withCookieParams($request->getCookieParams())
             ->withUploadedFiles($request->getUploadedFiles());
-        
-            foreach ($request->getAttributes() as $key => $value) {
-                $new = $new->withAttribute($key, $value);
-            }
-
-            return $new;
         }
 
         return new Request(
@@ -293,7 +286,7 @@ final class Utils
      *   number of requested bytes are available. Any additional bytes will be
      *   buffered and used in subsequent reads.
      *
-     * @param resource|string|int|float|bool|StreamInterface|callable|\Iterator|null $resource Entity body data
+     * @param resource|string|null|int|float|bool|StreamInterface|callable|\Iterator $resource Entity body data
      * @param array                                                                  $options  Additional options
      *
      * @return StreamInterface
@@ -303,7 +296,7 @@ final class Utils
     public static function streamFor($resource = '', array $options = [])
     {
         if (is_scalar($resource)) {
-            $stream = self::tryFopen('php://temp', 'r+');
+            $stream = fopen('php://temp', 'r+');
             if ($resource !== '') {
                 fwrite($stream, $resource);
                 fseek($stream, 0);
@@ -313,16 +306,6 @@ final class Utils
 
         switch (gettype($resource)) {
             case 'resource':
-                /*
-                 * The 'php://input' is a special stream with quirks and inconsistencies.
-                 * We avoid using that stream by reading it into php://temp
-                 */
-                if (\stream_get_meta_data($resource)['uri'] === 'php://input') {
-                    $stream = self::tryFopen('php://temp', 'w+');
-                    fwrite($stream, stream_get_contents($resource));
-                    fseek($stream, 0);
-                    $resource = $stream;
-                }
                 return new Stream($resource, $options);
             case 'object':
                 if ($resource instanceof StreamInterface) {
@@ -341,7 +324,7 @@ final class Utils
                 }
                 break;
             case 'NULL':
-                return new Stream(self::tryFopen('php://temp', 'r+'), $options);
+                return new Stream(fopen('php://temp', 'r+'), $options);
         }
 
         if (is_callable($resource)) {
@@ -369,26 +352,14 @@ final class Utils
         $ex = null;
         set_error_handler(function () use ($filename, $mode, &$ex) {
             $ex = new \RuntimeException(sprintf(
-                'Unable to open "%s" using mode "%s": %s',
+                'Unable to open %s using mode %s: %s',
                 $filename,
                 $mode,
                 func_get_args()[1]
             ));
-
-            return true;
         });
 
-        try {
-            $handle = fopen($filename, $mode);
-        } catch (\Throwable $e) {
-            $ex = new \RuntimeException(sprintf(
-                'Unable to open "%s" using mode "%s": %s',
-                $filename,
-                $mode,
-                $e->getMessage()
-            ), 0, $e);
-        }
-
+        $handle = fopen($filename, $mode);
         restore_error_handler();
 
         if ($ex) {

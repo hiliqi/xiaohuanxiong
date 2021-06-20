@@ -4,10 +4,9 @@ namespace GuzzleHttp\Psr7;
 
 use Psr\Http\Message\StreamInterface;
 
+
 /**
- * Decorator used to return only a subset of a stream.
- *
- * @final
+ * Decorator used to return only a subset of a stream
  */
 class LimitStream implements StreamInterface
 {

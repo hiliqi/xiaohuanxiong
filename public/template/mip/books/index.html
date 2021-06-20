@@ -175,7 +175,7 @@
                 {if $book.is_copyright == 1}
                     <a href="{$book.src_url}">
                 {else /}
-                    <a href="{$url}/{$chapter_ctrl}/{$start}">
+                    <a href="{$mobile_url}/{$chapter_ctrl}/{$start}">
                 {/if}
                     <span id="readInfo"></span>
                     <mip-img layout="container" id="readBtnImg" src="/template/mip/images/detail_btn_1_n.png" alt="阅读"
@@ -210,7 +210,7 @@
                 <ul class="am-avg-sm-4 am-thumbnails list">
                     {volist name="book.chapters" id="vo"}
                     <li>
-                        <a href="{$url}/{$chapter_ctrl}/{$vo.id}" class="d-nowrap">
+                        <a href="{$mobile_url}/{$chapter_ctrl}/{$vo.id}" class="d-nowrap">
                             {$vo.chapter_name}
                             {if $vo.chapter_order >= $start_pay }
                             <img class="detail-list-3-info-right" src="/static/images/center-main-list-logo-4.png">
@@ -233,14 +233,14 @@
         <ul class="am-avg-sm-5 am-thumbnails list f_list pagelistul">
             {volist name="recommand" id="vo"}
             <li>
-                <a data-type="mip" href="{$url}/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}">
+                <a data-type="mip" href="{$mobile_url}/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}">
                     <div class="container">
                         <mip-img layout="fill" class="halfImg mip-element mip-layout-fill mip-layout-size-defined mip-img-loaded"
                                  src="{$vo.cover_url}" alt="{$vo.book_name}" mip-firstscreen-element="">
                         </mip-img>
                     </div>
                 </a>
-                <p><a data-type="mip" href="{$url}/{$book_ctrl}/{$vo.param}" title="{$vo.cover_url}">{$vo.book_name}</a></p>
+                <p><a data-type="mip" href="{$mobile_url}/{$book_ctrl}/{$vo.param}" title="{$vo.cover_url}">{$vo.book_name}</a></p>
             </li>
             {/volist}
         </ul>

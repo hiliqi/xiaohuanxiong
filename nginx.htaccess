@@ -1,4 +1,5 @@
 if (!-e $request_filename) {  
+      rewrite ^/book/(\d+)$ /index.php?s=/books/index/id/$1 last;  
       rewrite  ^(.*)$  /index.php?s=/$1  last;  
       break;  
 	}  

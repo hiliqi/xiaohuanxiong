@@ -47,7 +47,7 @@
         /* 监听表单提交 */
         form.on('submit(formBasSubmit)', function (data) {
             $.ajax({
-                url:"{:adminurl('create')}",
+                url:"{:url('create')}",
                 type:'post',
                 data:$('form').serialize(),
                 success(res) {

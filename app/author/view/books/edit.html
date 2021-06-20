@@ -131,7 +131,7 @@
             elem: '#file-btn-upload',
             accept: 'images',
             exts: 'jpg|png|jpeg',
-            url: '{:adminurl("upload")}',
+            url: '{:url("upload")}',
             before: function (obj) {
                 obj.preview(function (index, file, result) {
                     $('#pic').attr('src', result); //图片链接（base64）
@@ -155,7 +155,7 @@
         /* 监听表单提交 */
         form.on('submit(formBasSubmit)', function (data) {
             $.ajax({
-                url: "{:adminurl('books/edit')}",
+                url: "{:url('books/edit')}",
                 type: 'post',
                 data: $('form').serialize(),
                 success(res) {

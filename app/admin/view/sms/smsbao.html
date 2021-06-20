@@ -56,7 +56,7 @@
         /* 监听表单提交 */
         form.on('submit(formBasSubmit)', function (data) {
             $.ajax({
-                url:"{:adminurl('smsbao')}",
+                url:"{:url('smsbao')}",
                 type:'post',
                 data:$('form').serialize(),
                 success(res) {

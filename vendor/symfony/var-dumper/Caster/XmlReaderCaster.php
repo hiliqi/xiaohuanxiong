@@ -21,7 +21,7 @@ use Symfony\Component\VarDumper\Cloner\Stub;
  */
 class XmlReaderCaster
 {
-    private const NODE_TYPES = [
+    private static $nodeTypes = [
         \XMLReader::NONE => 'NONE',
         \XMLReader::ELEMENT => 'ELEMENT',
         \XMLReader::ATTRIBUTE => 'ATTRIBUTE',
@@ -48,7 +48,7 @@ class XmlReaderCaster
         $info = [
             'localName' => $reader->localName,
             'prefix' => $reader->prefix,
-            'nodeType' => new ConstStub(self::NODE_TYPES[$reader->nodeType], $reader->nodeType),
+            'nodeType' => new ConstStub(self::$nodeTypes[$reader->nodeType], $reader->nodeType),
             'depth' => $reader->depth,
             'isDefault' => $reader->isDefault,
             'isEmptyElement' => \XMLReader::NONE === $reader->nodeType ? null : $reader->isEmptyElement,

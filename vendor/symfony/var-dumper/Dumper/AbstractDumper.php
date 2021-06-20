@@ -70,7 +70,7 @@ abstract class AbstractDumper implements DataDumperInterface, DumperInterface
             $this->lineDumper = $output;
         } else {
             if (\is_string($output)) {
-                $output = fopen($output, 'w');
+                $output = fopen($output, 'wb');
             }
             $this->outputStream = $output;
             $this->lineDumper = [$this, 'echoLine'];
@@ -130,7 +130,7 @@ abstract class AbstractDumper implements DataDumperInterface, DumperInterface
         }
 
         if ($returnDump = true === $output) {
-            $output = fopen('php://memory', 'r+');
+            $output = fopen('php://memory', 'r+b');
         }
         if ($output) {
             $prevOutput = $this->setOutput($output);

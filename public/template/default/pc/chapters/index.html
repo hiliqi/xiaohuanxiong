@@ -7,7 +7,29 @@
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="stylesheet" type="text/css" href="/static/css/pc_read.css">
     <link rel="stylesheet" type="text/css" href="/static/css/p.css">
+    <!---识别手机或电脑的js开始--->
+    <script>
+        function is_mobile() {
+            var regex_match = /(nokia|iphone|android|motorola|^mot-|softbank|foma|docomo|kddi|up.browser|up.link|htc|dopod|blazer|netfront|helio|hosin|huawei|novarra|CoolPad|webos|techfaith|palmsource|blackberry|alcatel|amoi|ktouch|nexian|samsung|^sam-|s[cg]h|^lge|ericsson|philips|sagem|wellcom|bunjalloo|maui|symbian|smartphone|midp|wap|phone|windows ce|iemobile|^spice|^bird|^zte-|longcos|pantech|gionee|^sie-|portalmmm|jigs browser|hiptop|^benq|haier|^lct|operas*mobi|opera*mini|320x320|240x320|176x220)/i;
+            var u = navigator.userAgent;
+            if (null == u) {
+                return true;
+            }
+            var result = regex_match.exec(u);
 
+            if (null == result) {
+                return false
+            } else {
+                return true
+            }
+        }
+        if (is_mobile()) {
+            var pathname = window.location.pathname;
+            var url = window.location.search; //获取url中"?"符后的字串
+            window.location.href= '{$mobile_url}' + pathname + url;
+        }
+    </script>
+    <!---识别手机或电脑的js结束--->
     <style type="text/css">
         .comicpage {
             position: relative;
@@ -43,6 +65,20 @@
             <a href="/{$chapter_ctrl}/{$prev.id}" class="block" title="{$prev.chapter_name}">上一章</a>
             {/if}
 
+            {if $page.last_page > 1}
+            {if $page.current_page == 1}
+            <a style="color: lightgrey">上一页</a>
+            {else/}
+            <a href="/{$chapter_ctrl}/{$chapter.id}?page={$page.current_page-1}" title="上一页">上一页</a>
+            {/if}
+
+            {if $page.current_page == $page.last_page}
+            <a style="color: lightgrey">下一页</a>
+            {else/}
+            <a href="/{$chapter_ctrl}/{$chapter.id}?page={$page.current_page+1}" title="下一页">下一页</a>
+            {/if}
+            {/if}
+
             {if $next == "null"}
             <a class="block" style="color: lightgrey">下一章</a>
             {else/}
@@ -51,11 +87,11 @@
         </div>
         <div class="comiclist">
             <div class="comicpage">
-                {raccoon:pagedphotos name="photos" pagesize="1" order="id asc" where="chapter_id='$chapter->id'"}
+                {volist name="photos" id="vo"}
                 <div>
-                    <img class="lazy" data-original="{$vo.img_url}" src="https://p.pstatp.com/origin/ffa400036691f82c85e5">
+                    <img class="lazy" data-original="{$vo.img_url}" src="https://s1.ax1x.com/2018/12/27/FRm2Ks.jpg">
                 </div>
-                {/raccoon:pagedphotos}
+                {/volist}
             </div>
         </div>
         <div class="fanye">
@@ -69,13 +105,13 @@
             {if $page.current_page == 1}
             <a style="color: lightgrey">上一页</a>
             {else/}
-            <a id="prevPage" href="/{$chapter_ctrl}/{$chapter.id}/?page={$page.current_page-1}{$param}" title="上一页">上一页</a>
+            <a href="/{$chapter_ctrl}/{$chapter.id}?page={$page.current_page-1}" title="上一页">上一页</a>
             {/if}
 
             {if $page.current_page == $page.last_page}
             <a style="color: lightgrey">下一页</a>
             {else/}
-            <a id="nextPage" href="/{$chapter_ctrl}/{$chapter.id}?page={$page.current_page+1}{$param}" title="下一页">下一页</a>
+            <a href="/{$chapter_ctrl}/{$chapter.id}?page={$page.current_page+1}" title="下一页">下一页</a>
             {/if}
             {/if}
 
@@ -105,19 +141,19 @@
 <div class="read-section sidebar-main" style="left: 0px;">
     <div class="sidebar-header">
         <i class="sidebar-header-l">章节</i>
-        <i class="sidebar-header-r">共{$chapter.book.chapter_count}话</i>
+        <i class="sidebar-header-r">共{$chapter_count}话</i>
     </div>
     <div class="sidebar-content">
         <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 357px;">
             <div class="mCustomScrollBox" style="overflow: hidden;width: auto;height: 519px;overflow-y: scroll;">
                 <ul>
-                    {raccoon:chapters name="chapters" where="book_id='$chapter->book_id'" order="chapter_order asc"}
+                    {volist name="chapters" id="vo"}
                     <li>
                         <a href="/{$chapter_ctrl}/{$vo.id}">
                             {$vo.chapter_name}
                         </a>
                     </li>
-                    {/raccoon:chapters}
+                    {/volist}
                 </ul>
             </div>
             <div class="slimScrollBar"

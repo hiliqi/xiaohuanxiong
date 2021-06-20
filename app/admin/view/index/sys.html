@@ -51,6 +51,30 @@
                 </div>
 
                 <div class="layui-form-item">
+                    <label class="layui-form-label layui-form-required">API域名:</label>
+                    <div class="layui-input-block">
+                        <input name="api_domain" value="{$api_domain}" class="layui-input"
+                               lay-verType="tips" lay-verify="required" required/>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label layui-form-required">APP域名:</label>
+                    <div class="layui-input-block">
+                        <input name="app_domain" value="{$app_domain}" class="layui-input"
+                               lay-verType="tips" lay-verify="required" required/>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label layui-form-required">网站名称:</label>
+                    <div class="layui-input-block">
+                        <input name="site_name" value="{$site_name}" class="layui-input"
+                               lay-verType="tips" lay-verify="required" required/>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
                     <label class="layui-form-label layui-form-required">Api秘钥:</label>
                     <div class="layui-input-block">
                         <input name="api_key" value="{$api_key}" class="layui-input"
@@ -70,6 +94,30 @@
                     <label class="layui-form-label layui-form-required">密码盐:</label>
                     <div class="layui-input-block">
                         <input name="salt" value="{$salt}" class="layui-input"
+                               lay-verType="tips" lay-verify="required" required/>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label layui-form-required">分页图片展示数:</label>
+                    <div class="layui-input-block">
+                        <input name="img_per_page" value="{$img_per_page}" class="layui-input"
+                               lay-verType="tips" lay-verify="required|number" required/>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label layui-form-required">更新域名:</label>
+                    <div class="layui-input-block">
+                        <input name="up_server" value="{$up_server}" class="layui-input"
+                               lay-verType="tips" lay-verify="required" required/>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label layui-form-required">更新配置域:</label>
+                    <div class="layui-input-block">
+                        <input name="json_server" value="{$json_server}" class="layui-input"
                                lay-verType="tips" lay-verify="required" required/>
                     </div>
                 </div>
@@ -120,7 +168,7 @@
         /* 监听表单提交 */
         form.on('submit(formBasSubmit)', function (data) {
             $.ajax({
-                url:"{:adminurl('update')}",
+                url:"{:url('update')}",
                 type:'post',
                 data:$('form').serialize(),
                 success(res) {

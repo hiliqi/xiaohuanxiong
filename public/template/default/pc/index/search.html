@@ -4,10 +4,10 @@
 {/block}
 {block name="content"}
 <section class="box container pb40 overflow-Show" style="min-height:400px;">
+    <div>共找<strong id="counts">{$count}</strong>个相关内容</div>
     <div class="box-body">
         <ul class="mh-list col7">
-            {raccoon:books name="books" order="last_time desc" limit="20"
-                where="book_name like '%$keyword%'"}
+            {volist name="books" id="vo"}
             <li>
                 <div class="mh-item">
                     <a href="/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}">
@@ -30,7 +30,7 @@
                     </div>
                 </div>
             </li>
-            {/raccoon:books}
+            {/volist}
         </ul>
     </div>
 </section>

@@ -30,7 +30,7 @@
         <section class="box container overflow-Show mb20" style="margin-top:30px;">
             <div class="box-body">
                 <ul class="mh-list col7">
-                    {raccoon:books name="books" order="hits desc" limit="14"}
+                    {volist name="books" id="vo"}
                     <li>
                         <div class="mh-item">
                             <a href="/{$book_ctrl}/{$vo.id}">
@@ -53,7 +53,7 @@
 
                         </div>
                     </li>
-                    {/raccoon:books}
+                    {/volist}
                 </ul>
             </div>
         </section>

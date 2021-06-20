@@ -147,7 +147,7 @@
 
         // 渲染列表
         function renderList() {
-            $.get("{:adminurl('list')}", {
+            $.get("{:url('list')}", {
                 chapter_id: {$chapter_id}
             }, function (res) {
                 layer.closeAll('loading');
@@ -234,7 +234,7 @@
             elem: '#file-btn-upload',
             accept: 'file',
             exts: 'jpg|png|jpeg',
-            url: '{:adminurl("upload")}?chapter_id=' + {$chapter_id},
+            url: '{:url("upload")}?chapter_id=' + {$chapter_id},
             multiple: true,
             before: function (obj) {
                 obj.preview(function (index, file, result) {

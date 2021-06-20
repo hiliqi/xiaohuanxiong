@@ -93,7 +93,7 @@
         $('#pay').click(function () {
             index.openTab({
                 title: '批量付费设置',
-                url: "{:adminurl('books/payment')}",
+                url: "{:url('books/payment')}",
                 end: function () {
                     insTb.reload();
                 }
@@ -106,7 +106,7 @@
              if (obj.event === 'disable') {
                 $.ajax({
                     type: 'POST',
-                    url: "{:adminurl('disable')}",
+                    url: "{:url('disable')}",
                     data: {id: data.id},
                     dataType: 'json',
                     success: function (res) {
@@ -128,7 +128,7 @@
                 layer.confirm('确认要删除吗？', function (index) {
                     $.ajax({
                         type: 'POST',
-                        url: "{:adminurl('delete')}",
+                        url: "{:url('delete')}",
                         data: {id: data.id},
                         dataType: 'json',
                         success: function (res) {
@@ -150,7 +150,7 @@
             } else if (obj.event === 'edit') {
                  parent.layui.index.openTab({
                      title: '编辑漫画',
-                     url: "{:adminurl('books/edit')}?id=" + data.id,
+                     url: "{:url('books/edit')}?id=" + data.id,
                      end: function () {
                          insTb.reload();
                      }
@@ -158,7 +158,7 @@
              } else if (obj.event === 'chapter') {
                  parent.layui.index.openTab({
                      title: '章节管理',
-                     url: "{:adminurl('chapters/index')}?book_id=" + data.id,
+                     url: "{:url('chapters/index')}?book_id=" + data.id,
                      end: function () {
                          insTb.reload();
                      }
@@ -170,7 +170,7 @@
         /* 渲染表格 */
         var insTb = table.render({
             elem: '#tbBasicTable',
-            url: "{:adminurl('books/list')}?status=1",
+            url: "{:url('books/list')}?status=1",
             page: true,
             cellMinWidth: 100,
             cols: [[
@@ -205,7 +205,7 @@
             var book_name = $('#book_name').val()
             table.render({
                 elem: '#tbBasicTable',
-                url: '{:adminurl("search")}?book_name=' + book_name,
+                url: '{:url("search")}?book_name=' + book_name,
                 page: true,
                 cellMinWidth: 100,
                 cols: [[

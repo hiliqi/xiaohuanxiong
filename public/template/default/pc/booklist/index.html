@@ -6,26 +6,26 @@
 <section class="container-fluid bg-gray">
     <div class="container">
         <figure class="cat-filter">
-            <dl class="cat-list" id="cates">
+            <dl class="cat-list" id="tags">
                 <dt>题 材:</dt>
-                <dd class="{$cate=='全部'?'active':''}" onclick="active(this)" data-val="全部"><a>全部</a></dd>
-                {raccoon:cates name="cates" order="id desc"}
-                <dd class="{$cate==$vo.tag_name?'active':''}" onclick="active(this)" data-val="{$vo.tag_name}"><a>{$vo.tag_name}</a></dd>
-                {/raccoon:cates}
+                <dd class="{$cate_selector=='全部'?'active':''}" onclick="active(this)" data-val="全部"><a>全部</a></dd>
+                {volist name="tags" id="vo"}
+                <dd class="{$cate_selector==$vo.tag_name?'active':''}" onclick="active(this)" data-val="{$vo.tag_name}"><a>{$vo.tag_name}</a></dd>
+                {/volist}
             </dl>
             <div class="field-wrap">
                 <dl class="field-list" id="areas">
                     <dt>地 区:</dt>
-                    <dd class="{$area==-1?'active':''}" onclick="active(this)" data-val="-1"><a>全部</a></dd>
-                    {raccoon:areas name="areas" order="id desc"}
-                    <dd class="{$area==$vo.id?'active':''}" onclick="active(this)" data-val="{$vo.id}"><a>{$vo.area_name}</a></dd>
-                    {/raccoon:areas}
+                    <dd class="{$area_selector=='全部'?'active':''}" onclick="active(this)" data-val="-1"><a>全部</a></dd>
+                    {volist name="areas" id="vo"}
+                    <dd class="{$area_selector==$vo.id?'active':''}" onclick="active(this)" data-val="{$vo.id}"><a>{$vo.area_name}</a></dd>
+                    {/volist}
                 </dl>
                 <dl class="field-list" id="end">
                     <dt>进 度:</dt>
-                    <dd class="{$end==-1?'active':''}" onclick="active(this)" data-val="-1"><a>全部</a></dd>
-                    <dd class="{$end=='2'?'active':''}" onclick="active(this)" data-val="2"><a>连载</a></dd>
-                    <dd class="{$end=='1'?'active':''}" onclick="active(this)" data-val="1"><a>完结</a></dd>
+                    <dd class="{$end_selector=='全部'?'active':''}" onclick="active(this)" data-val="-1"><a>全部</a></dd>
+                    <dd class="{$end_selector=='2'?'active':''}" onclick="active(this)" data-val="2"><a>连载</a></dd>
+                    <dd class="{$end_selector=='1'?'active':''}" onclick="active(this)" data-val="1"><a>完结</a></dd>
                 </dl>
             </div>
         </figure>
@@ -35,18 +35,16 @@
     function active(item) {
         $(item).siblings().removeClass('active');
         $(item).addClass('active');
-        var cate = $('#cates dd.active').attr('data-val');
+        var tag = $('#tags dd.active').attr('data-val');
         var area = $('#areas dd.active').attr('data-val');
         var end = $('#end dd.active').attr('data-val');
-
-        location.href = '/{$booklist_act}?cate='+cate+'&area='+area+'&end='+end;
+        location.href = '/{$booklist_act}?tag='+tag+'&area='+area+'&end='+end;
     }
 </script>
 <section class="box container pb40 overflow-Show" style="min-height:400px;">
     <div class="box-body">
         <ul class="mh-list col7">
-            {raccoon:pagedbooks name="pagedBooks" pagesize="28" order="last_time desc"
-            where="tags like '%$cate%' and area_id='$area' and end='$end'"}
+            {volist name="books" id="vo"}
             <li>
                 <div class="mh-item">
                     <a href="/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}">
@@ -68,10 +66,10 @@
                     </div>
                 </div>
             </li>
-            {/raccoon:pagedbooks}
+            {/volist}
         </ul>
-    </div>
 
+    </div>
     <footer>
         <div class="page-pagination mt20">
             <ul>
@@ -84,13 +82,20 @@
                     {/if}
 
                     {for start="1" end="$page.last_page + 1"}
+                    {if ($i != 1 && $i != $page.last_page)
+                    and ($i < $page.current_page - 2 || $i > $page.current_page + 2)}
+                    <li>
+                        .
+                    </li>
+                    {else/}
                     {if $i == $page.current_page }
                     <li><a href="/{$booklist_act}?page={$i}{$param}" class="active">{$i}</a></li>
-                    {elseif ($i > $page.current_page - 4 && $i < $page.current_page + 5)/}
+                    {else/}
                     <li><a href="/{$booklist_act}?page={$i}{$param}" title="第{$i}页">{$i}</a></li>
                     {/if}
+                    {/if}
                     {/for}
-
+                    
                     {if $page.current_page == $page.last_page}
                     <li><a>&gt;</a></li>
                     {else/}

@@ -13,6 +13,9 @@ namespace Overtrue\Pinyin;
 
 use Closure;
 
+/**
+ * Dict File loader.
+ */
 class FileDictLoader implements DictLoaderInterface
 {
     /**

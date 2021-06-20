@@ -59,7 +59,7 @@
                 shade: [0.1,'#fff'] //0.1透明度的白色背景
             });
             $.ajax({
-                url:"{:adminurl('gencodes')}",
+                url:"{:url('gencodes')}",
                 type:'post',
                 data:$('form').serialize(),
                 success(res) {

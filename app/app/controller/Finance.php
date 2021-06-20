@@ -101,7 +101,6 @@ class Finance extends BaseAuth
         $pay_type = $data['pay_type']; //是充值金币还是购买vip
         $pay_code = $data['code'];
         $order = new UserOrder();
-        $order->order_id = time()  . gen_uid(10);
         $order->user_id = $this->uid;
         $order->money = $money;
         $order->status = 0; //未完成订单
@@ -109,7 +108,8 @@ class Finance extends BaseAuth
         $order->expire_time = time() + 86400; //订单失效时间往后推一天
         $res = $order->save();
         if ($res) {
-            $r = $this->pay->submit($order->order_id, $money, $pay_type, $pay_code);
+            $number = config('site.domain').'_';
+            $r = $this->pay->submit($number . $order->id, $money, $pay_type, $pay_code);
             if ($r['type'] == 'html') {
                 return json(['success' => 1, 'type' => 'html', 'html' => $r['content'], 'order_id' => 'xwx_order_' . $order->id]);
             } else {
@@ -150,39 +150,20 @@ class Finance extends BaseAuth
         ]);
     }
 
-
     public function dailySign()
     {
-        $map[] = ['user_id', '=', $this->uid];
-        $map[] = ['summary', '=', '每日签到奖励'];
-        $map[] = ['create_time', '=', date('Y-m-d')];
-        try {
-            $sign = UserFinance::where($map)->findOrFail();
+        $redis = RedisHelper::GetInstance();
+        $day = 'dailySign:' . $this->uid . ':' . date('d');
+        $val = (int)$redis->get($day);
+        if ($val == 1) {
             return json(['success' => 0, 'msg' => '今日已经签到']);
-//            $time = $sign['create_time'];
-//            if (date('Ymd', $time) == date('Ymd')) {
-//
-//            }
-        } catch (ModelNotFoundException $e) { //没有签到再签到
+        } else {
             $amount = config('payment.sign_rewards');
-            $this->promotionService->setReward($this->uid, $amount, 4, '每日签到奖励');
+            $this->promotionService->setReward($this->uid, $amount, 5, '每日签到奖励');
+            $redis->set($day, 1, 60 * 60 * 24); //写入锁
             return json(['success' => 1, 'reward' => $amount]);
         }
     }
-
-    public function getDailySign()
-    {
-        try{
-            $map[] = ['user_id', '=', $this->uid];
-            $map[] = ['summary', '=', '每日签到奖励'];
-            $map[] = ['create_time', '=', date('Y-m-d')];
-            $sign = UserFinance::where($map)->findOrFail();
-            return json(['success' => 1, 'sign' => $sign]);
-         }catch (ModelNotFoundException $e) { //没有签到再签到
-            return json(['success' => 0, 'msg' => '今日没签到']);
-        }
-    }
-
 
     public function vipexchange()
     {

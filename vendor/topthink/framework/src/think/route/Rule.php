@@ -2,7 +2,7 @@
 // +----------------------------------------------------------------------
 // | ThinkPHP [ WE CAN DO IT JUST THINK ]
 // +----------------------------------------------------------------------
-// | Copyright (c) 2006~2021 http://thinkphp.cn All rights reserved.
+// | Copyright (c) 2006~2019 http://thinkphp.cn All rights reserved.
 // +----------------------------------------------------------------------
 // | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
 // +----------------------------------------------------------------------
@@ -792,11 +792,7 @@ abstract class Rule
     protected function buildRuleRegex(string $rule, array $match, array $pattern = [], array $option = [], bool $completeMatch = false, string $suffix = ''): string
     {
         foreach ($match as $name) {
-            $value = $this->buildNameRegex($name, $pattern, $suffix);
-            if ($value) {
-                $origin[]  = $name;
-                $replace[] = $value;
-            }
+            $replace[] = $this->buildNameRegex($name, $pattern, $suffix);
         }
 
         // 是否区分 / 地址访问
@@ -809,11 +805,12 @@ abstract class Rule
             }
         }
 
-        $regex = isset($replace) ? str_replace($origin, $replace, $rule) : $rule;
-        $regex = str_replace([')?/', ')?-'], [')/', ')-'], $regex);
+        $regex = str_replace(array_unique($match), array_unique($replace), $rule);
+        $regex = str_replace('/', '\/', $regex);
+        $regex = str_replace([')?\/', ')?-', ')-', '\\\\/'], [')\/', ')\-', ')\-', '\/'], $regex);
 
         if (isset($hasSlash)) {
-            $regex .= '/';
+            $regex .= '\/';
         }
 
         return $regex . ($completeMatch ? '$' : '');
@@ -833,7 +830,7 @@ abstract class Rule
         $slash    = substr($name, 0, 1);
 
         if (in_array($slash, ['/', '-'])) {
-            $prefix = $slash;
+            $prefix = '\\' . $slash;
             $name   = substr($name, 1);
             $slash  = substr($name, 0, 1);
         } else {
@@ -841,7 +838,7 @@ abstract class Rule
         }
 
         if ('<' != $slash) {
-            return '';
+            return $prefix . preg_quote($name, '/');
         }
 
         if (strpos($name, '?')) {

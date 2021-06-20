@@ -92,6 +92,8 @@ class DbManager
      */
     protected function modelMaker()
     {
+        $this->triggerSql();
+
         Model::setDb($this);
 
         if (is_object($this->event)) {
@@ -120,8 +122,26 @@ class DbManager
      * @access protected
      * @return void
      */
-    public function triggerSql(): void
-    {}
+    protected function triggerSql(): void
+    {
+        // 监听SQL
+        $this->listen(function ($sql, $time, $master) {
+            if (0 === strpos($sql, 'CONNECT:')) {
+                $this->log($sql);
+                return;
+            }
+
+            // 记录SQL
+            if (is_bool($master)) {
+                // 分布式记录当前操作的主从
+                $master = $master ? 'master|' : 'slave|';
+            } else {
+                $master = '';
+            }
+
+            $this->log($sql . ' [ ' . $master . 'RunTime:' . $time . 's ]');
+        });
+    }
 
     /**
      * 初始化配置参数

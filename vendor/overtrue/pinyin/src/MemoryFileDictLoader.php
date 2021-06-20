@@ -13,6 +13,9 @@ namespace Overtrue\Pinyin;
 
 use Closure;
 
+/**
+ * Memory Dict File loader.
+ */
 class MemoryFileDictLoader implements DictLoaderInterface
 {
     /**
@@ -34,14 +37,14 @@ class MemoryFileDictLoader implements DictLoaderInterface
      *
      * @var array
      */
-    protected $segments = [];
+    protected $segments = array();
 
     /**
      * Surname cache.
      *
      * @var array
      */
-    protected $surnames = [];
+    protected $surnames = array();
 
     /**
      * Constructor.

@@ -3,7 +3,6 @@
 namespace Firebase\JWT;
 
 use DomainException;
-use InvalidArgumentException;
 use UnexpectedValueException;
 
 /**

@@ -6,7 +6,6 @@ use Psr\Http\Message\StreamInterface;
 
 /**
  * Stream decorator trait
- *
  * @property StreamInterface stream
  */
 trait StreamDecoratorTrait

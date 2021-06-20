@@ -1,8 +1,5 @@
 # CHANGELOG
 
-## 1.4.1 - 2021-02-18
-
-- Fixed `each_limit` skipping promises and failing
 
 ## 1.4.0 - 2020-09-30
 

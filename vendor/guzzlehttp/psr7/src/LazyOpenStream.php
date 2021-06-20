@@ -7,8 +7,6 @@ use Psr\Http\Message\StreamInterface;
 /**
  * Lazily reads or writes to a file that is opened only after an IO operation
  * take place on the stream.
- *
- * @final
  */
 class LazyOpenStream implements StreamInterface
 {
@@ -17,7 +15,7 @@ class LazyOpenStream implements StreamInterface
     /** @var string File to open */
     private $filename;
 
-    /** @var string */
+    /** @var string $mode */
     private $mode;
 
     /**

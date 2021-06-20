@@ -39,7 +39,7 @@ class UploadedFile implements UploadedFileInterface
     private $error;
 
     /**
-     * @var string|null
+     * @var null|string
      */
     private $file;
 
@@ -60,10 +60,10 @@ class UploadedFile implements UploadedFileInterface
 
     /**
      * @param StreamInterface|string|resource $streamOrFile
-     * @param int                             $size
-     * @param int                             $errorStatus
-     * @param string|null                     $clientFilename
-     * @param string|null                     $clientMediaType
+     * @param int $size
+     * @param int $errorStatus
+     * @param string|null $clientFilename
+     * @param string|null $clientMediaType
      */
     public function __construct(
         $streamOrFile,
@@ -144,8 +144,7 @@ class UploadedFile implements UploadedFileInterface
 
     /**
      * @param mixed $param
-     *
-     * @return bool
+     * @return boolean
      */
     private function isStringOrNull($param)
     {
@@ -154,8 +153,7 @@ class UploadedFile implements UploadedFileInterface
 
     /**
      * @param mixed $param
-     *
-     * @return bool
+     * @return boolean
      */
     private function isStringNotEmpty($param)
     {
@@ -197,7 +195,7 @@ class UploadedFile implements UploadedFileInterface
     /**
      * Return true if there is no upload error
      *
-     * @return bool
+     * @return boolean
      */
     private function isOk()
     {
@@ -205,7 +203,7 @@ class UploadedFile implements UploadedFileInterface
     }
 
     /**
-     * @return bool
+     * @return boolean
      */
     public function isMoved()
     {
@@ -250,10 +248,10 @@ class UploadedFile implements UploadedFileInterface
      *
      * @param string $targetPath Path to which to move the uploaded file.
      *
-     * @throws RuntimeException         if the upload was not successful.
+     * @throws RuntimeException if the upload was not successful.
      * @throws InvalidArgumentException if the $path specified is invalid.
-     * @throws RuntimeException         on any error during the move operation, or on
-     *                                  the second or subsequent call to the method.
+     * @throws RuntimeException on any error during the move operation, or on
+     *     the second or subsequent call to the method.
      */
     public function moveTo($targetPath)
     {
@@ -299,7 +297,6 @@ class UploadedFile implements UploadedFileInterface
      * {@inheritdoc}
      *
      * @see http://php.net/manual/en/features.file-upload.errors.php
-     *
      * @return int One of PHP's UPLOAD_ERR_XXX constants.
      */
     public function getError()
@@ -311,7 +308,7 @@ class UploadedFile implements UploadedFileInterface
      * {@inheritdoc}
      *
      * @return string|null The filename sent by the client or null if none
-     *                     was provided.
+     *     was provided.
      */
     public function getClientFilename()
     {

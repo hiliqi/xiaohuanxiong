@@ -95,12 +95,6 @@ trait Attribute
     protected $strict = true;
 
     /**
-     * 获取器数据
-     * @var array
-     */
-    private $get = [];
-
-    /**
      * 修改器执行记录
      * @var array
      */
@@ -268,13 +262,11 @@ trait Attribute
             return $this->origin;
         }
 
-        $fieldName = $this->getRealFieldName($name);
-
-        return array_key_exists($fieldName, $this->origin) ? $this->origin[$fieldName] : null;
+        return array_key_exists($name, $this->origin) ? $this->origin[$name] : null;
     }
 
     /**
-     * 获取当前对象数据 如果不存在指定字段返回false
+     * 获取对象原始数据 如果不存在指定字段返回false
      * @access public
      * @param  string $name 字段名 留空获取全部
      * @return mixed
@@ -334,7 +326,6 @@ trait Attribute
         $name = $this->getRealFieldName($name);
 
         $this->data[$name] = $value;
-        unset($this->get[$name]);
     }
 
     /**
@@ -383,7 +374,6 @@ trait Attribute
 
         // 设置数据对象属性
         $this->data[$name] = $value;
-        unset($this->get[$name]);
     }
 
     /**
@@ -489,12 +479,8 @@ trait Attribute
     {
         // 检测属性获取器
         $fieldName = $this->getRealFieldName($name);
+        $method    = 'get' . Str::studly($name) . 'Attr';
 
-        if (array_key_exists($fieldName, $this->get)) {
-            return $this->get[$fieldName];
-        }
-
-        $method = 'get' . Str::studly($name) . 'Attr';
         if (isset($this->withAttr[$fieldName])) {
             if ($relation) {
                 $value = $this->getRelationValue($relation);
@@ -518,23 +504,23 @@ trait Attribute
             $this->relation[$name] = $value;
         }
 
-        $this->get[$fieldName] = $value;
-
         return $value;
     }
 
     /**
      * 读取数据类型处理
      * @access protected
+     * @param  array $data 数据
      * @return void
      */
-    protected function readDataType(): void
+    protected function readDataType(array &$data): void
     {
-        foreach ($this->data as $key => $value) {
-            if (isset($this->type[$key])) {
-                $this->get[$key] = $this->readTransform($value, $this->type[$key]);
-            } elseif ($this->autoWriteTimestamp && in_array($key, [$this->createTime, $this->updateTime])) {
-                $this->get[$key] = $this->getTimestampValue($value);
+        foreach ($data as $name => &$value) {
+            if (isset($this->type[$name])) {
+                // 类型转换
+                $value = $this->readTransform($value, $this->type[$name]);
+            } elseif ($this->autoWriteTimestamp && in_array($name, [$this->createTime, $this->updateTime])) {
+                $value = $this->getTimestampValue($value);
             }
         }
     }
@@ -551,6 +537,9 @@ trait Attribute
             if (isset($this->type[$name])) {
                 // 类型转换
                 $value = $this->writeTransform($value, $this->type[$name]);
+            } elseif (is_null($value) && $this->autoWriteTimestamp && in_array($name, [$this->createTime, $this->updateTime])) {
+                // 自动写入的时间戳字段
+                $value = $this->autoWriteTimestamp();
             }
         }
 

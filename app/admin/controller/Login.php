@@ -7,6 +7,7 @@ namespace app\admin\controller;
 use app\BaseController;
 use think\db\exception\ModelNotFoundException;
 use app\model\Admin;
+use think\facade\View;
 
 class Login extends BaseController
 {

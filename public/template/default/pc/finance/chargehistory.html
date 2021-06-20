@@ -27,7 +27,6 @@
                         <ul class="table-tabs">
                             <li><a class="active" href="/chargehistory">充值记录</a></li>
                             <li><a href="/spendinghistory">消费记录</a></li>
-                            <li><a href="/cashhistory">提现记录</a></li>
                         </ul>
                     </div>
                     <div class="table-body mt10">
@@ -42,48 +41,27 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                {raccoon:finances name="finances"
-                                where="`usage` = 1 and user_id='$xwx_user_id'"}
+                                {volist name="charges" id="vo"}
                                 <tr>
                                     <td>{$vo.create_time|date='Y-m-d'}</td>
                                     <td>{$vo.money}</td>
                                     <td>{$vo.summary}</td>
                                 </tr>
-                                {/raccoon:finances}
+                                {/volist}
                                 </tbody>
                             </table>
                         </div>
                         <footer>
                             <div class="page-pagination mt20">
                                 <ul>
-                                    {if $page.last_page > 1}
-                                    {if $page.current_page == 1}
-                                    <li><a>&lt;</a></li>
-                                    {else/}
-                                    <li><a id="prevPage" href="/chargehistory?page={$page.current_page-1}{$param}" title="上一页">&lt;</a></li>
-                                    {/if}
-
-                                    {for start="1" end="$page.last_page + 1"}
-                                    {if $i == $page.current_page }
-                                    <li><a href="/chargehistory?page={$i}{$param}" class="active">{$i}</a></li>
-                                    {else/}
-                                    <li><a href="/chargehistory?page={$i}{$param}" title="第{$i}页">{$i}</a></li>
-                                    {/if}
-                                    {/for}
-
-                                    {if $page.current_page == $page.last_page}
-                                    <li><a>&gt;</a></li>
-                                    {else/}
-                                    <li><a id="nextPage" href="/chargehistory?page={$page.current_page+1}{$param}" title="下一页">&gt;</a></li>
-                                    {/if}
-                                    {/if}
+                                    {$charges|raw}
                                 </ul>
                             </div>
                         </footer>
                         <hr class="mt30">
                         <div style="min-height:25px;">
                             <span class="count-info">消费总额：
-                                <span class="count">{$sum}元</span>
+                                <span class="count">{$charge_sum}元</span>
                             </span>
                             <div class="page-pagination pull-right">
                                 <ul></ul>

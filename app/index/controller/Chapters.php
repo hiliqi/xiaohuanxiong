@@ -12,6 +12,14 @@ use think\facade\View;
 
 class Chapters extends Base
 {
+    protected $photoService;
+
+    protected function initialize()
+    {
+        parent::initialize();
+        $this->photoService = app('photoService');
+    }
+
     public function index($id)
     {
         try {
@@ -22,9 +30,9 @@ class Chapters extends Base
             abort(404, $e->getMessage());
         }
         if ($this->end_point == 'id') {
-            $chapter['book']['param'] = $chapter['book']['id'];
+            $chapter->book['param'] = $chapter->book['id'];
         } else {
-            $chapter['book']['param'] = $chapter['book']['unique_id'];
+            $chapter->book['param'] = $chapter->book['unique_id'];
         }
         $flag = true;
         if ($chapter->book->start_pay >= 0) {
@@ -65,9 +73,24 @@ class Chapters extends Base
 
 
         if ($flag) {
+            $num = config('page.img_per_page');
+            $page = empty(input('page')) ? '1' : input('page');
+            $data = $this->photoService->getPaged($chapter->id, $page, $num); //图片分页数据
+
             $book_id = $chapter->book_id;
+            $chapters = cache('mulu:' . $book_id);
+            if (!$chapters) {
+                $chapters = Chapter::where('book_id', '=', $book_id)->select();
+                cache('mulu:' . $book_id, $chapters, null, 'redis');
+            }
 
             $prev = cache('chapterPrev:' . $id);
+            // if (!$prev) {
+            //     $prev = Db::query('select * from ' . $this->prefix .
+            //         'chapter where book_id=' . $book_id . ' and
+            //          id=(SELECT MAX(id) FROM (SELECT id FROM '. $this->prefix . 'chapter where id<'. $id .') as a)');
+            //     cache('chapterPrev:' . $id, $prev, null, 'redis');
+            // }
             if (!$prev) {
                 $prev = Db::query(
                     'select * from ' . $this->prefix . 'chapter where book_id=' . $book_id . ' and chapter_order<' . $chapter->chapter_order . ' order by chapter_order desc limit 1');
@@ -80,6 +103,13 @@ class Chapters extends Base
             }
 
             $next = cache('chapterNext:' . $id);
+            // if (!$next) {
+            //     $next = Db::query(
+            //         'select * from ' . $this->prefix .
+            //         'chapter where book_id=' . $book_id . ' and
+            //          id=(SELECT MIN(id) FROM (SELECT id FROM '. $this->prefix . 'chapter where id>'. $id .') as a)');
+            //     cache('chapterNext:' . $id, $next, null, 'redis');
+            // }
             if (!$next) {
                 $next = Db::query(
                     'select * from ' . $this->prefix . 'chapter where book_id=' . $book_id . ' and chapter_order>' . $chapter->chapter_order . ' order by chapter_order limit 1');
@@ -93,6 +123,11 @@ class Chapters extends Base
 
             View::assign([
                 'chapter' => $chapter,
+                'page' => $data['page'],
+                'chapters' => $chapters,
+                'photos' => $data['photos'],
+                'chapter_count' => count($chapters),
+                'site_name' => config('site.site_name')
             ]);
             return view($this->tpl);
         } else {

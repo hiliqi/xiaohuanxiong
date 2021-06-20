@@ -38,7 +38,7 @@
             url: '/buychapter',
             data: {chapter_id: '{$chapter.id}'},
             success: function (res) {
-                if (res.success == 1) {
+                if (res.err == 0) {
                     ShowDialog(res.msg);
                     setTimeout(function () {
                         location.href = '/{$chapter_ctrl}/{$chapter.id}';

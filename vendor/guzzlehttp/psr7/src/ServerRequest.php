@@ -4,9 +4,9 @@ namespace GuzzleHttp\Psr7;
 
 use InvalidArgumentException;
 use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Message\UriInterface;
 use Psr\Http\Message\StreamInterface;
 use Psr\Http\Message\UploadedFileInterface;
-use Psr\Http\Message\UriInterface;
 
 /**
  * Server-side HTTP request
@@ -35,7 +35,7 @@ class ServerRequest extends Request implements ServerRequestInterface
     private $cookieParams = [];
 
     /**
-     * @var array|object|null
+     * @var null|array|object
      */
     private $parsedBody;
 
@@ -58,7 +58,7 @@ class ServerRequest extends Request implements ServerRequestInterface
      * @param string                               $method       HTTP method
      * @param string|UriInterface                  $uri          URI
      * @param array                                $headers      Request headers
-     * @param string|resource|StreamInterface|null $body         Request body
+     * @param string|null|resource|StreamInterface $body         Request body
      * @param string                               $version      Protocol version
      * @param array                                $serverParams Typically the $_SERVER superglobal
      */
@@ -111,7 +111,6 @@ class ServerRequest extends Request implements ServerRequestInterface
      * delegate to normalizeNestedFileSpec() and return that return value.
      *
      * @param array $value $_FILES struct
-     *
      * @return array|UploadedFileInterface
      */
     private static function createUploadedFileFromSpec(array $value)
@@ -136,7 +135,6 @@ class ServerRequest extends Request implements ServerRequestInterface
      * UploadedFileInterface instances.
      *
      * @param array $files
-     *
      * @return UploadedFileInterface[]
      */
     private static function normalizeNestedFileSpec(array $files = [])
@@ -186,7 +184,7 @@ class ServerRequest extends Request implements ServerRequestInterface
 
     private static function extractHostAndPortFromAuthority($authority)
     {
-        $uri = 'http://' . $authority;
+        $uri = 'http://'.$authority;
         $parts = parse_url($uri);
         if (false === $parts) {
             return [null, null];
@@ -246,6 +244,7 @@ class ServerRequest extends Request implements ServerRequestInterface
 
         return $uri;
     }
+
 
     /**
      * {@inheritdoc}

@@ -10,8 +10,6 @@ class EachPromise implements PromisorInterface
 {
     private $pending = [];
 
-    private $nextPendingIndex = 0;
-
     /** @var \Iterator|null */
     private $iterable;
 
@@ -123,7 +121,6 @@ class EachPromise implements PromisorInterface
         $clearFn = function () {
             $this->iterable = $this->concurrency = $this->pending = null;
             $this->onFulfilled = $this->onRejected = null;
-            $this->nextPendingIndex = 0;
         };
 
         $this->aggregate->then($clearFn, $clearFn);
@@ -166,9 +163,11 @@ class EachPromise implements PromisorInterface
         $promise = Create::promiseFor($this->iterable->current());
         $key = $this->iterable->key();
 
-        // Iterable keys may not be unique, so we use a counter to
-        // guarantee uniqueness
-        $idx = $this->nextPendingIndex++;
+        // Iterable keys may not be unique, so we add the promises at the end
+        // of the pending array and retrieve the array index being used
+        $this->pending[] = null;
+        end($this->pending);
+        $idx = key($this->pending);
 
         $this->pending[$idx] = $promise->then(
             function ($value) use ($idx, $key) {
