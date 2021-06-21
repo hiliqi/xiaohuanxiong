@@ -76,7 +76,7 @@
         $('#create').click(function () {
             index.openTab({
                 title: '新建章节',
-                url: "{:adminurl('chapters/create')}?book_id=" + {$book_id},
+                url: "{:url('chapters/create')}?book_id=" + {$book_id},
                 end: function () {
                     insTb.reload();
                 }
@@ -89,7 +89,7 @@
             if (obj.event === 'edit') { // 修改
                 parent.layui.index.openTab({
                     title: '编辑章节',
-                    url: "{:adminurl('chapters/edit')}?id=" + data.id,
+                    url: "{:url('chapters/edit')}?id=" + data.id,
                     end: function () {
                         insTb.reload();
                     }
@@ -98,7 +98,7 @@
                 layer.confirm('确认要删除吗？', function (index) {
                     $.ajax({
                         type: 'POST',
-                        url: "{:adminurl('delete')}",
+                        url: "{:url('delete')}",
                         data: {id: data.id},
                         dataType: 'json',
                         success: function (res) {
@@ -120,7 +120,7 @@
             } else if (obj.event === 'pic') {
                 parent.layui.index.openTab({
                     title: '图片管理',
-                    url: "{:adminurl('photos/index')}?chapter_id=" + data.id,
+                    url: "{:url('photos/index')}?chapter_id=" + data.id,
                     end: function () {
                         insTb.reload();
                     }
@@ -132,7 +132,7 @@
         /* 渲染表格 */
         var insTb = table.render({
             elem: '#tbBasicTable',
-            url: "{:adminurl('chapters/list')}?book_id=" + {$book_id},
+            url: "{:url('chapters/list')}?book_id=" + {$book_id},
             page: true,
             cellMinWidth: 100,
             cols: [[

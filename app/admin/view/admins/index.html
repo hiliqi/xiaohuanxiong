@@ -84,7 +84,7 @@
         $('#create').click(function () {
             index.openTab({
                 title: '新建管理员',
-                url: "{:adminurl('admins/create')}",
+                url: "{:url('admins/create')}",
                 end: function () {
                     insTb.reload();
                 }
@@ -97,7 +97,7 @@
             if (obj.event === 'edit') { // 修改
                 parent.layui.index.openTab({
                     title: '编辑管理员',
-                    url: "{:adminurl('admins/edit')}?id=" + data.id,
+                    url: "{:url('admins/edit')}?id=" + data.id,
                     end: function () {
                         insTb.reload();
                     }
@@ -106,7 +106,7 @@
                 layer.confirm('确认要删除吗？', function (index) {
                     $.ajax({
                         type: 'POST',
-                        url: "{:adminurl('delete')}",
+                        url: "{:url('delete')}",
                         data: {id: data.id},
                         dataType: 'json',
                         success: function (res) {
@@ -132,7 +132,7 @@
         /* 渲染表格 */
         var insTb = table.render({
             elem: '#tbBasicTable',
-            url: "{:adminurl('admins/list')}",
+            url: "{:url('admins/list')}",
             page: true,
             cellMinWidth: 100,
             cols: [[
@@ -154,7 +154,7 @@
             var uname = $('#uname').val()
             table.render({
                 elem: '#tbBasicTable',
-                url: '{:adminurl("search")}?username=' + username,
+                url: '{:url("search")}?username=' + username,
                 page: true,
                 cellMinWidth: 100,
                 cols: [[

@@ -93,7 +93,7 @@
         /* 监听表单提交 */
         form.on('submit(formBasSubmit)', function (data) {
             $.ajax({
-                url:"{:adminurl('seo')}",
+                url:"{:url('seo')}",
                 type:'post',
                 data:$('form').serialize(),
                 success(res) {

@@ -85,7 +85,7 @@
             if (obj.event === 'edit') { // 修改
                 parent.layui.index.openTab({
                     title: '编辑用户',
-                    url: "{:adminurl('users/edit')}?id=" + data.id,
+                    url: "{:url('users/edit')}?id=" + data.id,
                     end: function () {
                         insTb.reload();
                     }
@@ -94,7 +94,7 @@
                 layer.confirm('确认要删除吗？', function (index) {
                     $.ajax({
                         type: 'POST',
-                        url: "{:adminurl('delete')}",
+                        url: "{:url('delete')}",
                         data: {id: data.id},
                         dataType: 'json',
                         success: function (res) {
@@ -116,7 +116,7 @@
             } else if (obj.event === 'disable') {
                 $.ajax({
                     type: 'POST',
-                    url: "{:adminurl('disable')}",
+                    url: "{:url('disable')}",
                     data: {id: data.id},
                     dataType: 'json',
                     success: function (res) {
@@ -141,7 +141,7 @@
         /* 渲染表格 */
         var insTb = table.render({
             elem: '#tbBasicTable',
-            url: "{:adminurl('users/list')}?status=1",
+            url: "{:url('users/list')}?status=1",
             page: true,
             cellMinWidth: 100,
             cols: [[
@@ -180,7 +180,7 @@
             var username = $('#username').val()
             table.render({
                 elem: '#tbBasicTable',
-                url: '{:adminurl("search")}?username=' + username,
+                url: '{:url("search")}?username=' + username,
                 page: true,
                 cellMinWidth: 100,
                 cols: [[

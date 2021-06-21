@@ -94,7 +94,7 @@
                 layer.confirm('确认要删除吗？', function (index) {
                     $.ajax({
                         type: 'POST',
-                        url: "{:adminurl('delete')}",
+                        url: "{:url('delete')}",
                         data: {id: data.id},
                         dataType: 'json',
                         success: function (res) {
@@ -120,7 +120,7 @@
         /* 渲染表格 */
         var insTb = table.render({
             elem: '#tbBasicTable',
-            url: "{:adminurl('comment/list')}",
+            url: "{:url('comment/list')}",
             page: true,
             cellMinWidth: 100,
             cols: [[
@@ -139,7 +139,7 @@
             var book_name = $('#book_name').val()
             table.render({
                 elem: '#tbBasicTable',
-                url: '{:adminurl("list")}?username=' + username + '&book_name=' + book_name,
+                url: '{:url("list")}?username=' + username + '&book_name=' + book_name,
                 page: true,
                 cellMinWidth: 100,
                 cols: [[

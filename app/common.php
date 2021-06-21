@@ -92,3 +92,23 @@ function sendcode($_phone, $code)
     $result = file_get_contents($sendUrl);
     return ['status' => $result, 'msg' => $statusStr[$result]];
 }
+
+/**
+ * Url生成
+ * @param string      $url    路由地址
+ * @param array       $vars   变量
+ * @param bool|string $suffix 生成的URL后缀
+ * @param bool|string $domain 域名
+ * return string
+ */
+function adminurl(string $url = '', array $vars = [], $suffix = true, $domain = false) {
+    $currentModule = app('http')->getName();
+    $string = (string) url($url, $vars, $suffix, $domain);
+    if($currentModule != 'index') {
+        #去除url中默认模块名sysusezan
+        $search = '/'.$currentModule.'/';
+        $pos = stripos($string, $search);
+        $string = substr($string, 0, $pos). '/'. substr($string, $pos + strlen($search));
+    }
+    return $string;
+}

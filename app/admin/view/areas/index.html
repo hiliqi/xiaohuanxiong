@@ -75,7 +75,7 @@
         $('#create').click(function () {
             index.openTab({
                 title: '新建地区',
-                url: "{:adminurl('areas/create')}",
+                url: "{:url('areas/create')}",
                 end: function () {
                     insTb.reload();
                 }
@@ -88,7 +88,7 @@
             if (obj.event === 'edit') { // 修改
                 parent.layui.index.openTab({
                     title: '编辑题材',
-                    url: "{:adminurl('areas/edit')}?id=" + data.id,
+                    url: "{:url('areas/edit')}?id=" + data.id,
                     end: function () {
                         insTb.reload();
                     }
@@ -97,7 +97,7 @@
                 layer.confirm('确认要删除吗？', function (index) {
                     $.ajax({
                         type: 'POST',
-                        url: "{:adminurl('delete')}",
+                        url: "{:url('delete')}",
                         data: {id: data.id},
                         dataType: 'json',
                         success: function (res) {
@@ -123,7 +123,7 @@
         /* 渲染表格 */
         var insTb = table.render({
             elem: '#tbBasicTable',
-            url: "{:adminurl('areas/list')}",
+            url: "{:url('areas/list')}",
             page: true,
             cellMinWidth: 100,
             cols: [[

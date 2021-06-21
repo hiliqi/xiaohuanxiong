@@ -120,7 +120,7 @@
         /* 监听表单提交 */
         form.on('submit(formBasSubmit)', function (data) {
             $.ajax({
-                url:"{:adminurl('update')}",
+                url:"{:url('update')}",
                 type:'post',
                 data:$('form').serialize(),
                 success(res) {
