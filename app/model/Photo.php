@@ -14,6 +14,7 @@ class Photo extends Model
 
     public function getPhotos($order, $where, $num)
     {
+        $img_domain = config('site.img_domain');
         if ($num == 0) {
             $photos = Photo::where($where)->order($order)->select();
         } else {
@@ -24,18 +25,35 @@ class Photo extends Model
             } else {
                 $photos = Photo::where($where)->limit($num)->order($order)->select();
             }
+        }
 
+        foreach ($photos as &$photo)
+        {
+            if (substr($photo['img_url'], 0, 4) === "http") {
+
+            } else {
+                $photo['img_url'] = $img_domain . $photo['img_url'];
+            }
         }
         return $photos;
     }
 
     public function getPagedPhotos($order, $where, $pagesize)
     {
+        $img_domain = config('site.img_domain');
         $data = Photo::where($where)->order($order)
             ->paginate([
                 'list_rows' => $pagesize,
                 'query' => request()->param(),
             ]);
+        foreach ($data as &$pic)
+        {
+            if (substr($pic['img_url'], 0, 4) === "http") {
+
+            } else {
+                $pic['img_url'] = $img_domain . $pic['img_url'];
+            }
+        }
         $arr = $data->toArray();
         $paged = array();
         $paged['photos'] = $arr['data'];

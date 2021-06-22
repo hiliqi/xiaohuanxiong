@@ -95,7 +95,5 @@ EOF
         $this->server->listen(function (Data $data, array $context, int $clientId) use ($descriptor, $io) {
             $descriptor->describe($io, $data, $context, $clientId);
         });
-
-        return 0;
     }
 }

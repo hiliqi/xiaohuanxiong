@@ -48,7 +48,7 @@
         /* 监听表单提交 */
         form.on('submit(formBasSubmit)', function (data) {
             $.ajax({
-                url: "{:url('chapters/edit')}",
+                url: "{:adminurl('chapters/edit')}",
                 type: 'post',
                 data: $('form').serialize(),
                 success(res) {

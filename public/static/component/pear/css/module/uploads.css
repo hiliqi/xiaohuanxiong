@@ -1,0 +1,39 @@
+button.upload-image {
+    margin: 4px 5px;
+    vertical-align: top
+}
+
+div.upload-image {
+    display: inline-block;
+    position: relative;
+    overflow: hidden
+}
+
+div.upload-image span {
+    background-image: url('/static/admin/images/x.png');
+    position: absolute;
+    right: 0;
+    height: 16px;
+    width: 16px;
+    cursor: pointer
+}
+
+img.upload-image {
+    max-width: 380px;
+    max-height: 50px
+}
+
+img.show-image {
+    max-height: 25px
+}
+
+img.show-big-image {
+    width: 100%;
+    height: 100%
+}
+
+img.photo {
+    max-width: 100%;
+    height: 100%;
+    cursor: pointer;
+}

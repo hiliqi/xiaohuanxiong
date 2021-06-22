@@ -22,96 +22,19 @@
     <div class="layui-card">
         <div class="layui-card-body">
             <!-- 表单开始 -->
-            <form class="layui-form" id="formBasForm" lay-filter="formBasForm" enctype="multipart/form-data">
+            <form class="layui-form" action="create" method="post" enctype="multipart/form-data">
                 <input type="hidden" value="{$chapter_id}" name="chapter_id">
                 <div class="layui-form-item">
                     <label class="layui-form-label layui-form-required">图片上传:</label>
-                    <div class="layui-input-block">
-                        <button id="file-btn-upload" class="layui-btn layui-btn-sm layui-btn-normal icon-btn" type="button">
-                            <i class="layui-icon">&#xe681;</i>选择图片
-                        </button>
-                        <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">
-                            预览图：
-                            <div class="layui-upload-list" id="pics"></div>
-                            <input type="hidden" name="pics" id="pic" value="">
-                        </blockquote>
-                    </div>
+                    <input type="file" multiple class="layui-input" name="pics[]" value="选择图片">
                 </div>
 
                 <div class="layui-form-item text-right">
-                    <button class="layui-btn" lay-filter="formBasSubmit" lay-submit="">保存</button>
-                    <button class="layui-btn layui-btn-primary" type="button" ew-event="closeDialog">取消</button>
+                    <input type="submit" class="layui-btn">
                 </div>
             </form>
             <!-- //表单结束 -->
         </div>
     </div>
 </div>
-{/block}
-{block name="js"}
-<script>
-    layui.use(['layer', 'form', 'laydate', 'upload'], function () {
-        var $ = layui.jquery;
-        var layer = layui.layer;
-        var form = layui.form;
-        var laydate = layui.laydate;
-        var upload = layui.upload;
-
-        /* 渲染laydate */
-        laydate.render({
-            elem: '#formBasDateSel',
-            trigger: 'click',
-            range: true
-        });
-
-        // 上传
-        upload.render({
-            elem: '#file-btn-upload',
-            accept: 'images',
-            exts: 'jpg|png|jpeg',
-            url: '{:url("upload")}',
-            multiple: true,
-            before: function (obj) {
-                obj.preview(function (index, file, result) {
-                    $('#pics').append('<img src="'+ result +'" alt="'+ file.name +'" class="layui-upload-img">')
-                });
-            },
-            done: function (res, index, upload) {
-                //如果上传失败
-                if(res.code > 0){
-                    return layer.msg('上传失败');
-                }
-                //上传成功
-                $('#pic').val(function () {
-                    return this.value + res.img + '|'
-                })
-            },
-            error: function (index, upload) {
-                //请求异常回调
-                layer.msg('很抱歉，上传出现异常');
-            }
-        });
-
-
-        /* 监听表单提交 */
-        form.on('submit(formBasSubmit)', function (data) {
-            $.ajax({
-                url: "{:url('picture/create')}",
-                type: 'post',
-                data: $('form').serialize(),
-                success(res) {
-                    if (res.err == 0) {
-                        layer.msg(res.msg, {icon: 1, time: 1000}, function () {
-                            location.reload()
-                        });
-                    } else {
-                        layer.msg(res.msg, {icon: 2, time: 1000});
-                    }
-                }
-            })
-            return false;
-        });
-
-    });
-</script>
 {/block}

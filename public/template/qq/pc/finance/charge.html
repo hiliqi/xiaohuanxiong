@@ -1,0 +1,91 @@
+{extend name="./template/default/pc/pub/base.html" /}
+{block name="seo"}
+<title>用户充值-{$site_name}</title>
+{/block}
+{block name="content"}
+<main class="container-fluid overflow-Show clearfix" style="min-height:750px;">
+    <div class="container">
+        <section class="vip-recharge-con">
+            <div class="txt-ad"> </div>
+            <div class="recharge-body mt20">
+                <div class="top"><span class="label">充值账号：</span>
+                    {$xwx_nick_name|default="无昵称"} &nbsp;&nbsp;&nbsp;&nbsp;当前余额:{$balance}元
+                </div>
+                <div class="head">
+                    <span class="label">充值方式：</span>
+                </div>
+                <ul class="channel-list">
+                    {volist name="payments" id="vo"}
+                    <li>
+                        <label>
+                            <input type="radio" name="channel" class="channel" data-code="{$vo.code}" checked="">
+                            <div>
+                                <img src="/static/images/{$vo.img}.png" alt="" style="width:auto;height:40px"> {$vo.title}
+                            </div>
+                        </label>
+                    </li>
+                    {/volist}
+                    <li>
+                        <label>
+                            <input type="radio" name="channel" class="channel" >
+                            <div onclick="location.href = '/kami'">
+                                <img src="/static/images/kami.png" alt="" style="width:auto;height:40px"> 购买卡密
+                            </div>
+                        </label>
+                    </li>
+
+                </ul>
+                <div class="head"><span class="label">充值金额：</span></div>
+                <ul class="amount-list">
+                    {volist name="moneys" id="vo"}
+                    <li style="margin:5px 77px 15px 0;">
+                        <label>
+                            <input type="radio" name="wxpay" class="goodsItem" checked="">
+                            <div style="display:inline-block;height:115px;">
+                                <p class="time"> <span>{$vo}元</span> </p>
+                                <p>
+                                    <span class="color-main"> ￥ <span class="price">{$vo}</span> </span> <span class="original"></span>
+                                </p>
+                            </div>
+                        </label>
+                    </li>
+                    {/volist}
+                </ul>
+                <div class="bottom head"><span class="label">需支付:</span><span class="total"></span></div>
+            </div>
+            <script>
+                $(document).ready(function () {
+                    var checkedItem = $('.goodsItem:checked');
+                    var checkedChannel = $('.channel:checked');
+                    $('.total').text('￥' + checkedItem.next().find('p span.color-main span.price').text());
+
+                    $('#money').val(checkedItem.next().find('p span.color-main span.price').text());
+                    $('#code').val(checkedChannel.attr('data-code'));
+                })
+
+                $('.goodsItem').click(function () {
+                    $('.total').text('￥' + $(this).next().find('p span.color-main span.price').text());
+                    $('#money').val($(this).next().find('p span.color-main span.price').text());
+                })
+                $('.channel').click(function () {
+                    $('#code').val($(this).attr('data-code'));
+                })
+            </script>
+            <div class="recharge-footer mb20">
+                <form action="charge" method="post">
+                    <input type="hidden" name="money" id="money" value="">
+                    <input type="hidden" name="code" id="code">
+                    <input type="hidden" name="pay_type"  value="1">
+                    <span class="label">
+                        <input type="submit" value="同意协议并充值" class="channel-btn">
+                    </span>
+                    <span>
+                        <a href="#" target="_blank">用户充值、消费服务协议</a>
+                    </span>
+                    <span class="tip">成为本站vip，可以免费阅读所有收费章节，不再有额外消费</span>
+                </form>
+            </div>
+        </section>
+    </div>
+</main>
+{/block}

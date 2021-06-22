@@ -1,0 +1,486 @@
+{extend name="./template/qq/pc/pub/base.html" /}
+{block name="seo"}
+<title>漫画大全-{$site_name}</title>
+<meta name="description" content="{$site_name}为大家带来最新漫画大全，这里有超多漫画资源，无论是韩国漫画，耽美漫画，还是恐怖漫画，总有一个让你酣畅淋漓">
+{/block}
+{block name="css"}
+<link rel="stylesheet" type="text/css" href="/template/qq/css/ac.index.css" media="screen"/><!-- 样式文件 -->
+{/block}
+{block name="main"}
+<div class="bg-wrap">
+    <!-- nav -->
+    <div class="mod-tags-wr ui-wm">
+        <ul class="mod-tags-list">
+            {raccoon:cates name="cates" order="id desc"}
+            <li>
+                <a href="/{$booklist_act}?tag={$vo.tag_name}" target="_blank">{$vo.tag_name}</a>
+            </li>
+            {/raccoon:cates}
+            <li class="last">
+                <a class="mod-tags-all ui-btn-gray" href="/{$booklist_act}/"><i class="mod-tags-icon"></i>全部分类</a>
+            </li>
+        </ul>
+    </div>
+    <!-- banner -->
+    <div class="ui-wm clearfix in-banner-wrap">
+        <div class="banner" id="banner">
+            <div class="in-banner-con">
+                <ul class="in-banner" id="in-banner">
+                    {raccoon:banners name="banners" order="banner_order desc"}
+                    <li>
+                        <a href="{if $end_point == 'id'}
+                          /{$book_ctrl}/{$vo.book_id}
+                          {else /}
+                          /{$book_ctrl}/{$vo.book.unique_id}
+                          {/if}"
+                           class="no11" target="_blank">
+                            <img src="{$vo.pic_name}" alt="{$vo.title}" style="width: 100%;height: 100%;"/>
+                            <p class="in-banner-info">
+                                <strong>{$vo.title}</strong>
+                                <span class="in-banner-ft-info">{$vo.title}</span>
+                                <i class="in-banner-icon">&nbsp;</i>
+                            </p>
+                            <span class="in-banner-bg">{$vo.title}</span>
+                            <span class="in-banner-name bg-org">{$vo.book.book_name}<span
+                                    class="icon-right"></span></span>
+                        </a>
+                    </li>
+                    {/raccoon:banners}
+                </ul>
+                <div class="in-banner-arrow" id="in-banner-arrow">
+                    <a class="in-banner-leftbtn" title="上一页">上一页</a>
+                    <a class="in-banner-rightbtn" title="下一页">下一页</a>
+                </div>
+            </div>
+
+            <div class="in-banner-page clearfix" id="in-banner-page">
+                {raccoon:banners name="banners" order="banner_order desc"}
+                {if $i==1}
+                <a class="in-banner-item current in-banner-green">
+                    <span class='in-banner-focus' style='width:0'><span id="in-animate-egg"></span></span>
+                </a>
+                {else /}
+                <a class="in-banner-item"></a>
+                {/if}
+                {/raccoon:banners}
+            </div>
+        </div>
+        <div class="in-rank-wr ui-right" id="in-rank-wr">
+            <!--hotRank-->
+            <div class="mod-tab-handle clearfix">
+                <h2>排行</h2>
+                <ul id="top-rank-handle">
+                    <li class="active"><a href="javascript:void(0);">最新</a></li>
+                    <li class=""><a href="javascript:void(0);">热门</a></li>
+                    <li class=""><a href="javascript:void(0);">完结</a></li>
+                </ul>
+            </div>
+            <div id="top-rank-panel" class="mod-tab-content-wr">
+                <div class="mod-tab-content clearfix" style="display: block;">
+                    <ol class="in-rank-list ui-left ui-pr10">
+                        {raccoon:books name="books" order="last_time desc" limit="8"}
+                        <li>
+                            <sub class="in-rank-no-orange">{$i}</sub>
+                            <a class="in-rank-name" href="/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}">
+                                {$vo.book_name}
+                            </a>
+                            <i class="ui-rank-trend-up"></i>
+                        </li>
+                        {/raccoon:books}
+                    </ol>
+                    <ol class="in-rank-list ui-left">
+                        {raccoon:books name="books" order="last_time desc" limit="9,8"}
+                        <li>
+                            <sub class="in-rank-no-gray">{$i + 8}</sub>
+                            <a class="in-rank-name" href="/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}">
+                                {$vo.book_name}
+                            </a>
+                            <i class="ui-rank-trend-up"></i>
+                        </li>
+                        {/raccoon:books}
+                    </ol>
+                </div>
+                <div class="mod-tab-content clearfix" style="display: none;">
+                    <ol class="in-rank-list ui-left ui-pr10">
+                        {raccoon:books name="books" order="hits desc" limit="8"}
+                        <li>
+                            <sub class="in-rank-no-orange">{$i}</sub>
+                            <a class="in-rank-name" href="/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}">
+                                {$vo.book_name}
+                            </a>
+                            <i class="ui-rank-trend-up"></i>
+                        </li>
+                        {/raccoon:books}
+                    </ol>
+                    <ol class="in-rank-list ui-left">
+                        {raccoon:books name="books" order="hits desc" limit="9,8"}
+                        <li>
+                            <sub class="in-rank-no-gray">{$i + 8}</sub>
+                            <a class="in-rank-name" href="/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}">
+                                {$vo.book_name}
+                            </a>
+                            <i class="ui-rank-trend-up"></i>
+                        </li>
+                        {/raccoon:books}
+                    </ol>
+                </div>
+                <div class="mod-tab-content clearfix" style="display: none;">
+                    <ol class="in-rank-list ui-left ui-pr10">
+                        {raccoon:books name="books" order="last_time desc" where="end=1" limit="8"}
+                        <li>
+                            <sub class="in-rank-no-orange">{$i}</sub>
+                            <a class="in-rank-name" href="/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}">
+                                {$vo.book_name}
+                            </a>
+                            <i class="ui-rank-trend-up"></i>
+                        </li>
+                        {/raccoon:books}
+                    </ol>
+                    <ol class="in-rank-list ui-left">
+                        {raccoon:books name="books" order="last_time desc" where="end=1" limit="9,8"}
+                        <li>
+                            <sub class="in-rank-no-gray">{$i + 8}</sub>
+                            <a class="in-rank-name" href="/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}">
+                                {$vo.book_name}
+                            </a>
+                            <i class="ui-rank-trend-up"></i>
+                        </li>
+                        {/raccoon:books}
+                    </ol>
+                </div>
+            </div>
+            <div class="in-rank-spacing"></div>
+
+        </div>
+    </div>
+
+    <!-- 最新漫画 -->
+    <div class="in-strong-wr ui-wm ui-mb40" id="in-strong-wr">
+        <div class="in-title-wr title-line-bg ui-mb20 clearfix">
+            <h3 class="in-title-big ui-left veins">万众<em>追新</em></h3>
+            <div id="in-slider-btns" class="in-slider-handle ui-ma veins">
+                <a class="in-slider-btn ui-btn-round active" href="javascript:void(0);">上一页</a>
+                <a class="in-slider-btn ui-btn-round" href="javascript:void(0);">第二页</a>
+                <a class="in-slider-btn ui-btn-round" href="javascript:void(0);">下一页</a>
+            </div>
+        </div>
+        <div id="in-slider-wr" class="in-slider-wr in-content">
+            <div class="bx-wrapper" style="max-width: 72154px;">
+                <div class="bx-viewport" style="width: 100%; overflow: hidden; position: relative; height: 251px;">
+                    <ul id="in-slider-list" class="in-slider-list mod-cover-list clearfix">
+                        {raccoon:books name="books" order="last_time desc" limit="14"}
+                        <li>
+                            <a class="mod-cover-list-thumb mod-cover-effect ui-db" title="{$vo.book_name}"
+                               href="/{$book_ctrl}/{$vo.param}" target="_blank">
+                                <img class="lazy"
+                                     src="https://ae01.alicdn.com/kf/He3cda13f34d44e8fb85dcdf6c7768398F.gif"
+                                     data-original="{$vo.cover_url}"
+                                     alt="{$vo.book_name}"/>
+                                <span class="mod-layer-mask">&nbsp;&nbsp;</span>
+                            </a>
+                            <p class="mod-cover-list-updata">
+                                <a class="mod-cover-list-mask" href="/{$search_ctrl}?keyword={$vo.author_name}"
+                                   target="_blank">
+                                <span class="mod-cover-list-text">
+                                    {$vo.author_name}
+                                </span>
+                                </a>
+                            </p>
+                            <h5>
+                                <a class="mod-cover-list-name" href="/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}"
+                                   target="_blank">
+                                    {$vo.book_name}
+                                </a>
+                            </h5>
+                            <p class="mod-cover-list-intro">
+                                {$vo.summary}
+                            </p>
+                            <p class="mod-cover-list-tag">
+                                {volist name="vo.taglist" id="tag"}
+                                <a class="mod-tag-item" href="/{$booklist_act}/{$tag}" target="_blank">{$tag}</a>
+                                {/volist}
+                            </p>
+                        </li>
+                        {/raccoon:books}
+                    </ul>
+                </div>
+            </div>
+            <div class="bx-controls bx-has-controls-direction">
+                <div class="bx-controls-direction">
+                    <a class="bx-prev" href="">Prev</a>
+                    <a class="bx-next" href="">Next</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 火热漫画 -->
+    <div class="in-anishe-wrap ui-wm ui-mb40" id="in-anishe-wrap">
+        <div class="in-title-wr" style="margin-bottom: 5px;">
+            <h3 class="in-title-big">热门<em>漫画</em></h3>
+        </div>
+        <div class="in-anishe-xone clearfix">
+            <div class="in-anishe-mod-left ui-left">
+                <div class="in-anishe-tab-1">
+                    <div class="bx-wrapper" style="max-width: 9000px; display: block;">
+                        <div class="bx-viewport"
+                             style="width: 100%; overflow: hidden; position: relative; height: 251px;">
+                            <ul class="in-anishe-list clearfix bxslider" id="in-anishe-list1"
+                                style="padding-top: 16px; display: block; width: auto; position: relative;">
+                                <li style="float: none; list-style: none; position: absolute; width: 9000px; z-index: 50; display: block;">
+                                    {raccoon:books name="books" order="hits desc" limit="5"}
+                                    <div class="in-anishe-text">
+                                        <a target="_blank" href="/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}"
+                                           class="mod-cover-list-thumb mod-cover-effect ui-db">
+                                            <img class="lazy" style="display: block"
+                                                 src="https://ae01.alicdn.com/kf/He3cda13f34d44e8fb85dcdf6c7768398F.gif"
+                                                 data-original="{$vo.cover_url}"
+                                                 alt="{$vo.book_name}"/>
+                                            <span class="mod-layer-mask">
+                                            &nbsp;&nbsp;
+                                        </span>
+                                        </a>
+                                        <p class="mod-cover-list-updata">
+                                            <a target="_blank" href="/{$book_ctrl}/{$vo.param}"
+                                               class="mod-cover-list-mask" title="{$vo.book_name}">
+                                            <span class="mod-cover-list-text">
+                                                {$vo.author_name}
+                                            </span>
+                                            </a>
+                                        </p>
+                                        <h5>
+                                            <a target="_blank" title="{$vo.book_name}" href="/{$book_ctrl}/{$vo.param}"
+                                               class="mod-cover-list-name">
+                                                {$vo.book_name}
+                                            </a>
+                                        </h5>
+                                        <p class="mod-cover-list-intro">{$vo.summary}</p>
+                                        <p class="mod-cover-list-tag">
+                                            {volist name="vo.taglist" id="tag"}
+                                            <a class="mod-tag-item" href="/{$booklist_act}/{$tag}" target="_blank">{$tag}</a>
+                                            {/volist}
+                                        </p>
+                                    </div>
+                                    {/raccoon:books}
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="in-anishe-rank">
+                <div class="in-anishe-rank-top clearfix">
+                    <i></i>
+                    <h2>点击榜</h2>
+                </div>
+                <ul class="in-sherank-list">
+                    <li>
+                        {raccoon:books name="books" order="hits desc" limit="8"}
+                        <div class="in-sherank-mod">
+                            <em class="ui-border-em ui-sherank-top">{$i}</em>
+                            <a href="/{$book_ctrl}/{$vo.param}" class="in-anishe-name" title="{$vo.book_name}">
+                                {$vo.book_name}
+                            </a>
+                            <i class="ui-rank-trend-up"></i>
+                            <i class=""></i>
+                        </div>
+                        {/raccoon:books}
+                    </li>
+                    <li>
+                        {raccoon:books name="books" order="hits desc" limit="9,8"}
+                        <div class="in-sherank-mod">
+                            <em class="ui-border-em">{$i + 8}</em>
+                            <a href="/{$book_ctrl}/{$vo.param}" class="in-anishe-name" title="{$vo.book_name}">
+                                {$vo.book_name}
+                            </a>
+                            <i class="ui-rank-trend-up"></i>
+                            <i class=""></i>
+                        </div>
+                        {/raccoon:books}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- 完结作品 -->
+    <div class="in-sign-wr ui-wm ui-mb40" id="in-sign-wr">
+        <div class="in-title-wr  ui-mb20">
+            <h3 class="in-title-big">主编<em>推荐</em></h3>
+        </div>
+        <div class="in-content-wr">
+            <div class="in-sign-left-wr">
+                <div id="in-sign-cover" class="in-sign-cover">
+                    {raccoon:books name="books" order="last_time desc" where="is_top=1" limit="8"}
+                    <a class="" href="/{$book_ctrl}/{$vo.param}" target="_blank" title="{$vo.book_name}">
+                        <img class="lazy" src="https://ae01.alicdn.com/kf/He3cda13f34d44e8fb85dcdf6c7768398F.gif"
+                             data-original="{$vo.cover_url}" title="{$vo.book_name}" alt="{$vo.book_name}"/>
+                    </a>
+                    {/raccoon:books}
+                </div>
+            </div>
+        </div>
+        <div class="in-sign-right-wr">
+            <div id="in-sign-intro" class="in-sign-work-wr">
+                {raccoon:books name="books" order="last_time desc" where="is_top=1" limit="8"}
+                <div class="in-sign-work" style="display: {$i==1?'block':'none'}">
+                    <div class="clearfix">
+                        <h4 class="ui-left">
+                            <a class="in-sign-work-name ui-ahover-normal" href="/{$book_ctrl}/{$vo.param}"
+                               target="_blank" title="{$vo.book_name}">{$vo.book_name} </a>
+                        </h4>
+                        <p class="in-star-wr ui-left">
+                            <sub class="ui-star ui-star-9"></sub>
+                            <sub class="in-sign-work-score">9.6</sub>
+                        </p>
+                        <a class="in-title-more ui-right" href="/{$booklist_act}/{$vo.tag.tag_name}"
+                           target="_blank">更多<span
+                                class="ui-icon-gt">&gt;&gt;</span></a>
+                    </div>
+                    <p class="in-sign-work-author ui-text-gray9">
+                        <strong>{$vo.author_name}</strong>
+                        {volist name="vo.taglist" id="tag"}
+                        <a class="mod-tag-item" href="/{$booklist_act}/{$tag}" target="_blank" title="{$tag}">{$tag}</a>
+                        {/volist}
+                    </p>
+                    <p class="in-sign-work-intro">
+                        <a href="/{$book_ctrl}/{$vo.param}">{$vo.summary}</a>
+                    </p>
+                </div>
+                {/raccoon:books}
+            </div>
+            <div class="in-sign-handle">
+                <ul id="in-sign-handle" class="in-sign-list clearfix">
+                    {raccoon:books name="books" order="last_time desc" where="is_top=1" limit="8"}
+                    <li class="active">
+                        <a class="in-sign-thumb ui-db" title="{$vo.book_name}" href="/{$book_ctrl}/{$vo.param}"
+                           target="_blank">
+                            <img class="lazy" src="https://ae01.alicdn.com/kf/He3cda13f34d44e8fb85dcdf6c7768398F.gif"
+                                 data-original="{$vo.cover_url}" title="{$vo.book_name}" alt="{$vo.book_name}"
+                                 style="display: block;">
+                            <span class="in-sign-mask">&nbsp;&nbsp;</span>
+                        </a>
+                        <h5 class="in-sign-name">
+                            <a class="ui-text-gray3" href="/{$book_ctrl}/{$vo.param}"
+                               target="_blank">{$vo.book_name}</a>
+                        </h5>
+                    </li>
+                    {/raccoon:books}
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- 自定义分类 -->
+    <div id="in-top70" class="in-top70-wr ui-wm ui-mb40">
+        <div class="in-head ui-mb24 clearfix">
+            <h3 class="in-title veins">热门分类</h3>
+        </div>
+        <div class="in-top70-tab-con">
+            <div class="in-content ui-dn" style="display: block;">
+                <div id="in-top70-handle" class="mod-tab-handle">
+                    {raccoon:cates name="cates" where="id in (1,2,3)" key="k"} <!-- value里的数字是后台分类ID，填哪几个数字就展示哪几个分类，必须和下面一致 -->
+                    <a class="" href="javascript:void(0);" @mouseover="switchTab({$k})">{$vo.tag_name}</a>
+                    {/raccoon:cates}
+                </div>
+                <div id="in-top70-panel" class="mod-tab-content">
+                    {raccoon:cates name="cates" id="cate" where="id in (1,2,3)" key="k"}
+                    <div class="in-top-list-wr clearfix" v-show="index == {$k}">
+                        <ul class="in-top-list">
+                            {raccoon:books name="books" where="tags like '%$cate->tag_name%'" order="last_time desc" limit="10"}
+                            <li>
+                                <sub class="in-top-no-white">{$i}</sub>
+                                <a href="/{$book_ctrl}/{$vo.param}" target="_blank"
+                                   title="{$vo.book_name}">{$vo.book_name}</a>
+                            </li>
+                            {/raccoon:books}
+                        </ul>
+                        <ul class="in-top-list">
+                            {raccoon:books name="books" where="tags like '%$cate->tag_name%'" order="last_time desc" limit="11,10"}
+                            <li>
+                                <sub class="in-top-no-white">{$i + 10}</sub>
+                                <a href="/{$book_ctrl}/{$vo.param}" target="_blank"
+                                   title="{$vo.book_name}">{$vo.book_name}</a>
+                            </li>
+                            {/raccoon:books}
+                        </ul>
+                        <ul class="in-top-list">
+                            {raccoon:books name="books" where="tags like '%$cate->tag_name%'" order="last_time desc" limit="21,10"}
+                            <li>
+                                <sub class="in-top-no-white">{$i + 20}</sub>
+                                <a href="/{$book_ctrl}/{$vo.param}" target="_blank"
+                                   title="{$vo.book_name}">{$vo.book_name}</a>
+                            </li>
+                            {/raccoon:books}
+                        </ul>
+                        <ul class="in-top-list">
+                            {raccoon:books name="books" where="tags like '%$cate->tag_name%'" order="last_time desc" limit="31,10"}
+                            <li>
+                                <sub class="in-top-no-white">{$i + 30}</sub>
+                                <a href="/{$book_ctrl}/{$vo.param}" target="_blank"
+                                   title="{$vo.book_name}">{$vo.book_name}</a>
+                            </li>
+                            {/raccoon:books}
+                        </ul>
+                        <ul class="in-top-list">
+                            {raccoon:books name="books" where="tags like '%$cate->tag_name%'" order="last_time desc" limit="41,10"}
+                            <li>
+                                <sub class="in-top-no-white">{$i + 40}</sub>
+                                <a href="/{$book_ctrl}/{$vo.param}" target="_blank"
+                                   title="{$vo.book_name}">{$vo.book_name}</a>
+                            </li>
+                            {/raccoon:books}
+                        </ul>
+                        <ul class="in-top-list">
+                            {raccoon:books name="books" where="tags like '%$cate->tag_name%'" order="last_time desc" limit="51,10"}
+                            <li>
+                                <sub class="in-top-no-white">{$i + 50}</sub>
+                                <a href="/{$book_ctrl}/{$vo.param}" target="_blank"
+                                   title="{$vo.book_name}">{$vo.book_name}</a>
+                            </li>
+                            {/raccoon:books}
+                        </ul>
+                        <ul class="in-top-list">
+                            {raccoon:books name="books" where="tags like '%$cate->tag_name%'" order="last_time desc" limit="61,10"}
+                            <li>
+                                <sub class="in-top-no-white">{$i + 60}</sub>
+                                <a href="/{$book_ctrl}/{$vo.param}" target="_blank"
+                                   title="{$vo.book_name}">{$vo.book_name}</a>
+                            </li>
+                            {/raccoon:books}
+                        </ul>
+                    </div>
+                    {/raccoon:cates}
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 左侧悬浮栏 -->
+    <div class="mod-fixed-left-wr" id="mod-fixed-left-wr">
+        <ul class="mod-fixed-left-tags" id="mod-fixed-left-tags">
+            <li><a href="#banner" title="每日推荐">每日<br>推荐</a></li>
+            <li><a href="#in-strong-wr" title="最新漫画">万众<br>追新</a></li>
+            <li><a href="#in-anishe-wrap" title="火热漫画">点击<br>最多</a></li>
+            <li><a href="#in-sign-wr" title="主编推荐">主编<br>推荐</a></li>
+            <li><a href="#in-top70" title="分类推荐">分类<br>推荐</a></li>
+            <li><a href="#in-rank-wr" title="火热排行">火热<br>排行</a></li>
+        </ul>
+        <a class="tab-top" id="mod-fixed-left-top" href="javascript:void(0);" title="顶部">顶部</a>
+    </div>
+</div>
+</div>
+{/block}
+{block name="js"}
+<script src="https://lib.baomitu.com/vue/2.6.10/vue.min.js"></script>
+<script>
+    var app = new Vue({
+        el: '#in-top70',
+        data: {
+           index:1
+        },
+        methods: {
+            switchTab(index) {
+                this.index = index
+            }
+        }
+    });
+</script>
+{/block}

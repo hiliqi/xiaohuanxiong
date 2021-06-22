@@ -1,0 +1,208 @@
+{extend name="./template/default/pc/pub/base.html" /}
+{block name="seo"}
+<title>个人中心-{$site_name}</title>
+{/block}
+{block name="css"}
+<link rel="stylesheet" href="/static/css/account.css">
+{/block}
+{block name="content"}
+<main class="container mt30 mb20 overflow-Show clearfix" style="min-height:750px;">
+    {include file="./template/default/pc/pub/uc_menu.html"}
+    <article class="article-main pull-right">
+        <section class="box-userinfo box ">
+            <div class="table-head">
+                <ul class="table-tabs">
+                    <li>
+                        <a class="active">验证手机</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="box-body">
+                <section class="user-repasswd">
+                    <p class="tip color-main" style="color:red"></p>
+                    <p class="p-r"><span class="p-phone">绑定新手机</span></p>
+                    <p class="p-r"><span class="p-title">国家/地区</span>
+                        <select class="account-select select_areacode txt_areacode" name="txt_areacode">
+                            <option value="86">中国</option>
+                        </select>
+                    </p>
+                    <p class="p-r">
+                        <span class="p-title">+86（中国）</span>
+                        <input type="text" id="txt_phone" class="txt_phone" name="txt_phone" value=""
+                               placeholder="输入手机号码">
+                        <span class="form-tip mt" style="display:none;"></span>
+                    </p>
+                    <p class="p-r">
+                        <span class="p-title">短信验证码</span>
+                        <input type="text" id="txt_phonecode" class="txt_phonecode" name="txt_phonecode" value=""
+                               placeholder="输入短信验证码">
+                        <a href="javascript:void(0);" isok="1" class="a-code-get btnphonecodeget">获取验证码</a>
+                    </p>
+                    <p class="p-r"><span class="p-phone">绑定新手机号码，原手机号将不能用于登录</span></p>
+                    <p>
+                        <button id="sub" class="btn full" type="submit">绑定</button>
+                    </p>
+                </section>
+            </div>
+        </section>
+    </article>
+</main>
+<script>
+    $(function () {
+        $(".btnphonecodeget").click(function () {
+            if ($('.btnphonecodeget').attr('isok') == 1) {
+                var phone = $(".txt_phone").val();
+                if (phone == '') {
+                    ShowDialog("手机不填可是不行的哦~");
+                    return false;
+                }
+                var areacode = $(".txt_areacode").val();
+                $.ajax({
+                    url: '/sendcms',
+                    data: {areacode: areacode, phone: phone},
+                    async: false,
+                    error: function (msg) {
+                    },
+                    success: function (res) {
+                        ShowDialog(res.msg)
+                        $('.btnphonecodeget').attr('isok', 0);
+                        startTime();
+                    }
+                });
+            }
+
+        });
+    });
+
+    $('#sub').click(function () {
+        $.post({
+            url: '/bindphone',
+            data: {
+                txt_phonecode: $('#txt_phonecode').val(),
+                txt_phone: $('#txt_phone').val()
+            },
+            success(res) {
+                if (res.err == 0) {
+                    ShowDialog(res.msg);
+                    setTimeout(function () {
+                        location.href = '/ucenter';
+                    }, 2000);
+                } else {
+                    ShowDialog(res.msg);
+                    setTimeout(function () {
+                        location.reload();
+                    }, 1000);
+                }
+            }
+        })
+
+    })
+
+    $('#sub1').click(function () {
+        $.post({
+            url: '/verifyphone',
+            data: {
+                txt_phonecode: $('#txt_phonecode').val(),
+                txt_phone: $('#txt_phone').val()
+            },
+            success(res) {
+                if (res.err == '1') {
+                    ShowDialog(res.msg);
+                    setTimeout(function () {
+                        location.reload();
+                    }, 1000);
+                } else {
+                    location.href = '/bindphone';
+                }
+            }
+        })
+    })
+
+    $('#resetpwd_sub').click(function () {
+        if (resetpwd() == 4) {
+            $.post({
+                url: '/resetpwd',
+                data: {password: $("#txt_password").val()},
+                success(res) {
+                    if (res.err == '1') {
+                        ShowDialog(res.msg);
+                        setTimeout(function () {
+                            location.reload();
+                        }, 1000);
+                    } else {
+                        ShowDialog(res.msg);
+                        setTimeout(function () {
+                            location.href = '/ucenter';
+                        }, 2000);
+                    }
+                }
+            })
+        } else {
+            ShowDialog('密码不符合要求');
+            setTimeout(function () {
+                location.reload();
+            }, 1000);
+        }
+    })
+
+    function resetpwd() {
+        var regpwd = new RegExp("^[0-9A-Za-z\\-=\\[\\];,./~!@#$%^*()_+}{:?]{6,21}$");
+        var $pwd = $("#txt_password").val();
+        var $pwd2 = $("#txt_password2").val();
+        if ($pwd == '') {
+            return 0;
+        } else if ($pwd2 == '') {
+            return 1;
+        } else if ($pwd != $pwd2) {
+            return 2;
+        } else if (!regpwd.test($pwd)) {
+            return 3;
+        } else {
+            return 4;
+        }
+    }
+
+    function startTime() {
+        var index = 60;
+        var timer = setInterval(function () {
+            index--;
+            if (index == 0) {
+                clearInterval(timer);
+                $('.btnphonecodeget').attr('isok', 1);
+                $('.btnphonecodeget').text('获取验证码');
+            } else {
+                $('.btnphonecodeget').text('重新获取(' + index + ')');
+            }
+        }, 1000);
+    }
+
+    function resetpwdbyphone() {
+        var phone = $("#txt_phone").val();
+        if (phone == '') {
+            ShowDialog("必须填写手机号");
+            return false;
+        }
+        var code = $("#txt_phonecode").val();
+        if (code == '') {
+            ShowDialog("必须填写验证码");
+            return false;
+        }
+        if (resetpwd() == 0) {
+            ShowDialog("密码不填可是不行的哦~");
+            return false;
+        } else if (resetpwd() == 1) {
+            ShowDialog("新密码不填可是不行的哦~");
+            return false;
+        } else if (resetpwd() == 2) {
+            ShowDialog("两次密码输入不一致~");
+            return false;
+        } else if (resetpwd() == 3) {
+            ShowDialog('请输入6位及以上密码');
+            $("#txt_password").val('');
+            $("#txt_password2").val('');
+            return false;
+        }
+        ShowDialog('忘记密码');
+    }
+</script>
+{/block}

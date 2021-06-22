@@ -1,0 +1,61 @@
+
+.page-login .main-content {
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 80px;
+}
+
+.page-login .header-login {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 64px;
+}
+
+.page-login.fixed-footer .footer-wrapper {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 3;
+}
+
+.page-login .footer-wrapper {
+  height: 120px;
+}
+
+.page-login .footer-bottom {
+  padding: 0;
+  padding-top: 30px;
+}
+
+.page-login .login-box {
+  margin-top: 60px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 825px;
+  height: 400px;
+  background-color: #fff;
+  overflow: hidden;
+}
+
+.page-login .login-box .login-pic {
+  font-size: 0;
+  float: left;
+  width: 400px;
+  height: 400px;
+}
+
+.page-login .login-box .login-pic img {
+  width: 400px;
+  height: auto;
+}
+
+.page-login .login-box .dialog-login {
+  float: right;
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 40px;
+  padding-bottom: 10px;
+}

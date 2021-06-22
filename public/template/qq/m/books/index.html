@@ -1,0 +1,212 @@
+{extend name="./template/qq/m/pub/base.html" /}
+{block name="seo"}
+<title>{$book.book_name}全集免费高清无修在线阅读-{$site_name}</title>
+<meta name="description" content="{$book.book_name}又名{$book.nick_name}，是一本地区为{$book.area.area_name}，类型为{$book.tags}的高人气漫画，漫画简介：{$book.summary}">
+{/block}
+{block name="css"}
+<link rel="stylesheet" href="/template/qq/css/comicinfo.css"/>
+{/block}
+{block name="main"}
+<header class="top-bar #bar_style#">
+    <a class="btn-top back" href="/">[返回]</a>
+    <h1 class="top-title">{$book.book_name}</h1>
+    <div class="top-logo">[腾讯动漫LOGO]</div>
+    <div class="padding"></div>
+    <a class="btn-top search" href="/{$search_ctrl}">[搜索]</a>
+    <a class="btn-top menu">[菜单]</a>
+</header>
+<article class="main">
+    <!--布局上的头部，包括 mod-nav，mod-head，mod-stratRead，mod-tab-->
+    <div class="lay-head">
+        <section class="mod-head">
+            <div class="head-banner">
+                <img src="{$book.cover_url}" class="head-cover" alt="">
+            </div>
+        </section>
+    </div>
+
+    <div class="lay-content">
+        <!-- 作品详细信息 -->
+        <section class="head-info">
+            <div class="head-info-detail">
+                <div class="head-title-tags">
+                    <h1>{$book.book_name}</h1>
+                    <div class="head-tags">
+                        <span>{$book.tags}</span>
+                        <span>{$book.clicks}</span>
+                    </div>
+                </div>
+                <div class="head-info-grade">
+                    <p class="info-grade">9.4</p>
+                    <div class="info-star">
+                        <div class="star-wrap">
+                            <div class="star-light"></div>
+                            <div class="star"></div>
+                        </div>
+                    </div>
+                    <p class="info-member-rate">1万人评分</p>
+                </div>
+            </div>
+            <div class="head-info-desc">{$book.summary}</div>
+            <div class="head-info-author">
+                作者:<img src="https://thirdqq.qlogo.cn/g?b=oidb&k=RZCxKDtMGGnmj6gziaSyJYg&s=100&t=1557498113" alt="">{$book.author.author_name}</div>
+        </section>
+        <!-- APP引导语 -->
+        <section class="lay-guiding">
+            <div class="app-guiding gui-content">
+                <img class="app-guiding-img" src="https://gtimg.ac.qq.com/h5/comic/images/app-guiding.png?v=c2a9a579a53936ae" />
+            </div>
+        </section>
+
+        <!-- 页面内容 包含目录横向列表 包含排行榜推荐作品  包含猜你喜欢推荐作品 -->
+        <section class="chapter-info">
+            {if $book.is_copyright == 0}
+            <!-- 目录信息 -->
+            <h1 class="mod-chapter-title">
+                目录
+                <span>连载中</span>
+                <span class="chapter-more" id="chapter_more">展开目录<i class="icon-arrow-right"></i></span>
+            </h1>
+            <!-- 目录横向列表 -->
+            <div class="mod-chapter-list">
+                <ul class="chapter-list chapter-horizonal">
+                    {raccoon:chapters name="chapters" where="book_id='$book->id'" order="chapter_order asc" limit="6"}
+                    <li class="chapter-item">
+                        <a class="chapter-link " href="/{$chapter_ctrl}/{$vo.id}">
+                            <p class="chapter-title">{$vo.chapter_name}</p>
+                        </a>
+                    </li>
+                    {/raccoon:chapters}
+                </ul>
+            </div>
+            {/if}
+        </section>
+
+        <!-- 分类排行榜目录模块 -->
+        <section class="classify-rank-list">
+            <h1 class="rank-list-title">相关推荐</h1>
+            <ul class="rank-list">
+                {raccoon:books name="books" where="tags like '%book->tags%' or area_id='$book->area_id'"
+                order="last_time desc" limit="6"}
+                <li class="rank-item">
+                    <a href="/{$book_ctrl}/{$vo.param}">
+                        <img src="{$vo.cover_url}" alt="">
+                        <p class="item-title">{$vo.book_name}</p>
+                    </a>
+                </li>
+                {/raccoon:books}
+            </ul>
+        </section>
+    </div>
+    <!--底部工具栏 begin-->
+    <section class="mod-toolBar">
+        <div class="lay-flex">
+            <div class="lay-box">
+                <a id="btn_index" class="toolBar-toolIndex" href="/bookshelf">
+                    <i class="icon-index">[前往书库]</i>
+                    <p class="iconfont">前往书库</p>
+                </a>
+                <a id="btn_toolFav" class="toolBar-toolFav unfav">收藏</a>
+            </div>
+            {if $book.is_copyright == 1}
+                <a class="toolBar-toolRead" href="{$book.src_url}">正版阅读</a>
+            {else /}
+                {if $start == -1}
+                <a class="toolBar-toolRead" href="javascript:void(0);">暂无章节</a>
+                {else /}
+                <a class="toolBar-toolRead" href="/{$chapter_ctrl}/{$start}">开始阅读</a>
+                {/if}
+            {/if}
+        </div>
+    </section>
+    <!--底部工具栏 end-->
+</article>
+<section class="bottom-chapter-list">
+    <div class="bottom-chapter-mask"></div>
+    <div class="bottom-chapter-wrap">
+        <div class="wrap-top">
+            <h2>目录 <span class="bottom-list-close-btn"><i></i></span></h2>
+            <div class="wrap-header">
+                全部章节
+                <div class="asc-desc">
+                   <span id="order_desc">倒序</span>
+                </div>
+            </div>
+        </div>
+        <!-- <span class="bottom-back-to-current bottom-icon"><i></i>当前</span> -->
+        <span class="bottom-back-to-top bottom-icon to-top" id="top_or_bottom"><i></i><span>到顶</span></span>
+        <ul id="chapters" class="chapter-wrap-list normal">
+            {raccoon:chapters name="chapters" where="book_id='$book->id'" order="chapter_order asc"}
+            <li class="bottom-chapter-item">
+                <a class="chapter-link" href="/{$chapter_ctrl}/{$vo.id}">
+                    <div class="comic-info">
+                        <span class="comic-title {$vo.chapter_order >= $start_pay ? 'lock' : ''}">{$vo.chapter_name}</span>
+                    </div>
+                </a>
+            </li>
+            {/raccoon:chapters}
+        </ul>
+    </div>
+</section>
+<div style="height: 1rem;"></div>
+{/block}
+{block name="js"}
+<script>
+    $('#btn_toolFav').click(function () {
+        var val = $(this).attr('data-val');
+        $.post({
+            url:`/addfavor`,
+            data:{'book_id' : {$book.id}, 'val' : val },
+            success: function (res) {
+                if (res.err == 1){
+                    location.href = '/login'
+                } else {
+                    if (res.isfavor == 1){ //表示收藏了，将控件状态改为已收藏
+                        $('#btn_toolFav').text('已收藏');
+                    } else { //更改为未收藏
+                        $('#btn_toolFav').text('收藏');
+                    }
+                }
+            },
+        })
+    })
+    $('#chapter_more').click(function () {
+        $('.bottom-chapter-list').addClass('show').addClass('animate')
+        $('body').css('overflow-y', 'hidden')
+    })
+
+    $('.bottom-list-close-btn').click(function () {
+        $('.bottom-chapter-list').removeClass('show').removeClass('animate')
+        $('body').css('overflow-y', 'visible')
+    })
+    $('#order_desc').click(function () {
+        var ul = document.getElementById('chapters');
+        var new_ul = ul.cloneNode(false);
+
+        // Add all lis to an array
+        var lis = [];
+        for(var i = ul.childNodes.length; i--;){
+            if(ul.childNodes[i].nodeName === 'LI')
+                lis.push(ul.childNodes[i]);
+        }
+
+        // Sort the lis in descending order
+        lis.sort(function(a, b){
+            return parseInt(b.childNodes[0].data , 10) -
+                parseInt(a.childNodes[0].data , 10);
+        });
+
+        // Add them into the ul in order
+        for(var i = 0; i < lis.length; i++)
+            new_ul.appendChild(lis[i]);
+        ul.parentNode.replaceChild(new_ul, ul);
+    })
+
+    //点击返回顶部500ms的滑动效果
+    $('#top_or_bottom').on('click', function () {
+        var ul = document.getElementById('chapters')
+        var headheight = ul.offsetTop;
+        ul.scrollTop = headheight - 150
+    })
+</script>
+{/block}

@@ -101,6 +101,12 @@ trait Attribute
     private $get = [];
 
     /**
+     * 修改器执行记录
+     * @var array
+     */
+    private $set = [];
+
+    /**
      * 动态获取器
      * @var array
      */
@@ -357,6 +363,10 @@ trait Attribute
     {
         $name = $this->getRealFieldName($name);
 
+        if (isset($this->set[$name])) {
+            return;
+        }
+
         // 检测修改器
         $method = 'set' . Str::studly($name) . 'Attr';
 
@@ -365,12 +375,10 @@ trait Attribute
 
             $value = $this->$method($value, array_merge($this->data, $data));
 
+            $this->set[$name] = true;
             if (is_null($value) && $array !== $this->data) {
                 return;
             }
-        } elseif (isset($this->type[$name])) {
-            // 类型转换
-            $value = $this->writeTransform($value, $this->type[$name]);
         }
 
         // 设置数据对象属性
@@ -504,11 +512,6 @@ trait Attribute
             }
 
             $value = $this->$method($value, $this->data);
-        } elseif (isset($this->type[$fieldName])) {
-            // 类型转换
-            $value = $this->readTransform($value, $this->type[$fieldName]);
-        } elseif ($this->autoWriteTimestamp && in_array($fieldName, [$this->createTime, $this->updateTime])) {
-            $value = $this->getTimestampValue($value);
         } elseif ($relation) {
             $value = $this->getRelationValue($relation);
             // 保存关联对象值
@@ -518,6 +521,40 @@ trait Attribute
         $this->get[$fieldName] = $value;
 
         return $value;
+    }
+
+    /**
+     * 读取数据类型处理
+     * @access protected
+     * @return void
+     */
+    protected function readDataType(): void
+    {
+        foreach ($this->data as $key => $value) {
+            if (isset($this->type[$key])) {
+                $this->get[$key] = $this->readTransform($value, $this->type[$key]);
+            } elseif ($this->autoWriteTimestamp && in_array($key, [$this->createTime, $this->updateTime])) {
+                $this->get[$key] = $this->getTimestampValue($value);
+            }
+        }
+    }
+
+    /**
+     * 写入数据类型处理
+     * @access protected
+     * @param  array $data 数据
+     * @return array
+     */
+    protected function writeDataType(array $data): array
+    {
+        foreach ($data as $name => &$value) {
+            if (isset($this->type[$name])) {
+                // 类型转换
+                $value = $this->writeTransform($value, $this->type[$name]);
+            }
+        }
+
+        return $data;
     }
 
     /**

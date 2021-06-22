@@ -1,0 +1,60 @@
+/* background && color */
+.mod-top-wr{
+    background: url(../images/ac_head_bg.png) no-repeat 50% 0;
+	*margin-top:0 !important;
+	*height:185px;
+}
+.mod-top-vip-logo{
+	background:url(../images/ac_paypd_all.png) -15px -220px no-repeat;
+}
+
+.mod-top-nav-wr{
+    position: relative;
+	background: url(../images/ac_global.png) 0 -77px repeat-x;
+}
+.mod-top-nav-list li{
+    position: relative;
+	background: url(../images/ac_global.png) right -403px no-repeat;
+}
+.mod-top-ico-new{
+	background:url(../images/ac_global.png) no-repeat -164px -329px;
+}
+.mod-top-nav-list .active a,
+.mod-top-nav-list a:hover{
+    background: url(../images/ac_global.png) -30px -140px no-repeat;
+}
+.mod-top-nav-list .active span,
+.mod-top-nav-list a:hover span{
+    background: url(../images/ac_global.png) right -140px no-repeat;
+}
+.mod-top-nav-replenish{
+	/*background:url(../images/ac_global.png) no-repeat -144px -1145px;*/
+    border: 1px solid #cc6007;
+    border-radius: 2px;
+    background: #fbe4bb;
+}
+.mod-top-nav-replenish:hover{
+	/*background-position:-144px -1181px;*/
+    background: #ffefce;
+}
+.mod-top-nav-replenish:active{
+	/*background-position:-144px -1217px;*/
+    background: #fee0ae;
+}
+.mod-top-nav-upload i{
+    background: url(../images/ac_global.png) -211px -216px no-repeat;
+}
+.mod-top-nav-replenish i{
+    background: url(../images/ac_global.png) -195px -233px no-repeat;
+}
+.mod-top-userlog .mod-dorpdown-handle{
+	background-color:#fd8929;
+}
+.mod-top-userlog .mod-dorpdown-handle:hover,
+.mod-fix-userlog .mod-dorpdown-handle:hover{
+    background-color: #f4750b;
+}
+.mod-top-userlog .mod-dorpdown-handle:active,
+.mod-fix-userlog .mod-dorpdown-handle:active{
+    background-color: #f4750b;
+}

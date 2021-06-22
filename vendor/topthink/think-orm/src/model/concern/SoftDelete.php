@@ -107,10 +107,9 @@ trait SoftDelete
             return false;
         }
 
-        $name  = $this->getDeleteTimeField();
-        $force = $this->isForce();
+        $name = $this->getDeleteTimeField();
 
-        if ($name && !$force) {
+        if ($name && !$this->isForce()) {
             // 软删除
             $this->set($name, $this->autoWriteTimestamp($name));
 
@@ -132,7 +131,7 @@ trait SoftDelete
 
         // 关联删除
         if (!empty($this->relationWrite)) {
-            $this->autoRelationDelete($force);
+            $this->autoRelationDelete();
         }
 
         $this->trigger('AfterDelete');

@@ -3,7 +3,7 @@
 <title>作者注册-{$site_name}</title>
 <style>
     body {
-        background-image: url("/static/ad/images/bg-login.jpg");
+        background-image: url("/static/admin/images/bg-login.jpg");
         background-repeat: no-repeat;
         background-size: cover;
         min-height: 100vh;
@@ -178,7 +178,7 @@
             <img class="login-captcha" src=""/>
         </div>
         <div class="layui-form-item">
-            <a href="{:url('account/login')}" class="layui-link">返回登录</a>
+            <a href="{:adminurl('account/login')}" class="layui-link">返回登录</a>
         </div>
         <div class="layui-form-item" style="margin-bottom: 20px;">
             <button class="layui-btn layui-btn-fluid" lay-filter="loginSubmit" lay-submit>注册</button>
@@ -198,14 +198,14 @@
         form.on('submit(loginSubmit)', function (obj) {
             $.ajax({
                 type: 'POST',
-                url: "{:url('account/register')}",
+                url: "{:adminurl('account/register')}",
                 data: $('#loginSubmit').serialize(),
                 dataType: 'json',
                 success: function (res) {
                     if (res.err == 0){ //注册成功
                         layer.msg(res.msg, {icon: 1, time: 1000});
                         setTimeout(function () {
-                            location.href = "{:url('account/login')}";
+                            location.href = "{:adminurl('account/login')}";
                         }, 1000);
                     } else {
                         layer.msg(res.msg, {icon: 2, time: 1000});
@@ -219,7 +219,7 @@
         });
 
         /* 图形验证码 */
-        var captchaUrl = '{:url("account/captcha")}';
+        var captchaUrl = '{:adminurl("account/captcha")}';
         $('img.login-captcha').click(function () {
             this.src = captchaUrl + '?t=' + (new Date).getTime();
         }).trigger('click');

@@ -1,0 +1,185 @@
+{extend name="./template/qq/m/pub/base.html" /}
+{block name="seo"}
+<title>{$chapter.book.book_name}-{$chapter.chapter_name}在线阅读-{$site_name}</title>
+<meta name="Description" content="当前阅读的是{$chapter.book.book_name}的{$chapter.chapter_name}"/>
+{/block}
+{block name="css"}
+<link rel="stylesheet" href="/template/qq/css/index_v2.2.css"/>
+{/block}
+{block name="main"}
+<div id="app">
+    <!-- 悬浮栏区域 -->
+    <section class="float-bar top hidden">
+        <a class="float-bar-btn back">[返回]</a>
+        <label class="float-bar-title">
+            <span class="title">{$chapter.book.book_name}</span>
+            <span class="progress">{$chapter.chapter_name}</span>
+        </label>
+        <a class="float-bar-btn detail" href="/{$book_ctrl}/{$chapter.book.param}">
+            <i class="icon icon-detail">[详情]</i>
+            <!-- <p class="iconfont">详情</p> -->
+        </a>
+        <a class="float-bar-btn home" href="/">
+            <i class="icon icon-home">[首页]</i>
+            <!-- <p class="iconfont">前往书库</p> -->
+        </a>
+    </section>
+    <!-- 悬浮在右侧的作品目录信息 -->
+    <section class="float-chapter-list">
+        <div class="fixed-chapter-list-mask"></div>
+        <div class="chapter-list-rank">
+            <h2 class="comic-title">{$chapter.book.book_name}</h2>
+            <div class="chapter-list-desc">
+                <span id="list-order" class="list-order desc">
+                    <i class="icon-order"></i><span>倒序</span></span>
+            </div>
+            <div class="chapter-list-wrap">
+                <ul id="chapterList" class="list-wrap normal active">
+                    {raccoon:chapters name="chapters" where="book_id='$chapter->book_id'" order="chapter_order asc"}
+                    <li class="chapter-item">
+                        <a class="chapter-link {$vo.id==$chapter.id?'now':''}" href="/{$chapter_ctrl}/{$vo.id}">
+                            <p class="chapter-title">{$vo.chapter_name}</p>
+                        </a>
+                    </li>
+                    {/raccoon:chapters}
+                </ul>
+            </div>
+        </div>
+    </section>
+    <section class="float-bar bottom hidden">
+        <a id="menu" class="float-bar-btn chapter-list">[目录]</a>
+        <a class="float-bar-btn view-mode">[阅读模式]</a>
+        <div class="float-bar-btn download">[下载]</div>
+        {if $prev == "null"}
+        <a class="float-bar-btn prev-chapter">[上一章]</a>
+        {else/}
+        <a href="/{$chapter_ctrl}/{$prev.id}" class="float-bar-btn prev-chapter">[上一章]</a>
+        {/if}
+
+        {if $next == "null"}
+        <a class="float-bar-btn next-chapter">[下一章]</a>
+        {else/}
+        <a href="/{$chapter_ctrl}/{$next.id}" class="float-bar-btn next-chapter">[下一章]</a>
+        {/if}
+
+    </section>
+    <!-- 漫画图片区域 -->
+    <section class="comic-pic-area">
+        <!-- 浏览控制按键 - 上一页 -->
+        {if $prev == "null"}
+        <a class="nav-ctrl-btn prev">没有了</a>
+        {else/}
+        <a href="/{$chapter_ctrl}/{$prev.id}" class="nav-ctrl-btn prev">点击加载上一章节</a>
+        {/if}
+
+        <section class="comic-pic-list-all" id="comic-pic-list">
+            <ul class="comic-pic-list">
+                {raccoon:photos name="photos" order="pic_order asc" where="chapter_id='$chapter->id'"}
+                <li class="comic-pic-item pic-loaded">
+                    <div class="comic-pic-pad" style="padding-top: 141.5%;"></div>
+                    <div class="comic-pic-box">
+                        <img class="comic-pic lazyload" data-src="{$vo.img_url}" src="https://s1.ax1x.com/2018/12/27/FRm2Ks.jpg">
+                    </div>
+                </li>
+                {/raccoon:photos}
+            </ul>
+        </section>
+        {if $next == "null"}
+        <a class="nav-ctrl-btn next">没有了</a>
+        {else/}
+        <a href="/{$chapter_ctrl}/{$next.id}" class="nav-ctrl-btn next">点击加载下一章节</a>
+        {/if}
+    </section>
+</div>
+
+{/block}
+{block name="js"}
+<script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.js"></script>
+<script>
+    lazyload();
+    $('#app').click(function () {
+        if ( $('float-bar').hasClass('hidden')) {
+            $('float-bar').removeClass('hidden')
+        } else {
+            $('float-bar').addClass('hidden')
+        }
+
+        if ($('.float-bar').hasClass('hidden')) {
+            $('.float-bar').removeClass('hidden')
+        } else {
+            $('.float-bar').addClass('hidden')
+        }
+    })
+    $('#menu').click(function () {
+        $('.float-chapter-list').addClass('show').addClass('animate')
+    })
+    $('.fixed-chapter-list-mask').click(function () {
+        $('.float-chapter-list').removeClass('show').removeClass('animate')
+    })
+    $('#list-order').click(function () {
+        var ul = document.getElementById('chapterList');
+        var new_ul = ul.cloneNode(false);
+
+        // Add all lis to an array
+        var lis = [];
+        for(var i = ul.childNodes.length; i--;){
+            if(ul.childNodes[i].nodeName === 'LI')
+                lis.push(ul.childNodes[i]);
+        }
+
+        // Sort the lis in descending order
+        lis.sort(function(a, b){
+            return parseInt(b.childNodes[0].data , 10) -
+                parseInt(a.childNodes[0].data , 10);
+        });
+
+        // Add them into the ul in order
+        for(var i = 0; i < lis.length; i++)
+            new_ul.appendChild(lis[i]);
+        ul.parentNode.replaceChild(new_ul, ul);
+    })
+    $(function () {
+        //--本地缓存代码开始--
+        let bookInfo = {
+            chapter_id: '{$chapter.id}',
+            end: "{$chapter.book.end == 1 ? '完结' : '连载'}",
+            chapter_name: '{$chapter.chapter_name}',
+            cover_url:'{$chapter.book.cover_url}',
+            book_id: '{$chapter.book_id}',
+            last_time: "{$chapter.book.last_time|date='Y-m-d'}",
+            book_name:'{$chapter.book.book_name}',
+            param: '{$chapter.book.param}'
+        };
+        localStorage.setItem('manhua_{$chapter.book_id}', JSON.stringify(bookInfo));//id为键，设置缓存
+        let history = [];
+        let value = localStorage.getItem('xwx_historys'); //读取参照数组
+        if (value != undefined && value != null) {
+            history = JSON.parse(value);
+        }
+        if (history.indexOf('manhua_{$chapter.book_id}') === -1) {
+            history.push('manhua_{$chapter.book_id}'); //把id为值存入参照数组
+        }
+
+        console.log(history)
+        localStorage.setItem('xwx_historys', JSON.stringify(history));
+        //--本地缓存代码结束--
+
+        document.body.oncopy = function () {
+            return false;
+        }; //阻止复制
+        document.body.onselectstart = function () {
+            return false;
+        }; //阻止选中
+        document.oncontextmenu = function () {
+            return false;
+        }; //阻止菜单弹出
+        if (document.images) {
+            for (i = 0; i < document.images.length; i++) {
+                document.images[i].onmousedown = function () {
+                    return false;
+                };
+            }
+        }
+    });
+</script>
+{/block}

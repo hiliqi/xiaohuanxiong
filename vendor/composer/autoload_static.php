@@ -37,8 +37,6 @@ class ComposerStaticInit6c205f7902622f3d453da6a609c50c48
         ),
         'Y' => 
         array (
-            'Yurun\\Util\\' => 11,
-            'Yurun\\PaySDK\\' => 13,
             'Yansongda\\Supports\\' => 19,
             'Yansongda\\Pay\\' => 14,
         ),
@@ -108,21 +106,13 @@ class ComposerStaticInit6c205f7902622f3d453da6a609c50c48
         'think\\' => 
         array (
             0 => __DIR__ . '/..' . '/topthink/framework/src/think',
-            1 => __DIR__ . '/..' . '/topthink/think-orm/src',
-            2 => __DIR__ . '/..' . '/topthink/think-template/src',
-            3 => __DIR__ . '/..' . '/topthink/think-helper/src',
+            1 => __DIR__ . '/..' . '/topthink/think-helper/src',
+            2 => __DIR__ . '/..' . '/topthink/think-orm/src',
+            3 => __DIR__ . '/..' . '/topthink/think-template/src',
         ),
         'app\\' => 
         array (
             0 => __DIR__ . '/../..' . '/app',
-        ),
-        'Yurun\\Util\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/yurunsoft/yurun-http/src',
-        ),
-        'Yurun\\PaySDK\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/yurunsoft/pay-sdk/src',
         ),
         'Yansongda\\Supports\\' => 
         array (

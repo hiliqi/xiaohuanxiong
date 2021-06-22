@@ -1,0 +1,1525 @@
+@charset "UTF-8";
+html {
+    font-size: 20px;
+}
+
+html {
+    font-size: 10px;
+    overflow-x: hidden;
+}
+
+@media screen and (min-width: 320px) {
+    html {
+        font-size: 17px;
+    }
+}
+
+@media screen and (min-width: 360px) {
+    html {
+        font-size: 19px;
+    }
+}
+
+@media screen and (min-width: 375px) {
+    html {
+        font-size: 20px;
+    }
+}
+
+@media screen and (min-width: 414px) {
+    html {
+        font-size: 22px;
+    }
+}
+
+body {
+    font-size: 14px;
+}
+
+.comic-list.col-2 .comic-item, .comic-list.col-2 .comic-item .comic-cover, .comic-list.col-2 .comic-item .comic-cover .cover-image, .comic-list.col-3 .comic-item .comic-cover, .comic-list.col-3 .comic-item .comic-cover .cover-image, .comic-list.col-3 .comic-item .comic-tag, .comic-list.col-1-3 .comic-item.comic-item-1 .comic-cover, .comic-list.col-1-3 .comic-item.comic-item-1 .comic-cover .cover-image, .comic-list.col-1-3 .comic-item .comic-cover, .comic-list.col-1-3 .comic-item .comic-cover .cover-image, .comic-list.slide .comic-item .comic-link, .comic-list.slide .comic-item .comic-cover, .comic-list.slide .comic-item .comic-cover .cover-image, .comic-list.col-1 .comic-item .comic-link, .comic-list.col-1 .comic-item .comic-cover, .comic-list.col-1 .comic-item .comic-cover .cover-image, .adv-img, section.rank-comic .rank-container, section.rank-comic .rank-item .comic-cover, section.rank-comic .rank-item .comic-cover .cover-image {
+    border-radius: 0.1rem;
+    overflow: hidden;
+}
+
+.comic-list.col-2 .comic-item, .banner-menu, .adv-img {
+    -webkit-box-shadow: 0 0 0.125rem rgba(9, 2, 4, 0.06);
+    box-shadow: 0 0 0.125rem rgba(9, 2, 4, 0.06);
+}
+
+.comic-list.col-2 .comic-item .comic-cover, .comic-list.col-3 .comic-item .comic-cover, .comic-list.slide .comic-item .comic-cover, .comic-list.col-1 .comic-item .comic-cover, .adv-img .link, section.rank-comic .rank-item .comic-cover {
+    background-image: url("data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAANIAAAEYCAMAAAAeQ1gWAAAAgVBMVEUAAADd3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d1XXN+nAAAAKnRSTlMA5v3yDSH07oH6fJ1KRrCoORzWWxPex3VqTwfRvI7hubWrhCiWBGVWPjJ1rRGyAAACcUlEQVR42u3aCW6jQBCF4WLfbGy8O96dZJzU/Q84kaIMOGBpEtMWtP7vAujpNU1XCwEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAX5vtnPAwFousHf2QvIktZiP9NBFLXBz9EogNZidVuyJNIy3NxZQg3Tqu62zTQAwrcq1w12JGkbn/npEVUmOqInUGYsbU04pwKsYUR60azcSMpX6zFEP+eFcVrcWQqdaY6ak4aFU2E0OCUGvCQkqGKhqIMSNtkEnbgq1WZb4YE7jawA2kXcNIK/ZDMWipjVJp1XuoFS++mLTVRltp0+tES/OhmOVoI0faNK1VZFKijRJpU15W9CY1vYy010/urrmiHi48Tz/tAnmAwyO2h71+8RYvf8Y3qurVJn7QK+78lK6/Fda3T+1Ka+qF9etA5Dt6g7t9l9YV3gOOrQNXbwkNZLpozUXatrqd6SilXo2A483NmqTCzKDuTcWIcZrPHxZJilF5nTIqxBx/vHpZeHolFzOC5WGfeJPDMhDzgktcFuY9iy38t1W28MLcnkTAjz09D1bn7LiY7KNIP0TRfrI4ZufV4PlJescfpqdJojclk1M69KUvnga7jf6XzW7Qg7pe1yNPf8AbrV+ly2axoz/mxDPpKv8c6q+E546+VkNHf80ZSgfFepdYOidVtSzTWO/ldu2nmlzvdpRuifRukXRLC5E86RYLF56F24OFm7hI7NqWyMYDkY3HVhuHCytHQCsHdTuvU64uveIsX2zmUZSoJlE03yzyLO7npRcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA67y/iNlttzNAyewAAAABJRU5ErkJggg==");
+    background-size: contain;
+    background-position: center;
+    background-color: white;
+}
+
+@font-face {
+    font-family: 'iconfont';
+    src: url("../../public/font/iconfont.eot?v=b5578579b7a67d36");
+    /* IE9*/
+    src: url("../fonts/iconfont.woff") format("woff"), url("../fonts/iconfont.ttf") format("truetype"), url("../fonts/iconfont.svg") format("svg");
+    /* iOS 4.1- */
+}
+
+.iconfont {
+    font-family: "iconfont" !important;
+    font-style: normal;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/*
+刷新1
+*/
+/**
+ * Swiper 3.4.2
+ * Most modern mobile touch slider and framework with hardware accelerated transitions
+ * 
+ * http://www.idangero.us/swiper/
+ * 
+ * Copyright 2017, Vladimir Kharlampidi
+ * The iDangero.us
+ * http://www.idangero.us/
+ * 
+ * Licensed under MIT
+ * 
+ * Released on: March 10, 2017
+ */
+.swiper-container {
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.swiper-container-no-flexbox .swiper-slide {
+    float: left;
+}
+
+.swiper-container-vertical > .swiper-wrapper {
+    -webkit-box-orient: vertical;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+
+.swiper-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-transition-property: -webkit-transform;
+    transition-property: -webkit-transform;
+    transition-property: transform;
+    transition-property: transform, -webkit-transform;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+}
+
+.swiper-container-android .swiper-slide, .swiper-wrapper {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+
+.swiper-container-multirow > .swiper-wrapper {
+    -webkit-box-lines: multiple;
+    -moz-box-lines: multiple;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+.swiper-container-free-mode > .swiper-wrapper {
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
+    margin: 0 auto;
+}
+
+.swiper-slide {
+    -webkit-flex-shrink: 0;
+    -ms-flex: 0 0 auto;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.swiper-container-autoheight, .swiper-container-autoheight .swiper-slide {
+    height: auto;
+}
+
+.swiper-container-autoheight .swiper-wrapper {
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    -webkit-transition-property: -webkit-transform, height;
+    -webkit-transition-property: height, -webkit-transform;
+    transition-property: height, -webkit-transform;
+    transition-property: transform, height;
+    transition-property: transform, height, -webkit-transform;
+}
+
+.swiper-container .swiper-notification {
+    position: absolute;
+    left: 0;
+    top: 0;
+    pointer-events: none;
+    opacity: 0;
+    z-index: -1000;
+}
+
+.swiper-wp8-horizontal {
+    -ms-touch-action: pan-y;
+    touch-action: pan-y;
+}
+
+.swiper-wp8-vertical {
+    -ms-touch-action: pan-x;
+    touch-action: pan-x;
+}
+
+.swiper-button-next, .swiper-button-prev {
+    position: absolute;
+    top: 50%;
+    width: 27px;
+    height: 44px;
+    margin-top: -22px;
+    z-index: 10;
+    cursor: pointer;
+    background-size: 27px 44px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.swiper-button-next.swiper-button-disabled, .swiper-button-prev.swiper-button-disabled {
+    opacity: .35;
+    cursor: auto;
+    pointer-events: none;
+}
+
+.swiper-button-prev, .swiper-container-rtl .swiper-button-next {
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23007aff'%2F%3E%3C%2Fsvg%3E");
+    left: 10px;
+    right: auto;
+}
+
+.swiper-button-prev.swiper-button-black, .swiper-container-rtl .swiper-button-next.swiper-button-black {
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23000000'%2F%3E%3C%2Fsvg%3E");
+}
+
+.swiper-button-prev.swiper-button-white, .swiper-container-rtl .swiper-button-next.swiper-button-white {
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23ffffff'%2F%3E%3C%2Fsvg%3E");
+}
+
+.swiper-button-next, .swiper-container-rtl .swiper-button-prev {
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23007aff'%2F%3E%3C%2Fsvg%3E");
+    right: 10px;
+    left: auto;
+}
+
+.swiper-button-next.swiper-button-black, .swiper-container-rtl .swiper-button-prev.swiper-button-black {
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23000000'%2F%3E%3C%2Fsvg%3E");
+}
+
+.swiper-button-next.swiper-button-white, .swiper-container-rtl .swiper-button-prev.swiper-button-white {
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23ffffff'%2F%3E%3C%2Fsvg%3E");
+}
+
+.swiper-pagination {
+    position: absolute;
+    text-align: center;
+    -webkit-transition: .3s;
+    transition: .3s;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    z-index: 10;
+}
+
+.swiper-pagination.swiper-pagination-hidden {
+    opacity: 0;
+}
+
+.swiper-container-horizontal > .swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction {
+    bottom: 10px;
+    left: 0;
+    width: 100%;
+}
+
+.swiper-pagination-bullet {
+    width: 8px;
+    height: 8px;
+    display: inline-block;
+    border-radius: 100%;
+    background: #000;
+    opacity: .2;
+}
+
+button.swiper-pagination-bullet {
+    border: none;
+    margin: 0;
+    padding: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.swiper-pagination-clickable .swiper-pagination-bullet {
+    cursor: pointer;
+}
+
+.swiper-pagination-white .swiper-pagination-bullet {
+    background: #fff;
+}
+
+.swiper-pagination-bullet-active {
+    opacity: 1;
+    background: #007aff;
+}
+
+.swiper-pagination-white .swiper-pagination-bullet-active {
+    background: #fff;
+}
+
+.swiper-pagination-black .swiper-pagination-bullet-active {
+    background: #000;
+}
+
+.swiper-container-vertical > .swiper-pagination-bullets {
+    right: 10px;
+    top: 50%;
+    -webkit-transform: translate3d(0, -50%, 0);
+    transform: translate3d(0, -50%, 0);
+}
+
+.swiper-container-vertical > .swiper-pagination-bullets .swiper-pagination-bullet {
+    margin: 5px 0;
+    display: block;
+}
+
+.swiper-container-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet {
+    margin: 0 5px;
+}
+
+.swiper-pagination-progress {
+    background: rgba(0, 0, 0, 0.25);
+    position: absolute;
+}
+
+.swiper-pagination-progress .swiper-pagination-progressbar {
+    background: #007aff;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+    -webkit-transform-origin: left top;
+    transform-origin: left top;
+}
+
+.swiper-container-rtl .swiper-pagination-progress .swiper-pagination-progressbar {
+    -webkit-transform-origin: right top;
+    transform-origin: right top;
+}
+
+.swiper-container-horizontal > .swiper-pagination-progress {
+    width: 100%;
+    height: 4px;
+    left: 0;
+    top: 0;
+}
+
+.swiper-container-vertical > .swiper-pagination-progress {
+    width: 4px;
+    height: 100%;
+    left: 0;
+    top: 0;
+}
+
+.swiper-pagination-progress.swiper-pagination-white {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.swiper-pagination-progress.swiper-pagination-white .swiper-pagination-progressbar {
+    background: #fff;
+}
+
+.swiper-pagination-progress.swiper-pagination-black .swiper-pagination-progressbar {
+    background: #000;
+}
+
+.swiper-container-3d {
+    -webkit-perspective: 1200px;
+    -o-perspective: 1200px;
+    perspective: 1200px;
+}
+
+.swiper-container-3d .swiper-cube-shadow, .swiper-container-3d .swiper-slide, .swiper-container-3d .swiper-slide-shadow-bottom, .swiper-container-3d .swiper-slide-shadow-left, .swiper-container-3d .swiper-slide-shadow-right, .swiper-container-3d .swiper-slide-shadow-top, .swiper-container-3d .swiper-wrapper {
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+}
+
+.swiper-container-3d .swiper-slide-shadow-bottom, .swiper-container-3d .swiper-slide-shadow-left, .swiper-container-3d .swiper-slide-shadow-right, .swiper-container-3d .swiper-slide-shadow-top {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.swiper-container-3d .swiper-slide-shadow-left {
+    background-image: -webkit-gradient(linear, right top, left top, from(rgba(0, 0, 0, 0.5)), to(transparent));
+    background-image: linear-gradient(to left, rgba(0, 0, 0, 0.5), transparent);
+}
+
+.swiper-container-3d .swiper-slide-shadow-right {
+    background-image: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, 0.5)), to(transparent));
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5), transparent);
+}
+
+.swiper-container-3d .swiper-slide-shadow-top {
+    background-image: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 0.5)), to(transparent));
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.5), transparent);
+}
+
+.swiper-container-3d .swiper-slide-shadow-bottom {
+    background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.5)), to(transparent));
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), transparent);
+}
+
+.swiper-container-coverflow .swiper-wrapper, .swiper-container-flip .swiper-wrapper {
+    -ms-perspective: 1200px;
+}
+
+.swiper-container-cube, .swiper-container-flip {
+    overflow: visible;
+}
+
+.swiper-container-cube .swiper-slide, .swiper-container-flip .swiper-slide {
+    pointer-events: none;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    z-index: 1;
+}
+
+.swiper-container-cube .swiper-slide .swiper-slide, .swiper-container-flip .swiper-slide .swiper-slide {
+    pointer-events: none;
+}
+
+.swiper-container-cube .swiper-slide-active, .swiper-container-cube .swiper-slide-active .swiper-slide-active, .swiper-container-flip .swiper-slide-active, .swiper-container-flip .swiper-slide-active .swiper-slide-active {
+    pointer-events: auto;
+}
+
+.swiper-container-cube .swiper-slide-shadow-bottom, .swiper-container-cube .swiper-slide-shadow-left, .swiper-container-cube .swiper-slide-shadow-right, .swiper-container-cube .swiper-slide-shadow-top, .swiper-container-flip .swiper-slide-shadow-bottom, .swiper-container-flip .swiper-slide-shadow-left, .swiper-container-flip .swiper-slide-shadow-right, .swiper-container-flip .swiper-slide-shadow-top {
+    z-index: 0;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.swiper-container-cube .swiper-slide {
+    visibility: hidden;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-container-cube.swiper-container-rtl .swiper-slide {
+    -webkit-transform-origin: 100% 0;
+    transform-origin: 100% 0;
+}
+
+.swiper-container-cube .swiper-slide-active, .swiper-container-cube .swiper-slide-next, .swiper-container-cube .swiper-slide-next + .swiper-slide, .swiper-container-cube .swiper-slide-prev {
+    pointer-events: auto;
+    visibility: visible;
+}
+
+.swiper-container-cube .swiper-cube-shadow {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    opacity: .6;
+    -webkit-filter: blur(50px);
+    filter: blur(50px);
+    z-index: 0;
+}
+
+.swiper-container-fade.swiper-container-free-mode .swiper-slide {
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
+}
+
+.swiper-container-fade .swiper-slide {
+    pointer-events: none;
+    -webkit-transition-property: opacity;
+    transition-property: opacity;
+}
+
+.swiper-container-fade .swiper-slide .swiper-slide {
+    pointer-events: none;
+}
+
+.swiper-container-fade .swiper-slide-active, .swiper-container-fade .swiper-slide-active .swiper-slide-active {
+    pointer-events: auto;
+}
+
+.swiper-zoom-container {
+    width: 100%;
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    text-align: center;
+}
+
+.swiper-zoom-container > canvas, .swiper-zoom-container > img, .swiper-zoom-container > svg {
+    max-width: 100%;
+    max-height: 100%;
+    -o-object-fit: contain;
+    object-fit: contain;
+}
+
+.swiper-scrollbar {
+    border-radius: 10px;
+    position: relative;
+    -ms-touch-action: none;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.swiper-container-horizontal > .swiper-scrollbar {
+    position: absolute;
+    left: 1%;
+    bottom: 3px;
+    z-index: 50;
+    height: 5px;
+    width: 98%;
+}
+
+.swiper-container-vertical > .swiper-scrollbar {
+    position: absolute;
+    right: 3px;
+    top: 1%;
+    z-index: 50;
+    width: 5px;
+    height: 98%;
+}
+
+.swiper-scrollbar-drag {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    left: 0;
+    top: 0;
+}
+
+.swiper-scrollbar-cursor-drag {
+    cursor: move;
+}
+
+.swiper-lazy-preloader {
+    width: 42px;
+    height: 42px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -21px;
+    margin-top: -21px;
+    z-index: 10;
+    -webkit-transform-origin: 50%;
+    transform-origin: 50%;
+    -webkit-animation: swiper-preloader-spin 1s steps(12, end) infinite;
+    animation: swiper-preloader-spin 1s steps(12, end) infinite;
+}
+
+.swiper-lazy-preloader:after {
+    display: block;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20viewBox%3D'0%200%20120%20120'%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20xmlns%3Axlink%3D'http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink'%3E%3Cdefs%3E%3Cline%20id%3D'l'%20x1%3D'60'%20x2%3D'60'%20y1%3D'7'%20y2%3D'27'%20stroke%3D'%236c6c6c'%20stroke-width%3D'11'%20stroke-linecap%3D'round'%2F%3E%3C%2Fdefs%3E%3Cg%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%20transform%3D'rotate(30%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%20transform%3D'rotate(60%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%20transform%3D'rotate(90%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%20transform%3D'rotate(120%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%20transform%3D'rotate(150%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.37'%20transform%3D'rotate(180%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.46'%20transform%3D'rotate(210%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.56'%20transform%3D'rotate(240%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.66'%20transform%3D'rotate(270%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.75'%20transform%3D'rotate(300%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.85'%20transform%3D'rotate(330%2060%2C60)'%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+    background-position: 50%;
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+.swiper-lazy-preloader-white:after {
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20viewBox%3D'0%200%20120%20120'%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20xmlns%3Axlink%3D'http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink'%3E%3Cdefs%3E%3Cline%20id%3D'l'%20x1%3D'60'%20x2%3D'60'%20y1%3D'7'%20y2%3D'27'%20stroke%3D'%23fff'%20stroke-width%3D'11'%20stroke-linecap%3D'round'%2F%3E%3C%2Fdefs%3E%3Cg%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%20transform%3D'rotate(30%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%20transform%3D'rotate(60%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%20transform%3D'rotate(90%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%20transform%3D'rotate(120%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%20transform%3D'rotate(150%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.37'%20transform%3D'rotate(180%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.46'%20transform%3D'rotate(210%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.56'%20transform%3D'rotate(240%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.66'%20transform%3D'rotate(270%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.75'%20transform%3D'rotate(300%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.85'%20transform%3D'rotate(330%2060%2C60)'%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+}
+
+@-webkit-keyframes swiper-preloader-spin {
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes swiper-preloader-spin {
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+html, body {
+    width: 100%;
+    overflow-x: hidden;
+    background-color: #fff;
+}
+
+body.debug .sub-title .desc, .sub-title body.debug .desc, body.debug .sub-title .link-more, .sub-title body.debug .link-more, body.debug section .btn-replacement-data, section body.debug .btn-replacement-data {
+    background-color: rgba(255, 0, 0, 0.3);
+}
+
+/* 子标题 */
+.sub-title {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+    height: 2.3rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    overflow: hidden;
+    /* 特殊子标题 */
+}
+
+.title-content {
+    display: block;
+    line-height: 2.25rem;
+    font-size: 0.8rem;
+    color: #333;
+}
+
+/* 今日免费子标题 */
+.sub-title .desc {
+    display: block;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    margin-left: 0.1rem;
+    visibility: hidden;
+    font-size: 0.65rem;
+    font-weight: 200;
+    color: #969696;
+}
+
+.sub-title .link-more {
+    display: block;
+    text-indent: -2500rem;
+    font-size: 0;
+    width: 3rem;
+    height: 1.25rem;
+    width: 2.9rem;
+    height: 1.15rem;
+    background: url("../images/sc_img_index.png") no-repeat -6.2rem -2.25rem;
+    background-size: 17.15rem 6.35rem;
+    width: 3rem;
+    height: 1.25rem;;
+
+    background-repeat: no-repeat;
+}
+
+/* ------------------------------------------------------------ */
+/* 漫画列表 */
+.comic-list {
+    /* 两列漫画列表 */
+    /* 三列漫画列表 */
+    /* 一拖三样式 */
+}
+
+.comic-list .comic-title, .comic-list .comic-artist, .comic-list .comic-desc, .comic-list .comic-tag, .comic-list .comic-latest {
+    padding-top: 1px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.comic-list.col-2 {
+    font-size: 0;
+    text-align: left;
+    margin-top: -0.75rem;
+}
+
+.comic-list.col-2 .comic-item {
+    display: inline-block;
+    width: 44%;
+    margin-left: 4%;
+    margin-top: 0.75rem;
+    vertical-align: top;
+    overflow: hidden;
+    background-color: rgba(244, 244, 244, 0.5);
+    border-radius: 0 0 0.3rem 0.3rem;
+}
+
+.comic-list.col-2 .comic-item:nth-child(2n+0) {
+    margin-right: 4%;
+}
+
+.comic-list.col-2 .comic-item .comic-link {
+    display: block;
+}
+
+.comic-list.col-2 .comic-item .comic-content {
+    padding: 0 0.6rem;
+}
+
+.comic-list.col-2 .comic-item .comic-cover {
+    display: block;
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%;
+    margin-bottom: 0.5rem;
+    border-radius: 0.3rem 0.3rem 0 0;
+}
+
+.comic-list.col-2 .comic-item .comic-cover .cover-image {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 0.3rem 0.3rem 0 0;
+}
+
+.comic-list.col-2 .comic-item .comic-title {
+    display: block;
+    margin-bottom: 0.2rem;
+    font-size: 0.75rem;
+    color: #333;
+    min-height: 1.05rem;
+}
+
+.comic-list.col-2 .comic-item .comic-desc {
+    display: block;
+    margin-bottom: 0.7rem;
+    font-size: 0.6rem;
+    color: #0c1220;
+    min-height: 0.8rem;
+}
+
+.comic-list.col-3 {
+    font-size: 0;
+    text-align: left;
+    margin-top: -0.75rem;
+}
+
+.comic-list.col-3 .comic-item {
+    display: inline-block;
+    width: 28%;
+    margin-left: 4%;
+    margin-top: 0.75rem;
+    vertical-align: top;
+    overflow: hidden;
+    background-color: #FFFFFF;
+}
+
+.comic-list.col-3 .comic-item:nth-child(3n) {
+    margin-right: 4%;
+}
+
+.comic-list.col-3 .comic-item .comic-link {
+    display: block;
+}
+
+.comic-list.col-3 .comic-item .comic-cover {
+    display: block;
+    position: relative;
+    width: 100%;
+    padding-bottom: 133.33333%;
+    border-radius: 0.3rem;
+    margin-bottom: 0.4rem;
+}
+
+.comic-list.col-3 .comic-item .comic-cover .cover-image {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 0.3rem;
+}
+
+.comic-list.col-3 .comic-item .comic-title {
+    display: block;
+    margin-bottom: 0.25rem;
+    font-size: 0.7rem;
+    color: #535252;
+}
+
+.comic-list.col-3 .comic-item .comic-desc {
+    display: block;
+    font-size: 0.6rem;
+    color: #0c1220;
+    min-height: 0.8rem;
+}
+
+.comic-list.col-3 .comic-item .comic-tag {
+    position: absolute;
+    right: 0;
+    bottom: 0.3rem;
+    width: auto;
+    height: 0.8rem;
+    line-height: 0.8rem;
+    max-width: 100%;
+    font-size: 0.5rem;
+    color: #fff;
+    line-height: 0.8rem;
+    background-color: rgba(255, 105, 73, 0.9);
+    padding: 0 0.3rem;
+    border-radius: 0.15rem 0 0 0.15rem;
+}
+
+.comic-list.col-3.no-tag .comic-item .comic-tag {
+    display: none;
+}
+
+.comic-list.col-1-3 {
+    font-size: 0;
+    text-align: left;
+    margin-top: -0.5rem;
+}
+
+.comic-list.col-1-3 .comic-item {
+    display: inline-block;
+    width: 28%;
+    margin-left: 4%;
+    margin-top: 0.5rem;
+    vertical-align: top;
+    overflow: hidden;
+    background-color: #FFFFFF;
+}
+
+.comic-list.col-1-3 .comic-item.comic-item-1 {
+    display: block;
+    margin: 0.75rem 0.8rem 0;
+    overflow: hidden;
+    width: auto;
+}
+
+.comic-list.col-1-3 .comic-item.comic-item-1 .comic-link {
+    display: block;
+}
+
+.comic-list.col-1-3 .comic-item.comic-item-1 .comic-cover {
+    border-radius: 0.2rem;
+    position: relative;
+    padding-bottom: 58.77193%;
+    overflow: hidden;
+}
+
+.comic-list.col-1-3 .comic-item.comic-item-1 .comic-cover .cover-image {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: auto;
+    border-radius: 0.2rem;
+}
+
+.comic-list.col-1-3 .comic-item .comic-cover {
+    display: block;
+    border-radius: 0.1rem;
+}
+
+.comic-list.col-1-3 .comic-item .comic-cover .cover-image {
+    width: 100%;
+    height: 6.8rem;
+    border-radius: 0.1rem;
+}
+
+.comic-list.col-1-3 .comic-item .comic-title {
+    display: block;
+    margin: 0.3rem 0 0.1rem;
+    font-size: 0.65rem;
+    color: #333;
+    line-height: 0.9rem;
+}
+
+.comic-list.col-1-3 .comic-item .comic-desc {
+    display: block;
+    font-size: 0.55rem;
+    color: #0c1220;
+    line-height: 0.85rem;
+}
+
+.comic-list.slide {
+    width: 100%;
+    height: 9.75rem;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    font-size: 0;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.comic-list.slide.free .comic-item::after {
+    content: "";
+    display: block;
+    text-indent: -2500rem;
+    font-size: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 1.6rem;
+    height: 1.6rem;
+    background: url("../images/sc_img_index.png") no-repeat -7.4rem -4.75rem;
+    background-size: 17.15rem 6.35rem;
+    width: 1.6rem;
+    height: 1.6rem;;
+
+    background-repeat: no-repeat;
+}
+
+.comic-list.slide .comic-item {
+    display: inline-block;
+    position: relative;
+    width: 7.25rem;
+    height: 9.75rem;
+    margin-left: 0.5rem;
+    margin-right: 0.25rem;
+}
+
+.comic-list.slide .comic-item .comic-link {
+    display: block;
+    height: 100%;
+    background-color: #F5F5EE;
+    overflow: hidden;
+}
+
+.comic-list.slide .comic-item .comic-cover {
+    margin: 1rem auto 0 auto;
+}
+
+.comic-list.slide .comic-item .comic-cover, .comic-list.slide .comic-item .comic-cover .cover-image {
+    display: block;
+    width: 5.25rem;
+    height: 7rem;
+}
+
+.comic-list.slide .comic-item .comic-title {
+    display: block;
+    margin: 0.375rem auto 0 auto;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: #535252;
+}
+
+.comic-list.col-1 .comic-item {
+    display: block;
+    background-color: #F5F4EF;
+}
+
+.comic-list.col-1 .comic-item .comic-link {
+    display: block;
+    height: 5.25rem;
+    margin-bottom: 0.6rem;
+    overflow: hidden;
+}
+
+.comic-list.col-1 .comic-item .comic-cover {
+    float: left;
+    margin-right: 0.65rem;
+}
+
+.comic-list.col-1 .comic-item .comic-cover, .comic-list.col-1 .comic-item .comic-cover .cover-image {
+    display: block;
+    width: 4rem;
+    height: 5.25rem;
+}
+
+.comic-list.col-1 .comic-item .comic-title {
+    display: block;
+    margin-top: 0.7rem;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: #535252;
+}
+
+.comic-list.col-1 .comic-item .comic-artist, .comic-list.col-1 .comic-item .comic-latest {
+    display: block;
+    margin-top: 0.35rem;
+    font-size: 0.6rem;
+    font-weight: normal;
+    color: #969696;
+}
+
+.comic-list.col-1 .comic-item .comic-desc, .comic-list.col-1 .comic-item .comic-tag {
+    display: none;
+}
+
+.comic-list.col-1 .rank-bar {
+    display: block;
+    margin-top: 0.35rem;
+}
+
+.comic-list.col-1 .rank-bar .rank-star {
+    float: left;
+    text-indent: -2500rem;
+    font-size: 0;
+    width: 0.55rem;
+    height: 0.55rem;
+    background: url("../images/sc_img_index.png") no-repeat -9.45rem -2.25rem;
+    background-size: 17.15rem 6.35rem;
+    width: 0.55rem;
+    height: 0.55rem;;
+
+    background-repeat: no-repeat;
+}
+
+.comic-list.col-1 .rank-bar .rank-score {
+    float: left;
+    margin-left: 0.125rem;
+    height: 0.55rem;
+    line-height: 0.55rem;
+    font-size: 0.5rem;
+    font-weight: 200;
+    color: #ff9a6a;
+}
+
+/* ------------------------------------------------------------ */
+/* Banner与主菜单 */
+.banner-menu {
+    position: relative;
+    width: 100%;
+    /* Banner列表 */
+    /* 历史记录弹出框 */
+}
+
+.banner-menu .banner-list-box {
+    display: block;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    overflow: hidden;
+}
+
+.banner-menu .banner-list-pad {
+    display: block;
+    padding-bottom: 58.13333%;
+}
+
+.banner-menu .banner-list-loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate3d(-50%, -50%, 0);
+    transform: translate3d(-50%, -50%, 0);
+}
+
+.banner-menu .banner-list {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: auto;
+    height: auto;
+}
+
+.banner-menu .banner-list .item, .banner-menu .banner-list .link, .banner-menu .banner-list .cover {
+    width: 100%;
+    height: 100%;
+}
+
+.banner-menu .banner-list .cover {
+    
+    -webkit-transition: opacity 500ms ease;
+    transition: opacity 500ms ease;
+}
+
+.banner-menu .banner-list .cover.load-ok {
+    opacity: 1;
+}
+
+/* ------------------------------------------------------------ */
+/* 首页模块底部间距及底部换一批按钮样式 */
+section .btn-replacement-data {
+    display: block;
+    text-indent: -2500rem;
+    font-size: 0;
+    width: 17.15rem;
+    height: 2rem;
+    margin: 0.9rem auto 1.075rem;
+    width: 17.15rem;
+    height: 2rem;
+    background: url("../images/sc_img_index.png") no-repeat 0rem 0rem;
+    background-size: 17.15rem 6.35rem;
+    width: 17.15rem;
+    height: 2rem;;
+
+    background-repeat: no-repeat;
+}
+
+/* 部分板块背景色 */
+section.banner-menu, section.free-today, section.promotion, section.update-today {
+    background-color: #FFFFFF;
+}
+
+/* 新人福利 */
+section.adv {
+    position: relative;
+}
+
+.adv-overflow-block {
+    position: absolute;
+    top: -0.25rem;
+    left: 0;
+    background-color: #fff;
+    border: 0 solid #fff;
+    border-radius: 0.5rem 0.5rem 0 0;
+    width: 100%;
+    height: 0.65rem;
+    z-index: 8;
+}
+
+.adv-img {
+    margin-left: 0.8rem;
+    margin-right: 0.8rem;
+    background-color: #FFFFFF;
+    overflow: hidden;
+}
+
+.adv-img .link {
+    display: block;
+}
+
+.adv-img .cover-image {
+    display: block;
+    width: 100%;
+}
+
+/* 编辑推荐 */
+section.recommend {
+    padding-top: 0.25rem;
+}
+
+/* 条漫推荐 */
+/* 爽快VIP */
+/* 特别君 */
+/* 今日更新 */
+/* 追更入口 */
+/* 动画专区 */
+/* 日漫推荐 */
+/* 新作推荐 */
+section.new-comic {
+    padding-bottom: 0.25rem;
+}
+
+/* 独家·只此一家别无分店 */
+section.exclusive-comic {
+    margin-top: 1.15rem;
+}
+
+/* 排行榜 */
+section.rank-comic {
+    margin: 0 4%;
+}
+
+section.rank-comic .sub-title {
+    margin-left: -4%;
+}
+
+section.rank-comic .rank-header {
+    background-color: rgba(105, 191, 255, 0.6);
+    color: #0C1220;
+    height: 4.375rem;
+    border: 0;
+    border-radius: 0.4rem 0.4rem 0 0;
+    font-size: 0;
+    position: relative;
+}
+
+section.rank-comic .rank-header .rank-heizi-bg {
+    width: 5.95rem;
+    height: 2.25rem;
+    background: url("../images/sc_img_index.png") no-repeat 0rem -2.25rem;
+    background-size: 17.15rem 6.35rem;
+    width: 5.95rem;
+    height: 2.25rem;;
+
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    right: 10%;
+    z-index: 10;
+}
+
+section.rank-comic .rank-header .top {
+    position: absolute;
+    font-size: 1.575rem;
+    color: #fff;
+    top: 0.25rem;
+    left: 4%;
+    font-weight: bold;
+}
+
+section.rank-comic .rank-header .rank-swiper-title-list {
+    position: absolute;
+    bottom: 1rem;
+    left: 0;
+    width: 100%;
+}
+
+section.rank-comic .rank-header .rank-swiper-title-list .rank-swiper-title {
+    margin-right: 4%;
+    width: 20%;
+    font-size: 0.7rem;
+    display: inline-block;
+    text-align: center;
+}
+
+section.rank-comic .rank-header .rank-swiper-title-list .rank-swiper-title:nth-child(1) {
+    margin-left: 4%;
+}
+
+section.rank-comic .rank-header .rank-swiper-title-list .index-bottom-tag {
+    display: block;
+    width: 0.55rem;
+    height: 0.25rem;
+    background: url("../images/sc_img_index.png") no-repeat -10.25rem -2.25rem;
+    background-size: 17.15rem 6.35rem;
+    width: 0.55rem;
+    height: 0.25rem;;
+
+    background-repeat: no-repeat;
+    position: absolute;
+    left: 13%;
+    bottom: -0.5rem;
+    -webkit-transition: all .3s ease;
+    transition: all .3s ease;
+}
+
+section.rank-comic .rank-container {
+    width: 100%;
+    overflow: hidden;
+    padding-top: 0.85rem;
+    border-radius: 0 0 0.4rem 0.4rem;
+    -webkit-box-shadow: 0px 0px 5px 0px #ebebeb;
+    box-shadow: 0px 0px 5px 0px #ebebeb;
+}
+
+section.rank-comic .swiper-slide {
+    width: 86%;
+    overflow: hidden;
+}
+
+section.rank-comic .swiper-slide:last-child {
+    padding-right: 0.7rem;
+}
+
+section.rank-comic .rank-item {
+    padding-left: 0.7rem;
+    margin-bottom: 0.725rem;
+}
+
+section.rank-comic .rank-item .comic-link {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+section.rank-comic .rank-item .comic-cover {
+    display: block;
+    width: 24.16107%;
+}
+
+section.rank-comic .rank-item .comic-cover .cover-image {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 100%;
+    flex: 1 1 100%;
+    width: 100%;
+    border-radius: 0.4rem;
+}
+
+section.rank-comic .rank-item .comic-content {
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    width: calc(71.3% - 0.7rem);
+    margin-left: 0.7rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+section.rank-comic .rank-item .comic-content .comic-info {
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    min-width: 0;
+}
+
+section.rank-comic .rank-item .comic-content .comic-info .comic-title {
+    display: block;
+    color: #1B1803;
+    font-size: 0.8rem;
+    line-height: 1.125rem;
+    margin-bottom: 0.3rem;
+    padding-top: 1px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+section.rank-comic .rank-item .comic-content .comic-info .comic-popularity, section.rank-comic .rank-item .comic-content .comic-info .comic-desc {
+    display: block;
+    font-size: 0.6rem;
+    color: #1b1803;
+    margin-bottom: 0.3rem;
+    padding-top: 1px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 0;
+}
+
+section.rank-comic .rank-item .comic-content .comic-ranking {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 2.15rem;
+    flex: 0 0 2.15rem;
+    text-align: center;
+}
+
+section.rank-comic .rank-item .comic-content .comic-ranking .icon-place {
+    display: block;
+    margin: 0 auto;
+}
+
+section.rank-comic .rank-item .comic-content .comic-ranking .icon-place.icon-place-1 {
+    width: 1.6rem;
+    height: 1.6rem;
+    background: url("../images/sc_img_index.png") no-repeat -5.55rem -4.75rem;
+    background-size: 17.15rem 6.35rem;
+    width: 1.6rem;
+    height: 1.6rem;;
+
+    background-repeat: no-repeat;
+}
+
+section.rank-comic .rank-item .comic-content .comic-ranking .icon-place.icon-place-2 {
+    width: 1.6rem;
+    height: 1.6rem;
+    background: url("../images/sc_img_index.png") no-repeat -14.8rem -4.75rem;
+    background-size: 17.15rem 6.35rem;
+    width: 1.6rem;
+    height: 1.6rem;;
+
+    background-repeat: no-repeat;
+}
+
+section.rank-comic .rank-item .comic-content .comic-ranking .icon-place.icon-place-3 {
+    width: 1.6rem;
+    height: 1.6rem;
+    background: url("../images/sc_img_index.png") no-repeat -9.25rem -4.75rem;
+    background-size: 17.15rem 6.35rem;
+    width: 1.6rem;
+    height: 1.6rem;;
+
+    background-repeat: no-repeat;
+}
+
+section.rank-comic .rank-item .comic-content .comic-ranking .icon-place.icon-place-4 {
+    width: 1.6rem;
+    height: 1.6rem;
+    background: url("../images/sc_img_index.png") no-repeat -11.1rem -4.75rem;
+    background-size: 17.15rem 6.35rem;
+    width: 1.6rem;
+    height: 1.6rem;;
+
+    background-repeat: no-repeat;
+}
+
+section.rank-comic .rank-item .comic-content .comic-ranking .icon-place.icon-place-5 {
+    width: 1.6rem;
+    height: 1.6rem;
+    background: url("../images/sc_img_index.png") no-repeat -12.95rem -4.75rem;
+    background-size: 17.15rem 6.35rem;
+    width: 1.6rem;
+    height: 1.6rem;;
+
+    background-repeat: no-repeat;
+}
+
+section.rank-comic .rank-item .comic-content .comic-ranking .icon-place.icon-place-6 {
+    width: 1.6rem;
+    height: 1.6rem;
+    background: url("../images/sc_img_index.png") no-repeat -3.7rem -4.75rem;
+    background-size: 17.15rem 6.35rem;
+    width: 1.6rem;
+    height: 1.6rem;;
+
+    background-repeat: no-repeat;
+}
+
+section.rank-comic .rank-item .comic-content .comic-ranking .icon-place.icon-place-7 {
+    width: 1.6rem;
+    height: 1.6rem;
+    background: url("../images/sc_img_index.png") no-repeat -1.85rem -4.75rem;
+    background-size: 17.15rem 6.35rem;
+    width: 1.6rem;
+    height: 1.6rem;;
+
+    background-repeat: no-repeat;
+}
+
+section.rank-comic .rank-item .comic-content .comic-ranking .icon-place.icon-place-8 {
+    width: 1.6rem;
+    height: 1.6rem;
+    background: url("../images/sc_img_index.png") no-repeat 0rem -4.75rem;
+    background-size: 17.15rem 6.35rem;
+    width: 1.6rem;
+    height: 1.6rem;;
+
+    background-repeat: no-repeat;
+}
+
+/* 底部区域 */
+footer.bottom {
+    padding-bottom: 1rem;
+    background-image: url(../images/bottom-padding.png);
+    background-position: center bottom;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+footer.bottom p {
+    font-size: 0.6rem;
+    color: #999;
+    text-align: center;
+    line-height: 0.825rem;
+}
+
+.app-guiding-swiper {
+    position: fixed;
+    background-color: rgba(51, 51, 51, 0.85);
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+    overflow: hidden;
+}
+
+.app-guiding-swiper .bottom-guiding-swiper {
+    overflow: hidden;
+}
+
+.app-guiding-swiper .swiper-slide {
+    overflow: hidden;
+    width: 100%;
+    height: 3.1rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: 0 0.8rem;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.app-guiding-swiper .swiper-slide .guiding-comic-cover {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 3.375rem;
+    flex: 0 0 3.375rem;
+    height: 2rem;
+    border: 0;
+    border-radius: 0.25rem;
+}
+
+.app-guiding-swiper .swiper-slide .guiding-desc {
+    color: #fff;
+    display: block;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    margin-left: 0.5rem;
+    word-break: break-all;
+}
+
+.app-guiding-swiper .swiper-slide .guiding-btn {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 4.2rem;
+    flex: 0 0 4.2rem;
+    text-align: center;
+    line-height: 1.8rem;
+    color: #fff;
+    height: 1.8rem;
+    background-image: url(../images/guiding-btn.png);
+    background-position: 100% 100%;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.back-to-top {
+    bottom: 4rem;
+}
+
+.pagination {
+    font-size: 0;
+    line-height: normal;
+    text-align: center;
+    padding: 15px;
+}
+.pagination li {
+    display: inline-block;
+}
+.pagination .active a {
+    background-color: #ff741e;
+}
+.pagination a, .pagination span.now-page {
+    display: inline-block;
+    font-size: 14px;
+    color: #fff;
+    background-color: #333333;
+    margin: 2px 2.5px;
+    height: 27px;
+    line-height: 28px;
+    padding: 0 10px;
+    border-radius: 3px;
+}

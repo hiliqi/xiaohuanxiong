@@ -84,7 +84,7 @@
         $('#create').click(function () {
             index.openTab({
                 title: '新建题材',
-                url: "{:url('tag/create')}",
+                url: "{:adminurl('tag/create')}",
                 end: function () {
                     insTb.reload();
                 }
@@ -97,7 +97,7 @@
             if (obj.event === 'edit') { // 修改
                 parent.layui.index.openTab({
                     title: '编辑题材',
-                    url: "{:url('tag/edit')}?id=" + data.id,
+                    url: "{:adminurl('tag/edit')}?id=" + data.id,
                     end: function () {
                         insTb.reload();
                     }
@@ -106,7 +106,7 @@
                 layer.confirm('确认要删除吗？', function (index) {
                     $.ajax({
                         type: 'POST',
-                        url: "{:url('delete')}",
+                        url: "{:adminurl('delete')}",
                         data: {id: data.id},
                         dataType: 'json',
                         success: function (res) {
@@ -132,7 +132,7 @@
         /* 渲染表格 */
         var insTb = table.render({
             elem: '#tbBasicTable',
-            url: "{:url('tag/list')}",
+            url: "{:adminurl('tag/list')}",
             page: true,
             cellMinWidth: 100,
             cols: [[
@@ -149,7 +149,7 @@
             var tag_name = $('#tag_name').val()
             table.render({
                 elem: '#tbBasicTable',
-                url: '{:url("search")}?tag_name=' + tag_name,
+                url: '{:adminurl("search")}?tag_name=' + tag_name,
                 page: true,
                 cellMinWidth: 100,
                 cols: [[

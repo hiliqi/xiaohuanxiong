@@ -1,0 +1,20 @@
+{extend name="./template/default/pc/pub/base.html" /}
+{block name="seo"}
+<title>充值记录-{$site_name}</title>
+{/block}
+{block name="content"}
+<main class="container-fluid overflow-Show clearfix">
+    <section class="container scan-pay-box">
+        <div><a href="/pc"> <img src="/static/images/logo.png"></a></div>
+    </section>
+    <section class="vip-succeed" style="padding-top:84px;">
+        <div class="text-center"> <img src="/static/images/vip_img_1.png" alt="">
+            <h1>充值成功</h1>
+            <p class="mb20"> 充值账号:{$xwx_user}<br>当前余额:{$balance}元 </p>
+            <p class="mb20">若状态未更新，请耐心等待！</p>
+            <p> <a href="/chargehistory" class="button">充值记录</a>
+                <a href="/bookshelf" class="button" style="margin-left: 10px">我的收藏</a> </p>
+        </div>
+    </section>
+</main>
+{/block}

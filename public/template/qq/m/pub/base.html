@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <!-- fragBegin: withOutDynamicConfig -->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+
+    <meta charset="UTF-8" />
+
+    <!-- 关闭iOS电话号码识别、配置状态栏效果 -->
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="white" />
+
+    <!-- iOS主屏&书签图标 -->
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="https://pic.imgdb.cn/item/5e9aa6d9c2a9a83be598e011.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://pic.imgdb.cn/item/5e9aa6d9c2a9a83be598e011.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://pic.imgdb.cn/item/5e9aa6d9c2a9a83be598e011.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://pic.imgdb.cn/item/5e9aa6d9c2a9a83be598e011.png" />
+    <link rel="shortcut icon" href="https://pic.imgdb.cn/item/5e9aa6d9c2a9a83be598e011.png">
+    <link rel="shortcut icon" sizes="196x196" href="https://pic.imgdb.cn/item/5e9aa6d9c2a9a83be598e011.png">
+
+    <!-- QQ浏览器锁定竖屏、全屏、应用模式 -->
+    <!--<meta name="x5-orientation" content="portrait"/>-->
+    <!--<meta name="x5-fullscreen" content="true"/>-->
+    <meta name="x5-pagetype" content="webapp" />
+
+    <!-- UC浏览器锁定竖屏、全屏、应用模式 -->
+    <!--<meta name="screen-orientation" content="portrait"/>-->
+    <!--<meta name="full-screen" content="yes"/>-->
+    <!--<meta name="browsermode" content="application"/>-->
+
+    <!-- 分享信息 -->
+    <meta itemprop="image" content="https://pic.imgdb.cn/item/5e9aa6d9c2a9a83be598e011.png" />
+    <meta itemprop="name" content="{$site_name}" />
+    <!-- 通用样式与脚本 -->
+    <link rel="stylesheet" href="/template/qq/css/core.css" />
+    <link rel="stylesheet" href="/template/qq/css/index.css"/>
+    {block name="seo"}{/block}
+    {block name="css"}{/block}
+</head>
+<body>
+
+<!-- 导航菜单 -->
+<div class="nav-menu-box">
+    <div class="nav-menu-bg"></div>
+    <div class="nav-menu">
+        <ul class="nav-list">
+            <li class="item" data-name="index" data-button-id="10031">
+                <a class="link" href="/">
+                    <i class="icon index">[首页]</i>
+                    <span class="name">首页</span>
+                </a>
+            </li>
+            <li class="item" data-name="category" data-button-id="10006">
+                <a class="link" href="/{$booklist_act}">
+                    <i class="icon category">[分]</i>
+                    <span class="name">分类</span>
+                </a>
+            </li>
+            <li class="item" data-name="rank" data-button-id="10007">
+                <a class="link" href="/{$rank_ctrl}">
+                    <i class="icon rank">[奖]</i>
+                    <span class="name">排行</span>
+                </a>
+            </li>
+            <li class="item" data-name="bookshelf" data-button-id="10003">
+                <a class="link top-bar-collect" href="/bookshelf">
+                    <i class="icon collect">[袋]</i>
+                    <span class="name">收藏</span>
+                </a>
+            </li>
+            <li class="item" data-name="history" data-button-id="10004">
+                <a class="link" href="/history">
+                    <i class="icon history">[钟]</i>
+                    <span class="name">历史</span>
+                </a>
+            </li>
+            <li class="item" data-name="support" data-button-id="10008">
+                <a class="link support" href="javascript:void(0);">
+                    <i class="icon feedback">[反馈]</i>
+                    <span class="name">反馈</span>
+                </a>
+            </li>
+        </ul>
+        <a class="btn-home" href="/ucenter" data-button-id="10009">[个人中心]</a>
+    </div>
+</div>
+{block name="main"} {/block}
+<script src="/template/qq/js/core.js"></script>
+<script src="/template/qq/js/index.js"></script>
+<script src="https://lib.baomitu.com/vue/2.6.10/vue.min.js"></script>
+<script src="https://lib.baomitu.com/jquery/3.5.0/jquery.min.js"></script>
+{block name="js"}{/block}
+</body>
+</html>

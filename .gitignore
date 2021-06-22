@@ -1,5 +1,3 @@
 /.idea
 /.vscode
-/vendor
 *.log
-.env

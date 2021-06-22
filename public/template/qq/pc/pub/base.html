@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr" id="index">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Language" content="utf-8"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <meta name="Copyright" content="Tencent"/>
+    {block name="seo"}{/block}
+    <meta name="renderer" content="webkit|ie-comp|ie-stand"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge; chrome=1"/>
+    <link rel="stylesheet" type="text/css" href="/template/qq/css/ac.global.css" media="screen"/><!-- 样式文件 -->
+    {block name="css"} {/block}
+    <style>
+        .mod-cover-list-intro {
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    </style>
+</head>
+<body>
+<h1 class="seo-logo"><img src="/template/qq/images/ac_logo_seo.png" alt="{$site_name}logo" style="display: none;"></h1>
+
+<!-- header -->
+<link href="/template/qq/css/ac.main-header-content.css" rel="stylesheet" media="screen" type="text/css"/>
+<link href="/template/qq/css/ac.main-header-nav.css" rel="stylesheet" media="screen" type="text/css"/>
+<link href="/template/qq/css/ac.main-header-bg.css" rel="stylesheet" media="screen" type="text/css"/>
+
+<div class="mod-top-wr">
+    <div class="mod-top-frame">
+        <div class="mod-top-tool-wr ui-wm" style="overflow: visible;">
+            <div class="mod-top-logo-wr ui-left">
+                <div class="mod-top-logo ui-left ui-text-hide">
+                    <a title="{$site_name}" href="/" onclick='pgvSendClick({hottag:"new.ac_index.topbar.logo"});'>
+                        <img class="header-pic-logo" src="/template/qq/images/ac_logo.png" alt="{$site_name}"/>
+                        <span class="ico-ani"></span>
+                    </a>
+                </div>
+                <div class="mod-top-event ui-left ui-dn"></div>
+            </div>
+            <div class="mod-top-search-wr ui-left">
+                <div class="mod-top-search">
+                    <div class="mod-search-input-wr ui-left">
+                        <label for="top-search-input" class="mod-search-label">请输入作品名称</label>
+                        <input class="mod-search-input" type="text" id="top-search-input" value=""/>
+                    </div>
+                    <button class="mod-search-submit ui-left ui-text-hide" onclick="search()">搜索</button>
+                    <script>
+                        function search() {
+                            var keyword = $('#top-search-input').val();
+                            window.location.href = '/{$search_ctrl}?keyword=' + keyword;
+                        }
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mod-top-nav-wr">
+        <!-- 主导航栏开始 -->
+        <div class="mod-top-nav ui-wm">
+            <!-- 主导航 -->
+            <ul class="mod-top-nav-list ui-left">
+                <li>
+                    <a class="mod-top-nav-home" title="首页" onclick="location.href = '/'">
+                        <span>首页</span>
+                        <i class="top-nav-i nav-i-no1"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="/{$booklist_act}" title="分类" target="_blank">
+                        <span>分类</span>
+                        <i class="top-nav-i nav-i-no3"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="/{$rank_ctrl}" target="comic" title="排行">
+                        <span>排行</span>
+                        <i class="top-nav-i nav-i-no5"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="/history" title="历史">
+                        <span>历史</span>
+                        <i class="top-nav-i nav-i-no9"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="/tailist" title="推荐书单">
+                        <span>推荐书单</span>
+                        <i class="top-nav-i nav-i-no9"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" title="App">
+                        <span>App</span>
+                        <i class="top-nav-i nav-i-no9"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="/ucenter" title="个人中心">
+                        <span>个人中心</span>
+                        <i class="top-nav-i nav-i-no9"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!-- 主导航栏结束 -->
+    </div>
+</div>
+{block name="main"}{/block}
+<!-- footer -->
+<div class="mod-footer-wr">
+    <div class="mod-footer-main-wr">
+        <div class="mod-footer-main ui-wm">
+            <!-- 二维码 -->
+            <ul class="mod-footer-scan ui-ma">
+                <li>
+                    <img src="/template/qq/images/ac_qr_img.jpg" title="下载App" alt="下载App"/>
+                    <p style="color:#fff">下载App</p>
+                </li>
+                <li>
+                    <img src="/template/qq/images/ac_wx_img.jpg" title="关注微信" alt="关注微信"/>
+                    <p style="color:#fff">关注微信</p>
+                </li>
+            </ul>
+            <!-- 版权 -->
+            <p class="mod-footer-info">
+                {volist name="links" id="vo"}
+                <a href="{$vo.url}" title="{$vo.name}" target="_blank">{$vo.name}</a>
+                {/volist}
+            </p>
+            <p class="mod-footer-info">
+                <span>粤ICP备11111111号-1</span><span class="ui-pl10">粤网文 (2019) 1111-111号</span>
+            </p>
+            <p class="mod-footer-info">
+                Copyright<span class="mod-copyright" style="color:#fff">&copy;</span>
+                1998 - 2020  All Rights Reserved</p>
+            <p class="mod-footer-info">{$site_name} 版权所有</p>
+        </div>
+    </div>
+    <div class="mod-footer-border"></div>
+</div>
+
+<script type="text/javascript" src="/template/qq/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="/template/qq/js/ac.base.js"></script>
+<script type="text/javascript" src="/template/qq/js/ac.page.index.js"></script>
+{block name="js"}{/block}
+</body>
+</html>

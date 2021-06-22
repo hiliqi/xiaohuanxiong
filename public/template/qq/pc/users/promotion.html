@@ -1,0 +1,79 @@
+{extend name="./template/default/pc/pub/base.html" /}
+{block name="seo"}
+<title>我的推广-{$site_name}</title>
+{/block}
+{block name="content"}
+<main class="container mt30 mb20 overflow-Show clearfix" style="min-height:750px;">
+    {include file="./template/default/pc/pub/uc_menu.html"}
+    <article class="article-main pull-right">
+        <section class="box-wallet box ">
+            <header class="box-header border-bottom">
+                <h1 style="font-size: 25px">我的推广</h1>
+                <small>
+                    <span class="pl10" id="fo1">{$shortUrl}</span>
+                </small>
+                <div class="pull-right">
+                    <a class="btn wallet-btn copy-btns" id="copy-btns">复制链接</a>
+                </div>
+            </header>
+            <div class="box-body">
+                <div class="desc">
+                    <p><span class="title">关于推广</span></p>
+                    <p>通过您的推广链接注册的会员自动成为您的下线, 同时您会获得<span class="color-main">{$payments.reg_reward}元</span>的奖励</p>
+                    <p>下线会员任何一笔充值，您都有<span class="color-main">{$payments.promotional_rewards_rate}%</span>的奖励</p>
+                </div>
+                <section class="">
+                    <div class="table-head">
+                        <ul class="table-tabs">
+                            <li><a class="active" href="#">推广记录</a></li>
+                        </ul>
+                    </div>
+                    <div class="table-body mt10">
+                        <div>
+                            <!-- 充值记录 -->
+                            <table>
+                                <thead>
+                                <tr>
+                                    <th>推广时间</th>
+                                    <th>推广奖励</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {raccoon:finances name="finances" id="cate"
+                                where="`usage` in (4,5) and user_id='$xwx_user_id'"}
+                                <tr>
+                                    <td>{$vo.create_time|date='Y-m-d'}</td>
+                                    <td>{$vo.money}元</td>
+                                </tr>
+                                {/raccoon:finances}
+                                </tbody>
+                            </table>
+                        </div>
+                        <hr class="mt30">
+                        <div style="min-height:25px;">
+                            <span class="count-info">奖励总额：
+                                <span class="count">{$sum}元</span>
+                            </span>
+                            <div class="page-pagination pull-right">
+                                <ul></ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </section>
+    </article>
+</main>
+<script src="https://lib.baomitu.com/clipboard-polyfill/2.8.6/clipboard-polyfill.js"></script>
+<script type="text/javascript">
+    $('#copy-btns').click(function () {
+        var text=$('#fo1').text();
+        clipboard.writeText(text).then(function(){
+            ShowDialog('复制成功');
+        }, function(err){
+            ShowDialog('复制失败');
+        });
+    })
+
+</script>
+{/block}

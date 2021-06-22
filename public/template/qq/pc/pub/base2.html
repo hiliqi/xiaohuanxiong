@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    {block name="seo"}{/block}
+    <meta http-equiv="X-UA-Compatible" content="IE=edge; chrome=1"/>
+    <link rel="stylesheet" type="text/css" href="/template/qq/css/ac.global.css" media="screen" /><!-- 样式文件 -->
+    <link rel="stylesheet" type="text/css" href="/template/qq/css/ac.page.comicall.css" media="screen" />
+    {block name="css"}{/block}
+</head>
+<body class="ret-bg-type-1 ui-bg-rank-change">
+<div class="mod-top-small-wr">
+    <div class="ui-wm mod-top-small-head">
+        <h1 class="mod-top-small-logo ui-left">
+            <a title="{$site_name}" href="/">{$site_name}</a>
+        </h1>
+        <ul class="mod-top-small-nav ui-left">
+            <li><a href="/" title="首页">首页</a></li>
+            <li><a href="/{$booklist_act}" title="分类">分类</a></li>
+            <li><a href="/{$rank_ctrl}" title="排行">排行</a></li>
+            <li><a href="/history" title="历史" target="_blank">历史</a></li>
+            <li><a href="#" title="App" target="_blank">App</a></li>
+            <li><a href="/ucenter" title="个人中心">个人中心</a></li>
+        </ul>
+    </div>
+</div>
+{block name="main"}{/block}
+<!-- footer -->
+<div class="mod-footer-wr">
+    <div class="mod-footer-main-wr">
+        <div class="mod-footer-main ui-wm">
+            <!-- 二维码 -->
+            <ul class="mod-footer-scan ui-ma">
+                <li>
+                    <img src="/template/qq/images/ac_qr_img.jpg" title="下载App" alt="下载App"/>
+                    <p style="color:#fff">下载App</p>
+                </li>
+                <li>
+                    <img src="/template/qq/images/ac_wx_img.jpg" title="关注微信" alt="关注微信"/>
+                    <p style="color:#fff">关注微信</p>
+                </li>
+            </ul>
+            <!-- 版权 -->
+            <p class="mod-footer-info">
+                {volist name="links" id="vo"}
+                <a href="{$vo.url}" title="{$vo.name}" target="_blank">{$vo.name}</a>
+                {/volist}
+            </p>
+            <p class="mod-footer-info">
+                <span>粤ICP备11111111号-1</span><span class="ui-pl10">粤网文 (2019) 1111-111号</span>
+            </p>
+            <p class="mod-footer-info">
+                Copyright<span class="mod-copyright" style="color:#fff">&copy;</span>
+                1998 - 2020  All Rights Reserved</p>
+            <p class="mod-footer-info">{$site_name} 版权所有</p>
+        </div>
+    </div>
+    <div class="mod-footer-border"></div>
+</div>
+<script type="text/javascript" src="/template/qq/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="/template/qq/js/ac.base.js"></script>
+<script type="text/javascript" src="/template/qq/js/ac.page.index.js"></script>
+<script type="text/javascript" src="/template/qq/js/ac.page.comic.all.js"></script>
+{block name="js"}{/block}
+</body>
+</html>

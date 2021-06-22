@@ -82,12 +82,12 @@ class Tag extends Base
 
     public function getTops()
     {
-        $tops = cache('topsHomepage');
+        $tops = cache('topsHomepageApp');
         if (!$tops) {
             $where[] = ['is_top', '=', '1'];
             $tops = Book::with(['chapters', 'author'])->where($where)
                 ->limit(30)->order('id', 'desc')->select();
-            cache('topsHomepage', $tops, null, 'redis');
+            cache('topsHomepageApp', $tops, null, 'redis');
         }
         return json([
             'success' => 1,
@@ -98,17 +98,17 @@ class Tag extends Base
     public function getBanners()
     {
         $num = input('num');
-        $banners = cache('bannersHomepage');
+        $banners = cache('bannersHomepageApp');
         if (!$banners) {
             $banners = Banner::with('book')->where('banner_order', '>', 0)->order('banner_order', 'desc')->select();
             foreach ($banners as &$banner) {
                 if (substr($banner['pic_name'], 0, 4) === 'http') {
 
                 } else {
-                    $banner['pic_name'] = $this->img_domain  . $banner['pic_name'];
+                    $banner['pic_name'] = $this->img_domain  . '/' . $banner['pic_name'];
                 }
             }
-            cache('bannersHomepage', $banners, null, 'redis');
+            cache('bannersHomepageApp', $banners, null, 'redis');
         }
         return json(['success' => 1, 'banners' => $banners]);
     }
@@ -120,7 +120,7 @@ class Tag extends Base
         $catelist = array(); //分类漫画数组
         $cateItem = array();
         foreach ($tags as $tag) {
-            $books = cache('booksFilterByTag:' . $tag);
+            $books = cache('booksFilterByTagApp:' . $tag);
             if (!$books) {
                 $books = Book::where('tags', 'like', '%' . $tag . '%')
                     ->order('id', 'desc')->limit(10)->select();
@@ -132,7 +132,7 @@ class Tag extends Base
                         $book->cover_url = $this->img_domain . $book->cover_url;
                     }
                 }
-                cache('booksFilterByTag:' . $tag, $books, null, 'redis');
+                cache('booksFilterByTagApp:' . $tag, $books, null, 'redis');
             }
             $cateItem['books'] = $books->toArray();
             $cateItem['tag'] = $tag;

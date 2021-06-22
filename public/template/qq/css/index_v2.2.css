@@ -1,0 +1,1112 @@
+@charset "UTF-8";
+html {
+  font-size: 20px; }
+
+html {
+  font-size: 10px;
+  overflow-x: hidden; }
+  @media screen and (min-width: 320px) {
+    html {
+      font-size: 17px; } }
+  @media screen and (min-width: 360px) {
+    html {
+      font-size: 19px; } }
+  @media screen and (min-width: 375px) {
+    html {
+      font-size: 20px; } }
+  @media screen and (min-width: 414px) {
+    html {
+      font-size: 22px; } }
+
+body {
+  font-size: 14px; }
+
+.mod-recommend .list-recommend .comic-item .comic-link, .mod-recommend .list-recommend .comic-item .comic-link .comic-cover, .mod-recommend .list-recommend .comic-item .comic-link .comic-cover img {
+  border-radius: 0.1rem;
+  overflow: hidden; }
+
+.mod-recommend .list-recommend .comic-item .comic-link .comic-info strong, .mod-recommend .list-recommend .comic-item .comic-link .comic-info small, .is-shared .float-bar.top .float-bar-title, .is-shared .comic-pic-detail .comic-pic-container .comic-pic-mask .mask .comic-desc, .float-chapter-list .chapter-list-rank .chapter-list-wrap .list-wrap .chapter-item .chapter-link .chapter-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-top: 1px; }
+
+@font-face {
+  font-family: 'iconfont';
+  src: url("../fonts/iconfont.eot");
+  /* IE9*/
+  src: url("../fonts/iconfont.woff") format("woff"), url("../fonts/iconfont.ttf") format("truetype"), url("../fonts/iconfont.svg") format("svg");
+  /* iOS 4.1- */ }
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-style: normal;
+  -moz-osx-font-smoothing: grayscale; }
+
+/*
+刷新1
+*/
+.small-icon {
+  width: 1rem;
+  height: 1rem;
+  background-image: url("../images/share-icon.png");
+  background-size: 1rem 1rem;
+  background-repeat: no-repeat;
+  display: inline-block;
+  margin-bottom: -0.2rem;
+  margin-right: 0.4rem; }
+
+/* 悬浮栏 */
+.float-bar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  width: 100%;
+  height: 3rem;
+  background-color: rgba(40, 40, 40, 0.95);
+  -webkit-transition: opacity 300ms ease, visibility 300ms ease, -webkit-transform 300ms ease;
+  transition: opacity 300ms ease, visibility 300ms ease, -webkit-transform 300ms ease;
+  transition: opacity 300ms ease, visibility 300ms ease, transform 300ms ease;
+  transition: opacity 300ms ease, visibility 300ms ease, transform 300ms ease, -webkit-transform 300ms ease;
+  opacity: 1;
+  visibility: visible;
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+  /* 顶栏 */
+  /* 底栏 */ }
+  .float-bar.hidden {
+    opacity: 0;
+    visibility: hidden; }
+  .float-bar.top {
+    top: 0;
+    -webkit-box-shadow: 0 0.05rem 0.125rem rgba(0, 0, 0, 0.26);
+            box-shadow: 0 0.05rem 0.125rem rgba(0, 0, 0, 0.26); }
+    .float-bar.top.hidden {
+      -webkit-transform: translate3d(0, -100%, 0);
+              transform: translate3d(0, -100%, 0); }
+    .float-bar.top .float-bar-title {
+      -webkit-box-flex: 1;
+          -ms-flex: 1;
+              flex: 1;
+      display: block;
+      color: #969696;
+      font-size: 0.75rem; }
+      .float-bar.top .float-bar-title .title {
+        display: none; }
+    .float-bar.top .float-bar-btn {
+      display: block;
+      width: 2.6rem;
+      padding: 0.825rem 0rem;
+      text-indent: -2500rem;
+      font-size: 0; }
+      .float-bar.top .float-bar-btn::after {
+        content: "";
+        display: block; }
+      .float-bar.top .float-bar-btn .icon {
+        margin: 0 auto;
+        display: block; }
+      .float-bar.top .float-bar-btn.back {
+        padding: 1.2125rem 1.5rem 1.2125rem 0.8rem;
+        width: 0.575rem; }
+        .float-bar.top .float-bar-btn.back::after {
+          width: 0.575rem;
+          height: 1.075rem;
+          background: url("../images/sc_img_chapter_v2.1.png") no-repeat -26.325rem -10.2rem; background-size: 27.1rem 26.65rem; width: 0.575rem; height: 1.075rem;;
+          
+          background-repeat: no-repeat; }
+      .float-bar.top .float-bar-btn.home .icon-home {
+        width: 1.1rem;
+        height: 1.1rem;
+        background: url("../images/sc_img_chapter_v2.1.png") no-repeat -20.35rem -20.325rem; background-size: 27.1rem 26.65rem; width: 1.1rem; height: 1.1rem;;
+        
+        background-repeat: no-repeat; }
+      .float-bar.top .float-bar-btn.detail .icon-detail {
+        width: 1.2rem;
+        height: 1.2rem;
+        background: url("../images/sc_img_chapter_v2.1.png") no-repeat -18.9rem -20.325rem; background-size: 27.1rem 26.65rem; width: 1.2rem; height: 1.2rem;;
+        
+        background-repeat: no-repeat; }
+      .float-bar.top .float-bar-btn .iconfont {
+        font-size: 0.4rem;
+        text-align: center;
+        margin-top: 0.25rem;
+        color: #fff;
+        text-indent: 0;
+        display: block;
+        width: 100%; }
+      .float-bar.top .float-bar-btn:last-child {
+        margin-right: 0.05rem; }
+  .float-bar.bottom {
+    bottom: 0;
+    -webkit-box-shadow: 0 -0.05rem 0.125rem rgba(0, 0, 0, 0.26);
+            box-shadow: 0 -0.05rem 0.125rem rgba(0, 0, 0, 0.26); }
+    .float-bar.bottom.hidden {
+      -webkit-transform: translate3d(0, 100%, 0);
+              transform: translate3d(0, 100%, 0); }
+    .float-bar.bottom .float-bar-btn {
+      -webkit-box-flex: 1;
+          -ms-flex: 1;
+              flex: 1;
+      display: block;
+      height: 100%;
+      text-align: center;
+      text-indent: -2500rem;
+      font-size: 0; }
+      .float-bar.bottom .float-bar-btn::after {
+        content: "";
+        display: block;
+        margin: 0.5rem auto; }
+      .float-bar.bottom .float-bar-btn.chapter-list::after {
+        width: 1.125rem;
+        height: 1.975rem;
+        background: url("../images/sc_img_chapter_v2.1.png") no-repeat -12.975rem -20.325rem; background-size: 27.1rem 26.65rem; width: 1.125rem; height: 1.975rem;;
+        
+        background-repeat: no-repeat; }
+      .float-bar.bottom .float-bar-btn.view-mode.scroll::after {
+        width: 1.2rem;
+        height: 1.975rem;
+        background: url("../images/sc_img_chapter_v2.1.png") no-repeat -11.525rem -20.325rem; background-size: 27.1rem 26.65rem; width: 1.2rem; height: 1.975rem;;
+        
+        background-repeat: no-repeat; }
+      .float-bar.bottom .float-bar-btn.view-mode.swipe::after {
+        width: 1.2rem;
+        height: 1.975rem;
+        background: url("../images/sc_img_chapter_v2.1.png") no-repeat -10.075rem -20.325rem; background-size: 27.1rem 26.65rem; width: 1.2rem; height: 1.975rem;;
+        
+        background-repeat: no-repeat; }
+      .float-bar.bottom .float-bar-btn.download::after {
+        width: 1.1rem;
+        height: 1.975rem;
+        background: url("../images/sc_img_chapter_v2.1.png") no-repeat -14.35rem -20.325rem; background-size: 27.1rem 26.65rem; width: 1.1rem; height: 1.975rem;;
+        
+        background-repeat: no-repeat; }
+      .float-bar.bottom .float-bar-btn.prev-chapter::after {
+        width: 1.475rem;
+        height: 1.975rem;
+        background: url("../images/sc_img_chapter_v2.1.png") no-repeat -8.35rem -20.325rem; background-size: 27.1rem 26.65rem; width: 1.475rem; height: 1.975rem;;
+        
+        background-repeat: no-repeat; }
+      .float-bar.bottom .float-bar-btn.next-chapter::after {
+        width: 1.475rem;
+        height: 2rem;
+        background: url("../images/sc_img_chapter_v2.1.png") no-repeat -24.6rem -10.2rem; background-size: 27.1rem 26.65rem; width: 1.475rem; height: 2rem;;
+        
+        background-repeat: no-repeat; }
+
+.float-bar-menu {
+  position: fixed;
+  z-index: 10;
+  width: 4.25rem;
+  -webkit-transition: opacity 300ms ease, visibility 300ms ease, -webkit-transform 300ms ease;
+  transition: opacity 300ms ease, visibility 300ms ease, -webkit-transform 300ms ease;
+  transition: opacity 300ms ease, visibility 300ms ease, transform 300ms ease;
+  transition: opacity 300ms ease, visibility 300ms ease, transform 300ms ease, -webkit-transform 300ms ease;
+  opacity: 1;
+  visibility: visible;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  -webkit-transform-origin: 80% 0;
+          transform-origin: 80% 0; }
+  .float-bar-menu.top-right {
+    top: 3rem;
+    right: 0.875rem; }
+  .float-bar-menu.hidden {
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transform: scale(0);
+            transform: scale(0); }
+  .float-bar-menu .menu-arrow-tag {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    height: 0.65rem;
+    overflow: hidden; }
+    .float-bar-menu .menu-arrow-tag::after {
+      content: "";
+      display: block;
+      width: 0.65rem;
+      height: 0.65rem;
+      background-color: rgba(40, 40, 40, 0.95);
+      -webkit-box-shadow: 0 0 0.15rem rgba(0, 0, 0, 0.26);
+              box-shadow: 0 0 0.15rem rgba(0, 0, 0, 0.26);
+      -webkit-transform: translate(3rem, 0.3rem) rotate(45deg);
+              transform: translate(3rem, 0.3rem) rotate(45deg); }
+  .float-bar-menu .menu-content {
+    background-color: rgba(40, 40, 40, 0.95);
+    -webkit-box-shadow: 0 0 0.15rem rgba(0, 0, 0, 0.26);
+            box-shadow: 0 0 0.15rem rgba(0, 0, 0, 0.26);
+    border-radius: 0.1rem; }
+  .float-bar-menu .float-bar-menu-btn {
+    display: block;
+    color: #969696;
+    font-size: 0.75rem;
+    line-height: 2.25rem; }
+    .float-bar-menu .float-bar-menu-btn:nth-child(n+2) {
+      position: relative; }
+      .float-bar-menu .float-bar-menu-btn:nth-child(n+2)::before {
+        content: "";
+        display: block;
+        position: absolute;
+        -webkit-transform-origin: center top;
+        transform-origin: center top;
+        width: 100%;
+        top: 0;
+        width: 200%;
+        left: -50%;
+        -webkit-transform: scale(0.5);
+        transform: scale(0.5);
+        border-top: 1px solid rgba(255, 255, 255, 0.15); }
+    .float-bar-menu .float-bar-menu-btn .icon {
+      display: inline-block;
+      margin: 0rem 0.2rem 0rem 0.4rem; }
+    .float-bar-menu .float-bar-menu-btn.share .icon {
+      width: 1.35rem;
+      height: 1.35rem;
+      background: url("../images/sc_img_chapter_v2.1.png") no-repeat -17.3rem -20.325rem; background-size: 27.1rem 26.65rem; width: 1.35rem; height: 1.35rem;;
+      
+      background-repeat: no-repeat; }
+    .float-bar-menu .float-bar-menu-btn.comment-list .icon {
+      width: 1.35rem;
+      height: 1.35rem;
+      background: url("../images/sc_img_chapter_v2.1.png") no-repeat -15.7rem -20.325rem; background-size: 27.1rem 26.65rem; width: 1.35rem; height: 1.35rem;;
+      
+      background-repeat: no-repeat; }
+    .float-bar-menu .float-bar-menu-btn .icon, .float-bar-menu .float-bar-menu-btn .text {
+      vertical-align: middle; }
+
+/* 浏览控制按键 */
+.nav-ctrl-btn {
+  display: block;
+  height: 2.25rem;
+  line-height: 2.25rem;
+  background: #323432;
+  text-align: center;
+  font-size: 0.75rem; }
+  .nav-ctrl-btn.prev {
+    position: relative; }
+    .nav-ctrl-btn.prev::after {
+      content: "";
+      display: block;
+      position: absolute;
+      -webkit-transform-origin: center bottom;
+      transform-origin: center bottom;
+      width: 100%;
+      bottom: 0;
+      width: 200%;
+      left: -50%;
+      -webkit-transform: scale(0.5);
+      transform: scale(0.5);
+      border-bottom: 1px solid #C5C5C5; }
+  .nav-ctrl-btn.next {
+    position: relative; }
+    .nav-ctrl-btn.next::before {
+      content: "";
+      display: block;
+      position: absolute;
+      -webkit-transform-origin: center top;
+      transform-origin: center top;
+      width: 100%;
+      top: 0;
+      width: 200%;
+      left: -50%;
+      -webkit-transform: scale(0.5);
+      transform: scale(0.5);
+      border-top: 1px solid #C5C5C5; }
+  .nav-ctrl-btn, .nav-ctrl-btn:visited, .nav-ctrl-btn:link {
+    color: #ff613e; }
+
+/* 漫画图片区域 */
+.comic-pic-area .comic-pic-list-loading {
+  position: fixed;
+  z-index: 5;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white; }
+  .comic-pic-area .comic-pic-list-loading .item {
+    position: relative;
+    top: 50%; }
+
+.comic-pic-area .view-mode-hint {
+  display: none;
+  position: fixed;
+  z-index: 6;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  -webkit-transition: opacity 500ms ease;
+  transition: opacity 500ms ease;
+  pointer-events: none; }
+  .comic-pic-area .view-mode-hint.scroll {
+    width: 8.1rem;
+    height: 9.95rem;
+    background: url("../images/sc_img_chapter_v2.1.png") no-repeat 0rem -12.95rem; background-size: 27.1rem 26.65rem; width: 8.1rem; height: 9.95rem;;
+    
+    background-repeat: no-repeat; }
+  .comic-pic-area .view-mode-hint.swipe {
+    width: 8.95rem;
+    height: 7.125rem;
+    background: url("../images/sc_img_chapter_v2.1.png") no-repeat -8.35rem -12.95rem; background-size: 27.1rem 26.65rem; width: 8.95rem; height: 7.125rem;;
+    
+    background-repeat: no-repeat; }
+  .comic-pic-area .view-mode-hint.scroll, .comic-pic-area .view-mode-hint.swipe {
+    display: block;
+    opacity: 0; }
+  .comic-pic-area .view-mode-hint.show {
+    display: block;
+    opacity: 1; }
+
+.comic-pic-area .comic-pic-list {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none; }
+
+.comic-pic-area .comic-pic-item {
+  width: 100%;
+  background: #1F2123 url("data:image/png;base64, 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") no-repeat scroll center 2.5rem;
+  background-size: 50%;
+  border-top: 1px solid #353535;
+  border-bottom: 1px solid #353535; }
+  .comic-pic-area .comic-pic-item .comic-pic-pad, .comic-pic-area .comic-pic-item .comic-pic-box {
+    width: 100%;
+    -webkit-transition: opacity 800ms ease;
+    transition: opacity 800ms ease; }
+  .comic-pic-area .comic-pic-item .comic-pic {
+    display: block;
+    width: 100%; }
+  .comic-pic-area .comic-pic-item.pic-unloaded .comic-pic-box, .comic-pic-area .comic-pic-item.pic-loading .comic-pic-box {
+    opacity: 0;
+    display: none; }
+  .comic-pic-area .comic-pic-item.pic-unloaded .comic-pic-pad, .comic-pic-area .comic-pic-item.pic-loading .comic-pic-pad {
+    display: block; }
+  .comic-pic-area .comic-pic-item .comic-pic-box {
+    opacity: 0;
+    display: block; }
+  .comic-pic-area .comic-pic-item .comic-pic-pad {
+    display: none; }
+  .comic-pic-area .comic-pic-item.pic-loaded {
+    background: none; }
+    .comic-pic-area .comic-pic-item.pic-loaded .comic-pic-box {
+      opacity: 1;
+      display: block; }
+    .comic-pic-area .comic-pic-item.pic-loaded .comic-pic-pad {
+      display: none; }
+  .comic-pic-area .comic-pic-item .comic-pic-pad {
+    position: relative;
+    padding-top: 100%;
+    text-align: center; }
+    .comic-pic-area .comic-pic-item .comic-pic-pad .err-info {
+      display: block;
+      position: absolute;
+      top: 7.5rem;
+      left: 0;
+      width: 100%;
+      color: #C5C5C5;
+      line-height: 2;
+      font-size: 1rem; }
+    .comic-pic-area .comic-pic-item .comic-pic-pad .reload-btn {
+      display: block;
+      width: 6.5rem;
+      height: 2.25rem;
+      line-height: 2.25rem;
+      margin: 0.625rem auto;
+      background-color: transparent;
+      border: 0.125rem solid #ff9a6a;
+      border-radius: 0.15rem;
+      color: #ff9a6a;
+      font-size: 0.9rem; }
+
+/* 结束信息区域 */
+.end-chapter-ads .info-text {
+  padding-top: 2.5rem;
+  padding-bottom: 1.75rem;
+  color: #969696;
+  font-size: 0.75rem;
+  text-align: center; }
+
+.end-chapter-ads .info-control {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: relative;
+  padding-top: 2rem;
+  padding-bottom: 2.25rem; }
+  .end-chapter-ads .info-control::before {
+    content: "";
+    display: block;
+    position: absolute;
+    -webkit-transform-origin: center top;
+    transform-origin: center top;
+    width: 100%;
+    top: 0;
+    width: 200%;
+    left: -50%;
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+    border-top: 1px solid #F5F5EE; }
+
+.end-chapter-ads .control-btn {
+  display: block;
+  margin: 0rem 1.675rem; }
+  .end-chapter-ads .control-btn .icon {
+    display: block; }
+  .end-chapter-ads .control-btn .text {
+    display: block;
+    height: 1.5rem;
+    line-height: 1.5rem;
+    text-align: center;
+    color: #ff9a6a; }
+  .end-chapter-ads .control-btn.collect .icon {
+    width: 3.5rem;
+    height: 3.5rem;
+    background: url("../images/sc_img_chapter_v2.1.png") no-repeat 0rem -23.15rem; background-size: 27.1rem 26.65rem; width: 3.5rem; height: 3.5rem;;
+    
+    background-repeat: no-repeat; }
+    .end-chapter-ads .control-btn.collect .icon.active {
+      width: 3.5rem;
+      height: 3.5rem;
+      background: url("../images/sc_img_chapter_v2.1.png") no-repeat -3.75rem -23.15rem; background-size: 27.1rem 26.65rem; width: 3.5rem; height: 3.5rem;;
+      
+      background-repeat: no-repeat; }
+  .end-chapter-ads .control-btn.comment .icon {
+    width: 3.5rem;
+    height: 3.5rem;
+    background: url("../images/sc_img_chapter_v2.1.png") no-repeat -7.5rem -23.15rem; background-size: 27.1rem 26.65rem; width: 3.5rem; height: 3.5rem;;
+    
+    background-repeat: no-repeat; }
+
+/* 推荐漫画列表 */
+.mod-recommend {
+  padding-top: 0.75rem;
+  padding-bottom: 4rem;
+  position: relative; }
+  .mod-recommend::before {
+    content: "";
+    display: block;
+    position: absolute;
+    -webkit-transform-origin: center top;
+    transform-origin: center top;
+    width: 100%;
+    top: 0;
+    width: 200%;
+    left: -50%;
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+    border-top: 1px solid #F5F5EE; }
+  .mod-recommend h2 {
+    font-size: 0.7rem;
+    color: #969696;
+    padding-bottom: 0.75rem;
+    line-height: 100%;
+    font-weight: normal;
+    padding-left: 0.75rem;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box; }
+  .mod-recommend .list-recommend {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center; }
+    .mod-recommend .list-recommend .comic-item .comic-link {
+      display: block;
+      width: 5.25rem;
+      background-color: #F5F5EE; }
+      .mod-recommend .list-recommend .comic-item .comic-link .comic-cover {
+        width: 5.25rem;
+        height: 7rem; }
+        .mod-recommend .list-recommend .comic-item .comic-link .comic-cover img {
+          display: block;
+          width: 100%;
+          height: 100%; }
+      .mod-recommend .list-recommend .comic-item .comic-link .comic-info strong, .mod-recommend .list-recommend .comic-item .comic-link .comic-info small {
+        display: block;
+        -webkit-box-sizing: border-box;
+                box-sizing: border-box;
+        text-align: center;
+        line-height: 100%; }
+      .mod-recommend .list-recommend .comic-item .comic-link .comic-info strong {
+        font-size: 0.7rem;
+        color: #535252;
+        padding-top: 0.375rem; }
+      .mod-recommend .list-recommend .comic-item .comic-link .comic-info small {
+        padding-top: 0.25rem;
+        padding-bottom: 0.3rem;
+        font-size: 0.6rem;
+        color: #969696; }
+    .mod-recommend .list-recommend .comic-item:nth-of-type(2) {
+      margin-left: 0.75rem;
+      margin-right: 0.75rem; }
+
+.progress-box {
+  position: fixed;
+  z-index: 9;
+  right: 0;
+  bottom: 0;
+  padding: 0.3rem 0.35rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  font-size: 0.6rem;
+  -webkit-transition: -webkit-transform 300ms ease;
+  transition: -webkit-transform 300ms ease;
+  transition: transform 300ms ease;
+  transition: transform 300ms ease, -webkit-transform 300ms ease;
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0); }
+  .progress-box.out {
+    -webkit-transform: translate3d(0, 100%, 0);
+            transform: translate3d(0, 100%, 0); }
+
+.hidden-area {
+  display: none; }
+
+/******************************************************************************
+* 分享模式
+*******************************************************************************/
+.app-guiding.shared {
+  display: none; }
+
+.chap-gap {
+  display: none; }
+
+.comic-pic-detail {
+  display: none; }
+
+.is-shared {
+  padding-bottom: 3.525rem; }
+  .is-shared .chap-gap {
+    display: block; }
+  .is-shared .app-guiding.shared {
+    display: block; }
+  .is-shared .float-bar.top .float-bar-title {
+    text-align: center;
+    width: 100%;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box; }
+  .is-shared .float-bar.top .float-bar-btn {
+    display: none; }
+  .is-shared .float-bar.bottom {
+    display: none; }
+  .is-shared .float-bar.top {
+    display: none; }
+  .is-shared .comic-pic-area .nav-ctrl-btn {
+    display: none !important; }
+  .is-shared .comic-pic-area .end-chapter-ads {
+    display: none; }
+    .is-shared .comic-pic-area .end-chapter-ads .cooperation-state {
+      display: none; }
+  .is-shared .comic-pic-detail {
+    display: block;
+    padding: 0.75rem 0.75rem 6.875rem 0.75rem; }
+    .is-shared .comic-pic-detail .comic-pic-container {
+      position: relative;
+      -webkit-box-sizing: border-box;
+              box-sizing: border-box;
+      font-size: 0; }
+      .is-shared .comic-pic-detail .comic-pic-container .comic-pic-cover {
+        width: 100%;
+        border-radius: 0.75rem;
+        -webkit-box-sizing: border-box;
+                box-sizing: border-box;
+        -webkit-box-shadow: 0 0 0.25rem 0 #ff9a6a;
+                box-shadow: 0 0 0.25rem 0 #ff9a6a;
+        border: 0.025rem solid rgba(255, 154, 106, 0.5); }
+      .is-shared .comic-pic-detail .comic-pic-container .comic-pic-mask {
+        position: absolute;
+        width: 100%;
+        bottom: 0;
+        left: 0;
+        height: 6.275rem; }
+        .is-shared .comic-pic-detail .comic-pic-container .comic-pic-mask .mask {
+          width: 100%;
+          position: absolute;
+          height: 100%;
+          background: -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(0, 0, 0, 0.5)));
+          background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.5));
+          left: 0;
+          bottom: 0.025rem;
+          border-radius: 0.75rem 0.75rem 0.875rem 0.875rem;
+          -webkit-box-sizing: border-box;
+                  box-sizing: border-box; }
+          .is-shared .comic-pic-detail .comic-pic-container .comic-pic-mask .mask .comic-title {
+            font-size: 0.85rem;
+            color: #ffffff;
+            font-weight: bold;
+            margin: 3.625rem 0.625rem 0rem 0.925rem; }
+            .is-shared .comic-pic-detail .comic-pic-container .comic-pic-mask .mask .comic-title .tag-type {
+              font-weight: normal;
+              padding: 0rem 0.375rem;
+              vertical-align: middle;
+              background: rgba(0, 0, 0, 0.3);
+              margin: 0rem 0.15rem 0rem 0rem;
+              font-size: 0.5rem;
+              border: 0.025rem solid transparent;
+              border-radius: 0.5rem;
+              -webkit-box-sizing: border-box;
+                      box-sizing: border-box; }
+              .is-shared .comic-pic-detail .comic-pic-container .comic-pic-mask .mask .comic-title .tag-type:first-child {
+                margin-left: 0.375rem; }
+            .is-shared .comic-pic-detail .comic-pic-container .comic-pic-mask .mask .comic-title .c-y {
+              color: #faad41; }
+            .is-shared .comic-pic-detail .comic-pic-container .comic-pic-mask .mask .comic-title .c-r {
+              color: #fe6e6e; }
+          .is-shared .comic-pic-detail .comic-pic-container .comic-pic-mask .mask .comic-desc {
+            font-size: 0.55rem;
+            color: #ffffff;
+            width: 100%;
+            height: 0.75rem;
+            line-height: 0.75rem;
+            margin-top: 0.5rem;
+            padding-left: 0.925rem;
+            -webkit-box-sizing: border-box;
+                    box-sizing: border-box; }
+        .is-shared .comic-pic-detail .comic-pic-container .comic-pic-mask .comic-cover-info {
+          background-color: #ffffff;
+          padding: 0rem 0.25rem;
+          width: 15.925rem;
+          height: 2.5rem;
+          border-radius: 0rem 0rem 0.75rem 0.75rem;
+          margin: 0 auto;
+          position: absolute;
+          left: 50%;
+          -webkit-transform: translate3d(-50%, 0, 0);
+                  transform: translate3d(-50%, 0, 0);
+          bottom: -2.5rem;
+          -webkit-box-shadow: 0 0.05rem 1rem 0 #ff9a6a;
+                  box-shadow: 0 0.05rem 1rem 0 #ff9a6a;
+          border: 0.025rem solid rgba(255, 154, 106, 0.3);
+          -webkit-box-sizing: border-box;
+                  box-sizing: border-box; }
+          .is-shared .comic-pic-detail .comic-pic-container .comic-pic-mask .comic-cover-info .comic-detail {
+            font-size: 0.85rem;
+            line-height: 2.5rem;
+            padding-left: 0.375rem;
+            color: #ff9a6a; }
+            .is-shared .comic-pic-detail .comic-pic-container .comic-pic-mask .comic-cover-info .comic-detail small {
+              font-size: 0.55rem; }
+            .is-shared .comic-pic-detail .comic-pic-container .comic-pic-mask .comic-cover-info .comic-detail .go-to-read {
+              color: #ff9a6a;
+              float: right;
+              margin-right: 0.375rem;
+              font-weight: bold;
+              -webkit-appearance: none;
+                 -moz-appearance: none;
+                      appearance: none; }
+              .is-shared .comic-pic-detail .comic-pic-container .comic-pic-mask .comic-cover-info .comic-detail .go-to-read .icon-circle-arrow-right {
+                display: inline-block;
+                margin-left: 0.25rem;
+                width: 0.5rem;
+                height: 0.5rem;
+                background-image: url("../images/icon-arrow.png");
+                background-size: 0.5rem 0.5rem;
+                background-repeat: no-repeat; }
+          .is-shared .comic-pic-detail .comic-pic-container .comic-pic-mask .comic-cover-info .comic-from {
+            position: absolute;
+            font-size: 0.55rem;
+            color: #333333;
+            right: -0.5rem;
+            bottom: -1.625rem; }
+            .is-shared .comic-pic-detail .comic-pic-container .comic-pic-mask .comic-cover-info .comic-from .line {
+              display: inline-block;
+              width: 0.175rem;
+              height: 0.675rem;
+              background: #ff9a6a;
+              border-radius: 0.5rem;
+              vertical-align: sub;
+              margin-left: 0.25rem; }
+      .is-shared .comic-pic-detail .comic-pic-container .comic-chap-title {
+        position: absolute;
+        font-size: 0.85rem;
+        color: #000000;
+        width: 100%;
+        text-align: center;
+        bottom: -6.375rem; }
+        .is-shared .comic-pic-detail .comic-pic-container .comic-chap-title .chap-title {
+          margin-left: 0.25rem; }
+
+#animation_guiding {
+  position: fixed;
+  z-index: 50;
+  bottom: -0.1rem;
+  left: 0;
+  width: 100%;
+  height: auto;
+  background-color: white; }
+
+/******************************************************************
+*阅读最新一话时中间弹层样式
+*******************************************************************/
+.down-app-mask {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 10; }
+  .down-app-mask .download {
+    position: absolute;
+    top: 50%;
+    margin-top: -6.35rem;
+    width: 18.75rem;
+    height: 12.7rem;
+    background: url("../images/sc_img_chapter_v2.1.png") no-repeat 0rem 0rem; background-size: 27.1rem 26.65rem; width: 18.75rem; height: 12.7rem;;
+    
+    background-repeat: no-repeat; }
+  .down-app-mask .close-btn {
+    position: absolute;
+    width: 1.3rem;
+    height: 1.3rem;
+    right: 1.825rem;
+    top: 2.6rem; }
+  .down-app-mask .go-read-comic {
+    position: absolute;
+    width: 5.5rem;
+    height: 2.375rem;
+    bottom: 1.5rem;
+    left: 6.825rem;
+    z-index: 20; }
+
+/******************************************************************
+*阅读页常驻气泡样式
+*******************************************************************/
+.chapter-fixed-pop {
+  opacity: 1;
+  position: fixed;
+  bottom: 1.25rem;
+  right: 0;
+  z-index: 5;
+  width: 3.6rem;
+  height: 3.7rem;
+  width: 5.35rem;
+  height: 2.3rem;
+  background: url("../images/sc_img_chapter_v2.1.png") no-repeat -19rem -10.2rem; background-size: 27.1rem 26.65rem; width: 5.35rem; height: 2.3rem;;
+  
+  background-repeat: no-repeat;
+  -webkit-transition: all linear .3s;
+  transition: all linear .3s; }
+
+/*****************************************
+* 阅读页每三话弹出的弹层样式
+******************************************/
+.per-third-block .modal-blocker-container {
+  padding-top: 1.2rem;
+  padding-bottom: 0.65rem; }
+
+.per-third-block .icon-blocker-close {
+  left: 0.4rem; }
+
+.per-third-block .font-small {
+  font-size: 0.7rem; }
+
+.per-third-block .font-main {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem; }
+
+.per-third-block .blocker-btn-group .btn {
+  padding: 0.625rem 0; }
+
+html {
+  font-size: 20px; }
+
+html {
+  font-size: 10px;
+  overflow-x: hidden; }
+  @media screen and (min-width: 320px) {
+    html {
+      font-size: 17px; } }
+  @media screen and (min-width: 360px) {
+    html {
+      font-size: 19px; } }
+  @media screen and (min-width: 375px) {
+    html {
+      font-size: 20px; } }
+  @media screen and (min-width: 414px) {
+    html {
+      font-size: 22px; } }
+
+body {
+  font-size: 14px; }
+
+.mod-recommend .list-recommend .comic-item .comic-link, .mod-recommend .list-recommend .comic-item .comic-link .comic-cover, .mod-recommend .list-recommend .comic-item .comic-link .comic-cover img {
+  border-radius: 0.1rem;
+  overflow: hidden; }
+
+.mod-recommend .list-recommend .comic-item .comic-link .comic-info strong, .mod-recommend .list-recommend .comic-item .comic-link .comic-info small, .is-shared .float-bar.top .float-bar-title, .is-shared .comic-pic-detail .comic-pic-container .comic-pic-mask .mask .comic-desc, .float-chapter-list .chapter-list-rank .chapter-list-wrap .list-wrap .chapter-item .chapter-link .chapter-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-top: 1px; }
+
+@font-face {
+  font-family: 'iconfont';
+  src: url("../../public/font/iconfont.eot?v=b5578579b7a67d36");
+  /* IE9*/
+  src: url("../fonts/iconfont.woff") format("woff"), url("../fonts/iconfont.ttf") format("truetype"), url("../fonts/iconfont.svg") format("svg");
+  /* iOS 4.1- */ }
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-style: normal;
+  -moz-osx-font-smoothing: grayscale; }
+
+/*
+刷新1
+*/
+.float-chapter-list {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 20; }
+  .float-chapter-list.show {
+    display: block !important; }
+  .float-chapter-list.animate .chapter-list-rank {
+    right: 0 !important; }
+  .float-chapter-list.animate .icon-locate {
+    opacity: 1 !important; }
+  .float-chapter-list .fixed-chapter-list-mask {
+    width: 100%;
+    height: 100%; }
+  .float-chapter-list .chapter-list-rank {
+    position: absolute;
+    top: 0;
+    right: -50rem;
+    background-color: rgba(51, 51, 51, 0.97);
+    color: #fff;
+    padding: 0 0 0.9rem;
+    height: 100%;
+    width: 14.25rem;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    z-index: 20;
+    -webkit-transition: all .3s;
+    transition: all .3s; }
+    .float-chapter-list .chapter-list-rank .comic-title {
+      font-size: 0.8rem;
+      text-align: center;
+      margin: 1.05rem auto; }
+    .float-chapter-list .chapter-list-rank .chapter-list-desc {
+      padding: 0.6rem 0 0.6rem 0.7rem;
+      background-color: rgba(216, 216, 216, 0.5); }
+      .float-chapter-list .chapter-list-rank .chapter-list-desc .list-order {
+        color: #fff;
+        font-size: 0.7rem;
+        float: right;
+        margin-right: 1.2rem; }
+        .float-chapter-list .chapter-list-rank .chapter-list-desc .list-order .icon-order {
+          width: 0.575rem;
+          height: 0.525rem;
+          display: inline-block;
+          margin-right: 0.1rem;
+          background-position: 100% 100%;
+          background-repeat: no-repeat;
+          background-size: 100% 100%; }
+        .float-chapter-list .chapter-list-rank .chapter-list-desc .list-order.asc .icon-order {
+          background-image: url('data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAABcAAAAVCAYAAACt4nWrAAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAF6ADAAQAAAABAAAAFQAAAADcJ4LJAAAB3ElEQVQ4Ec2VPS9DURjH7+1LFINBWEgNJrEUEYlNrEzSgclmkPAJJHwCVj5DFwkWkRgYpNKkYulgkDBIEwaJarWu33Nzj9tze3tuWoun+ec8r//znHOfe2tZBnEcJwseQRGMGVJDQ4kwL0Q2/l2w41iunrYtex17D1jEB1hmQFzsgFSx87ZtVwJ+t7Cf4ty3o//w7UuyEIMnPapbxAsgpnWOI039Md1mWnb1HRPER3yzVSM+xUkHYyoE8Tx6PoJY0m8pPAWOqm1e8TfAEddSdv0Qr4Jq8+GwL0FB+dDda1FE2AnQEwL/ORDsA5+KRFbkECTBhfKja+RqE9Mq11IH75LEcepgiyNtgC/x/UUSkNToagHSLERn2DdRhORLU6NAGwivrgrHs+huEOMeXRApEPeSdMWDn26XTM4JnMu/09IuMcSfMRFLPvElNhjuhrzIFRpPSfycPcphdxbSrO/iuB90JS/JOF5/7PyUGuoDeU7H5MJBoUxYSXSTdHMtJj4t9r/Iue84yAF5P+R1DqKC70CO0E3ns4zaCkgCvl4tSOHbZoOhKPLmL5/SS0zKi3a5AcMb1deoabmjbtGrFV0m5Y2uJiGYwwyrl3+ia/Iakt9WIEmBTbAG5K+vI/kBUU5ftXIbbfUAAAAASUVORK5CYII='); }
+        .float-chapter-list .chapter-list-rank .chapter-list-desc .list-order.desc .icon-order {
+          background-image: url('data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAABcAAAAVCAYAAACt4nWrAAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAF6ADAAQAAAABAAAAFQAAAADcJ4LJAAABxElEQVQ4EZ2VzytEURTH583YTIokUqwoJRs/YycbK6ysFVnY2/oPLFhYWVrbCCvZEaKkSLOwlKTGj4Ux0/B8zvPuuK7z3ph36tu553t+3jv33UmlYsT3/TFwD25AZ0yo6qpT2R9yiWVbiHn0srho1IgaBBmxHSlin3meV6hWvN5KDNZh4Wv4dsvnLi+IG0q77D/sHmLiCkuJftCcpPg5iXvAB5p8QG5wLI/VjuVPMkllyEm2LbnamZeJkQapmotLkkjYRBpFSpJjiSzmOhJNzpHIUB1Ayy+yqztppDmFjxQKZ3EegoGoIGJ2aTCV5Fj64gqHDeUHb60Ux/CiJnH4S+wrh3PNfYjvq0jhdYxF9A56ji09u9HGxvdGnHwkXUC7iiX4W+L84J0g2JYcRrcUQx9YjlXhapE0HV5IOLGSpPApRScsLvmSQg1g15pSlmWQt7jaJ5eRmP4VNQ1WxA5FzrPJGEbTLAO2QAl8KijArZn4XxrHLHgHrgSTQ466jgi7pXIVTQd2scl6HDwYLtTmFcwpPic0uKp59QulwTHTDJOxDeTaichTK0f4hK+X5QjQ8uWf6Ii44GVkrQtFsmABzOgR8ewXtUYtwIJ1jAAAAAAASUVORK5CYII='); }
+    .float-chapter-list .chapter-list-rank .chapter-list-wrap {
+      position: relative;
+      margin-top: 0.625rem;
+      height: calc(100% - 6.2rem); }
+      .float-chapter-list .chapter-list-rank .chapter-list-wrap .list-wrap {
+        overflow-y: auto;
+        height: 100%;
+        display: none; }
+        .float-chapter-list .chapter-list-rank .chapter-list-wrap .list-wrap.active {
+          display: block !important; }
+        .float-chapter-list .chapter-list-rank .chapter-list-wrap .list-wrap .chapter-item {
+          margin-bottom: 2rem;
+          padding: 0 1.2rem 0 0.7rem; }
+          .float-chapter-list .chapter-list-rank .chapter-list-wrap .list-wrap .chapter-item .chapter-link {
+            color: #fff;
+            display: block; }
+            .float-chapter-list .chapter-list-rank .chapter-list-wrap .list-wrap .chapter-item .chapter-link.lock, .float-chapter-list .chapter-list-rank .chapter-list-wrap .list-wrap .chapter-item .chapter-link.now {
+              position: relative;
+              padding-left: 0.825rem; }
+              .float-chapter-list .chapter-list-rank .chapter-list-wrap .list-wrap .chapter-item .chapter-link.lock:before, .float-chapter-list .chapter-list-rank .chapter-list-wrap .list-wrap .chapter-item .chapter-link.now:before {
+                content: '';
+                display: block;
+                position: absolute;
+                left: 0;
+                background-repeat: no-repeat;
+                background-size: 100% 100%;
+                background-position: 100% 100%; }
+            .float-chapter-list .chapter-list-rank .chapter-list-wrap .list-wrap .chapter-item .chapter-link.lock {
+              color: #f3f3f3; }
+              .float-chapter-list .chapter-list-rank .chapter-list-wrap .list-wrap .chapter-item .chapter-link.lock:before {
+                width: 0.5rem;
+                height: 0.675rem;
+                background-image: url("data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAABQAAAAbCAYAAAB836/YAAAAAXNSR0IArs4c6QAAAwtJREFUSA2dlc9rE0EUx5PdNAmVqjVND4XSokSDWqFCkzZEPXnwD/DgwZvoRbyJoKI3D9VTRfyBgnjRk4qo9xLShDQGCiKFHmJBqpXaHHLIjyaNn7ftbndns0IdmLxf3/m+N28ms37fP0an09FzudxRIEN+v1/TdX2t1Wp9TaVSNa9lfq/A3NxcAsLrEEUVjJA9m5qaek+so8R8XQkhuwDwioAh/YVY1DStiX4IXaYPe3ZycvKu6PbhIszn87HNzc0nLKYA/0O1kkKhMNFut28T3wduOp1Of7YTanZDdMCXELRLf0Ov3qnbSiQS82AeCJYqL0Ps4HAYAmKMyw/gDyK7DarK4K8w9xeLxVE7xkG4srLSS0VBAHUqkd55DipblmCj0ThgBwXsRqVSMRJA2hZ/JpPpRz9OtRHMHuQaconD+IFsMX3BYNBxDg5CAcggu57NZmcgG8O0FnAIRpxbsAxmyzA8Oz8OwlqtphP6zRyE7MQOzKWNEBdnFWLHXbR6SHN7m83mNKBB13JvRx8nfourNGxCLMKNjY2bOI+YgV3IftbeW1hY2CNrDEIynKbytAdJm8OYZYtviRsnq+KIDVer1YviNxpBk1+ijzIdgyRNwNe44IsSwA6AvYHvrAO4FWuGQqHzWqlUGsEeVQFiU9lHk0xsiFqRSGQG1XEQ27EgW09p9Xrd+GeIUx1U9FP1xePxKj6Z3ca4Rlb1ebKAELquzvaO9logmwI+KocStvkcKslO8cCeM53lcjnMXXU9WWYcwpAQrpuObpJ/R9L0r66uDpDkoGmrkp6va7CW1cD/2sKlRaPRLxA0vEjIaoXQjWtmOdxKVovFYg228ckd2/Kw5cP8LXvE4gN1zAtHdd/kihmPQzgcfkWz5bL2qQtINsSb94IL/Z1YSo1v2/K9eCy6tQVO8yRZ7uOTF2e34ynVvZZFVoP4GJXIcgef5ze3Wxb6+twkk7hVoQmWi8u/5yr2hOnrJklehuxRMpks2uMuQjNIz+LoZ5hjLB5ABmjJH+QSdobPwDzS9Wr/BbFwMmObbzITAAAAAElFTkSuQmCC"); }
+            .float-chapter-list .chapter-list-rank .chapter-list-wrap .list-wrap .chapter-item .chapter-link.now {
+              color: #ff905b; }
+              .float-chapter-list .chapter-list-rank .chapter-list-wrap .list-wrap .chapter-item .chapter-link.now:before {
+                width: 0.55rem;
+                height: 0.65rem;
+                background-image: url("data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAABYAAAAaCAYAAACzdqxAAAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAFqADAAQAAAABAAAAGgAAAADZ0d5bAAAC0klEQVRIDa1WS2gTURS952WaSBUttmD9VWgRRF1YV1YQrJVuhIqbgjSNFkRtMWk3im4kbgTRTVKKIBhIf4uuXCmioOLCIvWHUPAPChUtWOlKmmSu9w2dmpm8ifHzILx37zn3vDt37nsT0G8GX42tp4XCFiK1jggFUvYMWZhG78jXcqEwgZyOR4jnThJTjIh3lnJgi/8RKcpQ/cEsOjsLfk6JMKe72kXwmvw2+clGG5gmqB4khh8X46rY4HR3QgRvViyqg5m3EtsPOB09XKy1lLEAMbI5Wwz+0Rok9VcHEB+5reMcYU51b5etp2T3SLAY5GWxJfjqMpzvFApvQzwzs1gKvhQsihsUUo0YGF2DgbFasixJAvfN4lxD9sIFjYHTsWayC0+NRNA4+se6/Bgzg1Ldd+UJ9vkxqYGUJNKgpPCHSkDtAHK0fFnchAFgslSvCZMXHyI716FL0RZAeIlj178ZMXHi1PBrye6LGec2yZg3GkHQD6Pf6wzibNAZ13m5S9YO5wQumd4FDx2tD+x3pjoltZz1hixazNVkzzlv2Ijn85eNfsfJs5aUYkrWDQGk05zqsmnt5iQ6kwuaw0N9Kyg3f0XiogExcl/hibSbHEWbxwNJGgDm5bGlJblK1s0iWl2Wr9Re8L2kRS/evBJiY1lypSAwif7RFoXWZF6yOFdpXFke5LlAZzRHdwXJDhMiPqHX/zRYpZAYfag1HGFHbKV1QrbQJfnbIRd/zVk32LndXIPTR5rIzk+KHdTbLtU7Ax8ojF3Fn6tfGQsView7UqF2WQYeZa+iY32iqvD+YlHt9WTsBjk3Htt3pK1qXZ9xBj6KaCv6Mu/9uCdjF5Tv1zO5g3eLXRLgcmR+TircYhLVHKOwBpzbK6JapFt0zf3jFlWt2qO/FH7AtY2lcEE980QyTJ/fDkpZjkvhWHK5SImm80BS/gL8h8GpaA8PRjsqlfoJmwbfeL4MnnEAAAAASUVORK5CYII="); }
+            .float-chapter-list .chapter-list-rank .chapter-list-wrap .list-wrap .chapter-item .chapter-link .chapter-title {
+              width: 100%;
+              position: relative; }
+    .float-chapter-list .chapter-list-rank .icon-locate {
+      position: fixed;
+      right: 1.55rem;
+      width: 1.2rem;
+      height: 1.2rem;
+      z-index: 10;
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      background-position: 100% 100%;
+      opacity: 0;
+      -webkit-transition: opacity 0.5s;
+      transition: opacity 0.5s; }
+    .float-chapter-list .chapter-list-rank .icon-back-to-top {
+      background-image: url('data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAMKADAAQAAAABAAAAMAAAAADbN2wMAAAEl0lEQVRoBdVaPUgbURx/uUSJiqDWD0qHLgF1cZCWdKxDdLQFxwZSaluog9qhIA5G6OTg5NJCbaDOtq462LFSFwXBISBBSkEFvyB+Ee3vd9wLl/Oae5dcTPIg/N+9+3/8fu/73otPeJBubm7qDg4OIpB9cNeFXwj5ZshGw/2pz+c7RD6J3zbyq62trSuQZ8b7goWvUMujo6Pmy8vLQQAdhI9+/Opd+kpDfxkklmpra5eamppI0HVyTQCA6/f3998j0gfkZQ27Dmw2AIlTPM+0tbXNIk9iykmZAMD60U1eQcbxu68cwYUiwP/FL47u9QUyo2KqRADAH1xfX/8A8EcqTovVAfh1TdOegcgfJ1+akwLAhwH+912BJx7GYkzGdsKXlwAcvMhkMj9L1WXygWNMxiaGfHr/7UIG+G/5jO/qnd/vj6I7LdjFsyXApiN7GATtjMpQdg4ST0FizRr7FgGA54Blny/JTGMFoPrMGQoD+7F1YOeMAYD2G7NNRYEnSVaogc1vJp1DALXPef5OpkozCNU8sRGjWT/bhfCSK2ySTM0KdvmdnR2RSqXsXhVc1tHRIbq7ux3t2ZWwYocg9RU7IC24PVABf3V1JcbHxwX2QdLUM5lIJER7e3tef8RobGU+UlFvAWNjlsJLpb3N4uKiSCa5sfQuoVZFLBYTqFlHp9A5xQbwITeAuvbe3l4M4L86WrpQ2N3dFfPz84ItFo1GRWdnpwtrZ1WQeInWSuhdCOC5JfYscYxMTEyIk5MT3efW1paYnp4WPT09nsUwMCc0ZOrglft5T5IZfDAYFGhqcXFxIaampsTm5qYnMQwn/cSuYVqKoMDtx4gtEDP4cDgsMG/rgz0SiZSCRD2xswX6bNG4LLSCn5yczHoYGRkRAwMDnpMgdi5k/IYtKtmBDwSyM7Tue3R0tBQkukggVAx6FfDSfwlIhNiFeHpQUHIDXgbwkgSxswWUFi8JQMpCwEtbD0k05mzmZAAnWQx46dsrEiTAIw3lxDmdMwwXKU6VzFsHrKozM4l4PC6Oj49VTaXeaQBL8iH60j1Z4iTxUSFaWlpEb2+vGBsbKxi8jEMSDQ0NYmNjQ1/0ZLmKJHbOddyVKc9ENTU1Ym5uTsW/ss7w8LCyrkUxyS60bSmspsdtDc2wWk2IzViJXcNH8goKXZ1Hmp2UMZ8mdrYAj7iXywik0NA82T7T1wFklgr1Ui47iVknwPN5FLhaD8oFnHGJlZiZ1wkYlwszLPAyIZDuTkoPfc/ICxGuA3ri5QK+9t9hUXM8VpE2TnJoaEik02nBtcOrhMrgscqs9JdzBAACb/AV9Um+rESJncBbEPgsseUQQO37QeIXZEWezqH21wH+CWT29kYfA1k2eMGbETaTLKsUSUwGtix4YsshwAKe/kLxObLnfK6QdE5M1pNpYrtFgIVQXMN5/GvmKyERCzHZYbElQEUYLPBmBNlytgQvNv57O0OcOYOYBdaEsxde8n33cnq1xrB7Nvo8u41tzUsbRwJUBImKvWZVIkASnGJBpDovuklAJhCpzr8aSAJSVu2fPSQBs0SrlO3vNv8ADBx0+oUkSg8AAAAASUVORK5CYII=');
+      bottom: 1.5rem;
+      -webkit-transition: all 0.3s;
+      transition: all 0.3s;
+      -webkit-transform: rotateX(0deg);
+              transform: rotateX(0deg); }
+      .float-chapter-list .chapter-list-rank .icon-back-to-top.to-bottom {
+        -webkit-transform: rotateX(180deg);
+                transform: rotateX(180deg); }
+    .float-chapter-list .chapter-list-rank .chapter-list-count {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2.4rem;
+      padding: 0.9rem 0;
+      -webkit-box-sizing: border-box;
+              box-sizing: border-box;
+      text-align: center;
+      font-size: 0.6rem;
+      color: white; }
+      .float-chapter-list .chapter-list-rank .chapter-list-count .count {
+        position: relative; }
+        .float-chapter-list .chapter-list-rank .chapter-list-count .count:before, .float-chapter-list .chapter-list-rank .chapter-list-count .count:after {
+          content: "";
+          position: absolute;
+          width: 2.4rem;
+          border-width: 1px 0 0 0;
+          border-style: solid;
+          border-color: white;
+          -webkit-transform: scaleY(0.5);
+                  transform: scaleY(0.5);
+          top: 0.3rem; }
+        .float-chapter-list .chapter-list-rank .chapter-list-count .count:before {
+          left: -2.6rem; }
+        .float-chapter-list .chapter-list-rank .chapter-list-count .count:after {
+          margin-left: 0.2rem; }
+
+section.comic-pic-area.swipe-mode {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: black; }
+  section.comic-pic-area.swipe-mode .comic-pic-item {
+    display: none;
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; }
+    section.comic-pic-area.swipe-mode .comic-pic-item.working {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: column;
+              flex-direction: column; }
+    section.comic-pic-area.swipe-mode .comic-pic-item.trans {
+      -webkit-transition: -webkit-transform 300ms ease;
+      transition: -webkit-transform 300ms ease;
+      transition: transform 300ms ease;
+      transition: transform 300ms ease, -webkit-transform 300ms ease; }
+    section.comic-pic-area.swipe-mode .comic-pic-item .comic-pic-pad, section.comic-pic-area.swipe-mode .comic-pic-item .comic-pic-box {
+      -webkit-box-flex: 1;
+          -ms-flex: 1;
+              flex: 1;
+      height: 1%; }
+    section.comic-pic-area.swipe-mode .comic-pic-item .comic-pic-box {
+      position: relative;
+      z-index: 3; }
+    section.comic-pic-area.swipe-mode .comic-pic-item .comic-pic {
+      position: absolute;
+      z-index: 4;
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+              transform: translate(-50%, -50%); }
+  section.comic-pic-area.swipe-mode .nav-ctrl-btn {
+    display: none;
+    position: absolute;
+    z-index: 5;
+    top: 25%;
+    width: 5rem;
+    -webkit-writing-mode: vertical-rl;
+        -ms-writing-mode: tb-rl;
+            writing-mode: vertical-rl;
+    line-height: 5rem;
+    height: 50%;
+    background: rgba(0, 0, 0, 0.8);
+    -webkit-transition: -webkit-transform 300ms ease;
+    transition: -webkit-transform 300ms ease;
+    transition: transform 300ms ease;
+    transition: transform 300ms ease, -webkit-transform 300ms ease; }
+    section.comic-pic-area.swipe-mode .nav-ctrl-btn.prev {
+      left: 0;
+      -webkit-transform: translate3d(-100%, 0, 0);
+              transform: translate3d(-100%, 0, 0); }
+    section.comic-pic-area.swipe-mode .nav-ctrl-btn.next {
+      right: 0;
+      -webkit-transform: translate3d(100%, 0, 0);
+              transform: translate3d(100%, 0, 0); }
+    section.comic-pic-area.swipe-mode .nav-ctrl-btn.show {
+      display: block; }
+      section.comic-pic-area.swipe-mode .nav-ctrl-btn.show.in {
+        -webkit-transform: translate3d(0, 0, 0);
+                transform: translate3d(0, 0, 0); }
+  section.comic-pic-area.swipe-mode .end-chapter-ads {
+    display: none;
+    position: absolute;
+    z-index: 6;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background: white;
+    -webkit-transform: translate3d(100%, 0, 0);
+            transform: translate3d(100%, 0, 0); }
+    section.comic-pic-area.swipe-mode .end-chapter-ads.loaded {
+      -webkit-transition: -webkit-transform 300ms ease;
+      transition: -webkit-transform 300ms ease;
+      transition: transform 300ms ease;
+      transition: transform 300ms ease, -webkit-transform 300ms ease; }
+    section.comic-pic-area.swipe-mode .end-chapter-ads.in {
+      -webkit-transform: translate3d(0, 0, 0);
+              transform: translate3d(0, 0, 0); }

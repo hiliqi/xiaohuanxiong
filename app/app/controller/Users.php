@@ -147,25 +147,27 @@ class Users extends BaseAuth
     public function bindphone()
     {
         try {
-            $user = User::findOrFail($this->uid);
-            $code = trim(input('phonecode'));
-            $phone = trim(input('phone'));
-            if (verifycode($code, $phone) == 0) {
-                return json(['success' => 0, 'msg' => '验证码错误']);
-            }
-            if (User::where('mobile', '=', $phone)->find()) {
+            $data = request()->param();
+            if (User::where('mobile', '=', $data['mobile'])->count() > 0) {
                 return json(['success' => 0, 'msg' => '该手机号码已经存在']);
             }
-            $user->mobile = $phone;
+            $user = User::findOrFail($this->uid);
+            if (vcode($data['stoken'], $data['code'], $data['mobile']) == 0) {
+                return json(['success' => 0, 'msg' => '验证码错误']);
+            }
+            if(!empty($user->mobile)) {
+                return json(['success' => 0, 'msg' => '您已经绑定手机']);
+            }
+            $user->mobile = $data['phone'];
             $user->save();
-            session('xwx_user_mobile', $phone);
+            $amount = config('payment.bind_phone_rewards');
+            $this->promotionService->setReward($this->uid, $amount, 5, '绑定手机奖励');
             return json(['success' => 1, 'msg' => '绑定成功']);
         } catch (DataNotFoundException $e) {
             return json(['success' => 0, 'msg' => '用户不存在']);
         } catch (ModelNotFoundException $e) {
             return json(['success' => 0, 'msg' => '用户不存在']);
         }
-
     }
 
     public function verifycode()

@@ -19,7 +19,7 @@ class Base extends BaseController
         $this->username = session('xwx_author');
         $this->author_name = session('xwx_author_name');
         if (is_null($this->uid)){
-            $this->redirect(url('account/login'));
+            $this->redirect(adminurl('account/login'));
         }
         View::assign([
             'site_name' => config('site.site_name')

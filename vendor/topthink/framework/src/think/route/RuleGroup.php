@@ -171,9 +171,7 @@ class RuleGroup extends Rule
             }
         }
 
-        if (!empty($option['dispatcher'])) {
-            $result = $this->parseRule($request, '', $option['dispatcher'], $url, $option);
-        } elseif ($this->miss && in_array($this->miss->getMethod(), ['*', $method])) {
+        if ($this->miss && in_array($this->miss->getMethod(), ['*', $method])) {
             // 未匹配所有路由的路由规则处理
             $result = $this->parseRule($request, '', $this->miss->getRoute(), $url, $this->miss->getOption());
         } else {
@@ -246,11 +244,6 @@ class RuleGroup extends Rule
      */
     public function parseGroupRule($rule): void
     {
-        if (is_string($rule) && is_subclass_of($rule, Dispatch::class)) {
-            $this->dispatcher($rule);
-            return;
-        }
-
         $origin = $this->router->getGroup();
         $this->router->setGroup($this);
 
@@ -471,17 +464,6 @@ class RuleGroup extends Rule
     public function mergeRuleRegex(bool $merge = true)
     {
         return $this->setOption('merge_rule_regex', $merge);
-    }
-
-    /**
-     * 设置分组的Dispatch调度
-     * @access public
-     * @param  string $dispatch 调度类
-     * @return $this
-     */
-    public function dispatcher(string $dispatch)
-    {
-        return $this->setOption('dispatcher', $dispatch);
     }
 
     /**

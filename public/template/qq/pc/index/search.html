@@ -1,0 +1,39 @@
+{extend name="./template/qq/pc/pub/base.html" /}
+{block name="seo"}
+<title>{$site_name}-搜索</title>
+{/block}
+{block name="css"}
+<link rel="stylesheet" type="text/css" href="/template/qq/css/global.css" media="screen"/>
+{/block}
+{block name="main"}
+<div class="mod_958wr mod_gbd mod_wbg mod_of ma mod_all_cata_wr" style="margin:40px auto 50px;min-height:400px">
+    <div class="mod_title">
+        <h3 class="title ssjg txtid fl">搜索结果</h3>
+    </div>
+    <p class="ma mod_of mod_bbd all_total_num" class="vfont">{$count}</p>
+    <ul class="mod_book_list mod_all_works_list mod_of">
+        {raccoon:books name="books" order="last_time desc" limit="20"
+        where="book_name like '%$keyword%'"}
+        <li>
+            <a href="/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}" class="mod_book_cover db" target="_blank">
+                <img src="https://ae01.alicdn.com/kf/He3cda13f34d44e8fb85dcdf6c7768398F.gif"
+                      data-original="{$vo.cover_url}" class='img100x133 lazy' />
+                <div class="mod_book_detail">
+                    <div class="mod_book_detail_mask"></div>
+                    <div class="mod_book_detail_info">
+                        <h3 class="mod_book_update fw">{$vo.last_time|date='Y-m-d'}</h3>
+                    </div>
+                </div>
+            </a>
+            <h4 class="mod_book_name">
+                <a href="/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}" class="f14" target="_blank">{$vo.book_name}</a>
+            </h4>
+            <div class="mod_books_tag">
+                <sub class="ic_cover_boutique db txtid fl">精品</sub>
+                <sub class="ic_cover_hot db txtid fl">热门</sub>
+            </div>
+        </li>
+        {/raccoon:books}
+    </ul>
+</div>
+{/block}

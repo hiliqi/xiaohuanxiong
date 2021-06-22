@@ -267,6 +267,7 @@ abstract class Model implements JsonSerializable, ArrayAccess, Arrayable, Jsonab
     public function newInstance(array $data = [], $where = null): Model
     {
         $model = new static($data);
+        $model->readDataType();
 
         if ($this->connection) {
             $model->setConnection($this->connection);
@@ -456,6 +457,8 @@ abstract class Model implements JsonSerializable, ArrayAccess, Arrayable, Jsonab
             $this->data   = $this->db()->find($this->getKey())->getData();
             $this->origin = $this->data;
             $this->get    = [];
+            $this->set    = [];
+            $this->readDataType();
 
             if ($relation) {
                 $this->relation = [];
@@ -543,7 +546,7 @@ abstract class Model implements JsonSerializable, ArrayAccess, Arrayable, Jsonab
 
         // 重新记录原始数据
         $this->origin   = $this->data;
-        $this->get      = [];
+        $this->set      = [];
         $this->lazySave = false;
 
         return true;
@@ -610,6 +613,8 @@ abstract class Model implements JsonSerializable, ArrayAccess, Arrayable, Jsonab
             return true;
         }
 
+        $data = $this->writeDataType($data);
+
         if ($this->autoWriteTimestamp && $this->updateTime) {
             // 自动写入更新时间
             $data[$this->updateTime]       = $this->autoWriteTimestamp();
@@ -672,7 +677,7 @@ abstract class Model implements JsonSerializable, ArrayAccess, Arrayable, Jsonab
         }
 
         $this->checkData();
-        $data = $this->data;
+        $data = $this->writeDataType($this->data);
 
         // 时间戳自动写入
         if ($this->autoWriteTimestamp) {
@@ -704,7 +709,6 @@ abstract class Model implements JsonSerializable, ArrayAccess, Arrayable, Jsonab
                 $pk = $this->getPk();
 
                 if (is_string($pk) && (!isset($this->data[$pk]) || '' == $this->data[$pk])) {
-                    unset($this->get[$pk]);
                     $this->data[$pk] = $result;
                 }
             }
@@ -717,7 +721,6 @@ abstract class Model implements JsonSerializable, ArrayAccess, Arrayable, Jsonab
 
         // 标记数据已经存在
         $this->exists = true;
-        $this->origin = $this->data;
 
         // 新增回调
         $this->trigger('AfterInsert');
@@ -966,6 +969,7 @@ abstract class Model implements JsonSerializable, ArrayAccess, Arrayable, Jsonab
     {
         unset($this->data[$name],
             $this->get[$name],
+            $this->set[$name],
             $this->relation[$name]);
     }
 

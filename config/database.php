@@ -1,5 +1,4 @@
 <?php
-
 return [
     // 默认使用的数据库连接配置
     'default'         => env('database.driver', 'mysql'),
@@ -25,15 +24,15 @@ return [
             // 数据库名
             'database'          => env('database.database', ''),
             // 用户名
-            'username'          => env('database.username', 'root'),
+            'username'          => env('database.username', ''),
             // 密码
             'password'          => env('database.password', ''),
             // 端口
-            'hostport'          => env('database.hostport', '3306'),
+            'hostport'          => env('database.hostport', ''),
             // 数据库连接参数
             'params'            => [],
             // 数据库编码默认采用utf8
-            'charset'           => env('database.charset', 'utf8'),
+            'charset'           => env('database.charset', ''),
             // 数据库表前缀
             'prefix'            => env('database.prefix', ''),
 
@@ -59,4 +58,4 @@ return [
 
         // 更多的数据库配置信息
     ],
-];
+];    

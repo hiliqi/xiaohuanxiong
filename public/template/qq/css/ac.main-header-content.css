@@ -1,0 +1,62 @@
+.mod-top-tool-wr{
+    height: 127px;
+}
+.mod-top-logo-wr{
+    width: 384px;
+    height: 127px;
+    overflow: hidden;
+}
+.mod-top-event{
+    width: 132px;
+    height: 72px;
+    margin-top: 23px;
+    overflow: hidden;
+}
+.mod-top-event a{
+    display: block;
+    text-indent: -9999em;
+}
+.mod-top-event img{
+    width: 132px;
+    height: 72px;
+}
+.mod-top-logo{
+    width: 260px;
+    height: 110px;
+    margin: 15px 0 0 40px;
+}
+.mod-top-vip-logo{
+	width:254px;
+	height:97px;
+	margin:8px 0 0 17px;
+	display:block;
+	overflow:hidden;
+	text-indent:-9999px;
+}
+.mod-top-logo a{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+/*.tianjin-logo{
+	background:url(../images/logo_starstudent.png) no-repeat;
+	width:311px;
+	height:126px;
+	margin-top:-6px;
+	display:block;
+}*/
+
+.mod-top-tag{
+    margin-left: 6px;
+}
+.mod-top-tag li{
+    float: left;
+    margin-right: 10px;
+}
+.mod-top-tag a{
+    color: #717171;
+}
+.mod-top-tag a:hover{
+    color: #fa8729;
+    text-decoration: underline;
+}

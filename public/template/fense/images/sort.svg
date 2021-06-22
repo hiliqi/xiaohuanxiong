@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 60 (88103) - https://sketch.com -->
+    <title>icon_16_down</title>
+    <desc>Created with Sketch.</desc>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="爱优漫-章节" transform="translate(-1651.000000, -230.000000)" fill-rule="nonzero">
+            <g id="编组" transform="translate(1476.000000, 183.000000)">
+                <g id="搜索" transform="translate(0.000000, 45.000000)">
+                    <g id="Group">
+                        <g id="目录" transform="translate(175.000000, 0.000000)">
+                            <g id="icon/16/倒序" transform="translate(0.000000, 2.000000)">
+                                <g id="编组">
+                                    <path d="M8.64616466,0.314563107 C8.27350415,-0.104854369 7.71451339,-0.104854369 7.34185288,0.314563107 L3.19600474,5.25436893 C2.82334423,5.67378641 3.00967449,6 3.52208268,6 L12.4659349,6 C13.0249256,6 13.1646733,5.67378641 12.7920128,5.25436893 L8.64616466,0.314563107 Z" id="Shape" fill="#FFFFFF"></path>
+                                    <path d="M7.35383534,15.6854369 C7.72649585,16.1048544 8.28548661,16.1048544 8.65814712,15.6854369 L12.8039953,10.7456311 C13.1766558,10.3262136 12.9903255,10 12.4779173,10 L3.53406514,10 C2.97507438,10 2.83532669,10.3262136 3.2079872,10.7456311 L7.35383534,15.6854369 L7.35383534,15.6854369 Z" id="Shape" fill="#F25267"></path>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

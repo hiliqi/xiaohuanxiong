@@ -1,0 +1,82 @@
+{extend name="./template/default/pc/pub/base.html" /}
+{block name="seo"}
+<title>vip兑换-{$site_name}</title>
+{/block}
+{block name="content"}
+<section class="vip-banner-big container-fluid"
+         style="background-image: url(http://css99tel.cdndm5.com/v201905271815/blue/images/vipbanner.jpg)">
+    <div class="container">
+        <div class="aside-box converted pull-right">
+            <h3>VIP兑换</h3>
+            <p id="hint" style="color: red;"></p>
+            <p><input id="code" type="text" autocomplete="off" value="" placeholder="输入兑换码"></p>
+            <p>
+                <button type="button" onclick="subCode()">立即兑换</button>
+            </p>
+            <dl class="desc">
+                <dt>兑换说明</dt>
+                <dd>1、请在有效期内输入兑换码兑换VIP会员</dd>
+                <dd>2、兑换成功后，可享受包月VIP特权</dd>
+                <dd>3、如您已是VIP用户，兑换成功过后，VIP</dd>
+                <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;有效期会在原有时间上累加天数</dd>
+            </dl>
+        </div>
+    </div>
+</section>
+<main class="container overflow-Show clearfix">
+    <div class="mt40">
+        <h1 class="vip-box-title"> 畅读精选 <span class="head-pagination"></span></h1>
+        <section class="box container overflow-Show mb20" style="margin-top:30px;">
+            <div class="box-body">
+                <ul class="mh-list col7">
+                    {raccoon:books name="books" order="hits desc" limit="14"}
+                    <li>
+                        <div class="mh-item">
+                            <a href="/{$book_ctrl}/{$vo.param}">
+                                <p class="mh-cover" style="background-image: url({$vo.cover_url})">
+                                    <span class="tag mh-vip-tag">精选</span>
+                                </p>
+                            </a>
+                            <div class="mh-item-detali">
+                                <h2 class="title">
+                                    <a href="/{$book_ctrl}/{$vo.param}" title="{$vo.book_name}"
+                                       style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                                        {$vo.book_name}
+                                    </a>
+                                </h2>
+                                <p class="zl"></p>
+                                <p class="chapter" style="width: 181px;">
+                                    {$vo.summary}
+                                </p>
+                            </div>
+
+                        </div>
+                    </li>
+                    {/raccoon:books}
+                </ul>
+            </div>
+        </section>
+    </div>
+</main>
+<script>
+    function subCode() {
+        var code = $('#code').val();
+        if (code == '') {
+            ShowDialog('请输入vip码');
+        } else {
+            $.post({
+                url: '/vipexchange',
+                data: {'code': code},
+                success: function (res) {
+                    ShowDialog(res.msg);
+                    if (res.err == 0) {
+                        setTimeout(function () {
+                            location.href = '/ucenter';
+                        }, 1000);
+                    }
+                }
+            })
+        }
+    }
+</script>
+{/block}

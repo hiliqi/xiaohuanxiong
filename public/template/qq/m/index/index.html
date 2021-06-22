@@ -1,0 +1,350 @@
+{extend name="./template/qq/m/pub/base.html" /}
+{block name="seo"}
+<title>漫画大全-{$site_name}</title>
+<meta name="description" content="{$site_name}为大家带来最新漫画大全，这里有超多漫画资源，无论是韩国漫画，耽美漫画，还是恐怖漫画，总有一个让你酣畅淋漓">
+{/block}
+{block name="css"}
+<link rel="stylesheet" type="text/css" href="/template/qq/css/ac.index.css" media="screen"/><!-- 样式文件 -->
+<link href="https://lib.baomitu.com/Swiper/5.3.7/css/swiper.min.css" rel="stylesheet">
+{/block}
+{block name="main"}
+<header class="top-bar no-title">
+    <a class="btn-top back">[返回]</a>
+    <h1 class="top-title">#top_title#</h1>
+    <div class="top-logo">[腾讯动漫LOGO]</div>
+    <div class="padding"></div>
+    <a class="btn-top search" href="/{$search_ctrl}">[搜索]</a>
+    <a class="btn-top menu">[菜单]</a>
+</header>
+
+<!-- Banner与主菜单 -->
+<section class="banner-menu under-top-bar">
+    <div class="banner-list-box swiper-container">
+        <div class="banner-list-pad"></div>
+        <ul class="banner-list">
+            {raccoon:banners name="banners" order="banner_order desc" key="k"}
+            <li class="item swiper-wrapper">
+                <a class="link swiper-slide" title="{$vo.title}"
+                   href="{if $end_point == 'id'}
+                   /{$book_ctrl}/{$vo.book_id}
+                          {else /}
+                          /{$book_ctrl}/{$vo.book.unique_id}
+                          {/if}"
+                   data-pos="1">
+                    <img class="cover" src="{$vo.pic_name}" />
+                </a>
+            </li>
+            {/raccoon:banners}
+        </ul>
+    </div>
+</section>
+
+<!-- 新作·叮~热敷敷出炉 -->
+<section class="hot-comic mod-item">
+    <h2 class="sub-title">
+        <strong class="title-content">新作·叮~热敷敷出炉</strong>
+    </h2>
+
+    <ul class="comic-list col-3 recommend-list">
+        {raccoon:books name="books" order="last_time desc" limit="6"}
+        <li class="comic-item item-{$i}">
+            <a class="comic-link" href="/{$book_ctrl}/{$vo.param}">
+                <div class="comic-cover">
+                    <img class="cover-image" src="{$vo.cover_url}" alt="">
+                </div>
+                <div class="comic-content">
+                    <strong class="comic-title">{$vo.book_name}</strong>
+                    <small class="comic-desc">{$vo.summary}</small>
+                </div>
+            </a>
+        </li>
+        {/raccoon:books}
+    </ul>
+    <div class="btn-replacement-data" onclick="window.location.href='/{$booklist_act}'">[更多]</div>
+</section>
+
+<!-- 精品·漫画娘打滚推荐 -->
+<section class="hot-comic mod-item">
+    <h2 class="sub-title">
+        <strong class="title-content">精品·漫画娘打滚推荐</strong>
+    </h2>
+
+    <ul class="comic-list col-3 recommend-list">
+        {raccoon:books name="books" order="id dessc" where="is_top=1" limit="6"}
+        <li class="comic-item item-{$i}">
+            <a class="comic-link" href="/{$book_ctrl}/{$vo.param}">
+                <div class="comic-cover">
+                    <img class="cover-image" src="{$vo.cover_url}" alt="">
+                </div>
+                <div class="comic-content">
+                    <strong class="comic-title">{$vo.book_name}</strong>
+                    <small class="comic-desc">{$vo.summary}</small>
+                </div>
+            </a>
+        </li>
+        {/raccoon:books}
+    </ul>
+    <div class="btn-replacement-data" onclick="window.location.href='/{$booklist_act}'">[更多]</div>
+</section>
+
+<!-- 热门·OMG…盘它！ -->
+<section class="hot-comic mod-item">
+    <h2 class="sub-title">
+        <strong class="title-content">热门·OMG…盘它！</strong>
+    </h2>
+
+    <ul class="comic-list col-3 recommend-list">
+        {raccoon:books name="books" order="hits desc" limit="6"}
+        <li class="comic-item item-{$i}">
+            <a class="comic-link" href="/{$book_ctrl}/{$vo.param}">
+                <div class="comic-cover">
+                    <img class="cover-image" src="{$vo.cover_url}" alt="">
+                </div>
+                <div class="comic-content">
+                    <strong class="comic-title">{$vo.book_name}</strong>
+                    <small class="comic-desc">{$vo.summary}</small>
+                </div>
+            </a>
+        </li>
+        {/raccoon:books}
+    </ul>
+    <div class="btn-replacement-data" onclick="window.location.href='/{$booklist_act}'">[更多]</div>
+</section>
+
+<!-- 完结·一气看完才叫爽 -->
+<section class="hot-comic mod-item">
+    <h2 class="sub-title">
+        <strong class="title-content">完结·一气看完才叫爽</strong>
+    </h2>
+
+    <ul class="comic-list col-3 recommend-list">
+        {raccoon:books name="books" order="id dessc" where="end=1" limit="6"}
+        <li class="comic-item item-{$i}">
+            <a class="comic-link" href="/{$book_ctrl}/{$vo.param}">
+                <div class="comic-cover">
+                    <img class="cover-image" src="{$vo.cover_url}" alt="">
+                </div>
+                <div class="comic-content">
+                    <strong class="comic-title">{$vo.book_name}</strong>
+                    <small class="comic-desc">{$vo.summary}</small>
+                </div>
+            </a>
+        </li>
+        {/raccoon:books}
+    </ul>
+    <div class="btn-replacement-data" onclick="window.location.href='/{$booklist_act}'">[更多]</div>
+</section>
+
+{raccoon:cates name="cates" id="cate" where="id in (1,2,3)" key="k"}
+<section class="janpan-comic mod-item">
+    <h2 class="sub-title">
+        <strong class="title-content">{$cate.tag_name}</strong>
+    </h2>
+
+    <ul class="comic-list col-1-3" id="module_432590450">
+        {raccoon:books name="books" where="tags like '%$cate->tag_name%'" order="last_time desc" limit="4"}
+        {if $i == 1}
+        <li class="comic-item comic-item-1 item-1">
+            <a class="comic-link" href="/{$book_ctrl}/{$vo.param}" data-id="622604" data-pos="1">
+                <div class="comic-cover">
+                    <img class="cover-image" src="{$vo.cover_url}"/>
+                </div>
+                <div class="comic-content">
+                    <strong class="comic-title">{$vo.book_name}</strong>
+                    <small class="comic-desc">
+                        {$vo.summary}
+                    </small>
+                </div>
+            </a>
+        </li>
+        {else /}
+        <li class="comic-item comic-item-1-3 item-2">
+            <a class="comic-link" href="/{$book_ctrl}/{$vo.param}" data-id="530780" data-pos="2">
+                <div class="comic-cover">
+                    <img class="cover-image" src="{$vo.cover_url}" />
+                </div>
+                <div class="comic-content">
+                    <strong class="comic-title">{$vo.book_name}</strong>
+                    <small class="comic-desc">{$vo.tags}</small>
+                </div>
+            </a>
+        </li>
+        {/if}
+        {/raccoon:books}
+    </ul>
+    <div class="btn-replacement-data" onclick="window.location.href='/{$booklist_act}'">[更多]</div>
+</section>
+{/raccoon:cates}
+
+<!-- 排行榜 -->
+<section class="rank-comic mod-item" id="app">
+    <h2 class="sub-title">
+        <strong class="title-content">排行榜</strong>
+    </h2>
+
+    <div class="rank-header">
+        <div class="rank-heizi-bg"></div>
+        <div class="top">
+            TOP
+        </div>
+        <div class="rank-swiper-title-list">
+            <div class="rank-swiper-title" @click="switchTab(0, '13%')">新书榜 </div>
+            <div class="rank-swiper-title" @click="switchTab(-297, '37%')">推荐榜 </div>
+            <div class="rank-swiper-title" @click="switchTab(-593, '61%')">点击榜 </div>
+            <div class="rank-swiper-title" @click="switchTab(-890, '85%')">完结榜 </div>
+            <i class="index-bottom-tag" id="index_bottom_tag" :style="'left:' + pos2"></i>
+        </div>
+    </div>
+    <div class="rank-container">
+        <div class="swiper-wrapper rank-wrapper"
+             :style="'transform: translate3d(' + pos + 'px, 0px, 0px); transition-duration: 300ms;'">
+            <div class="swiper-slide rank-type rank-type-TOP100 rank-0-1">
+                {raccoon:books name="books" order="id desc" limit="4"}
+                <div class="rank-item item-0-1-{$i}">
+                    <a class="comic-link" href="/{$book_ctrl}/{$vo.param}">
+                        <div class="comic-cover">
+                            <img class="cover-image" src="{$vo.cover_url}" />
+                        </div>
+                        <div class="comic-content">
+                            <class class="comic-info">
+                                <strong class="comic-title">{$vo.book_name}</strong>
+                                <small class="comic-popularity">{$vo.last_time|date='Y-m-d'}</small>
+                                <small class="comic-desc">{$vo.summary}</small>
+                            </class>
+                            <div class="comic-ranking">
+                                <i class="icon-place icon-place-{$i}"></i>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                {/raccoon:books}
+            </div>
+            <div class="swiper-slide rank-type rank-type-TOP100 rank-1-1">
+                {raccoon:books name="books" order="last_time desc" where="is_top=1" limit="4"}
+                <div class="rank-item item-0-1-{$i}">
+                    <a class="comic-link" href="/{$book_ctrl}/{$vo.param}">
+                        <div class="comic-cover">
+                            <img class="cover-image" src="{$vo.cover_url}" />
+                        </div>
+                        <div class="comic-content">
+                            <class class="comic-info">
+                                <strong class="comic-title">{$vo.book_name}</strong>
+                                <small class="comic-popularity">{$vo.last_time|date='Y-m-d'}</small>
+                                <small class="comic-desc">{$vo.summary}</small>
+                            </class>
+                            <div class="comic-ranking">
+                                <i class="icon-place icon-place-{$i}"></i>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                {/raccoon:books}
+            </div>
+            <div class="swiper-slide rank-type rank-type-TOP100 rank-2-1">
+                {raccoon:books name="books" order="hits desc" limit="4"}
+                <div class="rank-item item-0-1-{$i}">
+                    <a class="comic-link" href="/{$book_ctrl}/{$vo.param}">
+                        <div class="comic-cover">
+                            <img class="cover-image" src="{$vo.cover_url}" />
+                        </div>
+                        <div class="comic-content">
+                            <class class="comic-info">
+                                <strong class="comic-title">{$vo.book_name}</strong>
+                                <small class="comic-popularity">{$vo.last_time|date='Y-m-d'}</small>
+                                <small class="comic-desc">{$vo.summary}</small>
+                            </class>
+                            <div class="comic-ranking">
+                                <i class="icon-place icon-place-{$i}"></i>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                {/raccoon:books}
+            </div>
+            <div class="swiper-slide rank-type rank-type-TOP100 rank-3-1">
+                {raccoon:books name="books" order="hits desc" where="end=1" limit="4"}
+                <div class="rank-item item-0-1-{$i}">
+                    <a class="comic-link" href="/{$book_ctrl}/{$vo.param}">
+                        <div class="comic-cover">
+                            <img class="cover-image" src="{$vo.cover_url}" />
+                        </div>
+                        <div class="comic-content">
+                            <class class="comic-info">
+                                <strong class="comic-title">{$vo.book_name}</strong>
+                                <small class="comic-popularity">{$vo.last_time|date='Y-m-d'}</small>
+                                <small class="comic-desc">{$vo.summary}</small>
+                            </class>
+                            <div class="comic-ranking">
+                                <i class="icon-place icon-place-{$i}"></i>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                {/raccoon:books}
+            </div>
+        </div>
+    </div>
+</section>
+<a class="back-to-top">[返回顶部]</a>
+{/block}
+{block name="js"}
+
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            pos:0,
+            pos2:'13%'
+        },
+        methods: {
+            switchTab(pos, pos2) {
+                this.pos2 = pos2
+                this.pos = pos
+            }
+        }
+    });
+</script>
+<script src="https://lib.baomitu.com/Swiper/5.3.7/js/swiper.min.js"></script>
+<script>
+    $(function () {
+        // 获取要大于的高度
+        var headheight = $('.title-content').height();
+        window.addEventListener('scroll', function () {
+            //获取浏览器滚轴滚动的距离
+            var scrollTop = $(window).scrollTop();
+            //当浏览器滚轴滚动的距离 大于 设定的高度时 显示“点击返回顶部”按钮，否则隐藏
+            if (scrollTop > headheight) {
+                $('.back-to-top').addClass('show')
+            } else {
+                $('.back-to-top').removeClass('show')
+            }
+        })
+
+        //点击返回顶部500ms的滑动效果
+        $('.back-to-top').on('click', function () {
+            $('html,body').animate({scrollTop: 0}, 500);
+        })
+
+        var mySwiper = new Swiper ('.swiper-container', {
+            direction: 'vertical', // 垂直切换选项
+            loop: true, // 循环模式选项
+
+            // 如果需要分页器
+            pagination: {
+                el: '.swiper-pagination',
+            },
+
+            // 如果需要前进后退按钮
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+
+            // 如果需要滚动条
+            scrollbar: {
+                el: '.swiper-scrollbar',
+            },
+        })
+    })
+</script>
+{/block}

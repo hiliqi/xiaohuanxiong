@@ -82,7 +82,7 @@ class JWK
 
         switch ($jwk['kty']) {
             case 'RSA':
-                if (!empty($jwk['d'])) {
+                if (\array_key_exists('d', $jwk)) {
                     throw new UnexpectedValueException('RSA private keys are not supported');
                 }
                 if (!isset($jwk['n']) || !isset($jwk['e'])) {

@@ -1,0 +1,531 @@
+@charset"utf-8";
+/***
+ * Author:Yellow
+ * Date:2012-02-05
+ * Description: 样式命名遵循匈牙利命名法,
+ *              例如:可复用模块化组件 mod_xxx
+ *                   首页模板 i_xxx
+ * 					 个人空间 h_xxx
+ *                   排行榜   r_xxx
+ *                   名家名作 f_xxx
+ *                   VIP专区  v_xxx
+ *
+ *  	        公共部分   global.css
+ *              首页       index.css
+ *  			个人空间   home.css
+ *              排行榜     rank.css
+ *              名家名作   famous.css
+ *              付费作品    vip.css
+ *              IE兼容     ie.css
+ *
+***/
+
+
+/******************** Reset ********************/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+ margin: 0;
+ padding: 0;
+ border: 0;
+ outline: 0;
+ font-size:12px;
+ font-family: "宋体", Arial, "Segoe UI", sans-serif;
+ /*vertical-align: baseline;*/
+ background: transparent;
+ color:#3d3d3d;
+}
+img {display:block;}
+ul,ol {
+ list-style: none;
+}
+input, textarea, select {font:12px/12px "宋体" ,Arial, Helvetica, sans-serif;padding:0;}
+em {font-style:normal;}
+blockquote, q {
+ quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+ content: '';
+ content: none;
+}
+h1,h2,h3,h4,h5,h6 {
+	/*font-size:100%;*/
+	font-weight:normal;
+}
+
+/* remember to define focus styles! */
+:focus {outline: 0;}
+
+/* remember to highlight inserts somehow! */
+ins {text-decoration: none;}
+del {text-decoration: line-through;}
+i{ font-style:normal;}
+
+/* tables still need 'cellspacing="0"' in the markup */
+table {border-collapse: collapse;border-spacing: 0;}
+/* Link style */
+a {
+	text-decoration:none;
+	cursor:pointer;
+	outline-color:-moz-use-text-color;
+	outline-style:none;
+	outline-width:0;
+}
+a:hover {text-decoration:none;}
+
+a{
+	-moz-outline:none;
+	outline:none;
+	ie-dummy:expression(this.hideFocus=true);
+}
+
+
+/******************** Global ********************/
+html {/*background:#e8e9eb;*/background: url(../images/ac_body_bg.png);}
+/*body {background:url(../images/body_bg.gif) repeat-x left top;}*/
+
+.f12 {font-size:12px;}
+.f14 {font-size:14px;}
+.f16 {font-size:16px;}
+.f20 {font-size:20px;}
+.fb {font-weight:bold;}
+.fi {font-style:italic;}
+.fn {font-weight:normal;}
+.tc {text-align:center;}
+.tr {text-align:right;}
+.tl {text-align:left;}
+.txtline {text-decoration:underline;}
+.db {display:block;}
+.dn {display:none;}
+.fl{float:left;}
+.fr {float:right;}
+.cleanfix{zoom:1;}
+.cleanfix:after{content:"."; display:block; height:0; clear:both; visibility:hidden;}
+.txtid {text-indent:-9999px;}
+
+.flg {color:#959595;} /***浅灰色字体***/
+.fg {color:#939393;}  /***灰色字体***/
+.fdg {color:#434343;} /***深灰色字体***/
+.fgr {color:#20b12a;} /***绿色字体***/
+.fbl {color:#098ed9;} /***蓝色字体***/
+.flr {color:#d85c42;} /***浅红色字体***/
+.fory {color:#eb7a02;}  /***橘黄色字体***/
+.fw {color:white;}
+.fre {color:red;}
+.for {color:#ff6b00;} /***橙色字体***/
+.yhfont {font-family:"微软雅黑";}
+.afont {font-family:Arial;}
+.vfont {font-family:Verdana;}
+.tfont {font-family:tahoma;}
+
+.mt5 {margin-top:5px;}
+.mr5 {margin-right:5px;}
+.mb5 {margin-bottom:5px;}
+.ml5 {margin-left:5px;}
+.mt10 {margin-top:10px;}
+.mr10 {margin-right:10px;}
+.mb10 {margin-bottom:10px;}
+.ml10 {margin-left:10px;}
+.mt15 {margin-top:15px;}
+.mr15 {margin-right:15px;}
+.mb15 {margin-bottom:15px;}
+.ml15 {margin-left:15px;}
+.mt20 {margin-top:20px;}
+.mr20 {margin-right:20px;}
+.mb20 {margin-bottom:20px;}
+.ml20 {margin-left:20px;}
+.mt25 {margin-top:25px;}
+.mr25 {margin-right:25px;}
+.mb25 {margin-bottom:25px;}
+.ml25 {margin-left:25px;}
+.ma {margin-right:auto;margin-left:auto;}
+.mod_gbd {border:1px solid #d7d7d7;}
+.mod_rbd {border:1px solid red!important;}
+.mod_wbg {background:#fff;}
+.mod_gbg {background:#ebebeb;}
+.mod_btd {border-top:1px dashed #ccc;}
+.mod_bbd {border-bottom:1px dashed #ccc;}
+.mod_of {overflow:hidden;}
+.mod_textarea {border:1px solid #ccc;padding:2px;line-height:150%;background:#fff;overflow:hidden;}
+.mod_ipt_txt {border:1px solid #ccc;padding:2px;background:#fff;overflow:hidden;}
+.mod_960wr {width:960px;margin-right:auto;margin-left:auto;}
+.mod_958wr {width:958px;margin-right:auto;margin-left:auto;}
+
+
+/******************** Mod Menu ********************/
+.mod_menu {height:27px;line-height:27px;text-align:right;color:#808485;margin-bottom:0!important;}
+.mod_menu a {color:#808485;margin:0 -2px;}
+.mod_menu a.top_weibo {padding:3px 0 4px 16px;margin:0 3px!important;background:url(../images/icon_sprite.gif) no-repeat left -627px; }
+.mod_menu a.top_mail {margin:0 6px 0 0!important;}
+.mod_menu p span {color:#808485;}
+.mod_menu p span span span {color:#80d100!important;}
+.mod_menu em {padding:0 4px;background:#07a5ff;color:white;margin:0 0 0 3px;}
+
+/******************** Mod Top ********************/
+h1 {width:185px;height:38px;}
+h1 a {width:185px;height:38px;display:block;}
+.mod_top_search {width:221px;height:30px;margin:18px 0 0 0;}
+.mod_top_search input {width:183px;height:19px;line-height:21px;border:1px solid white;margin:4px 0 0 6px;color:#959595;float:left;background-color:white;}
+.mod_top_search a {display:block;float:right;width:26px;height:30px;}
+
+/******************** Mod Books Cover ********************/
+.mod_book_cover {width:100px;height:133px;}
+.mod_book_info_wr {margin-top:5px;position:relative;}
+.mod_book_info_wr h3{ color:#fff;margin:6px 5px 8px;text-align:right;}
+.mod_book_info {overflow:hidden;}
+.mod_book_info a.mod_cover_img {}
+.mod_book_info p{padding:0 5px;line-height:140%;color:white;}
+.mod_book_name {height:22px;line-height:22px;font-weight:bold;margin-top:7px;overflow:hidden;}
+.mod_book_auth {height:22px;line-height:22px;}
+
+.mod_book_detail {
+	width:100px;
+	height:24px;
+	margin:-26px 0 0 3px;
+	position:relative;
+	overflow:hidden;
+}
+.mod_book_detail_mask {
+	display:block;
+	width:100%;
+	height:100%;
+	background:#161616;
+	opacity: .85;
+	/* For IE 5-7 */
+	filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=85);
+	/* For IE 8 */
+	-MS-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=85)"
+	z-index:100;
+	position:absolute;
+}
+.mod_book_detail_info {position:absolute;z-index:2;}
+.mod_book_detail_info h3,.mod_book_detail_info p {color:white;}
+.mod_book_detail_info h3 {width:95px;text-align:right;margin:2px 0;height:22px;line-height:22px; }
+.mod_book_detail_info p,.mod_book_detail_info .mod_star,.mod_book_detail_info .vfont {display:none;}
+.mod_book_detail_info .mod_book_info {margin:5px;line-height:16px;}
+.mod_book_detail_info .mod_star {width:70px!important;float:left;margin:0 3px 0 4px;}
+.mod_book_detail_info .mod_star img {display:inline-block;margin:0;border:none!important;}
+
+.mod_books_tag {position:absolute;z-index:4;top:0px;left:10px;height:28px;overflow:hidden;}
+.mod_books_tag sub {}
+
+/******************** Mod Icon ********************/
+.ic_new,.ic_hot,.ic_vip,.ic_rank_u,.ic_rank_d,.ic_rank_n,.ic_li_close,.ic_viphead,.ic_bought
+	{background:url(../images/icon_sprite.gif) no-repeat;}
+
+.ic_new,.ic_hot,.ic_vip,.ic_bought {width:28px;height:15px;margin-left:5px;*margin-top:-20px;}
+.ic_rank_u,.ic_rank_d,.ic_rank_n {width:7px;height:8px;}
+.ic_cover_hot,.ic_cover_pay,.ic_cover_famous,.ic_cover_boutique,.ic_cover_qy {width:45px;height:28px;background:url(../images/png_sprite.png) no-repeat;}
+.ic_new {background-position:left top;}
+.ic_hot {background-position:left -15px;}
+.ic_vip {background-position:left -30px;}
+.ic_rank_u {background-position:left -112px;}
+.ic_rank_d {background-position:-14px -112px;}
+.ic_rank_n {background-position:-7px -112px;}
+.ic_li_close {width:13px;height:13px;background-position:left -506px;}
+.ic_cover_hot {background-position:left top;}
+.ic_cover_pay {background-position:left -28px;}
+.ic_cover_famous {background-position:left -56px;}
+.ic_cover_boutique {background-position:left -84px;}
+.ic_cover_qy {background-position:left -112px;}
+.ic_viphead {width:28px;height:28px;background-position:left -573px;}
+.ic_bought {width:38px;background-position:left -683px;display:block;}
+
+/******************** Mod Title ********************/
+.mod_title {/*width:100%;*/margin:15px 0;overflow:hidden;}
+.mod_title .title {width:128px;height:27px;padding-left:20px;background:url(../images/i_sprite.gif) no-repeat;float:left;}
+.mod_title .hg {background-position:20px -46px;}
+.mod_title .gt {background-position:20px -73px;}
+.mod_title .ff {width:212px;height:28px;background-position:20px -100px;}
+.mod_title .rq {background-position:20px -154px;}
+.mod_title .hz {background-position:20px -180px;}
+.mod_title .xs {width:236px;background-position:20px -19px;}
+.mod_title .pf {width:138px;height:19px;background-position:12px -227px;}
+.mod_title .tj {width:84px;height:16px;background-position:12px -261px;}
+.mod_title .rm {width:119px;height:19px;background-position:12px -208px;}
+.mod_title .gkjl {width:150px;height:16px;background-position:12px -246px;}
+.mod_title .nohis {width:128px;height:15px;background-position:12px -277px;}
+.mod_title .qbmh {width:133px;height:27px;background-position:20px -294px;}
+.mod_title .ssjg {width:132px;height:27px;background-position:20px -665px;}
+
+.mod_title .mod_sub_title {margin:13px 0 0 13px;}
+.mod_title_more {background:url(../images/icon_sprite.gif) no-repeat left -48px;padding-left:10px;}
+.mod_title em.mr20 {margin:14px 130px 0 0;}
+
+/******************** Mod Images List ********************/
+.mod_book_list {overflow:hidden;}
+.mod_book_list li {display:inline;float:left;position:relative;}
+.mod_book_list li h4 {margin:6px 0 0;}
+.mod_book_list li h5 {}
+
+.mod_book_list_w154 {padding-right:34px;height:220px;}
+.mod_book_list_w154 li {width:120px;padding-left:34px;position:relative;}
+.mod_book_list_w154 li img {padding:2px;border:1px solid #a8a8a8;}
+.mod_book_list_w154 .mod_update_info {width:104px;height:26px;line-height:26px;margin:-29px 0 10px 3px;padding-right:10px;}
+
+.mod_books_list_hor_wr {position:relative;}
+.mod_books_list_hor_wr .mod_book_list {}
+.mod_books_list_hor_wr .mod_book_list li {}
+.mod_books_list_hor_wr .mod_book_list li img {margin-left:15px;}
+.mod_books_list_hor_wr .mod_book_list li .mod_update_info {
+	width:104px;height:26px;line-height:26px;margin:-29px 0 10px 18px;padding-right:10px;
+	display:block;
+	color:white;
+	background:#161616;
+	opacity: .85;
+	/* For IE 5-7 */
+	filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=85);
+	/* For IE 8 */
+	-MS-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=85)"
+}
+.mod_books_list_hor_wr .mod_book_list li h4,.mod_books_list_hor_wr .mod_book_list li h5 {width:120px;margin-left:15px;}
+
+/******************** Mod Images ********************/
+.mod_img_border {padding:2px;border:1px solid #d7d7d7;}
+.img90x120 {width:90px;height:120px;}
+.img114x152 {width:114px;height:152px;}
+.img100x133 {width:100px;height:133px;}
+.img133x177 {width:133px;height:177px;}
+.img117x156 {width:117px;height:156px;}
+.img80x100 {width:80px;height:100px;}
+.img80x80 {width:80px;height:80px;}
+.img140x187 {width:140px;height:187px;}
+.img120x160 {width:120px;height:160px;}
+.img156x208 {width:156px;height:208px;}
+.img160x215 {width:160px;height:215px;}
+.img30x30 {width:30px;height:30px;}
+.img35x35 {width:35px;height:35px;}
+.img40x40 {width:40px;height:40px;}
+.img180x100 {width:180px;height:100px;}
+.img50x50 {width:50px;height:50px;}
+.img210x280 {width:210px;height:280px;}
+.img960x100 {width:960px;height:100px;}
+.img300x400 {width:300px;height:400px;}
+
+/******************** Mod Footer ********************/
+.mod_footer {height:240px;margin-top:20px;background:#2d3341;padding-top:20px;}
+.mod_footer_map {margin:50px auto 30px;width:930px;overflow:hidden;}
+.mod_map_wr {border-right:1px solid #3a4151;height:90px;padding-left:15px;}
+.mod_map_wr h3 {height:15px;margin-bottom:15px;background:url(../images/i_sprite.gif) no-repeat;}
+.mod_map_wr p {line-height:170%;}
+.mod_map_wr a {color:#909497;}
+
+.mod_map_index {width:170px;}
+.mod_map_cata {width:280px;padding-right:8px;}
+.mod_map_app {width:130px;padding-right:12px;}
+.mod_map_support {width:60px;padding-right:3px;}
+.mod_map_official {width:160px;border:none;padding-right:8px;}
+
+.mod_map_index h3 {width:30px;background-position:left top;}
+.mod_map_cata h3 {width:63px;background-position:-30px top;}
+.mod_map_app h3 {width:28px;background-position:-93px top;}
+.mod_map_support h3 {width:30px;background-position:-121px top;}
+.mod_map_official h3 {width:30px;background-position:-152px top;}
+
+.mod_footer_copy {width:960px;margin:20px auto 0;border-top:1px solid #3a4153;text-align:center;padding-top:15px;}
+.mod_footer_copy p,.mod_footer_copy p span,.mod_footer_copy p a {color:#687072;line-height:160%;}
+
+/******************** Mod Rank ********************/
+.mod_fr_218 {width:218px;}
+.mod_fr_h400 {height:400px;}
+.mod_fr_h490 {height:460px;}
+
+.mod_fr_h400 .mod_rank_list ul li a.mod_rank_tit {width:100px;}
+
+.mod_fr_h490 .mod_rank_list {width:195px;height:370px;}
+.mod_fr_h490 .mod_rank_list ul li a.mod_rank_tit {width:70px;}
+.mod_fr_h490 .mod_rank_list .mod_rank_star_wr {width:86px;height:12px;line-height:12px;}
+.mod_fr_h490 .mod_rank_list ul li .mod_star {width:56px!important;}
+.mod_fr_h490 .mod_rank_list ul li .mod_star img {margin-top:7px;}
+.mod_fr_h490 .mod_rank_list ul li .vfont {margin-top:6px;}
+
+.mod_rank_title {margin-bottom:0;overflow:hidden;height:30px;}
+.mod_rank_wr {/*overflow:hidden;*/}
+.mod_rank_tab {width:195px;}
+.mod_rank_tab li {height:29px;display:inline;float:left;overflow:hidden;}
+.mod_rank_tab li a {height:29px;background:url(../images/i_sprite.gif) no-repeat;display:block;}
+.mod_rank_tab .mod_rank_d {width:50px;background-position:left -785px;}
+.mod_rank_tab .mod_rank_w {width:47px;background-position:-50px -785px;}
+.mod_rank_tab .mod_rank_m {width:47px;background-position:-97px -785px;}
+.mod_rank_tab .mod_rank_t {width:51px;background-position:-144px -785px;}
+.mod_rank_tab .mod_rank_d:hover,.mod_rank_tab .current .mod_rank_d {background-position:left -814px;}
+.mod_rank_tab .mod_rank_w:hover,.mod_rank_tab .current .mod_rank_w {background-position:-50px -814px;}
+.mod_rank_tab .mod_rank_m:hover,.mod_rank_tab .current .mod_rank_m {background-position:-97px -814px;}
+.mod_rank_tab .mod_rank_t:hover,.mod_rank_tab .current .mod_rank_t {background-position:-144px -814px;}
+
+.mod_rank_list {/*width:195px*/;margin:10px auto 0;display: none;}
+.mod_rank_list ul li {/*width:195px*/;height:25px;border-bottom:1px dotted #ccc;}
+.mod_rank_list ul li sup {margin:8px 5px 0 0;}
+.mod_rank_no1 {height:115px!important;}
+.mod_rank_no1 dl dt,.mod_rank_no1 dl dd {height:110px;}
+.mod_rank_no1 dl dt {width:94px;position:relative;}
+.mod_rank_no1 dl dt img {border:2px solid #d6d6d8;}
+.mod_rank_no1 dl dt sub {width:21px!important;height:21px!important;margin:0!important;background:url(../images/icon_sprite.gif) no-repeat left -254px!important;display:block;position:absolute;left:2px!important;top:2px!important;}
+.mod_rank_no1 dl dd {width:99px;}
+.mod_rank_no1 dl dd h4  {height:28px;line-height:28px;overflow:hidden;}
+.mod_rank_no1 dl dd h5,.mod_rank_no1 dl dd h6 {line-height:18px;height:18px;}
+.mod_rank_no1 dl dd a.mod_rank_cov {width:82px;height:104px;}
+.mod_rank_no1 dl dd sup {margin:20px 5px 0 0;}
+
+.mod_rank_list ul li a.mod_rank_tit {height:13px;line-height:13px;margin-top:6px;padding-left:20px;display:block;background:url(../images/icon_sprite.gif) no-repeat left;overflow:hidden;}
+.mod_rank_list ul li.mod_rank_no2 a.mod_rank_tit {background-position:left -136px;}
+.mod_rank_list ul li.mod_rank_no3 a.mod_rank_tit {background-position:left -149px;}
+.mod_rank_list ul li.mod_rank_no4 a.mod_rank_tit {background-position:left -162px;}
+.mod_rank_list ul li.mod_rank_no5 a.mod_rank_tit {background-position:left -175px;}
+.mod_rank_list ul li.mod_rank_no6 a.mod_rank_tit {background-position:left -188px;}
+.mod_rank_list ul li.mod_rank_no7 a.mod_rank_tit {background-position:left -201px;}
+.mod_rank_list ul li.mod_rank_no8 a.mod_rank_tit {background-position:left -214px;}
+.mod_rank_list ul li.mod_rank_no9 a.mod_rank_tit {background-position:left -227px;}
+.mod_rank_list ul li.mod_rank_no10 a.mod_rank_tit {background-position:left -240px;}
+
+.mod_rank_list ul li sub {width:12px;height:9px;background:url(../images/icon_sprite.gif) no-repeat -52px top;margin:2px 0 0 5px;}
+.mod_rank_list ul li a.mod_rank_tit span {}
+.mod_rank_list ul li strong {margin:5px 0 0 3px;}
+
+.mod_rank_list ul li .mod_star_score {margin:8px 0 0 0!important;}
+
+/******************** Mod Star ********************/
+.mod_star {}
+.mod_star img {display:inline-block;margin-top:8px;border:none!important;}
+
+.mod_star_score {width:30px;height:10px;margin-left:5px;padding-left:50px;background:url(../images/png_sprite.png) no-repeat;}
+.mod_star_0 {background-position:left -390px;}
+.mod_star_5 {background-position:left -400px;}
+.mod_star_10 {background-position:left -410px;}
+.mod_star_15 {background-position:left -420px;}
+.mod_star_20 {background-position:left -430px;}
+.mod_star_25 {background-position:left -440px;}
+.mod_star_30 {background-position:left -450px;}
+.mod_star_35 {background-position:left -460px;}
+.mod_star_40 {background-position:left -470px;}
+.mod_star_45 {background-position:left -480px;}
+.mod_star_50 {background-position:left -490px;}
+.mod_star_score span {margin:-2px 0 0 5px;float:left;}
+
+/******************** Mod Button ********************/
+.mod_btn {height:28px;color:white;font:bold 14px/28px "微软雅黑";padding:0 10px;background-color:#12b8de;display:block;border-radius:2px;text-align:center;}
+.mod_btn_disable {background-color:#b5b5b5;}
+.mod_btn:hover {background-color:#199DBB;}
+.mod_btn_4font {width:80px;}
+
+
+/******************** 新书上架 ********************/
+.mod_fl_725 {width:723px;height:460px;}
+.mod_fl_725 .mod_title {margin-bottom:0;}
+.mod_new_list {width:700px;height:200px;padding-right:23px;background:url(../images/i_sprite.gif) no-repeat -277px -170px;}
+.mod_new_list li {width:117px;padding-left:23px;}
+.mod_new_list li .in_new_cover_bg {width:110px;height:138px;background:url(../images/i_sprite.gif) no-repeat -764px 3px;margin-top:14px;padding:3px 0 0 7px}
+.mod_new_list li .in_new_cover_bg img {}
+.mod_new_list li .in_new_cover_bg:hover {margin-top:12px;height:140px;}
+.mod_new_list li .in_new_cover_bg:hover img {border:2px solid #12b8de;}
+.mod_fl_725 .carousel .pagination-links {position:absolute;top:-9px;right:65px;}
+.mod_fl_725 .carousel .prev {top:-14px;right:35px;}
+.mod_fl_725 .carousel .next {top:-14px;right:14px;}
+
+.in_newbook_wr {}
+
+/******************** 全部漫画 ********************/
+.mod_all_cata_wr {margin:40px auto 20px;}
+.mod_all_cata_list_wr {width:920px;height:232px;border-bottom:1px solid #dcdcdc;}
+.mod_all_cata_txt {height:32px;line-height:32px;border-top:1px solid #dcdcdc;padding-left:20px;}
+.mod_all_cata_txt strong {height:20px;line-height:20px;font-weight:normal;display:inline-block;zoom:1;}
+.mod_all_cata_txt a {margin:0 2px;padding:3px;}
+.mod_all_cata_txt a:hover {color:white;background:#64ba00;}
+.mod_all_cata_list_wr .lgbg {background-color:#f7f7f7;}
+.mod_all_works_list {margin:20px 0 0;}
+.mod_all_works_list li {width:110px;height:200px;padding:10px 0 10px 24px;position:relative;}
+.mod_all_works_list li img {padding:2px;border:1px solid #a8a8a8;}
+.mod_all_works_list li .mod_books_tag {width:90px;top:4px;left:30px;}
+.mod_all_t_cur {color:white;background:#64ba00;}
+.all_total_num {width:854px;height:24px;line-height:24px;padding:5px 0 0 66px;background:url(../images/i_sprite.gif) no-repeat -942px -592px;}
+
+/******************** 分页 ********************/
+.mod_page {overflow:hidden;margin:10px 0;text-align:center;}
+.mod_page a {height:22px;line-height:22px;padding:0 5px;margin:0 3px;display:inline-block;*display:inline;zoom:1;color:#545655;background:white;border:1px solid #ccc;}
+.mod_page a:hover,.mod_page a.current {color:white;background:#12b8de;border:1px solid #12b8de;}
+
+/******************** 弹出层 ********************/
+.mod_popup {width:100%;height:100%;position:absolute;z-index:1000;left:0;top:0;}
+.mod_popup .mod_mask_bg {
+	display:block;
+	width:100%;
+	height:100%;
+	background:#161616;
+	opacity: .85;
+	/* For IE 5-7 */
+	filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=85);
+	/* For IE 8 */
+	-MS-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=85)"
+	z-index:1001;
+}
+.mod_popup_wr {
+	width:660px;
+	height:620px;
+	z-index:1002;
+	position:absolute;
+	border:1px solid #d7d7d7;
+	top:50%;
+	left:50%;
+	margin-left:-330px!important;/*FF IE7 该值为本身宽的一半 */
+	margin-top:-310px!important;/*FF IE7 该值为本身高的一半*/
+	position:fixed!important;/* FF IE7*/
+}
+
+.mod_popup_wr .mod_popup_title {height:49px;line-height:49px;background:#d7d7d7;}
+.mod_popup_wr .mod_popup_title .title {font-size:20px;padding-left:20px;}
+.mod_popup_wr .mod_popup_title .mod_popup_close {width:19px;height:22px;background:url(../images/h_sprite.gif) no-repeat left -130px;margin:15px 10px 0 0;}
+.mod_popup_wr .mod_popup_title .mod_popup_close:hover {background-position:-19px -130px;}
+.mod_popup_wr .mod_popup_content {padding:20px;}
+.mod_popup_wr .mod_popup_content .mod_upload_tips {height:36px;line-height:36px;}
+.mod_popup_wr .mod_popup_content .mod_top_tips {line-height:24px;margin-left:10px;margin-bottom:15px;}
+.mod_popup_wr .mod_popup_content .mod_top_tips object {float:left;margin:0 10px 0;}
+
+.uplpad_wr,.preview_wr {height:430px;margin-bottom:15px;}
+.uplpad_wr img,.preview_wr img {border:1px solid #ccc;}
+.uplpad_wr {width:350px;background:url(../images/h_sprite.gif) no-repeat right 30px;}
+.preview_wr {}
+.preview_wr em {}
+.preview_wr p {line-height:24px;margin:10px 0 0;}
+
+.mod_popup_btn {}
+.mod_popup_wr .mod_popup_btn .h_btn_submit_b {width:65px;height:38px;background-position:left -38px;}
+.mod_popup_btn p {height:24px;line-height:27px;padding:0 10px 0 28px;margin-top:6px;background:#eee url(../images/h_sprite.gif) no-repeat 5px -101px;border:1px solid #d7d7d7;}
+
+/******************** 搜索结果列表页 ********************/
+.search_wr {background-color:#efefef;height:127px;}
+.search_wr p {width:451px;height:36px;background:#fff url(../images/search_bg.jpg) no-repeat left top;margin:40px auto 0;padding-left:26px;}
+.search_wr p input {width:386px;height:20px;line-height:20px;margin:8px 0 0;border:1px solid white;}
+.search_wr p a {width:55px;height:28px;margin:3px 0 0 3px;}
+.search_wr span {margin:15px auto 0;}
+
+/******************** 头部导航 ********************/
+.mod_top {height:450px;}
+
+.mod_nav {height:68px;margin-left:20px;float:right!important;}
+.mod_nav li {height:68px;margin-left:10px;display:inline-block;*display:inline;float:left;overflow:hidden;}
+.mod_nav .mod_top_index a {width:61px;background-position:left -65px;}
+.mod_nav .mod_top_all a {width:91px;background-position:-74px -65px;}
+.mod_nav .mod_top_famous a {width:91px;background-position:-178px -65px;}
+.mod_nav .mod_top_money a {width:91px;background-position:-283px -65px;}
+.mod_nav .mod_top_rank a {width:71px;background-position:-389px -65px;}
+
+.mod_nav .mod_top_index a:hover,.mod_nav .mod_top_index .current {background-position:left -143px;}
+.mod_nav .mod_top_all a:hover,.mod_nav .mod_top_all .current {background-position:-74px -143px;}
+.mod_nav .mod_top_famous a:hover,.mod_nav .mod_top_famous .current{background-position:-178px -143px;}
+.mod_nav .mod_top_money a:hover,.mod_nav .mod_top_money .current {background-position:-283px -143px;}
+.mod_nav .mod_top_rank a:hover,.mod_nav .mod_top_rank .current {background-position:-389px -143px;}
+
+.mod_top_cata {width:940px;/*height:24px;*/padding:10px 0 0 20px;}
+#sub .mod_top_cata {padding:10px 0 10px 20px;}
+.mod_top_cata a {margin:0 5px;float:left;}
+.mod_top_cata a sub {width:22px;height:12px;margin:-5px 0 0 3px;}
+.mod_top_cata a.showall {width:110px;height:20px;display:block;margin-right:0;float:right!important;}
+
+.mod-home-index{background:url(../images/bg_home_index.png) repeat-y;}

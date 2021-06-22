@@ -1,0 +1,341 @@
+body{
+	background:url(../images/ac_body_bg.png);
+}
+.ret-tags-title,
+.ret-tags-open,
+.ret-tags-close,
+.ret-search-type a{
+	background-image: url(../images/page_comic_all.png);
+	background-repeat: no-repeat;
+}
+.ret-title{
+	padding-left: 12px;
+	margin: 20px 0 22px 15px;
+	font: normal 24px/26px "微软雅黑";
+	border-left: 5px solid #ff9a6a;
+}
+.ret-tags-title{
+	height: 20px;
+	padding-left: 24px;
+	margin-bottom: 10px;
+	font: normal 16px/20px "微软雅黑";
+	color: #333;
+}
+.ret-tags-open,
+.ret-tags-close{
+	float: right;
+	width: 22px;
+	height: 22px;
+	margin-right: 17px;
+	border-radius: 22px;
+	text-indent: -9999em;
+	cursor: pointer;
+}
+.ret-tags-open{
+	background-position: 0 -319px;
+}
+.ret-tags-close{
+	background-position: 0 -341px;
+}
+.ret-tags-full{
+	display: none;
+}
+.ret-side-wr{
+	width: 300px;
+}
+.ret-main-wr{
+	width: 870px;
+	margin-left: 30px;
+}
+.ret-tags-wr{
+	border: 1px solid #dadada;
+	background-color: #fff;
+}
+.ret-tags-type{
+	width: 250px;
+	margin: 0 0 16px 26px;
+	padding-bottom: 10px;
+	border-bottom: 1px dashed #ccc;
+	overflow: hidden;
+}
+.ret-tags-type.last{
+	margin-bottom: 0;
+	border: none;
+}
+.ret-tags-sz{
+	background-position: 0 0;
+}
+.ret-tags-bq{
+	background-position: 0 -21px;
+}
+.ret-tags-sx{
+	background-position: 2px -88px;
+}
+.ret-tags-jd{
+	background-position: 2px -66px;
+}
+.ret-tags-lx{
+	background-position: 2px -43px;
+}
+.ret-tags-dq{
+	background-position: 0 -111px;
+}
+.ret-tags-zm{
+	background-position: 2px -133px;
+}
+.ret-tags-qua{
+	background-position:2px -565px;
+}
+.ret-tags-copy{
+	background-position:-1px -532px;
+}
+.ret-tags-items{
+	width: 260px;
+}
+.ret-tags-items a{
+/*	display: inline-block;
+	*display: inline;
+	*zoom: 1;*/
+	float: left;
+	padding: 0 5px;
+	margin-right: 9px;
+	margin-bottom: 4px;
+	line-height: 22px;
+	color: #666;
+}
+.ret-tags-items a:hover,
+.ret-tags-items .active{
+	color: #fff;
+	background-color: #ff9a6a;
+}
+.ret-main{
+	width: 100%;
+    min-height: 788px;
+	background-color: #fff;
+	border: 1px solid #dadada;
+	overflow: hidden;
+}
+.ret-search-result-fail{
+	width: 338px;
+	padding-top: 88px;
+	margin: 230px auto 0;
+	text-align: center;
+	background: url(../images/ac_icon_fail.png) 50% 0 no-repeat;
+}
+.ret-search-result-fail h3{
+	color: #666;
+	font-size: 18px;
+	font-family: "微软雅黑";
+}
+.ret-search-result-fail p{
+	color: #999;
+	font-size: 12px;
+	line-height: 28px;
+}
+.ret-search-head{
+	height: 40px;
+	margin: 1px 1px 0 1px;
+	background-color: #f3f3f3;
+}
+.ret-search-type li{
+	float: left;
+}
+.ret-search-type a{
+	display: block;
+	width: 66px;
+	height: 39px;
+	padding-left: 20px;
+	line-height: 39px;
+	text-align: center;
+	color: #666;
+	border-right: 1px solid #fff;
+}
+.ret-search-time,
+.ret-search-rank{
+    background-position: 13px -396px;
+}
+.ret-search-type .active .ret-search-time,
+.ret-search-type .active .ret-search-rank{
+	background-position: 13px -186px;
+}
+.ret-search-scale{
+	background-position: 8px -224px;
+}
+.ret-search-type .active a{
+	color: #ff9a6a;
+}
+.ret-search-type .active .ret-search-scale{
+	background-position: 8px -266px;
+}
+.ret-search-type .relative .ret-search-time,
+.ret-search-type .relative .ret-search-rank{
+	background-position: 13px -185px!important;
+}
+.ret-search-type .active{
+	background-color: #fff;
+}
+.ret-search-type .ret-search-def{
+	padding-left: 2px;
+	background: none;
+}
+.ret-result-num{
+	margin-right: 30px;
+	line-height: 40px;
+}
+.ret-result-num em{
+	color: #333;
+	font-weight: bold;
+}
+.ret-head-page{
+	height: 16px;
+	margin: 10px 30px 0 0;
+}
+.ret-head-page a{
+	display: inline-block;
+	*display: inline;
+	*zoom: 1;
+	line-height: 16px;
+	padding: 2px 5px;
+	color: #666;
+    margin: 0 3px;
+}
+.ret-head-page a:hover,
+.ret-head-page .current{
+	color: #fff;
+	background-color: #ff9a6a;
+}
+.ret-search-list{
+	width: 900px;
+}
+.ret-search-item{
+	float: left;
+	width: 391px;
+    height: 180px;
+	padding: 24px 20px 24px 24px;
+	border-right: 1px solid #e8e7e6;
+	border-bottom: 1px solid #e8e7e6;
+	overflow: hidden;
+}
+.ret-works-cover{
+	width: 135px;
+	overflow: hidden;
+}
+.ret-works-info,
+.ret-works-cover{
+	float: left;
+}
+.ret-works-info{
+	width: 240px;
+	margin-left: 14px;
+}
+.ret-works-title{
+	width:264px;
+	height: 20px;
+	margin-bottom: 10px;
+}
+.ret-works-title a{
+	float: left;
+	margin-right: 8px;
+	font: normal 18px/20px "微软雅黑";
+	color: #333;
+}
+.ret-works-title i{
+	float: left;
+	margin-right: 7px;
+}
+.ret-works-author{
+	width: 100%;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+.ret-works-tags{
+	width: 100%;
+	overflow: hidden;
+	margin-top: 5px;
+}
+.ret-works-tags a,
+.ret-works-tags span{
+	float: left;
+}
+.ret-works-tags a{
+	margin-right: 10px;
+	color: #666;
+}
+.ret-works-tags a:hover{
+	color: #fa8729;
+}
+.ret-works-tags span{
+	margin-left: 20px;
+}
+.ret-works-view{
+	float:left;
+	display: block;
+	width: 90px;
+	height: 36px;
+	margin-top: 10px;
+	border-radius: 3px;
+    font: normal 16px/36px "微软雅黑";
+	margin-right:10px;
+	border-color:#e0cfb1;
+}
+.ret-works-new{
+	float:left;
+	width:90px;
+	height:36px;
+	margin-top:10px;
+	border-radius:3px;
+	font: normal 16px/36px "微软雅黑";
+	border-color:#d7d7d7;
+}
+.ret-works-decs{
+	height: 54px;
+	margin-top: 5px;
+	color: #999;
+	overflow: hidden;
+}
+.ret-page-wr{
+	float: right;
+	margin-right: 30px;
+}
+.ret-check-all{
+	width:250px;
+	padding-bottom:10px;
+	margin:0 0 16px 26px;
+	border-bottom:1px dashed #ccc;
+}
+.ret-check-all .ret-check-ft{
+	float:left;
+	height:22px;
+	line-height:22px;
+	margin-right:10px;
+}
+.ret-btn-item{
+	float:left;
+	background:#ff9a6a url(../images/comic_org_item.png) no-repeat top right;
+	color:#fff;
+	height:21px;
+	line-height:21px;
+	display:block;
+	overflow:hidden;
+	margin-right:10px;
+	margin-bottom:10px;
+	padding:0 16px 0 5px;
+}
+/* 全部分类类型 body背景 1.都市校园 2.玄幻科幻  3.皮肤恐怖  4.海外精品 5. */
+.ret-bg-type-1{
+	background:#dcbd96 url(../images/bg_type_1.jpg) no-repeat;
+}
+.ret-bg-type-2{
+	background:#cce6ff url(../images/bg_type_2.jpg) no-repeat;
+}
+.ret-bg-type-3{
+	background:#21234e url(../images/bg_type_3.jpg) no-repeat;
+}
+.ret-bg-type-4{
+	background:#243876 url(../images/bg_type_4.jpg) no-repeat;
+}
+.ret-bg-type-5{
+	background:#b9db8f url(../images/bg_type_5.jpg) no-repeat;
+}
+

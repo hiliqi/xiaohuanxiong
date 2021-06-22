@@ -1,0 +1,63 @@
+{extend name="./template/default/m/pub/base.html" /}
+{block name="seo"}
+<title>购买历史-{$site_name}</title>
+{/block}
+{block name="content"}
+{include file="./template/default/m/pub/top3.html" /}
+<div style="margin-top:60px;" id="app">
+    {raccoon:buys name="buys" where="user_id='$xwx_user_id'"}
+    <div class="buy-manga" >
+        <div class="buy-manga-cover">
+            <a href="/{$book_ctrl}/{$vo.book.param}">
+                <img src="{$vo.book.cover_url}">
+            </a>
+        </div>
+        <div class="buy-manga-info">
+            <a href="/{$book_ctrl}/{$vo.book.param}">
+                <p class="buy-manga-title">{$vo.book.book_name}</p>
+            </a>
+            <p class="buy-manga-author">作者:{$vo.author_name}</p>
+            <a href="/{$chapter_ctrl}/{$vo.chapter_id}">
+                <p class="buy-manga-new">{$vo.chapter.chapter_name}</p>
+            </a>
+            <a href="/{$chapter_ctrl}/{$vo.chapter_id}" class="buy-manga-right  active"> 点击阅读 </a>
+        </div>
+    </div>
+    {/raccoon:buys}
+    <ul class="pagination">
+        {if $page.last_page > 1}
+        {if $page.current_page == 1}
+        <li class="paginate_button page-item">
+            <a href="javascript:;" class="page-link">«</a>
+        </li>
+        {else/}
+        <li class="paginate_button page-item">
+            <a href="/buyhistory?page={$page.current_page-1}{$param}" class="page-link">«</a>
+        </li>
+        {/if}
+
+        {for start="1" end="$page.last_page + 1"}
+        {if $i == $page.current_page }
+        <li class="paginate_button page-item active">
+            <a href="/buyhistory?page={$i}{$param}"  class="page-link">{$i}</a>
+        </li>
+        {elseif ($i > $page.current_page - 4 && $i < $page.current_page + 5)/}
+        <li class="paginate_button page-item">
+            <a href="/buyhistory?page={$i}{$param}"  class="page-link">{$i}</a>
+        </li>
+        {/if}
+        {/for}
+
+        {if $page.current_page == $page.last_page}
+        <li class="paginate_button page-item">
+            <a href="javascript:;" class="page-link">»</a>
+        </li>
+        {else/}
+        <li class="paginate_button page-item">
+            <a href="/buyhistory?page={$page.current_page+1}{$param}" class="page-link">»</a>
+        </li>
+        {/if}
+        {/if}
+    </ul>
+</div>
+{/block}

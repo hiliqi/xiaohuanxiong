@@ -1,0 +1,250 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>小浣熊漫画CMS安装程序</title>
+    <link rel="stylesheet" href="/static/component/pear/css/pear.css" />
+    <style>
+        .pear-container {
+            margin: 10px;
+            background-color: whitesmoke;
+        }
+        .logo {
+            width: 60px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            margin-left: 20px;
+        }
+        .title {
+            font-size: 30px;
+            font-weight: 550;
+            margin-left: 20px;
+            color: #5FB878!important;
+            display: inline-block;
+            height: 60px;
+            line-height: 60px;
+            margin-top: 10px;
+        }
+        .top{
+            text-align: center;
+            margin-top: 50px;
+        }
+        .step-item-main {
+            padding-left: 38px;
+        }
+        .step-info{
+            padding: 10px 15px;
+            border-top: 2px solid #3EC483;
+            border-bottom: 2px solid #3EC483;
+            display: inline-block;
+            font-size: 15px;
+            color: #5fb878;
+        }
+    </style>
+</head>
+<body class="pear-container">
+<div class="top">
+    <img class="logo" src="/static/admin/images/logo.png" />
+    <div class="title">小浣熊漫画CMS</div>
+</div>
+<div class="layui-card-body" style="padding-top: 40px;">
+    <div class="layui-carousel" id="stepForm" lay-filter="stepForm" style="margin: 0 auto;">
+        <div carousel-item>
+            <div>
+                <form class="layui-form" action="javascript:void(0);" style="margin: 0 auto;max-width: 460px;padding-top: 40px;">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">数据库地址</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="host" value="127.0.0.1" class="layui-input"  lay-verify="required"/>
+
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">数据库端口</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="port"  value="3306" class="layui-input" lay-verify="required"/>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">数据库账号</label>
+                        <div class="layui-input-block">
+                            <input type="text"  name="user" placeholder="数据库账号" value="" class="layui-input" lay-verify="required"/>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">数据库密码</label>
+                        <div class="layui-input-block">
+                            <input type="text"  name="pass" placeholder="数据库密码" value="" class="layui-input" lay-verify="required"/>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">数据库名称</label>
+                        <div class="layui-input-block">
+                            <input type="text"  name="name" placeholder="数据库名称" value="" class="layui-input" lay-verify="required"/>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">数据库前缀</label>
+                        <div class="layui-input-block">
+                            <input type="text" placeholder="示例:tp_" name="pk" value="" class="layui-input"/>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <button type="reset" class="pear-btn pear-btn-success">
+                                &emsp;重&emsp;置&emsp;
+                            </button>
+                            <button class="pear-btn pear-btn-success" lay-submit lay-filter="formStep">
+                                &emsp;下一步&emsp;
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div>
+                <form class="layui-form"  action="javascript:void(0);" style="margin: 0 auto;max-width: 460px;padding-top: 40px;">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">管理员账号</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="username" value="admin" class="layui-input"  lay-verify="required"/>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">管理员密码</label>
+                        <div class="layui-input-block">
+                            <input type="text"  name="password" value="123456" class="layui-input"  lay-verify="required"/>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <button type="button" class="pear-btn pear-btn-success pre">&emsp;上一步&emsp;</button>
+                            <button class="pear-btn pear-btn-success" lay-submit lay-filter="formStep2">
+                                &emsp;下一步&emsp;
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div>
+                <div style="text-align: center;margin-top: 30px;">
+                    <div class="step-info">
+                        <p>请确认安装信息</p>
+                        <div id="setpInfo"></div>
+                    </div>
+                </div>
+                <div style="text-align: center;margin-top: 50px;">
+                    <button class="pear-btn pear-btn-success pre">&emsp;上一步&emsp;</button>
+                    <button class="pear-btn pear-btn-success go">&emsp;提交&emsp;</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/static/component/layui/layui.js"></script>
+<script src="/static/component/pear/pear.js"></script>
+<script>
+    layui.use(['form', 'layer','step'], function() {
+        var $ = layui.$,
+            form = layui.form,
+            step = layui.step;
+        setpSql = '';
+        setpAdmin = '';
+        step.render({
+            elem: '#stepForm',
+            filter: 'stepForm',
+            width: '100%', //设置容器宽度
+            stepWidth: '750px',
+            height: '500px',
+            stepItems: [{
+                title: '数据库'
+            }, {
+                title: '管理员'
+            }, {
+                title: '提交'
+            }]
+        });
+
+        form.on('submit(formStep)', function(data) {
+            sql = data.field;
+            data.field.step = '1';
+            $.ajax({
+                type: "POST",
+                data: Object.assign(sql),
+                async : false,
+                success: function (res) {
+                    //验证通过
+                    if (res.code==200){
+                        step.next('#stepForm');
+                        setpSql = res.msg;
+                    } else {
+                        layer.msg(res.msg,{icon:2,time:1500})
+                    }
+                }
+            });
+            return false;
+        });
+        form.on('submit(formStep2)', function(data) {
+            setpAdmin = data.field;
+            data.field.step = '2';
+            data =  Object.assign(setpSql, setpAdmin);
+            $.ajax({
+                type: "POST",
+                data: data,
+                async : false,
+                success: function (res) {
+                    //验证通过
+                    if (res.code==200){
+                        step.next('#stepForm');
+                        setpAdmin = res.msg;
+                        var htmlText =  '<p>数据库地址:'+setpSql['host']+'</P>';
+                        htmlText += '<p>数据库端口:'+setpSql['port']+'</P>';
+                        htmlText += '<p>数据库账号:'+setpSql['user']+'</P>';
+                        htmlText += '<p>数据库密码:'+setpSql['pass']+'</P>';
+                        htmlText += '<p>数据库名称:'+setpSql['name']+'</P>';
+                        htmlText += '<p>数据库前缀:'+setpSql['pk']+'</P>';
+                        htmlText += '<p>管理员账号:'+setpAdmin['username']+'</P>';
+                        htmlText += '<p>管理员密码:'+setpAdmin['password']+'</P>';
+                        document.getElementById("setpInfo").innerHTML = htmlText;
+                    } else {
+                        layer.msg(res.msg,{icon:2,time:1500})
+                    }
+                }
+            });
+            return false;
+        });
+
+        $('.pre').click(function() {
+            step.pre('#stepForm');
+            return false;
+        });
+
+        $('.next').click(function() {
+            step.next('#stepForm');
+            return false;
+        });
+
+        $('.go').click(function() {
+            layer.load();
+            data =  Object.assign(setpSql, setpAdmin);
+            data.step = 3;
+            $.ajax({
+                type: "POST",
+                data: data,
+                success: function (res) {
+                    layer.closeAll('loading');
+                    //验证通过
+                    if (res.code==200){
+                        layer.msg(res.msg,{icon:1,time:1500});
+                        location.reload();
+                    } else {
+                        layer.msg(res.msg,{icon:2,time:1500})
+                    }
+                }
+            });
+            return false;
+        });
+    })
+</script>
+</body>
+</html>

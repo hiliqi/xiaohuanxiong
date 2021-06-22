@@ -1,0 +1,51 @@
+{extend name="./template/qq/m/pub/base.html" /}
+{block name="seo"}
+<title>{$site_name}-搜索</title>
+{/block}
+{block name="css"}
+<link rel="stylesheet" href="/template/qq/css/result.css"/>
+<style>
+
+</style>
+{/block}
+{block name="main"}
+<section class="search-top-bar">
+    <form class="search-form" action="/{$search_ctrl}">
+        <a class="search-top-btn back" href="/">[返回]</a>
+        <!--搜索栏文本-->
+        <div class="search-txt">
+            <!--搜索栏文本 - 文本输入框-->
+            <div class="search-text-box">
+                <div class="txt-input-pad"></div>
+                <input class="txt-input" type="search" name="keyword" placeholder="漫画名|作者">
+                <a class="txt-input-clear">[X]</a>
+            </div>
+        </div>
+        <input class="search-top-btn search" type="submit" value="搜索">
+    </form>
+</section>
+
+
+<!-- 搜索结果 -->
+<section class="result-box">
+    <!-- 结果列表 ST -->
+    <ul class="result-list" id="lst_searchResult">
+        {raccoon:books name="books" order="last_time desc" limit="20"
+        where="book_name like '%$keyword%'"}
+        <li class="comic-item">
+            <a class="comic-link" href="/{$book_ctrl}/{$vo.param}">
+                <div class="comic-cover">
+                    <img class="cover-image" src="{$vo.cover_url}">
+                </div>
+                <div class="comic-content">
+                    <strong class="comic-title">{$vo.book_name}</strong>
+                    <small class="comic-update">{$vo.last_time|date='Y-m-d'} 更新</small>
+                    <small class="comic-tag">{$vo.tags}</small>
+                    <small class="comic-desc">{$vo.summary}</small>
+                </div>
+            </a>
+        </li>
+        {/raccoon:books}
+    </ul>
+</section>
+{/block}
