@@ -3,8 +3,6 @@
 
 namespace app\app\controller;
 
-
-use app\service\FinanceService;
 use app\service\PromotionService;
 use app\validate\Phone;
 use app\validate\User as UserValidate;
@@ -79,7 +77,7 @@ class Account extends Base
             if ($user->delete_time > 0) {
                 return json(['success' => 0, 'msg' => '用户被锁定']);
             } else {
-                $financeService = new FinanceService();
+                $financeService = app('financeModel');
                 $user['balance'] = $financeService->getBalance($user->id); //获取用户余额
                 $key = config('site.api_key');
                 $token = [
@@ -113,7 +111,7 @@ class Account extends Base
                 return json(['success' => 0, 'msg' => '用户被锁定']);
             } else {
                 $this->uid = $user->id;
-                $financeService = new FinanceService();
+                $financeService = app('financeModel');
                 $user['balance'] = $financeService->getBalance($user->id); //获取用户余额
                 $token = [
                     "iat" => time(), //签发时间
@@ -180,7 +178,7 @@ class Account extends Base
 
     public function phonelogin() {
         $data = request()->param();
-        if (verifycode($data['stoken'], $data['code'], $data['mobile']) == 0) {
+        if (vcode($data['stoken'], $data['code'], $data['mobile']) == 0) {
             return json(['success' => 0, 'msg' => '验证码错误']);
         }
         $validate = new Phone();
@@ -192,7 +190,7 @@ class Account extends Base
                     return json(['success' => 0, 'msg' => '用户被锁定']);
                 } else {
                     $this->uid = $user->id;
-                    $financeService = new FinanceService();
+                    $financeService = app('financeModel');
                     $user['balance'] = $financeService->getBalance($user->id); //获取用户余额
                     $token = [
                         "iat" => time(), //签发时间
