@@ -16,6 +16,7 @@ namespace think;
 define('DS', DIRECTORY_SEPARATOR);
 
 require __DIR__ . '/../vendor/autoload.php';
+require __DIR__ . "/routeconf.php";
 // 执行HTTP应用并响应
 $http = (new App())->http;
 // 检测程序安装
