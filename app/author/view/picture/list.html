@@ -65,7 +65,7 @@
         /* 渲染表格 */
         var insTb = table.render({
             elem: '#tbBasicTable',
-            url: '/picture/getlist?chapter_id=' + {$chapter_id},
+            url: '{:adminurl("picture/getlist")}?chapter_id=' + {$chapter_id},
             page: true,
             toolbar: ['<p>',
                 '<button lay-event="add" class="layui-btn layui-btn-sm icon-btn"><i class="layui-icon">&#xe654;</i>添加</button>&nbsp;',
@@ -102,7 +102,7 @@
             if (obj.event === 'add') { // 添加
                 index.openTab({
                     title: '添加图片',
-                    url:'/picture/create?chapter_id=' + {$chapter_id},
+                    url:'{:adminurl("picture/create")}?chapter_id=' + {$chapter_id},
                     end: function() {
                         insTb.reload()
                     }

@@ -67,7 +67,7 @@
         /* 渲染表格 */
         var insTb = table.render({
             elem: '#tbBasicTable',
-            url: '/chapters/getlist?book_id=' + {$book_id},
+            url: '{:adminurl("chapters/getlist"}}?book_id=' + {$book_id},
             page: true,
             toolbar: ['<p>',
                 '<button lay-event="add" class="layui-btn layui-btn-sm icon-btn"><i class="layui-icon">&#xe654;</i>添加</button>&nbsp;',
@@ -90,7 +90,7 @@
             if (obj.event === 'edit') { // 修改
                 admin.open({
                     title: '章节编辑',
-                    url: "/chapters/edit?id=" + data.id,
+                    url: '{:adminurl("chapters/edit")}?id' + data.id,
                     end: function () {
                         insTb.reload()
                     }
@@ -100,7 +100,7 @@
             } else if (obj.event === 'picture') {
                 index.openTab({
                     title: '图片管理',
-                    url: "/picture/list?chapter_id=" + data.id,
+                    url: '{:adminurl("picture/list")}?chapter_id=' + data.id,
                     end: function () {
                         insTb.reload()
                     }
@@ -114,7 +114,7 @@
             if (obj.event === 'add') { // 添加
                 admin.open({
                     title: '添加章节',
-                    url:'/chapters/create?book_id=' + {$book_id},
+                    url:'{:adminurl("chapters/create")}?book_id=' + {$book_id},
                     end: function() {
                         insTb.reload()
                     }
