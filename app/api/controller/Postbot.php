@@ -6,7 +6,6 @@ use app\model\Author;
 use app\model\Book;
 use app\model\Photo;
 use Overtrue\Pinyin\Pinyin;
-use think\Controller;
 use think\Request;
 use app\model\Chapter;
 

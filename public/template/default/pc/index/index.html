@@ -34,7 +34,7 @@
     <div class="container">
         <ul class="list">
             {raccoon:cates name="cates" order="id desc"}
-            <li><a href="/{$booklist_act}/{$vo.tag_name}">{$vo.tag_name}</a></li>
+            <li><a href="/{$booklist_act}?cate={$vo.tag_name}">{$vo.tag_name}</a></li>
             {/raccoon:cates}
         </ul>
         <a href="/{$booklist_act}/" class="full-class-btn">全部分类</a>
