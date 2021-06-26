@@ -17,22 +17,24 @@
     </div>
     <div style="border:none;background-color:#f8f8f8;margin-top: 105px;">
         <ul class="manga-list-2">
-            <li v-for="(item, index) in books" :key="index">
+            {raccoon:favors name="favors" where="user_id='$xwx_user_id'"}
+            <li>
                 <div class="manga-list-2-cover">
-                    <a :href="'/{$book_ctrl}/'+item.param">
-                        <img class="manga-list-2-cover-img" :src="item.cover_url">
+                    <a href="/{$book_ctrl}/{$vo.book.param}">
+                        <img class="manga-list-2-cover-img" src="{$vo.book.cover_url}">
                     </a>
                     <span class="manga-list-2-cover-hover" :class="{'active': editBooks.includes(item.id
                     )}"
                           v-show="!editShow" @click="pushToEditBooks(item.id)"></span>
                 </div>
                 <p class="manga-list-2-title">
-                    <a :href="'/{$book_ctrl}/'+item.param">{{item.book_name}}</a>
+                    <a href="/{$book_ctrl}/{$vo.book.param}">{$vo.book.book_name}</a>
                 </p>
                 <p class="manga-list-2-tip">
-                    <a style="display: unset;">作者:{{item.author_name}}</a>
+                    <a style="display: unset;">作者:{$vo.book.author_name}</a>
                 </p>
             </li>
+            {/raccoon:favors}
         </ul>
 
     </div>
@@ -52,20 +54,6 @@
             active: "false"
         },
         methods: {
-            getBooks() {
-                axios.get("/getfavors", {
-                    params: {
-                        page: this.page
-                    }
-                }).then(response => {
-                    if (response.data.err == 1) {
-                        this.isMore = 0 //设置好之后，上拉加载就不再请求接口了
-                        ShowDialog('没有更多了')
-                    } else {
-                        this.books = this.books.concat(response.data.books)
-                    }
-                })
-            },
             delFavors() {
                 var str = this.editBooks.join(',')
                 var params = {
