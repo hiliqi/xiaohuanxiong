@@ -211,7 +211,7 @@ INFO;
             $client = new Client();
             $srcUrl = App::getRootPath() . "/ver.txt";
             $localVersion = (int)str_replace('.', '', file_get_contents($srcUrl));
-            $server = "http://v5.xhxcms.com";
+            $server = "https://cdn.jsdelivr.net/gh/hiliqi/xiaohuanxiong/";
             $serverFileUrl = $server . "/ver.txt";
             $res = $client->request('GET', $serverFileUrl); //读取版本号
             $serverVersion = (int)str_replace('.', '', $res->getBody());
@@ -219,7 +219,7 @@ INFO;
 
             if ($serverVersion > $localVersion) {
                 for ($i = $localVersion + 1; $i <= $serverVersion; $i++) {
-                    $res = $client->request('GET', "http://v5up.xhxcms.com/" . $i . ".json");
+                    $res = $client->request('GET', "https://cdn.jsdelivr.net/gh/hiliqi/raccoon_up/comic5/" . $i . ".json");
                     if ((int)($res->getStatusCode()) == 200) {
                         $json = json_decode($res->getBody(), true);
 
