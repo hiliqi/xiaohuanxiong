@@ -14,6 +14,7 @@ use app\model\VipCode;
 use app\model\ChargeCode;
 use app\model\Admin;
 use think\facade\Db;
+use think\facade\Env;
 
 class Common extends BaseController
 {
@@ -32,40 +33,25 @@ class Common extends BaseController
         return '清理成功';
     }
 
-    public function sycnclicks()
+    //清空月人气
+    public function clearmhits()
     {
-        $key = input('api_key');
-        if (empty($key) || is_null($key)) {
-            return 'api密钥不能为空！';
-        }
-        if ($key != config('site.api_key')) {
-            return 'api密钥错误！';
-        }
+        $prefix = Env::get('database.prefix');
+        Db::query("update ".$prefix."book set mhits=0");
+    }
 
-        Db::query("update xwx_book set dhits=0"); //清空日人气
-        if ((int)date("w",time()) == 6) { //如果是星期六
-            Db::query("update xwx_book set whits=0"); //清空周人气
-        }
-        if ((int)date('d') == 28) { //清空月人气
-            Db::query("update xwx_book set mhits=0"); //清空周人气
-        }
+    //清空周人气
+    public function clearwhits()
+    {
+        $prefix = Env::get('database.prefix');
+        Db::query("update ".$prefix."book set whits=0");
+    }
 
-        $day = input('date');
-        if (empty($day)) {
-            $day = date("Y-m-d", strtotime("-1 day"));
-        }
-        $redis = RedisHelper::GetInstance();
-        $hits = $redis->zRevRange('hits:' . $day, 0, 10, true); //总点击
-        foreach ($hits as $k => $v) {
-            $book = Book::findOrFail($k);
-            $book->hits = $book->hits + $v;
-            $book->mhits = $book->mhits + $v;
-            $book->dhits = $book->dhits + $v;
-            $result = $book->save();
-            if ($result) {
-                $redis->zRem('hit:'.$day, $k); //同步到数据库之后，删除redis中的这个日期的这本漫画的点击数
-            }
-        }
+    //清空日人气
+    public function cleardhits()
+    {
+        $prefix = Env::get('database.prefix');
+        Db::query("update ".$prefix."book set dhits=0");
     }
 
     public function genvipcode()

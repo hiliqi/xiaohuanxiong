@@ -38,10 +38,18 @@ class Books extends Base
             cache('book:' . $id, $book, null, 'redis');
         }
 
-        $redis = RedisHelper::GetInstance();
-        $day = date("Y-m-d", time());
-        //以当前日期为键，增加点击数
-        $redis->zIncrBy('click:' . $day, 1, $book->id);
+//        $redis = RedisHelper::GetInstance();
+//        $day = date("Y-m-d", time());
+//        //以当前日期为键，增加点击数
+//        $redis->zIncrBy('click:' . $day, 1, $book->id);
+        $ip = request()->ip();
+        if (empty(cookie('click:' . $ip))) {
+            $book->hits = $book->hits + 1;
+            $book->mhits = $book->mhits + 1;
+            $book->whits = $book->whits + 1;
+            $book->dhits = $book->dhits + 1;
+            cookie('click:' . $ip, $ip);
+        }
 
         $start = cache('bookStart:' . $id);
         if ($start == false) {
