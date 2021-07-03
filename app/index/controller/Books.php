@@ -48,6 +48,7 @@ class Books extends Base
             $book->mhits = $book->mhits + 1;
             $book->whits = $book->whits + 1;
             $book->dhits = $book->dhits + 1;
+            $book->save();
             cookie('click:' . $ip, $ip);
         }
 
