@@ -30,6 +30,16 @@ class Books extends Base
                         $query->order('chapter_order');
                     }])->where('unique_id', '=', $id)->findOrFail();
                 }
+                if (substr($book['cover_url'], 0, 4) === "http") {
+
+                } else {
+                    $book['cover_url'] = $img_domain . $book['cover_url'];
+                }
+                if (substr($book['banner_url'], 0, 4) === "http") {
+    
+                } else {
+                    $book['banner_url'] = $img_domain . $book['banner_url'];
+                }
             } catch (DataNotFoundException $e) {
                 abort(404, $e->getMessage());
             } catch (ModelNotFoundException $e) {
