@@ -252,8 +252,8 @@ INFO;
                     }
                 }
                 echo '<p style="padding-left:15px;font-weight: 400;color:#999;">升级完成</p>';
-                file_put_contents($srcUrl, (string)$res->getBody(), true); //将版本号写入到本地文件
-                echo '<p style="padding-left:15px;font-weight: 400;color:#999;">覆盖版本号</p>';
+//                file_put_contents($srcUrl, (string)$res->getBody(), true); //将版本号写入到本地文件
+//                echo '<p style="padding-left:15px;font-weight: 400;color:#999;">覆盖版本号</p>';
             } else {
                 echo '<p style="padding-left:15px;font-weight: 400;color:#999;">已经是最新版本！当前版本是' . $localVersion . '</p>';
             }

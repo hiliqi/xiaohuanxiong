@@ -36,8 +36,9 @@
                     <cite>管理员</cite>
                 </a>
                 <dl class="layui-nav-child">
-                    <dd lay-unselect><a ew-href="page/template/user-info.html">个人中心</a></dd>
-                    <dd lay-unselect><a ew-event="psw">修改密码</a></dd>
+                    <dd lay-unselect><a ew-event="clearcache">清除缓存</a></dd>
+                    <dd lay-unselect><a ew-event="upgrade">检查更新</a></dd>
+                    <dd lay-unselect><a ew-event="uc">修改密码</a></dd>
                     <hr>
                     <dd lay-unselect><a ew-event="logout" data-url="{:adminurl('login/logout')}">退出</a></dd>
                 </dl>
@@ -149,7 +150,26 @@
         admin.events.clearcache = function(){
             admin.req('{:adminurl("index/clearCache")}', function(res){
                 layer.msg(res.msg);
+                location.reload()
             }, 'get');
+        }
+
+        admin.events.upgrade = function (){
+            parent.layui.index.openTab({
+                title: '检查更新',
+                url: "{:adminurl('index/upgrade')}",
+                end: function () {
+                }
+            });
+        }
+
+        admin.events.uc = function (){
+            parent.layui.index.openTab({
+                title: '管理员列表',
+                url: "{:adminurl('admins/index')}",
+                end: function () {
+                }
+            });
         }
     });
 </script>
