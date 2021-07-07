@@ -17,6 +17,7 @@ class Books extends Base
 {
     public function index($id)
     {
+        $img_domain = config('site.img_domain');
         $book = cache('book:' . $id);
         if ($book == false) {
             try {
