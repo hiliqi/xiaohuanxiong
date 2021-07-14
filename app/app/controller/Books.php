@@ -4,7 +4,6 @@
 namespace app\app\controller;
 
 
-use app\common\RedisHelper;
 use app\model\Area;
 use app\model\Author;
 use app\model\Book;
@@ -238,10 +237,6 @@ class Books extends Base
                 } else {
                     $book['banner_url'] = $this->img_domain . $book['banner_url'];
                 }
-                $redis = RedisHelper::GetInstance();
-                $day = date("Y-m-d", time());
-                //以当前日期为键，增加点击数
-                $redis->zIncrBy('click:' . $day, 1, $id);
             } catch (DataNotFoundException $e) {
                 return json(['success' => 0, 'msg' => '该漫画不存在']);
             } catch (ModelNotFoundException $e) {
@@ -250,10 +245,17 @@ class Books extends Base
             cache('appBook:' . $id, $book, null, 'redis');
         }
 
-        $redis = RedisHelper::GetInstance();
-        $day = date("Y-m-d", time());
-        //以当前日期为键，增加点击数
-        $redis->zIncrBy('click:' . $day, 1, $book->id);
+        $ip = request()->ip();
+        $flag = cache('click:' . $ip);
+        if (!$flag)
+        {
+            $book->hits = $book->hits + 1;
+            $book->mhits = $book->mhits + 1;
+            $book->whits = $book->whits + 1;
+            $book->dhits = $book->dhits + 1;
+            $book->save();
+            cache('click:' . $ip, $ip);
+        }
 
         $start = cache('book_start:' . $id);
         if ($start == false) {

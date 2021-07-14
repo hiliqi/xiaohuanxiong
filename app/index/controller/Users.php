@@ -7,7 +7,6 @@ use app\model\User;
 use think\db\exception\DataNotFoundException;
 use think\db\exception\ModelNotFoundException;
 use think\facade\View;
-use app\common\RedisHelper;
 
 class Users extends BaseUc
 {
@@ -118,9 +117,8 @@ class Users extends BaseUc
         }
 
         //如果用户手机已经存在，并且没有进行修改手机验证，也就是没有解锁缓存
-        $redis = RedisHelper::GetInstance();
         if (!empty($user->mobile)) {
-            if (!$redis->exists($this->redis_prefix . ':xwx_mobile_unlock:' . $this->uid)) {
+            if (empty(cookie('xwx_mobile_unlock:' . $this->uid))) { //没有解锁缓存
                 $this->redirect('/userphone'); //则重定向至手机信息页
             }
         }
@@ -155,8 +153,7 @@ class Users extends BaseUc
         if ($result['status'] == 0) { //如果发送成功
             session('xwx_sms_code', $code); //写入session
             session('xwx_cms_phone', $phone);
-            $redis = RedisHelper::GetInstance();
-            $redis->set($this->redis_prefix . ':xwx_mobile_unlock:' . $this->uid, 1, 300); //设置解锁缓存，让用户可以更改手机
+            cookie('xwx_mobile_unlock:' . $this->uid, 1, 300); //设置解锁缓存，让用户可以更改手机
         }
         return json(['msg' => $result['msg']]);
     }

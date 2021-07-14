@@ -4,7 +4,6 @@
 namespace app\index\controller;
 
 use app\BaseController;
-use app\common\RedisHelper;
 use app\model\FriendshipLink;
 use think\App;
 use think\db\exception\ModelNotFoundException;
@@ -16,7 +15,6 @@ use think\facade\View;
 class Base extends BaseController
 {
     protected $prefix;
-    protected $redis_prefix;
     protected $uid;
     protected $end_point;
     protected $tpl;
@@ -34,7 +32,6 @@ class Base extends BaseController
         }
         $this->uid = session('xwx_user_id');
         $this->prefix = Env::get('database.prefix');
-        $this->redis_prefix = Env::get('cache.prefix');
         $this->end_point = config('seo.book_end_point');
         $tpl_root = './template/' . config('site.tpl') . $d;
         $controller = strtolower($this->request->controller());

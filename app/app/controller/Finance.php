@@ -4,7 +4,6 @@
 namespace app\app\controller;
 
 
-use app\common\RedisHelper;
 use app\model\Book;
 use app\model\Chapter;
 use app\model\User;

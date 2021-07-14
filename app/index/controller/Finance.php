@@ -5,14 +5,11 @@ namespace app\index\controller;
 
 use app\model\Chapter;
 use app\model\ChargeCode;
-use app\common\RedisHelper;
 use app\model\User;
 use app\model\UserBuy;
 use app\model\UserFinance;
 use app\model\VipCode;
-use app\pay\Pay;
 use app\service\CashService;
-use app\service\FinanceService;
 use app\service\PromotionService;
 use think\db\exception\DataNotFoundException;
 use think\db\exception\ModelNotFoundException;

@@ -11,7 +11,6 @@ use Firebase\JWT\JWT;
 class Base extends BaseController
 {
     public $prefix;
-    public $redis_prefix;
     public $url;
     public $img_domain;
     public $book_ctrl;
@@ -40,7 +39,6 @@ class Base extends BaseController
         }
 
         $this->prefix = Env::get('database.prefix');
-        $this->redis_prefix = Env::get('cache.prefix');
         $this->url =  config('site.domain');
         $this->img_domain = config('site.img_domain');
         $this->book_ctrl = BOOKCTRL;

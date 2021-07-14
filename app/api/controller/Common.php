@@ -5,11 +5,9 @@ namespace app\api\controller;
 
 
 use app\BaseController;
-use app\common\RedisHelper;
 use app\model\Book;
 use think\facade\Cache;
 use think\facade\App;
-use app\model\Clicks;
 use app\model\VipCode;
 use app\model\ChargeCode;
 use app\model\Admin;
@@ -33,26 +31,26 @@ class Common extends BaseController
         return '清理成功';
     }
 
-    //清空月人气
-    public function clearmhits()
-    {
-        $prefix = Env::get('database.prefix');
-        Db::query("update ".$prefix."book set mhits=0");
-    }
-
-    //清空周人气
-    public function clearwhits()
-    {
-        $prefix = Env::get('database.prefix');
-        Db::query("update ".$prefix."book set whits=0");
-    }
-
-    //清空日人气
-    public function cleardhits()
-    {
-        $prefix = Env::get('database.prefix');
-        Db::query("update ".$prefix."book set dhits=0");
-    }
+     //清空月人气
+     public function clearmhits()
+     {
+         $prefix = Env::get('database.prefix');
+         Db::query("update ".$prefix."book set mhits=0");
+     }
+ 
+     //清空周人气
+     public function clearwhits()
+     {
+         $prefix = Env::get('database.prefix');
+         Db::query("update ".$prefix."book set whits=0");
+     }
+ 
+     //清空日人气
+     public function cleardhits()
+     {
+         $prefix = Env::get('database.prefix');
+         Db::query("update ".$prefix."book set dhits=0");
+     }
 
     public function genvipcode()
     {
